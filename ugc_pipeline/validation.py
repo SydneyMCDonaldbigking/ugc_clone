@@ -380,6 +380,12 @@ def validate_script(script: Any, beats: dict[str, Any], product: dict[str, Any])
 SOURCE_DERIVED_MARKERS = ("video_analysis/", "/frames/", "anchor_", "storyboard", "contact.jpg", "tile_", "cuts_")
 FORBIDDEN_REFERENCE_ROLES = {"composition_only"}
 H3_MIN_SEGMENT_SECONDS = 2
+# presenter.mode -> the only keyframe template allowed for it
+PRESENTER_TEMPLATES = {
+    "generated_fictional": "templates/keyframe_prompt.en.txt",   # someone talks to camera in the source
+    "hands_only": "templates/keyframe_prompt.hands-only.en.txt",   # only hands and product in the source
+    "none": "templates/keyframe_prompt.product-only.en.txt",       # product only, voice-over
+}
 # A generated keyframe already carries the image model's version of the product. Feeding it back as a
 # reference compounds that drift, so every keyframe is generated fresh from the original photos.
 GENERATED_MARKERS = ("/keyframes/",)
@@ -646,10 +652,39 @@ def validate_keyframe_coverage(
             f"Requested keyframes {sorted(actual)} do not exactly cover shot-plan segments {sorted(expected)}.",
         )
 
+    # How people appear is decided from the reference archive, never assumed: a talking-head source gets
+    # a fictional presenter, a hands-only source gets hands only, a product-only source gets nobody.
+    presenter = job.get("presenter") if isinstance(job.get("presenter"), dict) else {}
+    mode = presenter.get("mode")
+    if mode not in PRESENTER_TEMPLATES:
+        result.error(
+            "presenter.mode",
+            "job.presenter.mode",
+            f"Set presenter.mode from the reference archive: one of {sorted(PRESENTER_TEMPLATES)}.",
+        )
+    else:
+        if request.get("prompt_template") != PRESENTER_TEMPLATES[mode]:
+            result.error(
+                "request.template_mode",
+                "request.prompt_template",
+                f"presenter.mode={mode} requires {PRESENTER_TEMPLATES[mode]}.",
+            )
+        if mode != "generated_fictional":
+            for segment_id, segment in (request_segments.items() if isinstance(request_segments, dict) else []):
+                roles = segment.get("reference_roles") if isinstance(segment, dict) else None
+                if any(role != "product_identity" for role in (roles.values() if isinstance(roles, dict) else [])):
+                    result.error(
+                        "request.presenter_forbidden",
+                        f"request.segments.{segment_id}.reference_roles",
+                        f"presenter.mode={mode}: the source has no on-camera presenter, so only product references are allowed.",
+                    )
+            if presenter.get("master_image"):
+                result.error("presenter.master_forbidden", "job.presenter.master_image",
+                             f"presenter.mode={mode} has no presenter master.")
+
     # Person and scene continuity come from one registered presenter master (no product in it). Every
     # keyframe's presenter reference must be exactly that file; registration pins its hash so keyframes
     # made from an older master are caught.
-    presenter = job.get("presenter") if isinstance(job.get("presenter"), dict) else {}
     master = presenter.get("master_image")
     presenter_roles = {"presenter_identity", "presenter_and_scene_identity"}
     if isinstance(request_segments, dict):

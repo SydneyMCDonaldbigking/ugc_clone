@@ -166,6 +166,11 @@ references/<ref_id>/
 5. PROGRESS 里的问题逐条解决,删掉 PROGRESS,然后 `python scripts/reference_archive.py check <ref_id>`
    出现 READY 才算写完。任务文件 `job.json` 用 `reference_archive` 关联档案;档案没写完,`validate` 会报错
 
+**出镜方式要在档案里判断,不能默认有人。** 前两条参考片都是真人出镜,流程一度把"出镜人"写死成默认。
+第三条(a2_milk)原片只有手和商品,Codex 照默认先拍了个真人讲解,用户叫停才改回来。现在 ANALYSIS 事实表必须写
+`出镜方式`(`generated_fictional` / `hands_only` / `none`),`check` 会查;任务的 `presenter.mode` 照它填,
+决定要不要定妆照、用哪个出图模板。
+
 两条原则(来自 hypit transformations):
 - **保留作用,重做形式**。"说品牌时手拍在箱子上"的作用是"卖点配一个手上的证据",
   没有品牌纸箱就让手落在瓶子上

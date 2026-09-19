@@ -175,6 +175,7 @@ def scaffold(root: Path, facts: dict, force: bool = False) -> list[str]:
 | 事实 | 值 |
 |---|---|
 | 时长 / 画幅 | {probe['duration']}s / {probe['width']}x{probe['height']} @ {probe['fps']}fps |
+| 出镜方式 | {todo('看宫格判断,三选一:generated_fictional(有人对镜头说话)/ hands_only(只有手)/ none(只有商品,画外音)')} |
 | 台词 | {len(lines)} 句,约 {chars} 字/词,约 {chars / speech if speech else 0:.1f} 个/秒 |
 | 切点(scene>0.3) | {len(cuts)} 个 |
 
@@ -290,6 +291,8 @@ def check(root: Path) -> list[str]:
     an = root / "ANALYSIS.md"
     if an.exists():
         text = an.read_text(encoding="utf-8")
+        if not re.search(r"\|\s*出镜方式\s*\|[^|]*(generated_fictional|hands_only|none)", text):
+            problems.append("ANALYSIS 事实表缺'出镜方式'(generated_fictional / hands_only / none),它决定要不要出镜人")
         for heading in ("它想让观众得到什么", "情绪弧线", "各个元素在做什么", "改编时要保留的作用"):
             if heading not in text:
                 problems.append(f"ANALYSIS 缺少一节:{heading}")

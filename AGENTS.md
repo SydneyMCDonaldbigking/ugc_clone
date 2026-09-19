@@ -9,10 +9,10 @@
 |---|---|---|---|---|---|---|
 | 0 | 给素材 | **用户** | — | 参考视频、商品图、价格、卖法、目标语言 | `inputs/<job>/` 原始文件 | 用户在对话里说"开始" |
 | 1 | 建档 + 转写 | **Claude** | 本地(conda `ugc_asr`) | `python scripts/reference_archive.py init <视频> <ref_id> --transcribe [--vad]` | `references/<ref_id>/` 事实、证据宫格、文档骨架 | 命令跑完 |
-| 2 | 写原片档案 | **Claude** | 本地 | 看宫格写 `ANALYSIS.md`、`TIMELINE.md`,补看用 `reference_archive.py tile` | 两份档案 | `reference_archive.py check <ref_id>` 显示 READY |
+| 2 | 写原片档案 | **Claude** | 本地 | 看宫格写 `ANALYSIS.md`、`TIMELINE.md`,补看用 `reference_archive.py tile`;**事实表里判断出镜方式** | 两份档案 | `reference_archive.py check <ref_id>` 显示 READY |
 | 3 | 商品参数表 | **Claude**(事实只能来自用户和包装图) | 本地 | 每条事实挂证据,拿不到的填 null | `inputs/<job>/product.en.json` | `validate` 通过 |
 | 4 | 节拍表 + 稿子 | **Claude** | 本地 | `build_beats.py`,英文稿按节拍表写 | `beats.json`、`variants/vNNN/script.en.json` | `validate` 通过 |
-| 5 | 分镜 + 出图请求 | **Claude** | 本地 | `first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词 | `shot_plan.json`、`keyframes/REQUEST.json`、`segNN_prompt.txt` | `validate` 通过,**Claude 告诉用户"可以交给 Codex 出图了"** |
+| 5 | 分镜 + 出图请求 | **Claude** | 本地 | `job.presenter.mode` 照档案的出镜方式填,选对应模板;`first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词 | `shot_plan.json`、`keyframes/REQUEST.json`、`segNN_prompt.txt` | `validate` 通过,**Claude 告诉用户"可以交给 Codex 出图了"** |
 | 6 | 定妆照 + 参考帧 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩" | `presenter_master.png`、`keyframes/segNN.png`、`QC.json` | Codex 最后写 `keyframes/READY.json` |
 | 7 | 编 H3 提示词 + 渲染 | **Claude** | 编译在本地,渲染在服务器 | 读 READY,按"态度 + 重音"编 `segments.json`,上传、`cc_submit`、单段 `cc_rerun` | 成片 | `cc_status` 出片 |
 | 8 | 验收 | **Claude**(技术 + 台词)、**用户**(画面) | 本地 | 成片再转写对台词;画面交给用户看 | 验收结论 | 用户说"通过" |
@@ -24,6 +24,14 @@
   写进 `QC.json` 的说明里交回,不自己改稿子和分镜
 - **服务器只在第 7 步出现**。服务器掉线只影响第 7 步,前面的步骤照常做
 - 每一步都有"做完的信号";没看到上一步的信号,下一步不开始
+- **出镜方式跟原片走,不默认有人**。原片有人对镜头说话才用 `generated_fictional`(出定妆照、做真人出镜);
+  只有手用 `hands_only`,只有商品用 `none`,这两种**不出定妆照、画面里不出现人脸**。`validate` 会拦:
+
+  | `presenter.mode` | 原片 | 定妆照 | 出图模板 |
+  |---|---|---|---|
+  | `generated_fictional` | 有人对镜头说话 | 要 | `templates/keyframe_prompt.en.txt` |
+  | `hands_only` | 只有手和商品 | 不要 | `templates/keyframe_prompt.hands-only.en.txt` |
+  | `none` | 只有商品,画外音 | 不要 | `templates/keyframe_prompt.product-only.en.txt` |
 - 本地脚本和测试统一用 conda 环境 `ugc_asr` 的 Python(`D:/anaconda/envs/ugc_asr/python.exe`),
   里面有 numpy、Pillow、faster-whisper;系统自带的 Python 缺 numpy,跑测试会误报
 
@@ -82,7 +90,7 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 
 以上后半段工作由 Claude Code 在看到 `READY.json` 后接手。
 
-**6a 定妆照(自动,不用等用户)**
+**6a 定妆照(只在 `presenter.mode = generated_fictional` 时做;自动,不用等用户)**
 
 1. 出 3 张候选定妆照:虚构出镜人在和原视频同类型的场景里(看 `video_analysis/` 的宫格,用文字描述场景),
    **画面里没有任何商品**,中景、自然光,人要比现在的 `presenter.jpg` 更真实

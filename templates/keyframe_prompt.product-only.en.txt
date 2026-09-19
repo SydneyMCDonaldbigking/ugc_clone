@@ -1,0 +1,10 @@
+Photorealistic vertical 9:16 smartphone photo, the first frame of a product-only home video with voice-over.
+
+{{REFERENCE_ROLE_MAP}}
+
+Scene: {{FIRST_FRAME}}
+Mood: {{PERFORMANCE}} Only the product and its setting are in frame.
+
+Product: {{PRODUCT_NAME}}, copied exactly from {{PRODUCT_IMAGE}} - {{PRODUCT_DESCRIPTION}}. {{PRODUCT_FIDELITY_INSTRUCTION}}
+
+Soft household light, real surfaces, slight handheld imperfection. No added text or watermarks.

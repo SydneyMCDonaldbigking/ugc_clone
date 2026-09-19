@@ -39,6 +39,7 @@ These are design constraints, not open questions.
 8. Claude Code owns server transfer, H3 prompt adaptation, rendering, reruns, assembly, and final QA after `READY.json` appears.
 9. Generated packaging text is not trusted. Dense labels use original pixels, `fully_preserved`, or a static packshot fallback.
 10. Nothing is auto-published. A human approval state is mandatory.
+12. How people appear follows the reference, never a default: `presenter.mode` is `generated_fictional` (someone talks to camera), `hands_only` or `none` (voice-over), read from the archive's ANALYSIS and enforced by `validate` (template and reference roles must match the mode; only `generated_fictional` gets a presenter master).
 11. No image cut from the source video is ever given to an image model or to H3, in any role. The source video is analysed as text (transcript, beats, shot descriptions) only.
 
 ## 3. Responsibility model

@@ -198,6 +198,19 @@ class EnglishValidationTests(unittest.TestCase):
         del job["reference_archive"]
         self.assertIn("reference.archive", {issue.code for issue in validate_job(job, ROOT).errors})
 
+    def test_presenter_mode_is_required(self) -> None:
+        job = copy.deepcopy(self.job)
+        job["presenter"].pop("mode")
+        codes = {issue.code for issue in validate_keyframe_coverage(self.request, self.shot_plan, job, ROOT).errors}
+        self.assertIn("presenter.mode", codes)
+
+    def test_hands_only_forbids_presenter_references_and_template(self) -> None:
+        job = copy.deepcopy(self.job)
+        job["presenter"] = {"mode": "hands_only"}
+        codes = {issue.code for issue in validate_keyframe_coverage(self.request, self.shot_plan, job, ROOT).errors}
+        self.assertIn("request.presenter_forbidden", codes)  # the a2 sample binds a presenter master
+        self.assertIn("request.template_mode", codes)        # and uses the on-camera template
+
 
 if __name__ == "__main__":
     unittest.main()
