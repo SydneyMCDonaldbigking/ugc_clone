@@ -363,6 +363,9 @@ def validate_script(script: Any, beats: dict[str, Any], product: dict[str, Any])
 SOURCE_DERIVED_MARKERS = ("video_analysis/", "/frames/", "anchor_", "storyboard", "contact.jpg", "tile_", "cuts_")
 FORBIDDEN_REFERENCE_ROLES = {"composition_only"}
 H3_MIN_SEGMENT_SECONDS = 2
+# A generated keyframe already carries the image model's version of the product. Feeding it back as a
+# reference compounds that drift, so every keyframe is generated fresh from the original photos.
+GENERATED_MARKERS = ("/keyframes/",)
 
 
 def _check_reference_origin(references: Any, roles: Any, result: ValidationResult, path: str) -> None:
@@ -373,6 +376,12 @@ def _check_reference_origin(references: Any, roles: Any, result: ValidationResul
                 "reference.source_frame",
                 f"{path}.references[{index}]",
                 f"{raw_path} is derived from the reference video; describe the composition in text instead.",
+            )
+        if any(marker in "/" + normalized for marker in GENERATED_MARKERS):
+            result.error(
+                "reference.generated",
+                f"{path}.references[{index}]",
+                f"{raw_path} is a generated image; use the original presenter and product photos instead.",
             )
     for raw_path, role in (roles.items() if isinstance(roles, dict) else []):
         if role in FORBIDDEN_REFERENCE_ROLES:
@@ -437,6 +446,14 @@ def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
             result.error("shots.references", f"{path}.references", "At least one image reference is required.")
         _check_reference_origin(references, None, result, path)
         subshots = segment.get("subshots")
+        frame_owners = subshots if subshots else [segment]
+        for owner in frame_owners:
+            if not isinstance(owner, dict) or not str(owner.get("first_frame", "")).strip():
+                result.error(
+                    "shots.first_frame",
+                    f"{path}.first_frame",
+                    "Every keyframe needs a first_frame: the still moment the image shows, product upright in its reference view.",
+                )
         if subshots:
             # Each subshot is compiled into its own H3 segment (no cut inside an H3 segment),
             # so each must meet the H3 minimum and together they must fill the planned duration.
@@ -540,6 +557,13 @@ def validate_keyframe_request(
                 "request.fidelity_mode",
                 f"{path}.product_fidelity_mode",
                 "Expected reference_lock or pixel_preserve.",
+            )
+        placement = segment.get("product_placement")
+        if not isinstance(placement, dict) or placement.get("orientation") != "unchanged_from_reference":
+            result.error(
+                "request.product_orientation",
+                f"{path}.product_placement.orientation",
+                "The product must appear in the same view as its reference photo (unchanged_from_reference).",
             )
         if fidelity_mode == "pixel_preserve":
             placement = segment.get("product_placement")

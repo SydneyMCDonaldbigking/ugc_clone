@@ -1,25 +1,10 @@
-Use case: photorealistic-natural
-Asset type: first frame for a vertical creator-style product video
+Photorealistic vertical 9:16 smartphone photo, the first frame of a home product video.
 
-REFERENCE ROLE MAP
 {{REFERENCE_ROLE_MAP}}
 
-SHOT INTENT
-Subject: {{SUBJECT}}
-Action: {{ACTION}}
-Performance: {{PERFORMANCE}}
+Scene: {{FIRST_FRAME}}
+Expression: {{PERFORMANCE}}
 
-PRODUCT IDENTITY CONTRACT (injected from the current product record; never infer a different design)
-{{PRODUCT_IDENTITY_CONTRACT}}
+Product: {{PRODUCT_NAME}}, copied exactly from {{PRODUCT_IMAGE}} - {{PRODUCT_DESCRIPTION}}. {{PRODUCT_FIDELITY_INSTRUCTION}}
 
-PRODUCT FIDELITY MODE: {{PRODUCT_FIDELITY_MODE}}
-{{PRODUCT_FIDELITY_INSTRUCTION}}
-
-COMPOSITION AND ACCEPTANCE CONDITIONS
-{{ACCEPTANCE_CONDITIONS}}
-
-GENERAL REALISM
-Create a candid smartphone UGC frame with natural asymmetry, believable weight, anatomically correct hands, realistic contact, skin texture, household light, and an expression caught during speech. Avoid catalogue stillness, a fixed closed-mouth smile, frozen eye contact, floating objects, merged fingers, duplicate objects, watermarks, subtitles, and generated overlay text.
-
-FINAL PRODUCT RULE
-The product-identity reference outranks prose, presenter references, and aesthetic preferences. No reference image is ever taken from the source video; composition comes only from the shot description above. If any instruction conflicts with the product-identity reference, preserve the product reference and simplify the pose or composition instead.
+Soft household daylight, real skin texture, a candid moment caught mid-sentence. No added text or watermarks.

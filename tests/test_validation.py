@@ -141,6 +141,28 @@ class EnglishValidationTests(unittest.TestCase):
         codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
         self.assertIn("shots.subshot_total", codes)
 
+    def test_generated_keyframe_reference_fails(self) -> None:
+        request = copy.deepcopy(self.request)
+        seg = request["segments"]["2"]
+        generated = "work/a2_test/keyframes/seg01.png"
+        seg["references"][0] = generated
+        seg["reference_roles"] = {generated: "presenter_identity", seg["references"][1]: "product_identity"}
+        codes = {issue.code for issue in validate_keyframe_request(request, ROOT, self.product).errors}
+        self.assertIn("reference.generated", codes)
+
+    def test_missing_first_frame_fails(self) -> None:
+        plan = copy.deepcopy(self.shot_plan)
+        segment = next(s for s in plan["segments"] if not s.get("subshots"))
+        segment.pop("first_frame")
+        codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
+        self.assertIn("shots.first_frame", codes)
+
+    def test_product_must_keep_reference_view(self) -> None:
+        request = copy.deepcopy(self.request)
+        request["segments"]["4"]["product_placement"]["orientation"] = "tilted_for_pour"
+        codes = {issue.code for issue in validate_keyframe_request(request, ROOT, self.product).errors}
+        self.assertIn("request.product_orientation", codes)
+
 
 if __name__ == "__main__":
     unittest.main()

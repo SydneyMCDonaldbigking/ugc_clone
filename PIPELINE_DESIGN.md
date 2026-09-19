@@ -526,7 +526,9 @@ Keyframe rules:
 - if a requested pose has no matching product view, simplify the pose, request another source view, or fall back to a static packshot—never hallucinate unseen product geometry;
 - product geometry comes from a product-specific visual identity contract before any keyframe prompt is written;
 - every keyframe is inspected against that contract; an invented handle, opening, closure, package type, or silhouette is an automatic rejection;
-- a failed image is retained as an attempt record, its concrete defect is written down, and the next generation must use a targeted prompt delta;
+- a failed image is retained as an attempt record and its concrete defect is written down; the next attempt is a **fresh generation from the original presenter and product photos** with an adjusted shot description — never an edit of the failed image, and never with a generated image as a reference (edits and re-fed images compound drift);
+- keyframe prompts stay short and positive (about 150 words): only the still first-frame scene, the expression, and "copy the product from Image N". Forbidden features and the QC checklist stay in `REQUEST.json` for inspection and are not sent to the model, because naming a feature ("no handle") primes it;
+- the product appears upright in the same view as its reference photo (front or back to camera). Lifting, tilting and pouring happen in H3, not in the keyframe;
 - `READY.json` is forbidden while `QC.json.result` is not `pass`, any request key lacks a QC entry, or any QC hash differs from the current image;
 - presenter shots must capture a speaking or reacting instant with beat-specific facial expression, gaze, asymmetric posture, and believable object weight;
 - repeating the same closed-mouth smile across segments is a QC failure, even when identity and product continuity pass;
@@ -615,8 +617,8 @@ Machine success advances to `human_review`, never directly to `approved`.
 | Failure | Retry unit | Primary response | Fallback |
 | --- | --- | --- | --- |
 | Unsupported or non-English script line | One line | Regenerate from the same beats/facts | Operator rewrites line |
-| Keyframe identity drift | One image | ImageGen edit using presenter master | Regenerate presenter master after approval |
-| Extra hand or wrong product count | One image | ImageGen edit with explicit visible-object constraints | Simplify composition |
+| Keyframe identity drift | One image | Fresh generation from the presenter master | Regenerate presenter master after approval |
+| Extra hand or wrong product count | One image | Fresh generation with a simpler first_frame (fewer objects, product upright on the counter) | Simplify composition |
 | Product geometry or label drift | One segment | Switch to `pixel_preserve` and regenerate; if the label still drifts, skip the keyframe and render that segment in H3 with only the product image as `fully_preserved` (validated on a2 seg 3) | `packshot_clip.sh` static slow push |
 | Requested product angle has no source view | One segment | Simplify to an available product-reference pose | Request another product view |
 | H3 dialogue mismatch | One segment | Tighten English dialogue tag and rerun | Replace audio in a later approved extension |

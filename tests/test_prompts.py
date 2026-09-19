@@ -32,10 +32,12 @@ class PromptCompilerTests(unittest.TestCase):
             template_text=self.template,
         )
         self.assertIn("a2 Milk Full Cream 2L", prompt)
-        self.assertIn("pixel_preserve", prompt)
         self.assertIn("Copy the label as-is", prompt)
+        self.assertLess(len(prompt.split()), 200)
+        for noise in ("handle", "forbidden", "composited", "Acceptance"):
+            self.assertNotIn(noise.lower(), prompt.lower())
         self.assertNotIn("composited", prompt)
-        self.assertIn("role=product_identity", prompt)
+        self.assertIn("Image 2: the product.", prompt)
 
     def test_same_template_accepts_another_package_type(self) -> None:
         product = copy.deepcopy(self.product)
@@ -58,7 +60,7 @@ class PromptCompilerTests(unittest.TestCase):
             template_text=self.template,
         )
         self.assertIn("amber glass dropper vial", prompt)
-        self.assertIn("pump dispenser", prompt)
+        self.assertNotIn("pump dispenser", prompt)  # forbidden features stay in QC, not in the prompt
 
 
 if __name__ == "__main__":

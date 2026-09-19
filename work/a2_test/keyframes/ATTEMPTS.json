@@ -2,7 +2,7 @@
   "schema": "keyframe-attempts/v1",
   "policy": {
     "ready_requires": "Every requested keyframe has a current QC pass and matching SHA-256 hash.",
-    "on_failure": "Record the defect, rewrite the prompt with a targeted delta, regenerate only the affected image, and inspect again.",
+    "on_failure": "Record the defect, adjust the shot's first_frame text, and generate again from the original presenter and product photos. Never edit the failed image and never use a generated image as a reference.",
     "failed_artifact_retention": "Failed image files are deleted after review; their former filenames remain in this log as provenance only.",
     "source_frames": "Never pass frames, grids or anchors cut from the reference video to the image model."
   },

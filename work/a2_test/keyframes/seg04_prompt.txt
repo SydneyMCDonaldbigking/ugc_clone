@@ -1,41 +1,11 @@
-Use case: photorealistic-natural
-Asset type: first frame for a vertical creator-style product video
+Photorealistic vertical 9:16 smartphone photo, the first frame of a home product video.
 
-REFERENCE ROLE MAP
-Image 1: target_A2_1.png — role=product_identity.
-Image 2: work/a2_test/keyframes/seg01.png — role=presenter_and_scene_identity.
+Image 1: the presenter: face, hair, outfit and room.
+Image 2: the product.
 
-SHOT INTENT
-Subject: The same fictional woman stands behind one uncapped a2 bottle and one empty clear glass on the kitchen island; the bottle is fully upright and seated flat on the counter.
-Action: The first frame captures the lively setup before the pour; during the clip she picks up the bottle, tilts it into one steady stream, fills the glass, and presents it to camera.
-Performance: Focused proof moment: she speaks while preparing to pour, with lips caught mid-phrase, brows attentive, and her gaze naturally moving between the bottle, glass, and viewer rather than holding a fixed smile.
+Scene: She stands behind the island. One capped a2 bottle stands upright on the island, front label facing the camera, beside one empty clear glass.
+Expression: Focused proof moment: she speaks while preparing to pour, with lips caught mid-phrase, brows attentive, and her gaze naturally moving between the bottle, glass, and viewer rather than holding a fixed smile.
 
-PRODUCT IDENTITY CONTRACT (injected from the current product record; never infer a different design)
-Product name: a2 Milk Full Cream 2L
-- back_label: large white rectangular label with purple heading, cow comparison, nutrition panel, barcode, ingredient line, and 2L FULL CREAM footer
-- closure: wide ribbed blue screw cap
-- forbidden_features: ["through-handle", "open grip hole", "jug handle", "detergent-jug silhouette", "paper carton"]
-- front_label: green rectangular label with a large purple a2 roundel, a blue Full cream band, and a visible 2L mark
-- grip_geometry: shallow curved side indentations only; the plastic body remains solid
-- handle: none
-- packaging_type: opaque white rectangular 2-litre HDPE bottle
-- silhouette: tall flat-front bottle with rounded shoulders, a short wide neck, gently tapered sidewalls, and a flat base
+Product: a2 Milk Full Cream 2L, copied exactly from Image 2 - opaque white rectangular 2-litre HDPE bottle, wide ribbed blue screw cap. Show the same side as the reference photo, upright and square to the camera, with the whole label visible. Copy the label as-is, every line of text exactly as printed.
 
-PRODUCT FIDELITY MODE: pixel_preserve
-Reproduce the product exactly as it appears in the product-identity reference, in the same view and angle; do not invent an unseen side. Copy the label as-is: every heading, illustration, table and line of small text must match the reference, never rewritten, translated, simplified or invented. Hands may only touch the product edges and must not cover any label text. If the label cannot be reproduced exactly, keep the product larger and flatter to the camera rather than changing it.
-
-COMPOSITION AND ACCEPTANCE CONDITIONS
-- The presenter identity, light-blue T-shirt, and kitchen match segments 1 and 2.
-- Her lips are caught mid-explanation and her attentive gaze connects the imminent demonstration with the viewer.
-- This is the setup immediately before pouring: exactly one uncapped bottle stands fully upright and flat on the counter beside one empty clear glass, with no milk stream yet.
-- The complete tall bottle silhouette remains visible with reference-accurate height-to-width proportions, broad flat face, and long shallow vertical side grooves.
-- The blue cap rests on the island and the complete green front label faces camera without skew or crop.
-- Her bottle hand reaches around the solid sidewall from behind so only relaxed fingertips appear at the far outer edge; no finger crosses the front face or upper moulding.
-- No handle opening, oval body pits, paper carton, extra bottle, extra hand, spill, source watermark, or generated caption appears.
-- Product placement plan: {"fallback": "static_product_first_frame", "first_frame_action": "pre_action_setup", "occlusion": "product_in_front_of_hands", "orientation": "unchanged_from_reference", "pose_source": "product_identity_reference"}
-
-GENERAL REALISM
-Create a candid smartphone UGC frame with natural asymmetry, believable weight, anatomically correct hands, realistic contact, skin texture, household light, and an expression caught during speech. Avoid catalogue stillness, a fixed closed-mouth smile, frozen eye contact, floating objects, merged fingers, duplicate objects, watermarks, subtitles, and generated overlay text.
-
-FINAL PRODUCT RULE
-The product-identity reference outranks prose, presenter references, and aesthetic preferences. No reference image is ever taken from the source video; composition comes only from the shot description above. If any instruction conflicts with the product-identity reference, preserve the product reference and simplify the pose or composition instead.
+Soft household daylight, real skin texture, a candid moment caught mid-sentence. No added text or watermarks.

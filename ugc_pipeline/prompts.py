@@ -1,30 +1,24 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
 
+# Keyframe prompts are kept short and positive: image models redraw whatever a prompt keeps naming,
+# so forbidden features ("no handle") and the QC checklist stay in REQUEST.json for inspection and are
+# never sent to the model. The product is always shown upright in the same view as its reference photo;
+# motion (lifting, tilting, pouring) is left to H3.
 FIDELITY_INSTRUCTIONS = {
-    "reference_lock": (
-        "Recreate the product only when the requested interaction cannot be made from preserved source pixels. "
-        "Treat every product-identity reference as authoritative. Preserve the same package type, silhouette, "
-        "proportions, surfaces, closure, label layout, colours, count, and explicitly listed identity features. "
-        "Simplify the pose before allowing any product drift."
-    ),
-    # No compositing step exists in this pipeline: whatever the image model draws is what H3 receives.
-    # So this mode asks for an exact copy of the reference view and relies on QC to reject any drift;
-    # a failed keyframe falls back to an H3 fully_preserved segment or a static packshot, never to
-    # generated label text.
+    "reference_lock": "Keep it identical to the reference photo; simplify the pose rather than change the product.",
+    # No compositing step exists: what the image model draws is what H3 receives, and QC rejects any drift.
     "pixel_preserve": (
-        "Reproduce the product exactly as it appears in the product-identity reference, in the same view "
-        "and angle; do not invent an unseen side. Copy the label as-is: every heading, illustration, table "
-        "and line of small text must match the reference, never rewritten, translated, simplified or "
-        "invented. Hands may only touch the product edges and must not cover any label text. If the label "
-        "cannot be reproduced exactly, keep the product larger and flatter to the camera rather than "
-        "changing it."
+        "Show the same side as the reference photo, upright and square to the camera, with the whole label "
+        "visible. Copy the label as-is, every line of text exactly as printed."
     ),
 }
+
+# Positive visual fields only; handle/grip/forbidden entries describe what to reject, not what to draw.
+PROMPT_IDENTITY_FIELDS = ("packaging_type", "closure")
 
 
 def _find_shot(shot_plan: dict[str, Any], keyframe_id: str) -> tuple[dict[str, Any], dict[str, Any] | None]:
@@ -38,33 +32,35 @@ def _find_shot(shot_plan: dict[str, Any], keyframe_id: str) -> tuple[dict[str, A
     raise KeyError(f"No shot-plan segment covers keyframe {keyframe_id!r}.")
 
 
+ROLE_LABELS = {
+    "product_identity": "the product",
+    "presenter_identity": "the presenter: face, hair, outfit and room",
+    "presenter_and_scene_identity": "the presenter: face, hair, outfit and room",
+}
+
+
 def _format_reference_roles(segment_request: dict[str, Any]) -> str:
     references = segment_request.get("references", [])
     roles = segment_request.get("reference_roles", {})
     lines = []
     for index, path in enumerate(references, start=1):
         role = roles.get(path, "unspecified")
-        lines.append(f"Image {index}: {path} — role={role}.")
+        lines.append(f"Image {index}: {ROLE_LABELS.get(role, role)}.")
     return "\n".join(lines)
 
 
-def _format_contract(product: dict[str, Any]) -> str:
+def _describe_product(product: dict[str, Any]) -> str:
     identity = product.get("visual_identity", {})
-    lines = [f"Product name: {product.get('name', 'unspecified')}"]
-    for key in sorted(identity):
-        value = identity[key]
-        rendered = json.dumps(value, ensure_ascii=False) if isinstance(value, (dict, list)) else str(value)
-        lines.append(f"- {key}: {rendered}")
-    return "\n".join(lines)
+    parts = [str(identity[key]) for key in PROMPT_IDENTITY_FIELDS if identity.get(key)]
+    return ", ".join(parts) or "as shown"
 
 
-def _format_acceptance(segment_request: dict[str, Any]) -> str:
-    checks = segment_request.get("checks", [])
-    placement = segment_request.get("product_placement", {})
-    lines = [f"- {check}" for check in checks]
-    if placement:
-        lines.append(f"- Product placement plan: {json.dumps(placement, ensure_ascii=False, sort_keys=True)}")
-    return "\n".join(lines)
+def _product_image_label(segment_request: dict[str, Any]) -> str:
+    roles = segment_request.get("reference_roles", {})
+    for index, path in enumerate(segment_request.get("references", []), start=1):
+        if roles.get(path) == "product_identity":
+            return f"Image {index}"
+    return "the product reference"
 
 
 def render_keyframe_prompt(
@@ -81,16 +77,18 @@ def render_keyframe_prompt(
     if mode not in FIDELITY_INSTRUCTIONS:
         raise ValueError(f"Unsupported product fidelity mode: {mode}")
 
-    action = subshot.get("action") if subshot else segment.get("action")
+    shot = subshot if subshot else segment
+    first_frame = shot.get("first_frame") or segment.get("first_frame")
+    if not first_frame:
+        raise ValueError(f"Keyframe {keyframe_id!r} needs a first_frame description in the shot plan.")
     values = {
         "REFERENCE_ROLE_MAP": _format_reference_roles(segment_request),
-        "SUBJECT": str(segment.get("subject", "")),
-        "ACTION": str(action or ""),
+        "FIRST_FRAME": str(first_frame),
         "PERFORMANCE": str(segment.get("performance", "")),
-        "PRODUCT_IDENTITY_CONTRACT": _format_contract(product),
-        "PRODUCT_FIDELITY_MODE": mode,
+        "PRODUCT_NAME": str(product.get("name", "the product")),
+        "PRODUCT_IMAGE": _product_image_label(segment_request),
+        "PRODUCT_DESCRIPTION": _describe_product(product),
         "PRODUCT_FIDELITY_INSTRUCTION": FIDELITY_INSTRUCTIONS[mode],
-        "ACCEPTANCE_CONDITIONS": _format_acceptance(segment_request),
     }
     rendered = template_text
     for key, value in values.items():

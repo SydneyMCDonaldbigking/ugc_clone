@@ -22,7 +22,8 @@
       "product_placement": {
         "pose_source": "shot_plan",
         "occlusion": "natural_contact_allowed",
-        "fallback": "simplify_pose_before_product_drift"
+        "fallback": "simplify_pose_before_product_drift",
+        "orientation": "unchanged_from_reference"
       },
       "output": "seg01.png",
       "checks": [
@@ -38,18 +39,19 @@
     "2": {
       "prompt_file": "work/a2_test/keyframes/seg02_prompt.txt",
       "references": [
-        "work/a2_test/keyframes/seg01.png",
+        "inputs/a2_test/presenter.jpg",
         "target_A2_1.png"
       ],
       "reference_roles": {
-        "work/a2_test/keyframes/seg01.png": "presenter_and_scene_identity",
+        "inputs/a2_test/presenter.jpg": "presenter_identity",
         "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "reference_lock",
       "product_placement": {
         "pose_source": "shot_plan",
         "occlusion": "natural_contact_allowed",
-        "fallback": "simplify_pose_before_product_drift"
+        "fallback": "simplify_pose_before_product_drift",
+        "orientation": "unchanged_from_reference"
       },
       "output": "seg02.png",
       "checks": [
@@ -67,18 +69,19 @@
       "duration_seconds": 2,
       "prompt_file": "work/a2_test/keyframes/seg02b_prompt.txt",
       "references": [
-        "target_A2_1.png",
-        "work/a2_test/keyframes/seg01.png"
+        "inputs/a2_test/presenter.jpg",
+        "target_A2_1.png"
       ],
       "reference_roles": {
-        "target_A2_1.png": "product_identity",
-        "work/a2_test/keyframes/seg01.png": "presenter_and_scene_identity"
+        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "reference_lock",
       "product_placement": {
         "pose_source": "product_identity_reference",
         "occlusion": "hand_may_support_outer_edge_only",
-        "fallback": "static_packshot"
+        "fallback": "static_packshot",
+        "orientation": "unchanged_from_reference"
       },
       "output": "seg02b.png",
       "checks": [
@@ -103,7 +106,8 @@
       "product_placement": {
         "pose_source": "product_identity_reference",
         "occlusion": "product_in_front_of_hands",
-        "fallback": "static_packshot"
+        "fallback": "static_packshot",
+        "orientation": "unchanged_from_reference"
       },
       "output": "seg03.png",
       "checks": [
@@ -118,12 +122,12 @@
     "4": {
       "prompt_file": "work/a2_test/keyframes/seg04_prompt.txt",
       "references": [
-        "target_A2_1.png",
-        "work/a2_test/keyframes/seg01.png"
+        "inputs/a2_test/presenter.jpg",
+        "target_A2_1.png"
       ],
       "reference_roles": {
-        "target_A2_1.png": "product_identity",
-        "work/a2_test/keyframes/seg01.png": "presenter_and_scene_identity"
+        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "pixel_preserve",
       "product_placement": {

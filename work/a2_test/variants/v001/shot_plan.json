@@ -38,7 +38,8 @@
         "open grip hole",
         "jug silhouette"
       ],
-      "label_policy": "product_reference_reinforcement"
+      "label_policy": "product_reference_reinforcement",
+      "first_frame": "She stands behind a white marble kitchen island, both hands opening the flaps of a plain cardboard box. One a2 bottle stands upright on the island beside the box, front label facing the camera."
     },
     {
       "id": "S02",
@@ -59,20 +60,22 @@
           "duration_seconds": 3,
           "keyframe_id": "2",
           "shot_type": "medium_quantity_display",
-          "action": "She presents the complete six-bottle case toward camera."
+          "action": "She presents the complete six-bottle case toward camera.",
+          "first_frame": "She stands behind the island, hands on the edges of an open cardboard box. Inside, six a2 bottles stand upright in two rows of three, front labels facing the camera."
         },
         {
           "id": "S02B",
           "duration_seconds": 2,
           "keyframe_id": "2b",
           "shot_type": "handheld_product_hero_closeup",
-          "action": "Hard cut to one bottle held close enough for the front label and 2-litre format to dominate the frame."
+          "action": "Hard cut to one bottle held close enough for the front label and 2-litre format to dominate the frame.",
+          "first_frame": "Close-up: one a2 bottle stands upright on the marble island, front label square to the camera and filling most of the frame. Her fingertips rest on the far edge of the bottle."
         }
       ],
       "continuity": "hard_cut",
       "keyframe_strategy": "codex-imagegen-edit",
       "references": [
-        "work/a2_test/keyframes/seg01.png",
+        "inputs/a2_test/presenter.jpg",
         "target_A2_1.png"
       ],
       "preserve": [
@@ -128,7 +131,8 @@
         "open grip hole",
         "jug silhouette"
       ],
-      "label_policy": "original_pixels_or_fully_preserved"
+      "label_policy": "original_pixels_or_fully_preserved",
+      "first_frame": "Close-up: one a2 bottle stands upright on the marble island, back label square to the camera and filling most of the frame. Her right hand steadies it from behind, fingertips at the side edge."
     },
     {
       "id": "S04",
@@ -146,7 +150,7 @@
       "keyframe_strategy": "codex-imagegen-edit",
       "references": [
         "target_A2_1.png",
-        "work/a2_test/keyframes/seg01.png"
+        "inputs/a2_test/presenter.jpg"
       ],
       "preserve": [
         "presenter identity",
@@ -175,7 +179,8 @@
         "phantom grip",
         "fingers across the bottle front"
       ],
-      "label_policy": "product_reference_reinforcement"
+      "label_policy": "product_reference_reinforcement",
+      "first_frame": "She stands behind the island. One capped a2 bottle stands upright on the island, front label facing the camera, beside one empty clear glass."
     }
   ]
 }
