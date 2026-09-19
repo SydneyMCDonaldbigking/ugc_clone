@@ -1,0 +1,48 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "a2_test",
+  "pipeline_job_id": "a2_test_en",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "segments": {
+    "1": {
+      "keyframe": "seg01.png",
+      "extra_refs": [
+        "target_A2_1.png"
+      ],
+      "notes": "Registered presenter master; playful mid-sentence unboxing with one complete upright front-facing bottle beside the open case."
+    },
+    "2": {
+      "keyframe": "seg02.png",
+      "extra_refs": [
+        "target_A2_1.png"
+      ],
+      "notes": "Exactly six upright handleless bottles in two rows of three; excited heavy-case quantity reveal."
+    },
+    "2b": {
+      "keyframe": "seg02b.png",
+      "extra_refs": [
+        "target_A2_1.png"
+      ],
+      "notes": "Independent two-second H3 insert; one upright front-label close-up with the presenter face outside the frame."
+    },
+    "3": {
+      "keyframe": "seg03.png",
+      "extra_refs": [
+        "target_A2_2.png"
+      ],
+      "notes": "The visible package and dense back label use original target_A2_2.png pixels; one right hand remains behind the bottle.",
+      "prompt_hint": "Use target_A2_2.png as the fully preserved product authority. Keep the original back-label pixels stable in a locked close-up while the presenter speaks off camera."
+    },
+    "4": {
+      "keyframe": "seg04.png",
+      "extra_refs": [
+        "target_A2_1.png"
+      ],
+      "notes": "The capped upright front-facing package uses original target_A2_1.png pixels beside one empty clear glass; this is the pre-pour first frame.",
+      "prompt_hint": "Treat the keyframe as the presenter, room and composition authority and target_A2_1.png as the product authority. Begin capped and upright, then remove the cap, pick up the bottle and perform the pour after the first frame."
+    }
+  },
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}
