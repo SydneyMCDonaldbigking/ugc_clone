@@ -410,12 +410,12 @@ Gate:
 
 ### S3a — Reference archive: ANALYSIS.md and TIMELINE.md
 
-Borrowed from hypit's reference-video method. Beats alone record *what function* each moment has; H3 also needs *how it lands*.
+Ported from hypit's reference-video flow. One archive per reference video under `references/<ref_id>/`, reusable by every product adapted from it; `job.reference_archive` links it and `validate` refuses a job whose archive still has TODO sections or a PROGRESS.md.
 
-- `work/<job>/ANALYSIS.md`: what the piece wants the viewer to conclude, the emotional arc, what each visual/sound system does (A-roll, inserts, persistent props, captions, audio), and which roles must survive adaptation. Facts and interpretation stay distinguishable.
-- `work/<job>/TIMELINE.md`: sections named by source time and phase; what is on screen, what moves, which word it aligns to, what it does for the viewer, and an "→ adaptation" line.
-- Adaptation preserves the role and recreates the form; timing binds to words in the new script, not to source seconds.
-- These are internal analysis documents (any language). Their images never go to a generation model.
+1. `scripts/reference_archive.py init <video> <ref_id> (--transcribe [--vad] | --transcript <json>)` writes probe, cuts, boundaries, transcript, evidence grids (paged overview, before/after every cut, one dense grid per spoken line — all word-labelled via `scripts/media.py`) and scaffolds ANALYSIS/TIMELINE/PROGRESS with the facts filled in and interpretation left as TODO.
+2. The agent reads the overview end to end and writes ANALYSIS (what the viewer should conclude, arc, what each system does, roles to preserve), then TIMELINE section by section, re-sampling doubtful passages with `reference_archive.py tile <ref_id> --around "<phrase>" --every 0.1`, and revises ANALYSIS when a close look changes it.
+3. Open questions live in PROGRESS.md; when none remain it is deleted and `reference_archive.py check <ref_id>` prints READY.
+4. Adaptation preserves the role and recreates the form; timing binds to words in the new script, not to source seconds. The archive's images never go to a generation model.
 
 ### S3 — Beat extraction and sanitization
 

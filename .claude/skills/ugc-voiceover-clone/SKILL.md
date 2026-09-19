@@ -108,13 +108,17 @@ python scripts/build_beats.py work/<job> work/<job>/labels.json
 所以流程是先转写,再按转写结果加密看:可疑区间用 0.25 秒甚至 0.1 秒一帧。
 这和 hypit 的做法一样:抽帧密度按问题调,没有固定帧数。
 
-转写完先出一张带台词标注的宫格,再对可疑的句子单独加密抽帧(`scripts/tile.py`,照 hypit `media tile --transcript` 写的,
-hypit 本身不装):
+补看某一段用 `scripts/media.py`(照 hypit `media` 移植,hypit 本身不装),宫格每格下面标着时间、正在说的字和前后的词:
 
 ```bash
-asr_venv/bin/python scripts/tile.py $W/../inputs/ref_video.mp4 $W/words.json $W/tile_all.jpg --every 1
-asr_venv/bin/python scripts/tile.py $W/../inputs/ref_video.mp4 $W/words.json $W/tile_x.jpg --around "一定要看好配料表" --every 0.25
+python scripts/media.py tile <video> --transcript words.json --around "一定要看好配料表" --every 0.25 --to x.jpg
+python scripts/media.py tiles <video> --transcript words.json --every 1 --rows 3 --to overview/   # 分页
+python scripts/media.py boundaries <video>        # 12 帧/秒、阈值 0.1 的画面突变候选,不等于切点
+python scripts/media.py frames <video> --at 6.9,7.3 --to frames/
+python scripts/media.py cut <video> --start 6.5 --end 8 --to clip.mp4
 ```
+
+`--around` 按转写原文匹配,转写认错的字要照错的写(a2 的"蛋白质"被认成"但白质",要搜"白质")。
 
 **转写认数字和同音词很差,拿烧录字幕来纠正。** 实测把"0 蔗糖 0 代糖 0 乳糖"认成"淋着糖淋带糖淋乳糖",
 "希腊酸奶"认成"西纳酸"。修正写进 `ref_text_corrected`;反过来,字幕会省字,台词以转写为准。
@@ -126,21 +130,46 @@ asr_venv/bin/python scripts/tile.py $W/../inputs/ref_video.mp4 $W/words.json $W/
 **最值钱的招式要写进 `structure_notes`。** 这条参考片的核心招式是"把自家卖点包装成挑选标准":
 先说"选的时候一定要看好配料表",再把卖点当答案念。换商品时这一招要保留,只换答案。
 
-### 原片档案:ANALYSIS.md + TIMELINE.md(照 hypit 的 reference-video 方法)
+### 原片档案:ANALYSIS.md + TIMELINE.md(照 hypit 的 reference-video 流程)
 
-节拍表只记"每一拍是什么功能",不够 H3 用。每条参考片再写两份档案(中文,内部用),样例见 `work/a2_test/`:
+节拍表只记"每一拍是什么功能",不够 H3 用。**每条参考片先建一个档案,写完才能拿去改编**;
+同一条参考片换商品时直接复用,不用重写。样例:`references/theland_milk_unbox/`。
 
-- **`ANALYSIS.md`,整条片为什么有效**:它想让观众得出什么结论、情绪弧线、每个画面和声音元素在做什么
-  (主画面、插入镜头、贯穿全片的道具、字幕、声音)、哪些作用要保留。事实和解读分开写
-- **`TIMELINE.md`,按原片时间分段**:画面里有什么、谁在动、跟哪个词对齐、对观众起什么作用;
-  每段末尾写一行"→ 改编",说明这个关系在我们片子里怎么落
+```
+references/<ref_id>/
+  source.mp4 / probe.json / transcript.json / cuts.json / boundaries.json
+  evidence/overview/   全片宫格,1 秒 1 帧,每页 12 格
+  evidence/cuts/       每个切点前后 0.5 秒,0.125 秒一帧
+  evidence/lines/      每句台词前后 0.3 秒,0.25 秒一帧
+  evidence/looks/      补看时生成的
+  ANALYSIS.md          整条片为什么有效
+  TIMELINE.md          按原片时间分段,每段对齐台词,写"→ 改编"
+  PROGRESS.md          只在写的过程中存在:还没弄清的问题
+```
+
+**流程(约 20 秒自动 + agent 阅读写作):**
+
+1. 建档,一条命令出全部事实、证据宫格和三份文档骨架:
+   ```bash
+   python scripts/reference_archive.py init <video> <ref_id> --transcribe [--vad]   # 服务器上,带转写
+   python scripts/reference_archive.py init <video> <ref_id> --transcript words.json # 已有转写时
+   ```
+   骨架里台词时间、证据路径、切点、低置信度的字都已填好;需要判断的地方是 `<!-- TODO -->`
+2. **先看完整片宫格(`evidence/overview/`),再写 `ANALYSIS.md`**:它想让观众得出什么结论、情绪弧线、
+   每个画面和声音元素在做什么、哪些作用要保留。事实和解读分开写
+3. **按段写 `TIMELINE.md`**:骨架按台词句子切,同一作用的相邻句合并,段内有插入镜头就拆开。
+   每段写画面里有什么、谁在动、跟哪个词对齐、对观众起什么作用,末尾一行"→ 改编"。
+   看不清的地方补看:`python scripts/reference_archive.py tile <ref_id> --around "<台词>" --every 0.1`
+4. **回头改 ANALYSIS**:细看常会推翻整体判断(a2 里"代购"那句,加密看才发现她是边说边从箱里抽两盒)
+5. PROGRESS 里的问题逐条解决,删掉 PROGRESS,然后 `python scripts/reference_archive.py check <ref_id>`
+   出现 READY 才算写完。任务文件 `job.json` 用 `reference_archive` 关联档案;档案没写完,`validate` 会报错
 
 两条原则(来自 hypit transformations):
 - **保留作用,重做形式**。"说品牌时手拍在箱子上"的作用是"卖点配一个手上的证据",
   没有品牌纸箱就让手落在瓶子上
 - **时间跟着新台词的词走,不跟原片秒数**。原片"说到价格时挑眉",我们就在新台词说价格的那个词上挑眉
 
-写的时候会发现稿子丢了作用:a2 英文稿把"他不知道"(整条片的反转、悄悄话)写成了 "He was confused.",
+写档案时会发现稿子丢了作用:a2 英文稿把"他不知道"(整条片的反转、悄悄话)写成了 "He was confused.",
 对照 TIMELINE 改成 "He has no idea."。
 
 ## S4 商品参数表
@@ -276,7 +305,7 @@ umall_test 实测:4 段二采加超分,出 1440x2560、20.67 秒,耗时约 25 �
 - `cc_status.py` 等脚本必须在 `/opt/MINIMAXH3_2PASS_Autoworkflow` 目录下跑,否则会去找 `/root/config/…`
 - 本地脚本传上去后要 `sed -i 's/\r$//'`,不然换行符不对
 - 本地的 `scp` 是 Windows OpenSSH 版,`host:/path/{a,b}` 这种大括号不会展开,要把文件逐个列出来
-- 服务器上的中文字体只有 Noto Serif CJK 和 AR PL UMing,`tile.py` 会通过 `fc-match :lang=zh` 自动找到
+- 服务器上的中文字体只有 Noto Serif CJK 和 AR PL UMing,`media.py` 会自动找到(本地 Windows 用微软雅黑)
 - 转写和 H3 可以同时跑:H3 常驻约 16.5GB 显存,faster-whisper large-v3 再占约 4GB,24GB 放得下
 - 耗时参考(a2_test):公钥装好后 6 分钟内完成拉起服务、转写、宫格、出镜人、节拍表、写稿、提示词并提交正片
 - 不要去改 `h3director` 环境

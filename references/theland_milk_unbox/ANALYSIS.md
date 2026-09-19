@@ -1,7 +1,7 @@
-# ANALYSIS — ref_video_2(纽仕兰纯牛奶开箱口播,18.67s)
+# ANALYSIS — theland_milk_unbox(纽仕兰纯牛奶开箱口播,18.67s)
 
 整条片为什么有效。本文件把原片的事实和我们的解读分开写;时间点在 `TIMELINE.md`,
-逐词时间在 `words.json`。**这里的一切只用来理解原片,不把原片画面交给任何生成模型。**
+逐词时间在 `transcript.json`,全片宫格在 `evidence/overview/`。**这里的一切只用来理解原片,不把原片画面交给任何生成模型。**
 
 ## 它想让观众得到什么
 

@@ -1,0 +1,29 @@
+{
+ "overview": [
+  "overview/overview_01_000.0-011.0s.jpg",
+  "overview/overview_02_012.0-018.0s.jpg"
+ ],
+ "cuts": [
+  "cuts/cut_06.733s.jpg",
+  "cuts/cut_07.900s.jpg",
+  "cuts/cut_09.300s.jpg",
+  "cuts/cut_10.633s.jpg",
+  "cuts/cut_12.300s.jpg"
+ ],
+ "lines": [
+  "lines/L01_01.07-01.57s.jpg",
+  "lines/L02_01.57-02.17s.jpg",
+  "lines/L03_03.26-04.06s.jpg",
+  "lines/L04_04.14-04.58s.jpg",
+  "lines/L05_04.89-05.75s.jpg",
+  "lines/L06_05.77-06.83s.jpg",
+  "lines/L07_06.56-07.96s.jpg",
+  "lines/L08_08.02-08.96s.jpg",
+  "lines/L09_09.04-12.02s.jpg",
+  "lines/L10_12.10-13.94s.jpg",
+  "lines/L11_13.98-15.20s.jpg",
+  "lines/L12_15.24-17.16s.jpg",
+  "lines/L13_17.24-18.28s.jpg",
+  "lines/L14_18.48-18.58s.jpg"
+ ]
+}

@@ -11,11 +11,11 @@
     "1": {
       "prompt_file": "work/a2_test/keyframes/seg01_prompt.txt",
       "references": [
-        "inputs/a2_test/presenter.jpg",
+        "inputs/a2_test/presenter_master.png",
         "target_A2_1.png"
       ],
       "reference_roles": {
-        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "inputs/a2_test/presenter_master.png": "presenter_identity",
         "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "reference_lock",
@@ -39,11 +39,11 @@
     "2": {
       "prompt_file": "work/a2_test/keyframes/seg02_prompt.txt",
       "references": [
-        "inputs/a2_test/presenter.jpg",
+        "inputs/a2_test/presenter_master.png",
         "target_A2_1.png"
       ],
       "reference_roles": {
-        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "inputs/a2_test/presenter_master.png": "presenter_identity",
         "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "reference_lock",
@@ -69,11 +69,11 @@
       "duration_seconds": 2,
       "prompt_file": "work/a2_test/keyframes/seg02b_prompt.txt",
       "references": [
-        "inputs/a2_test/presenter.jpg",
+        "inputs/a2_test/presenter_master.png",
         "target_A2_1.png"
       ],
       "reference_roles": {
-        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "inputs/a2_test/presenter_master.png": "presenter_identity",
         "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "reference_lock",
@@ -95,11 +95,11 @@
     "3": {
       "prompt_file": "work/a2_test/keyframes/seg03_prompt.txt",
       "references": [
-        "inputs/a2_test/presenter.jpg",
+        "inputs/a2_test/presenter_master.png",
         "target_A2_2.png"
       ],
       "reference_roles": {
-        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "inputs/a2_test/presenter_master.png": "presenter_identity",
         "target_A2_2.png": "product_identity"
       },
       "product_fidelity_mode": "pixel_preserve",
@@ -122,11 +122,11 @@
     "4": {
       "prompt_file": "work/a2_test/keyframes/seg04_prompt.txt",
       "references": [
-        "inputs/a2_test/presenter.jpg",
+        "inputs/a2_test/presenter_master.png",
         "target_A2_1.png"
       ],
       "reference_roles": {
-        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "inputs/a2_test/presenter_master.png": "presenter_identity",
         "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "pixel_preserve",

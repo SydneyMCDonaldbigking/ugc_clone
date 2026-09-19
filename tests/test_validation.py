@@ -6,6 +6,7 @@ from pathlib import Path
 
 from ugc_pipeline.io import load_json
 from ugc_pipeline.validation import (
+    validate_job,
     contains_cjk,
     count_words,
     validate_bundle,
@@ -188,6 +189,14 @@ class EnglishValidationTests(unittest.TestCase):
         del plan["segments"][0]["intention"]
         result = validate_shot_plan(plan, self.script)
         self.assertIn("required.string", {issue.code for issue in result.errors})
+
+    def test_job_needs_a_finished_reference_archive(self) -> None:
+        job = copy.deepcopy(self.job)
+        job["reference_archive"] = "work/a2_test/keyframes"  # exists, but holds no ANALYSIS/TIMELINE
+        codes = {issue.code for issue in validate_job(job, ROOT).errors}
+        self.assertIn("reference.archive_incomplete", codes)
+        del job["reference_archive"]
+        self.assertIn("reference.archive", {issue.code for issue in validate_job(job, ROOT).errors})
 
 
 if __name__ == "__main__":

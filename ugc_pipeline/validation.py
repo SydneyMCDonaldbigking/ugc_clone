@@ -134,6 +134,23 @@ def validate_job(job: Any, repo_root: Path) -> ValidationResult:
         except (ValueError, FileNotFoundError) as exc:
             result.error("path.invalid", f"job.{key}", str(exc))
 
+    # Adaptation starts from an understood reference: its archive must be written up, not half-scaffolded.
+    archive = job.get("reference_archive")
+    if not isinstance(archive, str) or not archive:
+        result.error("reference.archive", "job.reference_archive", "Link the reference archive (references/<ref_id>).")
+    else:
+        root = (repo_root / archive)
+        for name in ("ANALYSIS.md", "TIMELINE.md"):
+            doc = root / name
+            if not doc.is_file():
+                result.error("reference.archive_incomplete", "job.reference_archive", f"{archive}/{name} is missing.")
+            elif "<!-- TODO" in doc.read_text(encoding="utf-8"):
+                result.error("reference.archive_incomplete", "job.reference_archive",
+                             f"{archive}/{name} still has TODO sections; finish the archive first.")
+        if (root / "PROGRESS.md").exists():
+            result.error("reference.archive_incomplete", "job.reference_archive",
+                         f"{archive}/PROGRESS.md still lists open questions.")
+
     for key in ("state_file", "events_file"):
         raw_path = job.get(key)
         if not isinstance(raw_path, str) or not raw_path:

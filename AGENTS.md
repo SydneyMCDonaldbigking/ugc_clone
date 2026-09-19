@@ -16,7 +16,8 @@
 |---|---|
 | `scripts/prep.sh` | 服务器:探测、抽音频、抽帧、切点 |
 | `scripts/transcribe.py` | 服务器:faster-whisper 逐词时间戳(有背景音乐时加 `--vad`,见 skill) |
-| `scripts/tile.py` | 服务器:带台词标注的抽帧宫格 |
+| `scripts/media.py` | 看原片:带台词标注的宫格、按台词定位、切点候选、截帧、截片段(移植自 hypit `media`) |
+| `scripts/reference_archive.py` | 原片档案:`init` 建档出证据和骨架,`check` 检查写完没有 |
 | `scripts/build_beats.py` | 本地:labels.json → beats.json |
 | `scripts/check_script.py` | 本地:口播稿硬检查(结构、字数、重合、禁用词、宣称证据) |
 | `scripts/packshot_clip.sh` | 服务器:商品原图慢推的保底插入镜头 |
@@ -64,7 +65,7 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 3. 之后每一段都只用"定妆照 + 商品原图"两张当参考。定妆照是唯一允许当参考的生成图;
    登记后文件被改动过,`validate` 会报错
 
-**先读 `work/<job>/ANALYSIS.md` 和 `TIMELINE.md`**:原片为什么有效、每一段的表情和动作跟哪个词对齐。分镜的 `intention` / `accents` / `performance` 照这两份写。
+**先读任务关联的原片档案 `references/<ref_id>/ANALYSIS.md` 和 `TIMELINE.md`**:原片为什么有效、每一段的表情和动作跟哪个词对齐。分镜的 `intention` / `accents` / `performance` 照这两份写。
 
 **模仿原视频的表情和场景:用文字,不用截图。** 可以看 `video_analysis/` 的宫格,把原片每个镜头的表情、
 姿态、场景写进分镜的 `performance` 和 `first_frame`(例如"眉毛上扬、嘴张开说到一半、身体前倾靠近镜头";
