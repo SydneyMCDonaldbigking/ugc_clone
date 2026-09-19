@@ -179,8 +179,8 @@
       "continuity": "hard_cut",
       "keyframe_strategy": "codex-imagegen-edit",
       "references": [
-        "target_A2_1.png",
-        "inputs/a2_test/presenter_master.png"
+        "inputs/a2_test/presenter_master.png",
+        "target_A2_1.png"
       ],
       "preserve": [
         "presenter identity",

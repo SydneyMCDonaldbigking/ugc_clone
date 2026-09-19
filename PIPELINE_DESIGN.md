@@ -43,6 +43,8 @@ These are design constraints, not open questions.
 
 ## 3. Responsibility model
 
+The authoritative, stage-by-stage owner table (who, where, command, output, done-signal) is at the top of `AGENTS.md`; this section summarises it.
+
 | Actor | Owns | Stops at |
 | --- | --- | --- |
 | Operator | Supplies the reference video, product images, verified product facts, price, market, and final approval | Approves or rejects the final deliverable |
@@ -514,7 +516,7 @@ Codex workflow:
 4. Reject the request if it does not cover every ImageGen segment in the shot plan or if reference roles are ambiguous.
 5. Reuse one fictional presenter identity across every segment.
 6. Select the declared fidelity path: `reference_lock` for interaction-heavy lifestyle shots, or `pixel_preserve` for identity-critical product planes.
-7. Use ImageGen to generate or edit a 9:16 frame for each requested segment. In `pixel_preserve`, ImageGen must copy the product exactly as it appears in the product reference, in the same view. **No compositing step exists**: what ImageGen draws is what H3 receives, so any label drift is a QC failure, not something fixed later.
+7. Use ImageGen to generate a fresh 9:16 scene for each requested segment from the registered presenter master and original product photo. In `pixel_preserve`, treat the model output as the scene layer, then run `scripts/composite_product_packshot.py` so the displayed package and dense label come from the original packshot pixels. Record the packshot hash and placement in QC; if clean extraction is not possible, use H3 `fully_preserved` or the static packshot fallback instead of accepting redrawn copy.
 8. Inspect each result for identity, hands, product shape/count, composition, original-brand leakage, and unwanted text.
 9. Iterate only the failed image.
 10. Save final images as `segNN.png`.
@@ -525,18 +527,18 @@ Keyframe rules:
 
 - never use a frame containing the original creator as an identity reference;
 - never ask ImageGen to faithfully redraw dense packaging copy;
-- if exact label text is required, state that Claude must bind the original image as `fully_preserved` or use the packshot fallback;
+- if exact label text is required, use the real packshot compositor; if its extraction cannot pass QC, state that Claude must bind the original image as `fully_preserved` or use the packshot fallback;
 - prompts and handoff notes are written in English for all new jobs;
 - generated overlay text is prohibited.
 - the reusable template must remain product-agnostic: no package type, brand, shape, closure, label, handle, or material may be hard-coded in it;
 - every reference has one declared role (`product_identity` or presenter/scene identity), and exactly one product-identity reference is required per keyframe;
 - **no reference image may come from the source video** — no frames, anchors, grids or storyboards. They carry the source creator's face, product, watermark and captions, and an image model absorbs them whatever role is declared. Composition is described in the shot text only. `validate` rejects such paths and the `composition_only` role (`reference.source_frame`, `reference.role_forbidden`);
 - product-specific language is injected only from `product.visual_identity`, the shot plan, and the current request's acceptance checks;
-- `pixel_preserve` is mandatory when exact package pixels matter and the pose can match an available product reference; the model must not redraw the product in this mode;
+- `pixel_preserve` is mandatory when exact package pixels matter and the pose can match an available product reference; ImageGen supplies the scene while `scripts/composite_product_packshot.py` supplies the visible original product pixels;
 - if a requested pose has no matching product view, simplify the pose, request another source view, or fall back to a static packshot—never hallucinate unseen product geometry;
 - product geometry comes from a product-specific visual identity contract before any keyframe prompt is written;
 - every keyframe is inspected against that contract; an invented handle, opening, closure, package type, or silhouette is an automatic rejection;
-- a failed image is retained as an attempt record and its concrete defect is written down; the next attempt is a **fresh generation from the original presenter and product photos** with an adjusted shot description — never an edit of the failed image, and never with a generated image as a reference (edits and re-fed images compound drift);
+- a failed image's filename and concrete defect are retained in `ATTEMPTS.json`, while the failed binary is deleted after review; the next attempt is a **fresh generation from the original presenter and product photos** with an adjusted shot description — never an edit of the failed image, and never with a generated image as a reference (edits and re-fed images compound drift);
 - **person and scene continuity come from one presenter master**: a single approved image of the fictional presenter in the job's scene with no product in it. Every keyframe binds exactly that file as its presenter reference (`request.presenter_master`), plus the original product photo. It is the only generated image allowed as a reference. Codex generates candidates, picks the best against QC, and registers it with `scripts/set_presenter_master.py` without stopping for the operator; registration pins its sha256 and `validate` fails if the file changes afterwards. H3 binds the same master for identity;
 - **the source video's expressions and setting are copied as text**: the agent reads the storyboards and writes each shot's expression, posture and scene type into `performance` and `first_frame`. The frames themselves never go to the image model;
 - keyframe prompts stay short and positive (about 150 words): only the still first-frame scene, the expression, and "copy the product from Image N". Forbidden features and the QC checklist stay in `REQUEST.json` for inspection and are not sent to the model, because naming a feature ("no handle") primes it;
@@ -632,7 +634,7 @@ Machine success advances to `human_review`, never directly to `approved`.
 | Unsupported or non-English script line | One line | Regenerate from the same beats/facts | Operator rewrites line |
 | Keyframe identity drift | One image | Fresh generation from the presenter master | Regenerate presenter master after approval |
 | Extra hand or wrong product count | One image | Fresh generation with a simpler first_frame (fewer objects, product upright on the counter) | Simplify composition |
-| Product geometry or label drift | One segment | Switch to `pixel_preserve` and regenerate; if the label still drifts, skip the keyframe and render that segment in H3 with only the product image as `fully_preserved` (validated on a2 seg 3) | `packshot_clip.sh` static slow push |
+| Product geometry or label drift | One segment | Switch to `pixel_preserve`: generate the scene, then composite the original packshot pixels; if extraction cannot pass QC, render with only the product image as H3 `fully_preserved` (validated on a2 seg 3) | `packshot_clip.sh` static slow push |
 | Requested product angle has no source view | One segment | Simplify to an available product-reference pose | Request another product view |
 | H3 dialogue mismatch | One segment | Tighten English dialogue tag and rerun | Replace audio in a later approved extension |
 | H3 object deformation | One segment | Simplify action and strengthen keyframe/product refs | Static packshot segment |

@@ -10,10 +10,12 @@ from typing import Any
 # motion (lifting, tilting, pouring) is left to H3.
 FIDELITY_INSTRUCTIONS = {
     "reference_lock": "Keep it identical to the reference photo; simplify the pose rather than change the product.",
-    # No compositing step exists: what the image model draws is what H3 receives, and QC rejects any drift.
+    # The original packshot is composited after ImageGen for this mode.  The
+    # prompt therefore asks for a clean placement instead of asking a model to
+    # retype dense packaging copy.
     "pixel_preserve": (
-        "Show the same side as the reference photo, upright and square to the camera, with the whole label "
-        "visible. Copy the label as-is, every line of text exactly as printed."
+        "Show the same side as the reference photo, upright and square to the camera, with the whole product "
+        "visible in a clear unobstructed placement."
     ),
 }
 

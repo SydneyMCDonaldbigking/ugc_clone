@@ -32,7 +32,7 @@ class PromptCompilerTests(unittest.TestCase):
             template_text=self.template,
         )
         self.assertIn("a2 Milk Full Cream 2L", prompt)
-        self.assertIn("Copy the label as-is", prompt)
+        self.assertIn("whole product visible in a clear unobstructed placement", prompt)
         self.assertLess(len(prompt.split()), 200)
         for noise in ("handle", "forbidden", "composited", "Acceptance"):
             self.assertNotIn(noise.lower(), prompt.lower())

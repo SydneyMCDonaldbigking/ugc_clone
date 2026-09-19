@@ -8,7 +8,12 @@
     "schema": {"const": "keyframe-ready/v1"},
     "job": {"type": "string", "minLength": 1},
     "variant_id": {"type": "string", "minLength": 1},
-    "source_job_id": {"type": "string", "minLength": 1},
+    "source_job_id": {
+      "oneOf": [
+        {"type": "string", "minLength": 1},
+        {"type": "null"}
+      ]
+    },
     "segments": {"type": "object", "minProperties": 1},
     "generator": {"const": "codex-imagegen"},
     "created_by": {"const": "codex"}

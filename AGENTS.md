@@ -1,6 +1,29 @@
-# ugc_clone — 给 Codex 的接手说明
+# ugc_clone — 两个 agent 的共同说明(Codex 读本文件,Claude Code 通过 CLAUDE.md 读同一份)
 
-**分工:本地做全部分析、稿子和参考图;服务器只拿稿子和参考图出 H3 视频。**
+## 谁负责什么(以这张表为准,其他文档冲突时照这里)
+
+**原则:本地做全部分析、稿子和参考图;服务器只拿稿子和参考图出 H3 视频。**
+默认负责人如下;用户明确指派时可以换人,换人的一方在 `events.en.jsonl` 里写 `"actor"`。
+
+| # | 阶段 | 负责 | 在哪 | 怎么做 | 产出 | 做完的信号 |
+|---|---|---|---|---|---|---|
+| 0 | 给素材 | **用户** | — | 参考视频、商品图、价格、卖法、目标语言 | `inputs/<job>/` 原始文件 | 用户在对话里说"开始" |
+| 1 | 建档 + 转写 | **Claude** | 本地(conda `ugc_asr`) | `python scripts/reference_archive.py init <视频> <ref_id> --transcribe [--vad]` | `references/<ref_id>/` 事实、证据宫格、文档骨架 | 命令跑完 |
+| 2 | 写原片档案 | **Claude** | 本地 | 看宫格写 `ANALYSIS.md`、`TIMELINE.md`,补看用 `reference_archive.py tile` | 两份档案 | `reference_archive.py check <ref_id>` 显示 READY |
+| 3 | 商品参数表 | **Claude**(事实只能来自用户和包装图) | 本地 | 每条事实挂证据,拿不到的填 null | `inputs/<job>/product.en.json` | `validate` 通过 |
+| 4 | 节拍表 + 稿子 | **Claude** | 本地 | `build_beats.py`,英文稿按节拍表写 | `beats.json`、`variants/vNNN/script.en.json` | `validate` 通过 |
+| 5 | 分镜 + 出图请求 | **Claude** | 本地 | `first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词 | `shot_plan.json`、`keyframes/REQUEST.json`、`segNN_prompt.txt` | `validate` 通过,**Claude 告诉用户"可以交给 Codex 出图了"** |
+| 6 | 定妆照 + 参考帧 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩" | `presenter_master.png`、`keyframes/segNN.png`、`QC.json` | Codex 最后写 `keyframes/READY.json` |
+| 7 | 编 H3 提示词 + 渲染 | **Claude** | 编译在本地,渲染在服务器 | 读 READY,按"态度 + 重音"编 `segments.json`,上传、`cc_submit`、单段 `cc_rerun` | 成片 | `cc_status` 出片 |
+| 8 | 验收 | **Claude**(技术 + 台词)、**用户**(画面) | 本地 | 成片再转写对台词;画面交给用户看 | 验收结论 | 用户说"通过" |
+
+几条边界:
+
+- **转写只由 Claude 在本地做**(第 1 步)。Codex 不跑转写、不碰服务器
+- **Codex 只做第 6 步**。第 1-5 步的产出是它的输入;发现输入有问题(比如分镜要求的画面画不出来),
+  写进 `QC.json` 的说明里交回,不自己改稿子和分镜
+- **服务器只在第 7 步出现**。服务器掉线只影响第 7 步,前面的步骤照常做
+- 每一步都有"做完的信号";没看到上一步的信号,下一步不开始
 
 这个仓库做一件事:拿一条别人跑通的带货口播视频,拆出节拍表,换成我们自己的商品、价格和 AI 出镜人,
 再用服务器上的本地 MiniMax H3 重新生成视频。
@@ -36,7 +59,7 @@
 a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变了、没拍成特写、多出一只手。
 另外,H3 文生视频出来的出镜人不够真实。
 
-**Codex 负责到这里为止**:
+**Codex 的出图规矩(第 6 步)**:
 
 1. 读取现有人物图、商品图和该段分镜要求
 2. 使用 Codex 当前会话自带的 ImageGen 生成或编辑真实感更强的虚构出镜人与分镜参考帧
