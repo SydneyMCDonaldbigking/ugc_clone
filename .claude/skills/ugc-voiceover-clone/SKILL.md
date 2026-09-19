@@ -194,6 +194,10 @@ ffmpeg -ss 4.2 -i review_ready/<id>/<id>.mp4 -frames:v 1 -q:v 2 assets/presenter
 - **别用有歧义的词称呼道具。** 用 "carton" 指纸箱,但 carton 也有"纸盒奶"的意思,
   第 4 段就冒出一盒原片那样的纸盒奶。纸箱写 "plain brown cardboard box";
   不需要纸箱的段落直接不提它,负面约束里写清"No milk cartons, no paper drink boxes, no tetra packs"
+- **商品形状先对着图写,别凭印象。** a2_test 所有 H3 提示词都写了 "built-in handle",
+  但正背两张产品图上只有肩部两块内凹握槽,没有能穿过去的孔。Codex 做参考帧时发现了这个问题,
+  它的判断是对的;004 没画出大把手只是运气。现在形状描述写在 `product.en.json` 的 `visual_identity` 里,
+  并注明依据哪张图(`geometry_evidence`);没有侧面图的角度不要让模型去猜
 - **每段都要写"画面里唯一的产品是 `<Picture N>`"。** 原片的产品形态(小纸盒)和我们的(2L 瓶)越像同一品类,
   模型越容易把原片的形态"补"进来
 

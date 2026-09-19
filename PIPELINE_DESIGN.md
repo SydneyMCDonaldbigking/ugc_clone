@@ -39,6 +39,7 @@ These are design constraints, not open questions.
 8. Claude Code owns server transfer, H3 prompt adaptation, rendering, reruns, assembly, and final QA after `READY.json` appears.
 9. Generated packaging text is not trusted. Dense labels use original pixels, `fully_preserved`, or a static packshot fallback.
 10. Nothing is auto-published. A human approval state is mandatory.
+11. No image cut from the source video is ever given to an image model or to H3, in any role. The source video is analysed as text (transcript, beats, shot descriptions) only.
 
 ## 3. Responsibility model
 
@@ -50,6 +51,8 @@ These are design constraints, not open questions.
 | GPU worker | ASR and H3 generation/upscaling | Returns artifacts and machine report |
 
 No actor silently takes over another actor's stage. Handoffs happen through versioned JSON files and artifact hashes.
+
+The planning stages (beats, English script, shot plan, keyframe request) may be authored by either agent **when the operator asks for it**; in the a2_test_en bootstrap Codex authored them. Whoever writes a planning artifact states so in the event log (`"actor": "codex"` / `"claude"`), and the other agent reviews it before building on it. Image generation stays with Codex; server transfer, H3 and final QA stay with Claude.
 
 ## 4. Top-level flow
 
@@ -501,7 +504,7 @@ Codex workflow:
 4. Reject the request if it does not cover every ImageGen segment in the shot plan or if reference roles are ambiguous.
 5. Reuse one fictional presenter identity across every segment.
 6. Select the declared fidelity path: `reference_lock` for interaction-heavy lifestyle shots, or `pixel_preserve` for identity-critical product planes.
-7. Use ImageGen to generate or edit a 9:16 frame for each requested segment. In `pixel_preserve`, ImageGen creates the presenter/environment and reserves an unobstructed product plane; original product pixels are composited afterward.
+7. Use ImageGen to generate or edit a 9:16 frame for each requested segment. In `pixel_preserve`, ImageGen must copy the product exactly as it appears in the product reference, in the same view. **No compositing step exists**: what ImageGen draws is what H3 receives, so any label drift is a QC failure, not something fixed later.
 8. Inspect each result for identity, hands, product shape/count, composition, original-brand leakage, and unwanted text.
 9. Iterate only the failed image.
 10. Save final images as `segNN.png`.
@@ -516,7 +519,8 @@ Keyframe rules:
 - prompts and handoff notes are written in English for all new jobs;
 - generated overlay text is prohibited.
 - the reusable template must remain product-agnostic: no package type, brand, shape, closure, label, handle, or material may be hard-coded in it;
-- every reference has one declared role (`product_identity`, presenter/scene identity, or `composition_only`), and exactly one product-identity reference is required per keyframe;
+- every reference has one declared role (`product_identity` or presenter/scene identity), and exactly one product-identity reference is required per keyframe;
+- **no reference image may come from the source video** — no frames, anchors, grids or storyboards. They carry the source creator's face, product, watermark and captions, and an image model absorbs them whatever role is declared. Composition is described in the shot text only. `validate` rejects such paths and the `composition_only` role (`reference.source_frame`, `reference.role_forbidden`);
 - product-specific language is injected only from `product.visual_identity`, the shot plan, and the current request's acceptance checks;
 - `pixel_preserve` is mandatory when exact package pixels matter and the pose can match an available product reference; the model must not redraw the product in this mode;
 - if a requested pose has no matching product view, simplify the pose, request another source view, or fall back to a static packshot—never hallucinate unseen product geometry;
@@ -536,7 +540,8 @@ Claude Code actions:
 - confirm 9:16 orientation, readable file, and expected segment set;
 - map keyframe to `<Picture 1>` and supplementary product references after it;
 - adapt the H3 prompt so the keyframe governs composition while the product reference reinforces shape/label;
-- compile dialogue as `(S1) <d>[English] ...</d>`;
+- compile dialogue as `(S1) <d>[English] ...</d>` — **unverified**: H3 has only been run with `[Chinese]`; render one short English test segment before the first full job;
+- compile each shot-plan subshot as its own H3 segment (H3 cannot cut inside a segment); subshots must be at least 2 s and add up to the planned segment duration, and the job still stays within 20 s total;
 - create `segments.server.json` with resolved server paths.
 
 The current renderer treats the generated image as the primary H3 reference frame. True custom-first-frame execution is not required by this design and does not justify modifying the dirty external renderer repository.
@@ -612,7 +617,7 @@ Machine success advances to `human_review`, never directly to `approved`.
 | Unsupported or non-English script line | One line | Regenerate from the same beats/facts | Operator rewrites line |
 | Keyframe identity drift | One image | ImageGen edit using presenter master | Regenerate presenter master after approval |
 | Extra hand or wrong product count | One image | ImageGen edit with explicit visible-object constraints | Simplify composition |
-| Product geometry or label drift | One segment | Switch to `pixel_preserve`; generate only the scene and composite original product pixels | `packshot_clip.sh` static slow push |
+| Product geometry or label drift | One segment | Switch to `pixel_preserve` and regenerate; if the label still drifts, skip the keyframe and render that segment in H3 with only the product image as `fully_preserved` (validated on a2 seg 3) | `packshot_clip.sh` static slow push |
 | Requested product angle has no source view | One segment | Simplify to an available product-reference pose | Request another product view |
 | H3 dialogue mismatch | One segment | Tighten English dialogue tag and rerun | Replace audio in a later approved extension |
 | H3 object deformation | One segment | Simplify action and strengthen keyframe/product refs | Static packshot segment |

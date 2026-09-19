@@ -111,6 +111,36 @@ class EnglishValidationTests(unittest.TestCase):
         result = validate_keyframe_qc(qc, qc_path, self.request)
         self.assertIn("qc.result", {issue.code for issue in result.errors})
 
+    def test_source_video_frame_reference_fails(self) -> None:
+        request = copy.deepcopy(self.request)
+        anchor = "work/a2_test/video_analysis/anchor_s01.jpg"
+        request["segments"]["1"]["references"].append(anchor)
+        request["segments"]["1"]["reference_roles"][anchor] = "composition_only"
+        codes = {issue.code for issue in validate_keyframe_request(request, ROOT, self.product).errors}
+        self.assertIn("reference.source_frame", codes)
+        self.assertIn("reference.role_forbidden", codes)
+
+    def test_source_video_frame_in_shot_plan_fails(self) -> None:
+        plan = copy.deepcopy(self.shot_plan)
+        plan["segments"][0]["references"].append("work/a2_test/video_analysis/anchor_s01.jpg")
+        codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
+        self.assertIn("reference.source_frame", codes)
+
+    def test_subshot_shorter_than_h3_minimum_fails(self) -> None:
+        plan = copy.deepcopy(self.shot_plan)
+        segment = next(s for s in plan["segments"] if s.get("subshots"))
+        segment["subshots"][0]["duration_seconds"] = 3.5
+        segment["subshots"][1]["duration_seconds"] = 1.5
+        codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
+        self.assertIn("shots.subshot_duration", codes)
+
+    def test_subshot_durations_must_fill_segment(self) -> None:
+        plan = copy.deepcopy(self.shot_plan)
+        segment = next(s for s in plan["segments"] if s.get("subshots"))
+        segment["subshots"][0]["duration_seconds"] = 2
+        codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
+        self.assertIn("shots.subshot_total", codes)
+
 
 if __name__ == "__main__":
     unittest.main()

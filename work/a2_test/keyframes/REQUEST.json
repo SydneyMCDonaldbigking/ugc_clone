@@ -12,13 +12,11 @@
       "prompt_file": "work/a2_test/keyframes/seg01_prompt.txt",
       "references": [
         "inputs/a2_test/presenter.jpg",
-        "target_A2_1.png",
-        "work/a2_test/video_analysis/anchor_s01.jpg"
+        "target_A2_1.png"
       ],
       "reference_roles": {
         "inputs/a2_test/presenter.jpg": "presenter_identity",
-        "target_A2_1.png": "product_identity",
-        "work/a2_test/video_analysis/anchor_s01.jpg": "composition_only"
+        "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "reference_lock",
       "product_placement": {
@@ -41,13 +39,11 @@
       "prompt_file": "work/a2_test/keyframes/seg02_prompt.txt",
       "references": [
         "work/a2_test/keyframes/seg01.png",
-        "target_A2_1.png",
-        "work/a2_test/video_analysis/anchor_s02.jpg"
+        "target_A2_1.png"
       ],
       "reference_roles": {
         "work/a2_test/keyframes/seg01.png": "presenter_and_scene_identity",
-        "target_A2_1.png": "product_identity",
-        "work/a2_test/video_analysis/anchor_s02.jpg": "composition_only"
+        "target_A2_1.png": "product_identity"
       },
       "product_fidelity_mode": "reference_lock",
       "product_placement": {
@@ -61,8 +57,8 @@
         "The presenter identity, light-blue T-shirt, and kitchen remain consistent with segment 1.",
         "Her eyes, brows, open mouth, shoulders, and grip communicate an excited heavy-case reveal.",
         "The case is held toward the camera in the source video's quantity-display composition.",
-        "No seventh bottle, collapsed bottle, paper carton, source watermark, or generated caption appears."
-        ,"All six bottles use the exact handleless flat-front silhouette from target_A2_1.png; no grip hole or jug handle appears."
+        "No seventh bottle, collapsed bottle, paper carton, source watermark, or generated caption appears.",
+        "All six bottles use the exact handleless flat-front silhouette from target_A2_1.png; no grip hole or jug handle appears."
       ]
     },
     "2b": {
@@ -72,12 +68,10 @@
       "prompt_file": "work/a2_test/keyframes/seg02b_prompt.txt",
       "references": [
         "target_A2_1.png",
-        "work/a2_test/video_analysis/anchor_s02b.jpg",
         "work/a2_test/keyframes/seg01.png"
       ],
       "reference_roles": {
         "target_A2_1.png": "product_identity",
-        "work/a2_test/video_analysis/anchor_s02b.jpg": "composition_only",
         "work/a2_test/keyframes/seg01.png": "presenter_and_scene_identity"
       },
       "product_fidelity_mode": "reference_lock",
@@ -117,8 +111,8 @@
         "The bottle is supported around its upper side and shoulder; it has no handle or grip opening.",
         "The back label faces the camera in a locked close-up.",
         "No original creator, second hand, pointing finger, or other product appears.",
-        "Dense label text is not accepted as generated replacement copy."
-        ,"The silhouette stays identical to target_A2_2.png: solid body, no through-handle, no open grip hole."
+        "Dense label text is not accepted as generated replacement copy.",
+        "The silhouette stays identical to target_A2_2.png: solid body, no through-handle, no open grip hole."
       ]
     },
     "4": {

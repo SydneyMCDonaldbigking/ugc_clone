@@ -33,7 +33,8 @@ class PromptCompilerTests(unittest.TestCase):
         )
         self.assertIn("a2 Milk Full Cream 2L", prompt)
         self.assertIn("pixel_preserve", prompt)
-        self.assertIn("Do not synthesize, redraw", prompt)
+        self.assertIn("Copy the label as-is", prompt)
+        self.assertNotIn("composited", prompt)
         self.assertIn("role=product_identity", prompt)
 
     def test_same_template_accepts_another_package_type(self) -> None:

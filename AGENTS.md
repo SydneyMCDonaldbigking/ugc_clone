@@ -49,9 +49,13 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 
 以上后半段工作由 Claude Code 在看到 `READY.json` 后接手。
 
-**第一个测试**:`work/a2_test/keyframes/seg03_prompt.txt`,ImageGen 的输入是
-`inputs/a2_test/presenter.jpg` 和 `target_A2_2.png`,目标输出是
-`work/a2_test/keyframes/seg03.png`。
+**当前任务(a2_test_en,2026-09-19 审查后)**:状态见 `work/a2_test/keyframes/QC.json`。
+
+1. **seg01 重出**:之前那版参考了原片帧(`video_analysis/anchor_s01.jpg`),已作废。只用 `presenter.jpg` + `target_A2_1.png` 和分镜文字
+2. **seg02、seg02b 重出**:同样的原因作废;它们用 seg01 当人物参考,所以要等新的 seg01 出好再做
+3. **seg03 保留**:当时只用了出镜人图和背标图,不受影响
+4. **seg04 继续**:包装还在被重画;如果还是做不到,就在 QC 里写明,交给 Claude 用 H3 `fully_preserved` 或慢推保底
+5. 提示词用 `python scripts/build_keyframe_prompts.py inputs/a2_test/job.en.json` 重新生成(已经更新过一次)
 
 出好的参考帧交给 H3 前要注意:
 
@@ -89,14 +93,16 @@ work/<job>/keyframes/
 }
 ```
 
-- `source_job_id`:在哪一轮成片的基础上重跑(a2_test 目前是 `a2-replica-004`)
+- `source_job_id`:在哪一轮成片的基础上重跑。**英文版 a2_test_en 是整条新片,填 `null`**,并列出全部参考帧
+  (中文版 `a2-replica-004` 的片段不能沿用到英文版)
 - `keyframe` 会作为该段的 `<Picture 1>`,`extra_refs` 按顺序排在后面(路径相对仓库根目录)
 - 只列有新参考帧的段,其余段沿用原片
 - 画面需要调整时,可以在该段加 `"prompt_hint": "..."`,Claude 会据此改写该段的 H3 提示词
 
 ## 红线(任何模式都一样)
 
-- 不拿原片的帧当参考图,不克隆原博主的声音
+- 不拿原片的帧当参考图,不克隆原博主的声音。`video_analysis/` 下的 anchor、storyboard、cuts 图**同样算原片的帧**,
+  不能以任何角色(包括"只借构图")交给 ImageGen 或 H3;构图只用文字写进分镜。`validate` 会拦
 - 原稿里我们拿不出证据的宣称必须换掉;每条卖点都要挂 `product.json` 里的证据
 - 出镜人是虚构的,不编亲身经历("又囤了一箱")
 - `replica` 模式的稿子只做测试,不能批量发布

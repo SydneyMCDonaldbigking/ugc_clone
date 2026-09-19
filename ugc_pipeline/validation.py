@@ -357,6 +357,32 @@ def validate_script(script: Any, beats: dict[str, Any], product: dict[str, Any])
     return result
 
 
+# Frames, grids and anchors cut from the reference video carry the source creator's face, product,
+# watermark and captions. An image model absorbs all of it regardless of the declared role, so no
+# source-derived image may ever be a keyframe reference (red line: never reference the source video).
+SOURCE_DERIVED_MARKERS = ("video_analysis/", "/frames/", "anchor_", "storyboard", "contact.jpg", "tile_", "cuts_")
+FORBIDDEN_REFERENCE_ROLES = {"composition_only"}
+H3_MIN_SEGMENT_SECONDS = 2
+
+
+def _check_reference_origin(references: Any, roles: Any, result: ValidationResult, path: str) -> None:
+    for index, raw_path in enumerate(references if isinstance(references, list) else []):
+        normalized = str(raw_path).replace("\\", "/")
+        if any(marker in normalized for marker in SOURCE_DERIVED_MARKERS):
+            result.error(
+                "reference.source_frame",
+                f"{path}.references[{index}]",
+                f"{raw_path} is derived from the reference video; describe the composition in text instead.",
+            )
+    for raw_path, role in (roles.items() if isinstance(roles, dict) else []):
+        if role in FORBIDDEN_REFERENCE_ROLES:
+            result.error(
+                "reference.role_forbidden",
+                f"{path}.reference_roles",
+                f"Role {role!r} ({raw_path}) is not allowed; composition comes from the shot plan text.",
+            )
+
+
 def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
     result = ValidationResult()
     if not _require_object(plan, result, "shot_plan"):
@@ -409,6 +435,34 @@ def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
         references = segment.get("references")
         if not isinstance(references, list) or not references:
             result.error("shots.references", f"{path}.references", "At least one image reference is required.")
+        _check_reference_origin(references, None, result, path)
+        subshots = segment.get("subshots")
+        if subshots:
+            # Each subshot is compiled into its own H3 segment (no cut inside an H3 segment),
+            # so each must meet the H3 minimum and together they must fill the planned duration.
+            durations = [sub.get("duration_seconds") for sub in subshots if isinstance(sub, dict)]
+            if len(durations) != len(subshots) or not all(isinstance(value, (int, float)) for value in durations):
+                result.error("shots.subshots", f"{path}.subshots", "Every subshot needs a numeric duration_seconds.")
+            else:
+                if any(value < H3_MIN_SEGMENT_SECONDS for value in durations):
+                    result.error(
+                        "shots.subshot_duration",
+                        f"{path}.subshots",
+                        f"Each subshot becomes one H3 segment and must last at least {H3_MIN_SEGMENT_SECONDS} s.",
+                    )
+                if abs(sum(durations) - float(segment.get("duration_seconds", 0))) > 0.01:
+                    result.error(
+                        "shots.subshot_total",
+                        f"{path}.subshots",
+                        "Subshot durations must add up to the segment duration.",
+                    )
+            sub_ids = [str(sub.get("keyframe_id")) for sub in subshots if isinstance(sub, dict)]
+            if isinstance(keyframe_ids, list) and sub_ids != [str(value) for value in keyframe_ids]:
+                result.error(
+                    "shots.subshot_keyframes",
+                    f"{path}.subshots",
+                    "Subshot keyframe_ids must list the segment keyframe_ids in order.",
+                )
         if segment.get("continuity") not in {"hard_cut", "previous_tail"}:
             result.error("shots.continuity", f"{path}.continuity", "Expected hard_cut or previous_tail.")
 
@@ -457,6 +511,7 @@ def validate_keyframe_request(
                 except (ValueError, FileNotFoundError) as exc:
                     result.error("path.invalid", f"{path}.references[{index}]", str(exc))
         reference_roles = segment.get("reference_roles")
+        _check_reference_origin(references, reference_roles, result, path)
         if not isinstance(reference_roles, dict) or not reference_roles:
             result.error("request.reference_roles", f"{path}.reference_roles", "Reference roles are required.")
         elif isinstance(references, list):

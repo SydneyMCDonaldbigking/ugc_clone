@@ -4,7 +4,6 @@ Asset type: first frame for a vertical creator-style product video
 REFERENCE ROLE MAP
 Image 1: work/a2_test/keyframes/seg01.png — role=presenter_and_scene_identity.
 Image 2: target_A2_1.png — role=product_identity.
-Image 3: work/a2_test/video_analysis/anchor_s02.jpg — role=composition_only.
 
 SHOT INTENT
 Subject: The same fictional woman stands behind a stationary open cardboard shipping box containing six upright bottles.
@@ -38,4 +37,4 @@ GENERAL REALISM
 Create a candid smartphone UGC frame with natural asymmetry, believable weight, anatomically correct hands, realistic contact, skin texture, household light, and an expression caught during speech. Avoid catalogue stillness, a fixed closed-mouth smile, frozen eye contact, floating objects, merged fingers, duplicate objects, watermarks, subtitles, and generated overlay text.
 
 FINAL PRODUCT RULE
-The product-identity reference outranks prose, composition references, presenter references, and aesthetic preferences. If any instruction conflicts with the product-identity reference, preserve the product reference and simplify the pose or composition instead.
+The product-identity reference outranks prose, presenter references, and aesthetic preferences. No reference image is ever taken from the source video; composition comes only from the shot description above. If any instruction conflicts with the product-identity reference, preserve the product reference and simplify the pose or composition instead.

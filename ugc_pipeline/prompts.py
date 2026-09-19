@@ -12,12 +12,17 @@ FIDELITY_INSTRUCTIONS = {
         "proportions, surfaces, closure, label layout, colours, count, and explicitly listed identity features. "
         "Simplify the pose before allowing any product drift."
     ),
+    # No compositing step exists in this pipeline: whatever the image model draws is what H3 receives.
+    # So this mode asks for an exact copy of the reference view and relies on QC to reject any drift;
+    # a failed keyframe falls back to an H3 fully_preserved segment or a static packshot, never to
+    # generated label text.
     "pixel_preserve": (
-        "Do not synthesize, redraw, restyle, relabel, or reinterpret the product. Generate the presenter and "
-        "environment around the placement plan while leaving the product plane unobstructed. The original "
-        "product pixels will be composited into that plane after generation. Keep hands and props behind the "
-        "reserved product plane unless an explicit foreground mask is supplied. Match the source product pose; "
-        "do not invent an unseen angle."
+        "Reproduce the product exactly as it appears in the product-identity reference, in the same view "
+        "and angle; do not invent an unseen side. Copy the label as-is: every heading, illustration, table "
+        "and line of small text must match the reference, never rewritten, translated, simplified or "
+        "invented. Hands may only touch the product edges and must not cover any label text. If the label "
+        "cannot be reproduced exactly, keep the product larger and flatter to the camera rather than "
+        "changing it."
     ),
 }
 

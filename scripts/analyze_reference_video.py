@@ -7,6 +7,10 @@ storyboard layout. It writes:
 * ``storyboard_XX.jpg`` pages with timestamped frames
 * ``cuts_XX.jpg`` pages showing frames immediately before and after each cut
 
+Everything written here is for reading the source only. None of these images may be
+passed to an image model or to H3 as a reference, in any role: they carry the source
+creator's face, product, watermark and captions. ``ugc_pipeline validate`` rejects them.
+
 Example:
     python scripts/analyze_reference_video.py ref_video_2.mp4 work/a2_test/video_analysis
 """

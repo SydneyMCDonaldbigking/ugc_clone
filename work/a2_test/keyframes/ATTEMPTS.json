@@ -3,7 +3,8 @@
   "policy": {
     "ready_requires": "Every requested keyframe has a current QC pass and matching SHA-256 hash.",
     "on_failure": "Record the defect, rewrite the prompt with a targeted delta, regenerate only the affected image, and inspect again.",
-    "failed_artifact_retention": "Failed image files are deleted after review; their former filenames remain in this log as provenance only."
+    "failed_artifact_retention": "Failed image files are deleted after review; their former filenames remain in this log as provenance only.",
+    "source_frames": "Never pass frames, grids or anchors cut from the reference video to the image model."
   },
   "segments": {
     "1": [
@@ -11,27 +12,54 @@
         "attempt": 1,
         "file": "seg01-static.png",
         "result": "failed",
-        "defects": ["Frozen closed-mouth expression and catalogue pose."]
+        "defects": [
+          "Frozen closed-mouth expression and catalogue pose."
+        ]
       },
       {
         "attempt": 2,
         "file": "seg01-attempt-02-handle-spec.png",
         "result": "failed",
-        "defects": ["Prompt used incorrect handle geometry instead of the handleless reference silhouette."],
-        "next_prompt_delta": ["State no through-handle or grip opening.", "Lift from the short neck and solid shoulder."]
+        "defects": [
+          "Prompt used incorrect handle geometry instead of the handleless reference silhouette."
+        ],
+        "next_prompt_delta": [
+          "State no through-handle or grip opening.",
+          "Lift from the short neck and solid shoulder."
+        ]
       },
       {
         "attempt": 3,
         "file": "seg01-attempt-03-cap-grip.png",
         "result": "failed",
-        "defects": ["Handleless bottle geometry passed, but the presenter unrealistically lifted a full 2-litre bottle mainly by its cap."],
-        "next_prompt_delta": ["Keep the bottle seated in the case in the first frame.", "Wrap the hand around the solid upper side and shoulder while preparing to lift.", "Keep every finger below the cap ring."]
+        "defects": [
+          "Handleless bottle geometry passed, but the presenter unrealistically lifted a full 2-litre bottle mainly by its cap."
+        ],
+        "next_prompt_delta": [
+          "Keep the bottle seated in the case in the first frame.",
+          "Wrap the hand around the solid upper side and shoulder while preparing to lift.",
+          "Keep every finger below the cap ring."
+        ]
       },
       {
         "attempt": 4,
         "file": "seg01.png",
         "result": "pass",
-        "checks": ["handleless solid bottle", "bottle seated in case", "hand below cap on solid shoulder", "playful mid-speech expression", "two valid hands"]
+        "checks": [
+          "handleless solid bottle",
+          "bottle seated in case",
+          "hand below cap on solid shoulder",
+          "playful mid-speech expression",
+          "two valid hands"
+        ]
+      },
+      {
+        "attempt": "review",
+        "file": null,
+        "result": "invalidated",
+        "defects": [
+          "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
+        ]
       }
     ],
     "2": [
@@ -39,20 +67,42 @@
         "attempt": 1,
         "file": "seg02-static.png",
         "result": "failed",
-        "defects": ["Frozen closed-mouth expression and catalogue pose."]
+        "defects": [
+          "Frozen closed-mouth expression and catalogue pose."
+        ]
       },
       {
         "attempt": 2,
         "file": "seg02-attempt-02-handle-spec.png",
         "result": "failed",
-        "defects": ["Bottle silhouette was not explicitly locked to the handleless reference."],
-        "next_prompt_delta": ["Lock all six bottles to the solid flat-front silhouette.", "Reject every handle opening or jug contour."]
+        "defects": [
+          "Bottle silhouette was not explicitly locked to the handleless reference."
+        ],
+        "next_prompt_delta": [
+          "Lock all six bottles to the solid flat-front silhouette.",
+          "Reject every handle opening or jug contour."
+        ]
       },
       {
         "attempt": 3,
         "file": "seg02.png",
         "result": "pass",
-        "checks": ["exactly six bottles", "two rows of three", "six blue caps", "all bottles handleless", "excited mid-speech expression", "credible case weight"]
+        "checks": [
+          "exactly six bottles",
+          "two rows of three",
+          "six blue caps",
+          "all bottles handleless",
+          "excited mid-speech expression",
+          "credible case weight"
+        ]
+      },
+      {
+        "attempt": "review",
+        "file": null,
+        "result": "invalidated",
+        "defects": [
+          "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
+        ]
       }
     ],
     "2b": [
@@ -60,14 +110,33 @@
         "attempt": 1,
         "file": "seg02b-wrong-handle.png",
         "result": "failed",
-        "defects": ["Large invented through-handle changes the product into a jug."],
-        "next_prompt_delta": ["Support the bottle from its base and side.", "Forbid through-handle, grip hole, and jug silhouette."]
+        "defects": [
+          "Large invented through-handle changes the product into a jug."
+        ],
+        "next_prompt_delta": [
+          "Support the bottle from its base and side.",
+          "Forbid through-handle, grip hole, and jug silhouette."
+        ]
       },
       {
         "attempt": 2,
         "file": "seg02b.png",
         "result": "pass",
-        "checks": ["exact handleless front silhouette", "single supporting hand", "complete front label", "2L visible", "handheld UGC close-up"]
+        "checks": [
+          "exact handleless front silhouette",
+          "single supporting hand",
+          "complete front label",
+          "2L visible",
+          "handheld UGC close-up"
+        ]
+      },
+      {
+        "attempt": "review",
+        "file": null,
+        "result": "invalidated",
+        "defects": [
+          "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
+        ]
       }
     ],
     "3": [
@@ -75,14 +144,25 @@
         "attempt": 1,
         "file": "seg03-wrong-handle.png",
         "result": "failed",
-        "defects": ["Large invented through-handle changes the product silhouette."],
-        "next_prompt_delta": ["Wrap one hand around the solid upper side and shoulder.", "Preserve target_A2_2.png silhouette without any opening."]
+        "defects": [
+          "Large invented through-handle changes the product silhouette."
+        ],
+        "next_prompt_delta": [
+          "Wrap one hand around the solid upper side and shoulder.",
+          "Preserve target_A2_2.png silhouette without any opening."
+        ]
       },
       {
         "attempt": 2,
         "file": "seg03.png",
         "result": "pass",
-        "checks": ["exact handleless back silhouette", "single side-supporting hand", "complete back label", "no face", "no second product"]
+        "checks": [
+          "exact handleless back silhouette",
+          "single side-supporting hand",
+          "complete back label",
+          "no face",
+          "no second product"
+        ]
       }
     ],
     "4": [
@@ -90,21 +170,33 @@
         "attempt": 1,
         "file": "seg04-static.png",
         "result": "failed",
-        "defects": ["Frozen closed-mouth expression and incorrect jug handle." ]
+        "defects": [
+          "Frozen closed-mouth expression and incorrect jug handle."
+        ]
       },
       {
         "attempt": 2,
         "file": "seg04-wrong-handle.png",
         "result": "failed",
-        "defects": ["Presenter performance improved, but the bottle still has an invented through-handle."],
-        "next_prompt_delta": ["Wrap the bottle hand around the solid upper body.", "Forbid every handle opening or jug contour."]
+        "defects": [
+          "Presenter performance improved, but the bottle still has an invented through-handle."
+        ],
+        "next_prompt_delta": [
+          "Wrap the bottle hand around the solid upper body.",
+          "Forbid every handle opening or jug contour."
+        ]
       },
       {
         "attempt": 3,
         "file": "seg04-attempt-03-cropped.png",
         "result": "failed",
-        "defects": ["Handleless geometry passed, but the bottle's right edge and front label were cropped outside the frame."],
-        "next_prompt_delta": ["Zoom out the bottle by roughly 20 percent.", "Keep the complete bottle silhouette and complete front label inside frame with visible margin."]
+        "defects": [
+          "Handleless geometry passed, but the bottle's right edge and front label were cropped outside the frame."
+        ],
+        "next_prompt_delta": [
+          "Zoom out the bottle by roughly 20 percent.",
+          "Keep the complete bottle silhouette and complete front label inside frame with visible margin."
+        ]
       },
       {
         "attempt": 4,

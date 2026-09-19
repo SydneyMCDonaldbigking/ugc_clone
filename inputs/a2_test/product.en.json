@@ -22,7 +22,8 @@
       "jug handle",
       "detergent-jug silhouette",
       "paper carton"
-    ]
+    ],
+    "geometry_evidence": "Read from the front and back packshots target_A2_1.png and target_A2_2.png: the shoulder shows two recessed grip panels with no see-through opening. No side view was supplied; confirm with the physical bottle before relying on side angles."
   },
   "price": {
     "currency": "AUD",

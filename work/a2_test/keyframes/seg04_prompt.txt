@@ -22,7 +22,7 @@ Product name: a2 Milk Full Cream 2L
 - silhouette: tall flat-front bottle with rounded shoulders, a short wide neck, gently tapered sidewalls, and a flat base
 
 PRODUCT FIDELITY MODE: pixel_preserve
-Do not synthesize, redraw, restyle, relabel, or reinterpret the product. Generate the presenter and environment around the placement plan while leaving the product plane unobstructed. The original product pixels will be composited into that plane after generation. Keep hands and props behind the reserved product plane unless an explicit foreground mask is supplied. Match the source product pose; do not invent an unseen angle.
+Reproduce the product exactly as it appears in the product-identity reference, in the same view and angle; do not invent an unseen side. Copy the label as-is: every heading, illustration, table and line of small text must match the reference, never rewritten, translated, simplified or invented. Hands may only touch the product edges and must not cover any label text. If the label cannot be reproduced exactly, keep the product larger and flatter to the camera rather than changing it.
 
 COMPOSITION AND ACCEPTANCE CONDITIONS
 - The presenter identity, light-blue T-shirt, and kitchen match segments 1 and 2.
@@ -38,4 +38,4 @@ GENERAL REALISM
 Create a candid smartphone UGC frame with natural asymmetry, believable weight, anatomically correct hands, realistic contact, skin texture, household light, and an expression caught during speech. Avoid catalogue stillness, a fixed closed-mouth smile, frozen eye contact, floating objects, merged fingers, duplicate objects, watermarks, subtitles, and generated overlay text.
 
 FINAL PRODUCT RULE
-The product-identity reference outranks prose, composition references, presenter references, and aesthetic preferences. If any instruction conflicts with the product-identity reference, preserve the product reference and simplify the pose or composition instead.
+The product-identity reference outranks prose, presenter references, and aesthetic preferences. No reference image is ever taken from the source video; composition comes only from the shot description above. If any instruction conflicts with the product-identity reference, preserve the product reference and simplify the pose or composition instead.
