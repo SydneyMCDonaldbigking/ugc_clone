@@ -2,13 +2,13 @@ Use case: photorealistic-natural
 Asset type: first frame for a vertical creator-style product video
 
 REFERENCE ROLE MAP
-Image 1: inputs/a2_test/presenter.jpg — role=presenter_identity.
-Image 2: target_A2_2.png — role=product_identity.
+Image 1: target_A2_1.png — role=product_identity.
+Image 2: work/a2_test/keyframes/seg01.png — role=presenter_and_scene_identity.
 
 SHOT INTENT
-Subject: Exactly one right hand supports a single handleless 2-litre bottle around its upper side and shoulder, with the back label square to camera.
-Action: The bottle remains completely still in a locked close-up while the presenter speaks off camera.
-Performance: The presenter remains off camera; natural grip pressure and relaxed finger variation keep the hand from looking posed or synthetic.
+Subject: The same fictional woman stands behind one uncapped a2 bottle and one empty clear glass on the kitchen island; the bottle is fully upright and seated flat on the counter.
+Action: The first frame captures the lively setup before the pour; during the clip she picks up the bottle, tilts it into one steady stream, fills the glass, and presents it to camera.
+Performance: Focused proof moment: she speaks while preparing to pour, with lips caught mid-phrase, brows attentive, and her gaze naturally moving between the bottle, glass, and viewer rather than holding a fixed smile.
 
 PRODUCT IDENTITY CONTRACT (injected from the current product record; never infer a different design)
 Product name: a2 Milk Full Cream 2L
@@ -25,13 +25,14 @@ PRODUCT FIDELITY MODE: pixel_preserve
 Do not synthesize, redraw, restyle, relabel, or reinterpret the product. Generate the presenter and environment around the placement plan while leaving the product plane unobstructed. The original product pixels will be composited into that plane after generation. Keep hands and props behind the reserved product plane unless an explicit foreground mask is supplied. Match the source product pose; do not invent an unseen angle.
 
 COMPOSITION AND ACCEPTANCE CONDITIONS
-- Exactly one right hand is visible.
-- The bottle is supported around its upper side and shoulder; it has no handle or grip opening.
-- The back label faces the camera in a locked close-up.
-- No original creator, second hand, pointing finger, or other product appears.
-- Dense label text is not accepted as generated replacement copy.
-- The silhouette stays identical to target_A2_2.png: solid body, no through-handle, no open grip hole.
-- Product placement plan: {"fallback": "static_packshot", "occlusion": "product_in_front_of_hands", "pose_source": "product_identity_reference"}
+- The presenter identity, light-blue T-shirt, and kitchen match segments 1 and 2.
+- Her lips are caught mid-explanation and her attentive gaze connects the imminent demonstration with the viewer.
+- This is the setup immediately before pouring: exactly one uncapped bottle stands fully upright and flat on the counter beside one empty clear glass, with no milk stream yet.
+- The complete tall bottle silhouette remains visible with reference-accurate height-to-width proportions, broad flat face, and long shallow vertical side grooves.
+- The blue cap rests on the island and the complete green front label faces camera without skew or crop.
+- Her bottle hand reaches around the solid sidewall from behind so only relaxed fingertips appear at the far outer edge; no finger crosses the front face or upper moulding.
+- No handle opening, oval body pits, paper carton, extra bottle, extra hand, spill, source watermark, or generated caption appears.
+- Product placement plan: {"fallback": "static_product_first_frame", "first_frame_action": "pre_action_setup", "occlusion": "product_in_front_of_hands", "orientation": "unchanged_from_reference", "pose_source": "product_identity_reference"}
 
 GENERAL REALISM
 Create a candid smartphone UGC frame with natural asymmetry, believable weight, anatomically correct hands, realistic contact, skin texture, household light, and an expression caught during speech. Avoid catalogue stillness, a fixed closed-mouth smile, frozen eye contact, floating objects, merged fingers, duplicate objects, watermarks, subtitles, and generated overlay text.

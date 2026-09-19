@@ -1,0 +1,42 @@
+Use case: photorealistic-natural
+Asset type: first frame for a vertical creator-style product video
+
+REFERENCE ROLE MAP
+Image 1: inputs/a2_test/presenter.jpg — role=presenter_identity.
+Image 2: target_A2_1.png — role=product_identity.
+Image 3: work/a2_test/video_analysis/anchor_s01.jpg — role=composition_only.
+
+SHOT INTENT
+Subject: The same fictional woman stands behind a white marble kitchen island with a plain open cardboard shipping box.
+Action: She opens the box and wraps one hand around the solid upper side of an upright a2 bottle, preparing to lift it while it remains seated in the case.
+Performance: Playful disbelief: she leans toward the lens with one eyebrow raised, eyes engaged, and lips naturally parted mid-sentence while both hands stay active on the box and bottle.
+
+PRODUCT IDENTITY CONTRACT (injected from the current product record; never infer a different design)
+Product name: a2 Milk Full Cream 2L
+- back_label: large white rectangular label with purple heading, cow comparison, nutrition panel, barcode, ingredient line, and 2L FULL CREAM footer
+- closure: wide ribbed blue screw cap
+- forbidden_features: ["through-handle", "open grip hole", "jug handle", "detergent-jug silhouette", "paper carton"]
+- front_label: green rectangular label with a large purple a2 roundel, a blue Full cream band, and a visible 2L mark
+- grip_geometry: shallow curved side indentations only; the plastic body remains solid
+- handle: none
+- packaging_type: opaque white rectangular 2-litre HDPE bottle
+- silhouette: tall flat-front bottle with rounded shoulders, a short wide neck, gently tapered sidewalls, and a flat base
+
+PRODUCT FIDELITY MODE: reference_lock
+Recreate the product only when the requested interaction cannot be made from preserved source pixels. Treat every product-identity reference as authoritative. Preserve the same package type, silhouette, proportions, surfaces, closure, label layout, colours, count, and explicitly listed identity features. Simplify the pose before allowing any product drift.
+
+COMPOSITION AND ACCEPTANCE CONDITIONS
+- The presenter identity, light-blue T-shirt, and kitchen match the presenter master image.
+- Her expression is playful and caught mid-sentence, not a closed-mouth catalogue smile.
+- Her torso and hands show active forward motion while opening the case.
+- A plain open cardboard case sits on the island and the presenter interacts with it naturally.
+- The product is a white 2-litre a2 bottle with a blue cap and green front label.
+- The bottle has a solid flat-front body with shallow side indentations and absolutely no handle opening.
+- No original creator, source watermark, source subtitles, carton-style milk pack, or extra hand appears.
+- Product placement plan: {"fallback": "simplify_pose_before_product_drift", "occlusion": "natural_contact_allowed", "pose_source": "shot_plan"}
+
+GENERAL REALISM
+Create a candid smartphone UGC frame with natural asymmetry, believable weight, anatomically correct hands, realistic contact, skin texture, household light, and an expression caught during speech. Avoid catalogue stillness, a fixed closed-mouth smile, frozen eye contact, floating objects, merged fingers, duplicate objects, watermarks, subtitles, and generated overlay text.
+
+FINAL PRODUCT RULE
+The product-identity reference outranks prose, composition references, presenter references, and aesthetic preferences. If any instruction conflicts with the product-identity reference, preserve the product reference and simplify the pose or composition instead.

@@ -1,0 +1,92 @@
+{
+  "schema": "reference-video-analysis/v1",
+  "video": {
+    "file": "ref_video_2.mp4",
+    "duration_seconds": 18.666667,
+    "file_size_bytes": 5359425,
+    "width": 720,
+    "height": 1280,
+    "fps": 30.0,
+    "frame_count": 560,
+    "codec": "h264"
+  },
+  "sampling": {
+    "interval_seconds": 0.5,
+    "times_seconds": [
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      3.5,
+      4.0,
+      4.5,
+      5.0,
+      5.5,
+      6.0,
+      6.5,
+      7.0,
+      7.5,
+      8.0,
+      8.5,
+      9.0,
+      9.5,
+      10.0,
+      10.5,
+      11.0,
+      11.5,
+      12.0,
+      12.5,
+      13.0,
+      13.5,
+      14.0,
+      14.5,
+      15.0,
+      15.5,
+      16.0,
+      16.5,
+      17.0,
+      17.5,
+      18.0,
+      18.5
+    ],
+    "storyboard_pages": [
+      "work/a2_test/video_analysis/storyboard_01.jpg",
+      "work/a2_test/video_analysis/storyboard_02.jpg",
+      "work/a2_test/video_analysis/storyboard_03.jpg",
+      "work/a2_test/video_analysis/storyboard_04.jpg"
+    ]
+  },
+  "cut_detection": {
+    "scene_threshold": 0.3,
+    "cut_offset_seconds": 0.08,
+    "cuts": [
+      {
+        "time_seconds": 6.733,
+        "scene_score": 0.689037
+      },
+      {
+        "time_seconds": 7.9,
+        "scene_score": 0.641783
+      },
+      {
+        "time_seconds": 9.3,
+        "scene_score": 0.560422
+      },
+      {
+        "time_seconds": 10.633,
+        "scene_score": 0.419798
+      },
+      {
+        "time_seconds": 12.3,
+        "scene_score": 0.483525
+      }
+    ],
+    "comparison_pages": [
+      "work/a2_test/video_analysis/cuts_01.jpg",
+      "work/a2_test/video_analysis/cuts_02.jpg"
+    ]
+  }
+}

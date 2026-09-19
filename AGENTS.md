@@ -8,6 +8,7 @@
 1. `HANDOFF.md`:为什么做结构复用,不逐字照搬(平台查重、广告法),以及服务器的基础设施
 2. `.claude/skills/ugc-voiceover-clone/SKILL.md`:完整做法和所有踩过的坑。**这是主文档**
 3. `WORKFLOW.md`:阶段定义、schema、两次测试的实测记录
+4. `PIPELINE_DESIGN.md`:英文量产流水线的完整状态机、数据契约、Codex/Claude 分工、重试和验收设计
 
 ## 仓库里有什么
 
@@ -19,35 +20,38 @@
 | `scripts/build_beats.py` | 本地:labels.json → beats.json |
 | `scripts/check_script.py` | 本地:口播稿硬检查(结构、字数、重合、禁用词、宣称证据) |
 | `scripts/packshot_clip.sh` | 服务器:商品原图慢推的保底插入镜头 |
-| `scripts/gen_keyframe.py` | 本地:OpenRouter 图像模型出分镜参考帧(**新任务,见下**) |
+| `scripts/gen_keyframe.py` | 旧的 OpenRouter 参考帧脚本,保留作备用;当前默认不用 |
 | `inputs/<job>/product.json` | 商品参数表,每条事实都带证据 |
 | `work/<job>/` | labels / beats / script / segments / 提示词 |
 
 **音视频和图片不进仓库**(见 `.gitignore`):参考视频和抽帧里是原博主的脸和作品,成片太大,
 品牌产品图是别人的商标图。需要时由人在本地提供。
 
-## 现在要你接手的:用图像模型出每段的参考帧
+## 现在要你接手的:用 Codex 内置 ImageGen 出每段参考帧
 
 **问题**:H3 用的是 ref2va 多参考图模式,每段只绑"出镜人中景图 + 白底产品图"两张,构图全靠文字描述。
 a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变了、没拍成特写、多出一只手。
 另外,H3 文生视频出来的出镜人不够真实。
 
-**做法**:
+**Codex 负责到这里为止**:
 
-1. 用图像模型生成一个真实感更强的虚构出镜人
-2. 每段先出一张参考帧,构图、手的数量、产品摆法都由图片定死,H3 只负责让画面动起来
-3. 标签有密集小字的镜头,出图后把原始标签图贴回瓶身,保证字是原图像素
+1. 读取现有人物图、商品图和该段分镜要求
+2. 使用 Codex 当前会话自带的 ImageGen 生成或编辑真实感更强的虚构出镜人与分镜参考帧
+3. 检查人物一致性、构图、手的数量、商品形态和原品牌残留;不合格就在 ImageGen 中继续编辑
+4. 标签有密集小字时,不得让生成模型重画文字;改用原商品图像素或交给 Claude 走已验证的 `fully_preserved` / 慢推保底路径
+5. 全部图片完成后,最后写 `work/<job>/keyframes/READY.json`,然后停止
 
-**模型**:OpenRouter 的 `openai/gpt-5.4-image-2`(也可以试 `google/gemini-3-pro-image`)。
-key 只从环境变量 `OPENROUTER_API_KEY` 或 `~/.config/openrouter/key` 读,不要写进仓库。
+**明确不做**:
 
-**第一个测试**:`work/a2_test/keyframes/seg03_prompt.txt`,输入是 `presenter.jpg` 和 a2 背标图。
+- 不接 OpenAI Image API,不接 OpenRouter,不读取或配置任何图像 API key
+- 不上传服务器,不提交 H3,不重跑视频,不做最终成片验收
+- 不改 Claude 的监听、服务器和 H3 编排逻辑
 
-```bash
-python scripts/gen_keyframe.py --prompt-file work/a2_test/keyframes/seg03_prompt.txt \
-    --image inputs/a2_test/presenter.jpg --image target_A2_2.png \
-    --out work/a2_test/keyframes/seg03.png --n 2
-```
+以上后半段工作由 Claude Code 在看到 `READY.json` 后接手。
+
+**第一个测试**:`work/a2_test/keyframes/seg03_prompt.txt`,ImageGen 的输入是
+`inputs/a2_test/presenter.jpg` 和 `target_A2_2.png`,目标输出是
+`work/a2_test/keyframes/seg03.png`。
 
 出好的参考帧交给 H3 前要注意:
 
@@ -80,7 +84,7 @@ work/<job>/keyframes/
       "notes": "一只手握瓶,背标朝镜头;背标已用原图贴回"
     }
   },
-  "model": "openai/gpt-5.4-image-2",
+  "generator": "codex-imagegen",
   "created_by": "codex"
 }
 ```
@@ -96,3 +100,4 @@ work/<job>/keyframes/
 - 原稿里我们拿不出证据的宣称必须换掉;每条卖点都要挂 `product.json` 里的证据
 - 出镜人是虚构的,不编亲身经历("又囤了一箱")
 - `replica` 模式的稿子只做测试,不能批量发布
+- 今后新生成的目标口播、H3 台词、字幕和 CTA 只用英文;历史中文转写与测试产物仅作内部证据,不得流入新成片

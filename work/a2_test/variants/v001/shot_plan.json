@@ -1,0 +1,91 @@
+{
+  "schema": "shot-plan/v1",
+  "language": "en-AU",
+  "variant_id": "v001",
+  "segments": [
+    {
+      "id": "S01",
+      "segment": 1,
+      "duration_seconds": 5,
+      "dialogue": "Seeing all this milk, my husband asked if I'd won the lottery. He was confused.",
+      "shot_type": "medium_presenter",
+      "subject": "The same fictional woman stands behind a white marble kitchen island with a plain open cardboard shipping box.",
+      "action": "She opens the box and wraps one hand around the solid upper side of an upright a2 bottle, preparing to lift it while it remains seated in the case.",
+      "performance": "Playful disbelief: she leans toward the lens with one eyebrow raised, eyes engaged, and lips naturally parted mid-sentence while both hands stay active on the box and bottle.",
+      "keyframe_ids": ["1"],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": ["inputs/a2_test/presenter.jpg", "target_A2_1.png", "work/a2_test/video_analysis/anchor_s01.jpg"],
+      "preserve": ["presenter identity", "light-blue T-shirt", "kitchen", "handleless flat-front 2-litre bottle shape", "blue cap", "green front label"],
+      "exclude": ["original creator", "printed shipping-box branding", "other milk brands", "extra hands", "through-handle", "open grip hole", "jug silhouette"],
+      "label_policy": "product_reference_reinforcement"
+    },
+    {
+      "id": "S02",
+      "segment": 2,
+      "duration_seconds": 5,
+      "dialogue": "There are six two-litre bottles in the case, and each bottle is six dollars seventy-nine.",
+      "shot_type": "medium_quantity_display",
+      "subject": "The same fictional woman stands behind a stationary open cardboard shipping box containing six upright bottles.",
+      "action": "She presents all six bottles in the case; the insert then shows one bottle supported naturally from its lower side without a handle.",
+      "performance": "Excited value reveal: bright widened eyes, lifted brows, open mouth caught mid-word, and visible arm and shoulder effort from presenting a heavy six-bottle case.",
+      "keyframe_ids": ["2", "2b"],
+      "subshots": [
+        {
+          "id": "S02A",
+          "duration_seconds": 3,
+          "keyframe_id": "2",
+          "shot_type": "medium_quantity_display",
+          "action": "She presents the complete six-bottle case toward camera."
+        },
+        {
+          "id": "S02B",
+          "duration_seconds": 2,
+          "keyframe_id": "2b",
+          "shot_type": "handheld_product_hero_closeup",
+          "action": "Hard cut to one bottle held close enough for the front label and 2-litre format to dominate the frame."
+        }
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": ["work/a2_test/keyframes/seg01.png", "target_A2_1.png", "work/a2_test/video_analysis/anchor_s02.jpg"],
+      "preserve": ["presenter identity", "kitchen", "handleless flat-front bottle shape", "six-bottle total"],
+      "exclude": ["tilted box", "collapsed bottles", "paper milk cartons", "extra products", "through-handle", "open grip hole", "jug silhouette"],
+      "label_policy": "product_reference_reinforcement"
+    },
+    {
+      "id": "S03",
+      "segment": 3,
+      "duration_seconds": 5,
+      "dialogue": "Check the panel: milk is the only ingredient, with no additives or permeate.",
+      "shot_type": "product_label_closeup",
+      "subject": "Exactly one right hand supports a single handleless 2-litre bottle around its upper side and shoulder, with the back label square to camera.",
+      "action": "The bottle remains completely still in a locked close-up while the presenter speaks off camera.",
+      "performance": "The presenter remains off camera; natural grip pressure and relaxed finger variation keep the hand from looking posed or synthetic.",
+      "keyframe_ids": ["3"],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": ["inputs/a2_test/presenter.jpg", "target_A2_2.png"],
+      "preserve": ["one right hand", "light-blue sleeve", "handleless white bottle", "blue cap", "solid side indentations", "back-label placement"],
+      "exclude": ["second hand", "pointing finger", "presenter face", "other products", "invented packaging text", "through-handle", "open grip hole", "jug silhouette"],
+      "label_policy": "original_pixels_or_fully_preserved"
+    },
+    {
+      "id": "S04",
+      "segment": 4,
+      "duration_seconds": 5,
+      "dialogue": "It is A1 protein free, with three point three grams of protein per hundred millilitres.",
+      "shot_type": "medium_presenter_pour",
+      "subject": "The same fictional woman stands behind one uncapped a2 bottle and one empty clear glass on the kitchen island; the bottle is fully upright and seated flat on the counter.",
+      "action": "The first frame captures the lively setup before the pour; during the clip she picks up the bottle, tilts it into one steady stream, fills the glass, and presents it to camera.",
+      "performance": "Focused proof moment: she speaks while preparing to pour, with lips caught mid-phrase, brows attentive, and her gaze naturally moving between the bottle, glass, and viewer rather than holding a fixed smile.",
+      "keyframe_ids": ["4"],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": ["target_A2_1.png", "work/a2_test/keyframes/seg01.png"],
+      "preserve": ["presenter identity", "kitchen", "single upright tall handleless flat-front bottle", "reference-accurate bottle proportions", "bottle flat on counter", "blue cap removed", "complete green front label", "pre-pour setup frame"],
+      "exclude": ["tilted bottle in the first frame", "paper milk cartons", "other bottles", "milk stream in the first frame", "spilled milk", "extra hands", "generated overlay text", "through-handle", "open grip hole", "jug silhouette", "squat bottle", "bulbous bottle", "oval body pits", "phantom grip", "fingers across the bottle front"],
+      "label_policy": "product_reference_reinforcement"
+    }
+  ]
+}

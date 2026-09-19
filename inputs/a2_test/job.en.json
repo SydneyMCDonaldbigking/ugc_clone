@@ -1,0 +1,25 @@
+{
+  "schema": "ugc-job/v1",
+  "job_id": "a2_test_en",
+  "reference_video": "ref_video_2.mp4",
+  "source_language": "auto",
+  "target_language": "en-AU",
+  "mode": "structure",
+  "variants": 1,
+  "segment_duration_seconds": 5,
+  "max_segments_per_render": 4,
+  "product": "inputs/a2_test/product.en.json",
+  "beats": "work/a2_test/beats.json",
+  "script": "work/a2_test/variants/v001/script.en.json",
+  "shot_plan": "work/a2_test/variants/v001/shot_plan.json",
+  "keyframe_request": "work/a2_test/keyframes/REQUEST.json",
+  "state_file": "work/a2_test/state.en.json",
+  "events_file": "work/a2_test/events.en.jsonl",
+  "presenter": {
+    "mode": "generated_fictional",
+    "master_image": "inputs/a2_test/presenter.jpg"
+  },
+  "image_provider": "codex-imagegen",
+  "video_provider": "h3",
+  "human_review_required": true
+}

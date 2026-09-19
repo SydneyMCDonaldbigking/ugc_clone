@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "keyframe-request/v1",
+  "title": "Codex ImageGen keyframe request",
+  "type": "object",
+  "required": ["schema", "job", "variant_id", "source_job_id", "output_aspect_ratio", "prompt_template", "segments"],
+  "properties": {
+    "schema": {"const": "keyframe-request/v1"},
+    "job": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "source_job_id": {"type": "string", "minLength": 1},
+    "output_aspect_ratio": {"const": "9:16"},
+    "prompt_template": {"type": "string", "minLength": 1},
+    "segments": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["prompt_file", "references", "reference_roles", "product_fidelity_mode", "output", "checks"],
+        "properties": {
+          "prompt_file": {"type": "string", "minLength": 1},
+          "references": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "reference_roles": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "enum": ["product_identity", "presenter_identity", "presenter_and_scene_identity", "scene_identity", "composition_only"]
+            }
+          },
+          "product_fidelity_mode": {"enum": ["reference_lock", "pixel_preserve"]},
+          "product_placement": {"type": "object"},
+          "output": {"type": "string", "pattern": "^seg.*\\.png$"},
+          "checks": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

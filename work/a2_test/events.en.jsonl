@@ -1,0 +1,7 @@
+{"at": "2026-09-19T08:28:31.046556Z", "event": "job_initialized", "state": "created"}
+{"at": "2026-09-19T08:28:32.624878Z", "event": "state_advanced", "state": "beats_ready", "artifact": "work/a2_test/beats.json"}
+{"at": "2026-09-19T08:28:32.625893Z", "event": "state_advanced", "state": "facts_ready", "artifact": "inputs/a2_test/product.en.json"}
+{"at": "2026-09-19T08:28:32.626876Z", "event": "state_advanced", "state": "scripts_ready", "artifact": "work/a2_test/variants/v001/script.en.json"}
+{"at": "2026-09-19T08:28:32.626876Z", "event": "state_advanced", "state": "shots_ready", "artifact": "work/a2_test/variants/v001/shot_plan.json"}
+{"at": "2026-09-19T08:28:32.627888Z", "event": "state_advanced", "state": "awaiting_keyframes", "artifact": "work/a2_test/variants/v001/keyframes/REQUEST.json"}
+{"at": "2026-09-19T08:32:58.907748Z", "event": "artifact_updated", "state": "awaiting_keyframes", "artifact": "work/a2_test/keyframes/REQUEST.json"}

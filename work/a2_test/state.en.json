@@ -1,0 +1,34 @@
+{
+  "schema": "job-state/v1",
+  "job_id": "a2_test_en",
+  "state": "awaiting_keyframes",
+  "revision": 7,
+  "updated_at": "2026-09-19T08:32:58.907748Z",
+  "stages": {
+    "beats": {
+      "status": "passed",
+      "updated_at": "2026-09-19T08:28:32.624878Z",
+      "artifact": "work/a2_test/beats.json"
+    },
+    "facts": {
+      "status": "passed",
+      "updated_at": "2026-09-19T08:28:32.625893Z",
+      "artifact": "inputs/a2_test/product.en.json"
+    },
+    "scripts": {
+      "status": "passed",
+      "updated_at": "2026-09-19T08:28:32.625893Z",
+      "artifact": "work/a2_test/variants/v001/script.en.json"
+    },
+    "shots": {
+      "status": "passed",
+      "updated_at": "2026-09-19T08:28:32.626876Z",
+      "artifact": "work/a2_test/variants/v001/shot_plan.json"
+    },
+    "keyframe_request": {
+      "status": "passed",
+      "updated_at": "2026-09-19T08:32:58.907748Z",
+      "artifact": "work/a2_test/keyframes/REQUEST.json"
+    }
+  }
+}

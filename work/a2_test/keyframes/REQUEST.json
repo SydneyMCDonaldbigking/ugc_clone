@@ -1,0 +1,154 @@
+{
+  "schema": "keyframe-request/v1",
+  "job": "a2_test",
+  "pipeline_job_id": "a2_test_en",
+  "variant_id": "v001",
+  "source_job_id": "a2-replica-004",
+  "output_aspect_ratio": "9:16",
+  "prompt_template": "templates/keyframe_prompt.en.txt",
+  "source_analysis": "work/a2_test/video_analysis/analysis.json",
+  "segments": {
+    "1": {
+      "prompt_file": "work/a2_test/keyframes/seg01_prompt.txt",
+      "references": [
+        "inputs/a2_test/presenter.jpg",
+        "target_A2_1.png",
+        "work/a2_test/video_analysis/anchor_s01.jpg"
+      ],
+      "reference_roles": {
+        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "target_A2_1.png": "product_identity",
+        "work/a2_test/video_analysis/anchor_s01.jpg": "composition_only"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "occlusion": "natural_contact_allowed",
+        "fallback": "simplify_pose_before_product_drift"
+      },
+      "output": "seg01.png",
+      "checks": [
+        "The presenter identity, light-blue T-shirt, and kitchen match the presenter master image.",
+        "Her expression is playful and caught mid-sentence, not a closed-mouth catalogue smile.",
+        "Her torso and hands show active forward motion while opening the case.",
+        "A plain open cardboard case sits on the island and the presenter interacts with it naturally.",
+        "The product is a white 2-litre a2 bottle with a blue cap and green front label.",
+        "The bottle has a solid flat-front body with shallow side indentations and absolutely no handle opening.",
+        "No original creator, source watermark, source subtitles, carton-style milk pack, or extra hand appears."
+      ]
+    },
+    "2": {
+      "prompt_file": "work/a2_test/keyframes/seg02_prompt.txt",
+      "references": [
+        "work/a2_test/keyframes/seg01.png",
+        "target_A2_1.png",
+        "work/a2_test/video_analysis/anchor_s02.jpg"
+      ],
+      "reference_roles": {
+        "work/a2_test/keyframes/seg01.png": "presenter_and_scene_identity",
+        "target_A2_1.png": "product_identity",
+        "work/a2_test/video_analysis/anchor_s02.jpg": "composition_only"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "occlusion": "natural_contact_allowed",
+        "fallback": "simplify_pose_before_product_drift"
+      },
+      "output": "seg02.png",
+      "checks": [
+        "Exactly six upright 2-litre bottles are visible in one open plain cardboard case.",
+        "The presenter identity, light-blue T-shirt, and kitchen remain consistent with segment 1.",
+        "Her eyes, brows, open mouth, shoulders, and grip communicate an excited heavy-case reveal.",
+        "The case is held toward the camera in the source video's quantity-display composition.",
+        "No seventh bottle, collapsed bottle, paper carton, source watermark, or generated caption appears."
+        ,"All six bottles use the exact handleless flat-front silhouette from target_A2_1.png; no grip hole or jug handle appears."
+      ]
+    },
+    "2b": {
+      "script_segment": 2,
+      "role": "front-label product hero insert",
+      "duration_seconds": 2,
+      "prompt_file": "work/a2_test/keyframes/seg02b_prompt.txt",
+      "references": [
+        "target_A2_1.png",
+        "work/a2_test/video_analysis/anchor_s02b.jpg",
+        "work/a2_test/keyframes/seg01.png"
+      ],
+      "reference_roles": {
+        "target_A2_1.png": "product_identity",
+        "work/a2_test/video_analysis/anchor_s02b.jpg": "composition_only",
+        "work/a2_test/keyframes/seg01.png": "presenter_and_scene_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "occlusion": "hand_may_support_outer_edge_only",
+        "fallback": "static_packshot"
+      },
+      "output": "seg02b.png",
+      "checks": [
+        "A single a2 2-litre bottle fills most of the vertical frame in a handheld UGC close-up.",
+        "The blue cap, solid shallow side indentations, green front label, a2 mark, Full cream line, and 2L mark are visible.",
+        "The bottle has no through-handle, open grip hole, or detergent-jug silhouette.",
+        "Natural hand pressure, a slight camera tilt, and shallow kitchen background provide live creator energy.",
+        "No face, second bottle, paper carton, source watermark, source subtitle, or generated overlay appears."
+      ]
+    },
+    "3": {
+      "prompt_file": "work/a2_test/keyframes/seg03_prompt.txt",
+      "references": [
+        "inputs/a2_test/presenter.jpg",
+        "target_A2_2.png"
+      ],
+      "reference_roles": {
+        "inputs/a2_test/presenter.jpg": "presenter_identity",
+        "target_A2_2.png": "product_identity"
+      },
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "occlusion": "product_in_front_of_hands",
+        "fallback": "static_packshot"
+      },
+      "output": "seg03.png",
+      "checks": [
+        "Exactly one right hand is visible.",
+        "The bottle is supported around its upper side and shoulder; it has no handle or grip opening.",
+        "The back label faces the camera in a locked close-up.",
+        "No original creator, second hand, pointing finger, or other product appears.",
+        "Dense label text is not accepted as generated replacement copy."
+        ,"The silhouette stays identical to target_A2_2.png: solid body, no through-handle, no open grip hole."
+      ]
+    },
+    "4": {
+      "prompt_file": "work/a2_test/keyframes/seg04_prompt.txt",
+      "references": [
+        "target_A2_1.png",
+        "work/a2_test/keyframes/seg01.png"
+      ],
+      "reference_roles": {
+        "target_A2_1.png": "product_identity",
+        "work/a2_test/keyframes/seg01.png": "presenter_and_scene_identity"
+      },
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "product_in_front_of_hands",
+        "first_frame_action": "pre_action_setup",
+        "fallback": "static_product_first_frame"
+      },
+      "output": "seg04.png",
+      "checks": [
+        "The presenter identity, light-blue T-shirt, and kitchen match segments 1 and 2.",
+        "Her lips are caught mid-explanation and her attentive gaze connects the imminent demonstration with the viewer.",
+        "This is the setup immediately before pouring: exactly one uncapped bottle stands fully upright and flat on the counter beside one empty clear glass, with no milk stream yet.",
+        "The complete tall bottle silhouette remains visible with reference-accurate height-to-width proportions, broad flat face, and long shallow vertical side grooves.",
+        "The blue cap rests on the island and the complete green front label faces camera without skew or crop.",
+        "Her bottle hand reaches around the solid sidewall from behind so only relaxed fingertips appear at the far outer edge; no finger crosses the front face or upper moulding.",
+        "No handle opening, oval body pits, paper carton, extra bottle, extra hand, spill, source watermark, or generated caption appears."
+      ]
+    }
+  }
+}

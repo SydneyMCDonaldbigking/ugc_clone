@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "keyframe-ready/v1",
+  "title": "Codex ImageGen keyframe completion signal",
+  "type": "object",
+  "required": ["schema", "job", "variant_id", "source_job_id", "segments", "generator", "created_by"],
+  "properties": {
+    "schema": {"const": "keyframe-ready/v1"},
+    "job": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "source_job_id": {"type": "string", "minLength": 1},
+    "segments": {"type": "object", "minProperties": 1},
+    "generator": {"const": "codex-imagegen"},
+    "created_by": {"const": "codex"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "keyframe-qc/v1",
+  "job": "a2_test",
+  "pipeline_job_id": "a2_test_en",
+  "variant_id": "v001",
+  "source_analysis": "work/a2_test/video_analysis/analysis.json",
+  "result": "failed",
+  "blocking_defect": "Segment 4 attempt 6 still redraws the package and drifts from the original product; product identity must be preserved rather than approximated.",
+  "pending_segments": ["4"],
+  "segments": {
+    "1": {
+      "file": "seg01.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "ae5598c5042ec04ae4b45558139da4f65067fe053d48eb88152a3bb22950dccc",
+      "attempt": 4,
+      "checks": ["presenter continuity", "opening-case composition", "single handleless a2 bottle", "solid bottle shoulder grip below cap", "bottle seated in case", "playful mid-speech expression", "no source-person leakage", "no overlay text"]
+    },
+    "2": {
+      "file": "seg02.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "2566c32761c40a105c3b9c2232ae3982d4de649dd5b46fecb262b1ca2e98dff4",
+      "attempt": 3,
+      "checks": ["presenter continuity", "exactly six handleless bottles", "two rows of three", "six blue caps", "solid bottle bodies with no grip openings", "excited mid-speech expression", "visible case weight", "no overlay text"]
+    },
+    "2b": {
+      "file": "seg02b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "1407ed66625f3f88c1a1516987986ec59541d87f4212820b25c6547b5cb3777c",
+      "attempt": 2,
+      "checks": ["single handleless bottle", "solid body with no grip opening", "single supporting hand", "front label hero close-up", "2L mark visible", "handheld UGC angle", "no face", "no overlay text"]
+    },
+    "3": {
+      "file": "seg03.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "c1e7bbe03110f431d45e9801b809add1eea0fad9d0562d9fc7add49547898d10",
+      "attempt": 2,
+      "checks": ["single right hand", "solid side and shoulder support", "handleless body", "complete back label close-up", "no face", "no second product"]
+    }
+  },
+  "reviewed_by": "codex"
+}
