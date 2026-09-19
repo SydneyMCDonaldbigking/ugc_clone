@@ -24,6 +24,8 @@
   写进 `QC.json` 的说明里交回,不自己改稿子和分镜
 - **服务器只在第 7 步出现**。服务器掉线只影响第 7 步,前面的步骤照常做
 - 每一步都有"做完的信号";没看到上一步的信号,下一步不开始
+- 本地脚本和测试统一用 conda 环境 `ugc_asr` 的 Python(`D:/anaconda/envs/ugc_asr/python.exe`),
+  里面有 numpy、Pillow、faster-whisper;系统自带的 Python 缺 numpy,跑测试会误报
 
 这个仓库做一件事:拿一条别人跑通的带货口播视频,拆出节拍表,换成我们自己的商品、价格和 AI 出镜人,
 再用服务器上的本地 MiniMax H3 重新生成视频。
