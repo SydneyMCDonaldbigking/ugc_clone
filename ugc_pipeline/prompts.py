@@ -55,12 +55,12 @@ def _describe_product(product: dict[str, Any]) -> str:
     return ", ".join(parts) or "as shown"
 
 
-def _product_image_label(segment_request: dict[str, Any]) -> str:
+def _image_label(segment_request: dict[str, Any], wanted_roles: set[str], fallback: str) -> str:
     roles = segment_request.get("reference_roles", {})
     for index, path in enumerate(segment_request.get("references", []), start=1):
-        if roles.get(path) == "product_identity":
+        if roles.get(path) in wanted_roles:
             return f"Image {index}"
-    return "the product reference"
+    return fallback
 
 
 def render_keyframe_prompt(
@@ -84,9 +84,12 @@ def render_keyframe_prompt(
     values = {
         "REFERENCE_ROLE_MAP": _format_reference_roles(segment_request),
         "FIRST_FRAME": str(first_frame),
-        "PERFORMANCE": str(segment.get("performance", "")),
+        "PERFORMANCE": str(shot.get("performance") or segment.get("performance", "")),
         "PRODUCT_NAME": str(product.get("name", "the product")),
-        "PRODUCT_IMAGE": _product_image_label(segment_request),
+        "PRODUCT_IMAGE": _image_label(segment_request, {"product_identity"}, "the product reference"),
+        "PRESENTER_IMAGE": _image_label(
+            segment_request, {"presenter_identity", "presenter_and_scene_identity"}, "the presenter master"
+        ),
         "PRODUCT_DESCRIPTION": _describe_product(product),
         "PRODUCT_FIDELITY_INSTRUCTION": FIDELITY_INSTRUCTIONS[mode],
     }

@@ -5,14 +5,59 @@
   "variant_id": "v001",
   "source_analysis": "work/a2_test/video_analysis/analysis.json",
   "result": "failed",
-  "blocking_defect": "Segments 1, 2 and 2b must be regenerated without source-video frames (seg01 first, since 2 and 2b reference it); segment 4 still redraws the package.",
+  "blocking_defect": "Segment 4 still needs a product-faithful pre-pour frame. The next ImageGen call is pending because the current usage window is exhausted; if the package still drifts, use H3 fully_preserved or the static packshot fallback.",
   "pending_segments": [
-    "1",
-    "2",
-    "2b",
     "4"
   ],
   "segments": {
+    "1": {
+      "file": "seg01.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "b95e5c0ed9797b4c6dee96d50f9f44356c95d07dfe525a35d661eb9013d7cc79",
+      "attempt": 5,
+      "checks": [
+        "generated only from presenter.jpg, target_A2_1.png, and written shot instructions",
+        "presenter identity and kitchen continuity",
+        "playful asymmetric mid-speech expression",
+        "exactly two anatomically valid hands",
+        "single upright handleless bottle seated in the box",
+        "bottle hand stays below the cap on the solid shoulder",
+        "no source-video frame, source creator, watermark, subtitle, or overlay text"
+      ]
+    },
+    "2": {
+      "file": "seg02.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "3f78cf9077508a1488fb1fc101eef672737401c1ae11d1230e4b9cd1236ad90e",
+      "attempt": 4,
+      "checks": [
+        "generated only from the new seg01.png, target_A2_1.png, and written shot instructions",
+        "presenter identity and kitchen continuity",
+        "excited open-mouth quantity-reveal expression",
+        "exactly six separate upright bottles in two rows of three",
+        "exactly six visible blue caps",
+        "all bottles remain solid and handleless without collapse or merging",
+        "exactly two hands bracing the box",
+        "no source-video frame, source creator, watermark, subtitle, or overlay text"
+      ]
+    },
+    "2b": {
+      "file": "seg02b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "f13656f4fef1efd2302c206fceb0e2e1da591acc1bb5d8a3b1ac677fc462795c",
+      "attempt": 3,
+      "checks": [
+        "generated only from target_A2_1.png, the new seg01.png, and written shot instructions",
+        "single complete front-facing handleless bottle",
+        "single lower-side supporting hand with no face or second hand",
+        "complete front label, blue cap, base, and 2L mark",
+        "shallow live handheld close-up with matching kitchen continuity",
+        "no source-video frame, source creator, watermark, subtitle, or overlay text"
+      ]
+    },
     "3": {
       "file": "seg03.png",
       "width": 941,
@@ -30,61 +75,5 @@
       "note": "Generated from presenter + back label only, so unaffected by the source-frame issue. The image predates the 20:29 prompt rewrite; QC is against the image, not the current prompt text."
     }
   },
-  "reviewed_by": "codex",
-  "invalidated": {
-    "1": {
-      "file": "seg01.png",
-      "width": 941,
-      "height": 1672,
-      "sha256": "ae5598c5042ec04ae4b45558139da4f65067fe053d48eb88152a3bb22950dccc",
-      "attempt": 4,
-      "checks": [
-        "presenter continuity",
-        "opening-case composition",
-        "single handleless a2 bottle",
-        "solid bottle shoulder grip below cap",
-        "bottle seated in case",
-        "playful mid-speech expression",
-        "no source-person leakage",
-        "no overlay text"
-      ],
-      "reason": "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
-    },
-    "2": {
-      "file": "seg02.png",
-      "width": 941,
-      "height": 1672,
-      "sha256": "2566c32761c40a105c3b9c2232ae3982d4de649dd5b46fecb262b1ca2e98dff4",
-      "attempt": 3,
-      "checks": [
-        "presenter continuity",
-        "exactly six handleless bottles",
-        "two rows of three",
-        "six blue caps",
-        "solid bottle bodies with no grip openings",
-        "excited mid-speech expression",
-        "visible case weight",
-        "no overlay text"
-      ],
-      "reason": "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
-    },
-    "2b": {
-      "file": "seg02b.png",
-      "width": 941,
-      "height": 1672,
-      "sha256": "1407ed66625f3f88c1a1516987986ec59541d87f4212820b25c6547b5cb3777c",
-      "attempt": 2,
-      "checks": [
-        "single handleless bottle",
-        "solid body with no grip opening",
-        "single supporting hand",
-        "front label hero close-up",
-        "2L mark visible",
-        "handheld UGC angle",
-        "no face",
-        "no overlay text"
-      ],
-      "reason": "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
-    }
-  }
+  "reviewed_by": "codex"
 }

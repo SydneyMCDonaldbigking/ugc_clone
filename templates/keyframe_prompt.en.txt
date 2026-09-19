@@ -3,6 +3,7 @@ Photorealistic vertical 9:16 smartphone photo, the first frame of a home product
 {{REFERENCE_ROLE_MAP}}
 
 Scene: {{FIRST_FRAME}}
+Same person, same outfit, same room and light as {{PRESENTER_IMAGE}}.
 Expression: {{PERFORMANCE}}
 
 Product: {{PRODUCT_NAME}}, copied exactly from {{PRODUCT_IMAGE}} - {{PRODUCT_DESCRIPTION}}. {{PRODUCT_FIDELITY_INSTRUCTION}}

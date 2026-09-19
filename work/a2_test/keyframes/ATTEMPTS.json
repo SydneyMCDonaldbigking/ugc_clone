@@ -60,6 +60,18 @@
         "defects": [
           "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
         ]
+      },
+      {
+        "attempt": 5,
+        "file": "seg01.png",
+        "result": "pass",
+        "checks": [
+          "presenter and product references only; no source-video image",
+          "single handleless bottle seated in the case",
+          "two valid hands with the bottle grip below the cap",
+          "playful asymmetric mid-speech expression",
+          "no watermark, subtitle, or overlay text"
+        ]
       }
     ],
     "2": [
@@ -103,6 +115,18 @@
         "defects": [
           "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
         ]
+      },
+      {
+        "attempt": 4,
+        "file": "seg02.png",
+        "result": "pass",
+        "checks": [
+          "new seg01 and product references only; no source-video image",
+          "exactly six upright handleless bottles in two rows of three",
+          "six visible blue caps",
+          "two valid hands bracing a level box",
+          "excited mid-speech quantity reveal"
+        ]
       }
     ],
     "2b": [
@@ -136,6 +160,17 @@
         "result": "invalidated",
         "defects": [
           "Invalidated 2026-09-19 by review: generated with a frame from the reference video (video_analysis/anchor_*.jpg) as a composition reference, which carries the source creator's face, product, watermark and captions. Regenerate from presenter + product references and the shot text only."
+        ]
+      },
+      {
+        "attempt": 3,
+        "file": "seg02b.png",
+        "result": "pass",
+        "checks": [
+          "product and new seg01 references only; no source-video image",
+          "single complete front-facing handleless bottle",
+          "single supporting hand with no face or second hand",
+          "complete front label, cap, base, and 2L mark"
         ]
       }
     ],

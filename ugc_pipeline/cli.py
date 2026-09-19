@@ -111,6 +111,13 @@ def command_keyframe_status(args: argparse.Namespace, repo_root: Path) -> int:
         return 1
     qc = load_json(qc_path)
     result = validate_keyframe_qc(qc, qc_path, request)
+    presenter = job.get("presenter") if isinstance(job.get("presenter"), dict) else {}
+    if not isinstance(presenter.get("approval"), dict):
+        result.error(
+            "presenter.unapproved",
+            "job.presenter.approval",
+            "The operator has not approved the presenter master; run scripts/set_presenter_master.py after review.",
+        )
     if not ready_path.exists():
         print_result(result)
         print(json.dumps({"job_id": job["job_id"], "state": "awaiting_keyframes", "ready": False, "qc": "pass" if result.ok else "failed"}, indent=2))

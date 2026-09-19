@@ -4,6 +4,7 @@ Image 1: the presenter: face, hair, outfit and room.
 Image 2: the product.
 
 Scene: She stands behind a white marble kitchen island, both hands opening the flaps of a plain cardboard box. One a2 bottle stands upright on the island beside the box, front label facing the camera.
+Same person, same outfit, same room and light as Image 1.
 Expression: Playful disbelief: she leans toward the lens with one eyebrow raised, eyes engaged, and lips naturally parted mid-sentence while both hands stay active on the box and bottle.
 
 Product: a2 Milk Full Cream 2L, copied exactly from Image 2 - opaque white rectangular 2-litre HDPE bottle, wide ribbed blue screw cap. Keep it identical to the reference photo; simplify the pose rather than change the product.

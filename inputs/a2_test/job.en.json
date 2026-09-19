@@ -17,7 +17,8 @@
   "events_file": "work/a2_test/events.en.jsonl",
   "presenter": {
     "mode": "generated_fictional",
-    "master_image": "inputs/a2_test/presenter.jpg"
+    "master_image": "inputs/a2_test/presenter.jpg",
+    "note": "Interim master: the H3 text-to-video frame used in a2-replica-004. Not approved for the English job; Codex proposes a more realistic ImageGen master (same person and kitchen, no product) and the operator approves it with scripts/set_presenter_master.py."
   },
   "image_provider": "codex-imagegen",
   "video_provider": "h3",

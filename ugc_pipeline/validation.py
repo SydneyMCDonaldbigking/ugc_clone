@@ -592,6 +592,7 @@ def validate_keyframe_coverage(
     request: dict[str, Any],
     shot_plan: dict[str, Any],
     job: dict[str, Any],
+    repo_root: Path | None = None,
 ) -> ValidationResult:
     result = ValidationResult()
     expected: set[str] = set()
@@ -611,6 +612,41 @@ def validate_keyframe_coverage(
             "request.segments",
             f"Requested keyframes {sorted(actual)} do not exactly cover shot-plan segments {sorted(expected)}.",
         )
+
+    # Person and scene continuity come from one approved presenter master (no product in it). Every
+    # keyframe's presenter reference must be exactly that file, and an approval record pins its hash.
+    presenter = job.get("presenter") if isinstance(job.get("presenter"), dict) else {}
+    master = presenter.get("master_image")
+    presenter_roles = {"presenter_identity", "presenter_and_scene_identity"}
+    if isinstance(request_segments, dict):
+        for segment_id, segment in request_segments.items():
+            roles = segment.get("reference_roles") if isinstance(segment, dict) else None
+            for raw_path, role in (roles.items() if isinstance(roles, dict) else []):
+                if role in presenter_roles and raw_path != master:
+                    result.error(
+                        "request.presenter_master",
+                        f"request.segments.{segment_id}.reference_roles",
+                        f"Presenter reference {raw_path} must be the job's presenter master ({master}).",
+                    )
+    approval = presenter.get("approval")
+    if not isinstance(approval, dict):
+        result.warning(
+            "presenter.unapproved",
+            "job.presenter.approval",
+            f"Presenter master {master} is not approved yet; keyframes cannot be handed to H3 until it is.",
+        )
+    if repo_root is not None and isinstance(master, str) and isinstance(approval, dict):
+        try:
+            master_path = resolve_repo_path(repo_root, master)
+        except (ValueError, FileNotFoundError) as exc:
+            result.error("presenter.master", "job.presenter.master_image", str(exc))
+        else:
+            if sha256_file(master_path) != str(approval.get("sha256", "")).lower():
+                result.error(
+                    "presenter.approval",
+                    "job.presenter.approval.sha256",
+                    "The presenter master changed after approval; re-approve it with scripts/set_presenter_master.py.",
+                )
 
     if request.get("pipeline_job_id") != job.get("job_id"):
         result.error(
@@ -748,7 +784,7 @@ def validate_bundle(job_path: Path, repo_root: Path) -> tuple[ValidationResult, 
     result.extend(validate_script(script, beats, product))
     result.extend(validate_shot_plan(shot_plan, script))
     result.extend(validate_keyframe_request(request, repo_root, product))
-    result.extend(validate_keyframe_coverage(request, shot_plan, job))
+    result.extend(validate_keyframe_coverage(request, shot_plan, job, repo_root))
     return result, {
         "job": job,
         "product": product,

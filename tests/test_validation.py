@@ -163,6 +163,24 @@ class EnglishValidationTests(unittest.TestCase):
         codes = {issue.code for issue in validate_keyframe_request(request, ROOT, self.product).errors}
         self.assertIn("request.product_orientation", codes)
 
+    def test_presenter_reference_must_be_job_master(self) -> None:
+        request = copy.deepcopy(self.request)
+        seg = request["segments"]["1"]
+        other = "target_A2_2.png"
+        seg["references"] = [other, "target_A2_1.png"]
+        seg["reference_roles"] = {other: "presenter_identity", "target_A2_1.png": "product_identity"}
+        result = validate_keyframe_coverage(request, self.shot_plan, self.job, ROOT)
+        self.assertIn("request.presenter_master", {issue.code for issue in result.errors})
+
+    def test_unapproved_master_warns_and_changed_master_fails(self) -> None:
+        job = copy.deepcopy(self.job)
+        job["presenter"].pop("approval", None)
+        warned = validate_keyframe_coverage(self.request, self.shot_plan, job, ROOT)
+        self.assertIn("presenter.unapproved", {issue.code for issue in warned.warnings})
+        job["presenter"]["approval"] = {"sha256": "0" * 64, "approved_by": "test"}
+        failed = validate_keyframe_coverage(self.request, self.shot_plan, job, ROOT)
+        self.assertIn("presenter.approval", {issue.code for issue in failed.errors})
+
 
 if __name__ == "__main__":
     unittest.main()

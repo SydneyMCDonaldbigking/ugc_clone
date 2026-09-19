@@ -4,7 +4,8 @@ Image 1: the presenter: face, hair, outfit and room.
 Image 2: the product.
 
 Scene: Close-up: one a2 bottle stands upright on the marble island, front label square to the camera and filling most of the frame. Her fingertips rest on the far edge of the bottle.
-Expression: Excited value reveal: bright widened eyes, lifted brows, open mouth caught mid-word, and visible arm and shoulder effort from presenting a heavy six-bottle case.
+Same person, same outfit, same room and light as Image 1.
+Expression: Face out of frame; one relaxed hand with natural finger spacing and light contact.
 
 Product: a2 Milk Full Cream 2L, copied exactly from Image 2 - opaque white rectangular 2-litre HDPE bottle, wide ribbed blue screw cap. Keep it identical to the reference photo; simplify the pose rather than change the product.
 
