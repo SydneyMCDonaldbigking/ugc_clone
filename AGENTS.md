@@ -55,6 +55,41 @@ python scripts/gen_keyframe.py --prompt-file work/a2_test/keyframes/seg03_prompt
 - **参考帧里不能有原博主的脸或原片里的产品**
 - 出镜人必须是虚构人物,每段都用同一个人
 
+## 做完图怎么交给 Claude Code(自动交接)
+
+Claude Code 在同一个文件夹里盯着 `work/<job>/keyframes/READY.json`。你**最后一步**写这个文件,
+Claude 看到后会自动接手:检查图 → 传服务器 → H3 单段重跑 → 出片。**图全部写完之后再写 READY.json**,
+不要先写。
+
+```
+work/<job>/keyframes/
+  seg03.png            每段一张参考帧,9:16 竖图,文件名 segNN.png(NN 是分镜号)
+  READY.json           最后写
+```
+
+`READY.json` 的格式:
+
+```json
+{
+  "job": "a2_test",
+  "source_job_id": "a2-replica-004",
+  "segments": {
+    "3": {
+      "keyframe": "seg03.png",
+      "extra_refs": ["target_A2_2.png"],
+      "notes": "一只手握瓶,背标朝镜头;背标已用原图贴回"
+    }
+  },
+  "model": "openai/gpt-5.4-image-2",
+  "created_by": "codex"
+}
+```
+
+- `source_job_id`:在哪一轮成片的基础上重跑(a2_test 目前是 `a2-replica-004`)
+- `keyframe` 会作为该段的 `<Picture 1>`,`extra_refs` 按顺序排在后面(路径相对仓库根目录)
+- 只列有新参考帧的段,其余段沿用原片
+- 画面需要调整时,可以在该段加 `"prompt_hint": "..."`,Claude 会据此改写该段的 H3 提示词
+
 ## 红线(任何模式都一样)
 
 - 不拿原片的帧当参考图,不克隆原博主的声音
