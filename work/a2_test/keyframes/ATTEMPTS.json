@@ -279,6 +279,19 @@
           "Compile product-specific constraints from product.visual_identity and reference-role metadata.",
           "Use pixel-preserved product placement for identity-critical shots instead of asking ImageGen to redraw the package."
         ]
+      },
+      {
+        "attempt": 7,
+        "file": "seg04.png",
+        "result": "pass",
+        "checks": [
+          "product and new seg01 references only; no source-video image",
+          "upright front-facing product stays in the supplied product view",
+          "reference-matched tall silhouette, shoulders, neck, base, and recessed panels",
+          "complete readable front label without crop or obvious text corruption",
+          "one empty glass, two valid hands, and one opaque blue cap",
+          "lively forward-leaning mid-speech pre-pour performance"
+        ]
       }
     ]
   }

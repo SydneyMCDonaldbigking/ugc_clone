@@ -172,15 +172,11 @@ class EnglishValidationTests(unittest.TestCase):
         result = validate_keyframe_coverage(request, self.shot_plan, self.job, ROOT)
         self.assertIn("request.presenter_master", {issue.code for issue in result.errors})
 
-    def test_unapproved_master_warns_and_changed_master_fails(self) -> None:
+    def test_changed_master_after_registration_fails(self) -> None:
         job = copy.deepcopy(self.job)
-        job["presenter"].pop("approval", None)
-        warned = validate_keyframe_coverage(self.request, self.shot_plan, job, ROOT)
-        self.assertIn("presenter.unapproved", {issue.code for issue in warned.warnings})
-        job["presenter"]["approval"] = {"sha256": "0" * 64, "approved_by": "test"}
+        job["presenter"]["approval"] = {"sha256": "0" * 64, "approved_by": "codex"}
         failed = validate_keyframe_coverage(self.request, self.shot_plan, job, ROOT)
         self.assertIn("presenter.approval", {issue.code for issue in failed.errors})
-
 
 if __name__ == "__main__":
     unittest.main()

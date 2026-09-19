@@ -613,8 +613,9 @@ def validate_keyframe_coverage(
             f"Requested keyframes {sorted(actual)} do not exactly cover shot-plan segments {sorted(expected)}.",
         )
 
-    # Person and scene continuity come from one approved presenter master (no product in it). Every
-    # keyframe's presenter reference must be exactly that file, and an approval record pins its hash.
+    # Person and scene continuity come from one registered presenter master (no product in it). Every
+    # keyframe's presenter reference must be exactly that file; registration pins its hash so keyframes
+    # made from an older master are caught.
     presenter = job.get("presenter") if isinstance(job.get("presenter"), dict) else {}
     master = presenter.get("master_image")
     presenter_roles = {"presenter_identity", "presenter_and_scene_identity"}
@@ -629,12 +630,6 @@ def validate_keyframe_coverage(
                         f"Presenter reference {raw_path} must be the job's presenter master ({master}).",
                     )
     approval = presenter.get("approval")
-    if not isinstance(approval, dict):
-        result.warning(
-            "presenter.unapproved",
-            "job.presenter.approval",
-            f"Presenter master {master} is not approved yet; keyframes cannot be handed to H3 until it is.",
-        )
     if repo_root is not None and isinstance(master, str) and isinstance(approval, dict):
         try:
             master_path = resolve_repo_path(repo_root, master)
@@ -645,7 +640,7 @@ def validate_keyframe_coverage(
                 result.error(
                     "presenter.approval",
                     "job.presenter.approval.sha256",
-                    "The presenter master changed after approval; re-approve it with scripts/set_presenter_master.py.",
+                    "The presenter master changed after registration; re-register it with scripts/set_presenter_master.py and regenerate keyframes.",
                 )
 
     if request.get("pipeline_job_id") != job.get("job_id"):

@@ -4,11 +4,8 @@
   "pipeline_job_id": "a2_test_en",
   "variant_id": "v001",
   "source_analysis": "work/a2_test/video_analysis/analysis.json",
-  "result": "failed",
-  "blocking_defect": "Segment 4 still needs a product-faithful pre-pour frame. The next ImageGen call is pending because the current usage window is exhausted; if the package still drifts, use H3 fully_preserved or the static packshot fallback.",
-  "pending_segments": [
-    "4"
-  ],
+  "result": "pass",
+  "pending_segments": [],
   "segments": {
     "1": {
       "file": "seg01.png",
@@ -73,6 +70,24 @@
         "no second product"
       ],
       "note": "Generated from presenter + back label only, so unaffected by the source-frame issue. The image predates the 20:29 prompt rewrite; QC is against the image, not the current prompt text."
+    },
+    "4": {
+      "file": "seg04.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "fd08d60571a34bf9fce95e56b582c95a9152d5084c345d3f5581092849f670a3",
+      "attempt": 7,
+      "checks": [
+        "generated only from target_A2_1.png, the new seg01.png, and written shot instructions",
+        "presenter identity and kitchen continuity",
+        "lively asymmetric forward-leaning mid-speech performance",
+        "single upright front-facing bottle in the same supplied product view",
+        "reference-matched tall proportions, rounded shoulders, short neck, flat base, and two long curved recessed panels",
+        "complete readable front label with a2 roundel, Full cream band, bottom line, and 2L mark",
+        "one empty glass, exactly two valid hands, and one opaque blue cap",
+        "no milk stream in the pre-pour first frame",
+        "no handle, grip hole, oval pits, package crop, source-video image, watermark, subtitle, or overlay text"
+      ]
     }
   },
   "reviewed_by": "codex"

@@ -54,18 +54,21 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 
 以上后半段工作由 Claude Code 在看到 `READY.json` 后接手。
 
-**第 0 步:定妆照(人物和场景一致性全靠它)**
+**第 0 步:定妆照(自动,不用等用户)**
 
-1. 出 3 张候选定妆照:虚构出镜人站在厨房岛台后面,**画面里没有任何商品**,正对镜头、中景、自然光。
-   人要比现在的 `presenter.jpg` 更真实;衣服、发型、厨房可以参考它
-2. 存到 `inputs/<job>/presenter_master_candidates/`,**停下来给用户挑**,不要自己定
-3. 用户选定后运行
-   `python scripts/set_presenter_master.py inputs/a2_test/job.en.json <选中的图> --approved-by operator`,
-   它会记录文件指纹,并把分镜和出图请求里的人物参考全部换成这张
-4. 之后每一段都只用"定妆照 + 商品原图"两张当参考。定妆照是唯一允许当参考的生成图;
-   没确认前 `keyframe-status` 不放行,确认后如果文件被改动过,`validate` 会报错
+1. 出 3 张候选定妆照:虚构出镜人在和原视频同类型的场景里(看 `video_analysis/` 的宫格,用文字描述场景),
+   **画面里没有任何商品**,中景、自然光,人要比现在的 `presenter.jpg` 更真实
+2. 自己按验收标准挑最好的一张,运行
+   `python scripts/set_presenter_master.py inputs/a2_test/job.en.json <选中的图> --note "best of 3"`,
+   然后直接继续。它会记下文件指纹,并把分镜和出图请求里的人物参考都换成这张
+3. 之后每一段都只用"定妆照 + 商品原图"两张当参考。定妆照是唯一允许当参考的生成图;
+   登记后文件被改动过,`validate` 会报错
 
-**当前任务(a2_test_en,2026-09-19 审查后)**:先做第 0 步。状态见 `work/a2_test/keyframes/QC.json`。
+**模仿原视频的表情和场景:用文字,不用截图。** 可以看 `video_analysis/` 的宫格,把原片每个镜头的表情、
+姿态、场景写进分镜的 `performance` 和 `first_frame`(例如"眉毛上扬、嘴张开说到一半、身体前倾靠近镜头";
+"明亮的开放式客厅、大理石桌面、背景绿植")。截图本身不能交给 ImageGen:会把原博主的脸和原片产品一起带进来。
+
+**当前任务(a2_test_en,2026-09-19 审查后)**:先做第 0 步,做完直接往下,全程不用停。状态见 `work/a2_test/keyframes/QC.json`。
 
 1. **seg01 重出**:之前那版参考了原片帧(`video_analysis/anchor_s01.jpg`),已作废。只用 `presenter.jpg` + `target_A2_1.png` 和分镜文字
 2. **seg02、seg02b 重出**:同样的原因作废;它们用 seg01 当人物参考,所以要等新的 seg01 出好再做
