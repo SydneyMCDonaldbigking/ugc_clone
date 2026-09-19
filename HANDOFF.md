@@ -4,7 +4,7 @@
 读完应该能直接开工,不需要回头问人。
 
 日期:2026-09-17
-状态:**需求已澄清,方案已论证,尚未开工**
+状态:**已跑通两条测试(umall_test、a2_test,均为 replica 模式)**,结构版量产未验证。进度见 `WORKFLOW.md`,做法见 `.claude/skills/ugc-voiceover-clone/SKILL.md`
 
 ---
 
