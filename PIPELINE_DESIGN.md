@@ -48,7 +48,8 @@ These are design constraints, not open questions.
 | Operator | Supplies the reference video, product images, verified product facts, price, market, and final approval | Approves or rejects the final deliverable |
 | Claude Code | Orchestration, source analysis, beat construction, English script generation, shot planning, keyframe request creation, H3 submission, reruns, assembly, technical QA | Produces a final review package |
 | Codex | Reads the keyframe request, uses built-in ImageGen, inspects/iterates images, writes keyframe files and `READY.json` | `keyframes_ready` |
-| GPU worker | ASR and H3 generation/upscaling | Returns artifacts and machine report |
+| Local workstation | Transcription (conda env `ugc_asr`, RTX 4070), reference archive, scripts, keyframes, H3 prompt compilation | Hands finished scripts and keyframes to the server |
+| GPU server | H3 generation and upscaling only | Returns artifacts and machine report |
 
 No actor silently takes over another actor's stage. Handoffs happen through versioned JSON files and artifact hashes.
 
@@ -673,7 +674,7 @@ Events append to `events.jsonl`; state changes never depend only on terminal out
 - Product jobs may be planned concurrently.
 - Keyframes for one presenter are generated in a controlled sequence so identity can be compared against the same master.
 - The single 4090 H3 worker processes one heavy render/upscale job at a time unless measured capacity proves otherwise.
-- ASR may run alongside H3 only while observed VRAM headroom remains safe.
+- ASR runs on the local workstation; the GPU server is reserved for H3.
 - Full renders and reruns use separate queue priorities; final-blocking reruns outrank new variants.
 - A lock file or atomic state transition prevents duplicate submission of the same render manifest.
 

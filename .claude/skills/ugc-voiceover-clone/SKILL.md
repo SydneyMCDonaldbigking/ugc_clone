@@ -35,8 +35,10 @@ description: 拿一条别人跑通的带货口播视频,拆出节拍表,换成�
 
 ## 分工
 
-- **本地 Windows**:编排、ffmpeg 轻量检查、写脚本、标注节拍表、写稿。**不装 Python 环境**
-- **服务器 `doubleflow`**:转写、yt-dlp、H3。只能走国内镜像。工作目录 `/opt/ugc_clone`
+- **本地 Windows:所有分析和准备**。转写(conda 环境 `ugc_asr`,4070 够用)、原片档案、节拍表、写稿、参考帧、
+  H3 提示词,全部在本地做完
+- **服务器 `doubleflow`:只负责出视频**。拿到稿子和参考图提交 H3,出片后拉回。只能走国内镜像,工作目录 `/opt/ugc_clone`
+  (2026-09-19 起。之前转写也在服务器上做,服务器经常掉线,分析就跟着卡住)
 
 ```
 /opt/ugc_clone/
@@ -50,16 +52,16 @@ description: 拿一条别人跑通的带货口播视频,拆出节拍表,换成�
 
 本地:`inputs/<job>/product.json`、`work/<job>/{labels,beats,script,segments}.json`、`out/<job>/`。
 
-## S1 取素材 + S2 转写
+## S1 取素材 + S2 转写(本地)
 
 ```bash
-# 服务器
-/opt/ugc_clone/scripts/prep.sh jobs/<job>/inputs/ref_video.mp4 jobs/<job>/work
-/opt/ugc_clone/asr_venv/bin/python /opt/ugc_clone/scripts/transcribe.py \
-    jobs/<job>/work/audio.wav jobs/<job>/work/words.json
+# 本地:建档时顺带转写(调用 conda 环境 ugc_asr)
+python scripts/reference_archive.py init <video> <ref_id> --transcribe [--vad]
+# 单独转写
+D:/anaconda/envs/ugc_asr/python.exe scripts/transcribe.py <audio.wav> <words.json> [--vad]
 ```
 
-`prep.sh` 产出 probe、16k 音频、1fps 帧、拼图和切点。`transcribe.py` 是 faster-whisper large-v3 加逐词时间戳。
+`transcribe.py` 是 faster-whisper large-v3 加逐词时间戳。服务器上的旧转写环境(下面这段)留作备用。
 
 **转写环境为什么长这样。** 本来要用 WhisperX,但装不上:3.7.4 以后锁死 torch 2.8,更早的版本依赖 pyannote 3,
 和 `h3director` 的 torchaudio 2.9 冲突。单独装 cu124 torch 要从阿里源下 908MB,只有 0.3MB/s。

@@ -1,5 +1,7 @@
 # ugc_clone — 给 Codex 的接手说明
 
+**分工:本地做全部分析、稿子和参考图;服务器只拿稿子和参考图出 H3 视频。**
+
 这个仓库做一件事:拿一条别人跑通的带货口播视频,拆出节拍表,换成我们自己的商品、价格和 AI 出镜人,
 再用服务器上的本地 MiniMax H3 重新生成视频。
 
@@ -14,8 +16,8 @@
 
 | 路径 | 内容 |
 |---|---|
-| `scripts/prep.sh` | 服务器:探测、抽音频、抽帧、切点 |
-| `scripts/transcribe.py` | 服务器:faster-whisper 逐词时间戳(有背景音乐时加 `--vad`,见 skill) |
+| `scripts/prep.sh` | 旧:探测、抽音频、抽帧、切点(已被 `reference_archive.py init` 取代) |
+| `scripts/transcribe.py` | 本地(conda `ugc_asr`):faster-whisper 逐词时间戳(有背景音乐时加 `--vad`,见 skill) |
 | `scripts/media.py` | 看原片:带台词标注的宫格、按台词定位、切点候选、截帧、截片段(移植自 hypit `media`) |
 | `scripts/reference_archive.py` | 原片档案:`init` 建档出证据和骨架,`check` 检查写完没有 |
 | `scripts/build_beats.py` | 本地:labels.json → beats.json |

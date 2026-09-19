@@ -170,7 +170,7 @@
       "duration_seconds": 5,
       "dialogue": "It is A1 protein free, with three point three grams of protein per hundred millilitres.",
       "shot_type": "medium_presenter_pour",
-      "subject": "The same fictional woman stands behind one uncapped a2 bottle and one empty clear glass on the kitchen island; the bottle is fully upright and seated flat on the counter.",
+      "subject": "The same fictional woman stands behind one capped a2 bottle and one empty clear glass on the kitchen island; the bottle is fully upright and seated flat on the counter.",
       "action": "The first frame captures the lively setup before the pour; during the clip she picks up the bottle, tilts it into one steady stream, fills the glass, and presents it to camera.",
       "performance": "Focused proof moment: she speaks while preparing to pour, with lips caught mid-phrase, brows attentive, and her gaze naturally moving between the bottle, glass, and viewer rather than holding a fixed smile.",
       "keyframe_ids": [
@@ -188,7 +188,7 @@
         "single upright tall handleless flat-front bottle",
         "reference-accurate bottle proportions",
         "bottle flat on counter",
-        "blue cap removed",
+        "blue cap attached",
         "complete green front label",
         "pre-pour setup frame"
       ],

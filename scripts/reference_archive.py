@@ -14,7 +14,7 @@ One archive per reference video, reusable by any number of products:
     PROGRESS.md           only while understanding is in progress: open questions and next look
 
 Commands:
-  init      <video> <ref_id> [--transcript words.json | --transcribe [--vad]]
+  init      <video> <ref_id> [--transcript words.json | --transcribe [--vad]]   (runs locally; transcription uses conda env ugc_asr)
             copy the source, probe, cuts, boundaries, transcript, all evidence grids, then scaffold
   scaffold  <ref_id>      (re)write ANALYSIS/TIMELINE/PROGRESS skeletons from the facts; never overwrites
                           a document that no longer contains TODO markers
@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -49,6 +50,14 @@ LINE_GAP = 0.35
 
 
 # ---------------------------------------------------------------- facts
+
+def asr_python() -> str:
+    """Python of the local transcription env (conda ugc_asr); override with UGC_ASR_PYTHON."""
+    for candidate in (os.environ.get("UGC_ASR_PYTHON"), "D:/anaconda/envs/ugc_asr/python.exe",
+                      str(Path.home() / "anaconda3/envs/ugc_asr/bin/python")):
+        if candidate and Path(candidate).exists():
+            return candidate
+    return sys.executable
 
 def archive(ref_id: str) -> Path:
     return REPO / "references" / ref_id
@@ -324,7 +333,7 @@ def main() -> None:
             audio = root / "audio.wav"
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", video, "-vn", "-ac", "1", "-ar", "16000", str(audio)],
                            check=True)
-            cmd = [sys.executable, str(REPO / "scripts/transcribe.py"), str(audio), str(root / "transcript.json")]
+            cmd = [asr_python(), str(REPO / "scripts/transcribe.py"), str(audio), str(root / "transcript.json")]
             subprocess.run(cmd + (["--vad"] if args.vad else []), check=True)
         facts = load_facts(root)
         made = build_evidence(root, facts)

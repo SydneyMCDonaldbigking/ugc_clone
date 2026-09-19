@@ -1,10 +1,11 @@
-"""S2 转写对齐:faster-whisper 逐词时间戳。服务器 asr_venv 里跑。
+"""S2 转写对齐:faster-whisper 逐词时间戳。默认在本地 conda 环境 ugc_asr 里跑(4070 8GB 够用)。
 
 用法:
-  /opt/ugc_clone/asr_venv/bin/python transcribe.py <audio.wav> <out_words.json> [--model large-v3]
+  D:/anaconda/envs/ugc_asr/python.exe scripts/transcribe.py <audio.wav> <out_words.json> [--model large-v3]
 
-环境:asr_venv 是基于 h3director 的 --system-site-packages venv,复用它的 torch 和
-nvidia 运行库,只额外装 faster-whisper / yt-dlp,不改 h3director。
+环境:本地 `conda create -n ugc_asr python=3.11` + pip 装 faster-whisper、nvidia-cublas-cu12、
+nvidia-cudnn-cu12==9.*、pillow。服务器上的旧环境 /opt/ugc_clone/asr_venv(基于 h3director 的
+--system-site-packages venv)仍可用,但分析工作已改到本地,服务器只负责 H3 出视频。
 WhisperX 装不上(新版锁 torch 2.8,旧版的 pyannote 3 不兼容 torchaudio 2.9),
 所以这里直接用它底层的 faster-whisper,时间戳来自交叉注意力 DTW,中文按字/词输出。
 """
@@ -20,10 +21,17 @@ os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 
 
 def preload_cuda_libs():
-    # ctranslate2 要 cuBLAS 12 / cuDNN 9,从 torch 附带的 nvidia 包里加载,免得配 LD_LIBRARY_PATH
+    # ctranslate2 要 cuBLAS 12 / cuDNN 9,从 pip 的 nvidia 包里加载,免得配 PATH / LD_LIBRARY_PATH
     import ctypes
     import site
-    roots = site.getsitepackages()
+    roots = site.getsitepackages() + [site.getusersitepackages()]
+    if os.name == "nt":
+        # Windows:把 nvidia/*/bin 加进 DLL 搜索路径,ctranslate2 加载时自己找
+        for root in roots:
+            for bin_dir in glob.glob(os.path.join(root, "nvidia", "*", "bin")):
+                os.add_dll_directory(bin_dir)
+                os.environ["PATH"] = bin_dir + os.pathsep + os.environ.get("PATH", "")
+        return
     for pattern in ("nvidia/cublas/lib/libcublas.so.*", "nvidia/cublas/lib/libcublasLt.so.*",
                     "nvidia/cudnn/lib/libcudnn*.so.*"):
         for root in roots:

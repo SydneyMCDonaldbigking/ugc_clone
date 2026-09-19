@@ -11,15 +11,14 @@
       "file": "seg01.png",
       "width": 941,
       "height": 1672,
-      "sha256": "b95e5c0ed9797b4c6dee96d50f9f44356c95d07dfe525a35d661eb9013d7cc79",
-      "attempt": 5,
+      "sha256": "05f3f5e8117ab2502de35ac3fa985ed8c2a626ea1095ba12e6e649e2c6baad26",
+      "attempt": 6,
       "checks": [
-        "generated only from presenter.jpg, target_A2_1.png, and written shot instructions",
-        "presenter identity and kitchen continuity",
-        "playful asymmetric mid-speech expression",
+        "generated fresh from the registered presenter_master.png and target_A2_1.png only",
+        "approved presenter identity, pale-blue shirt, kitchen and daylight continuity",
+        "playful raised-brow expression with lips naturally parted mid-sentence",
         "exactly two anatomically valid hands",
-        "single upright handleless bottle seated in the box",
-        "bottle hand stays below the cap on the solid shoulder",
+        "one complete upright front-facing handleless bottle beside one plain open case",
         "no source-video frame, source creator, watermark, subtitle, or overlay text"
       ]
     },
@@ -27,67 +26,64 @@
       "file": "seg02.png",
       "width": 941,
       "height": 1672,
-      "sha256": "3f78cf9077508a1488fb1fc101eef672737401c1ae11d1230e4b9cd1236ad90e",
-      "attempt": 4,
+      "sha256": "842aec4a30008a59bbca3e2c6b4729dd6ff44efead3f0f81a07fba14d6355e86",
+      "attempt": 5,
       "checks": [
-        "generated only from the new seg01.png, target_A2_1.png, and written shot instructions",
-        "presenter identity and kitchen continuity",
+        "generated fresh from the registered presenter_master.png and target_A2_1.png only",
+        "approved presenter identity, pale-blue shirt, kitchen and daylight continuity",
         "excited open-mouth quantity-reveal expression",
         "exactly six separate upright bottles in two rows of three",
         "exactly six visible blue caps",
         "all bottles remain solid and handleless without collapse or merging",
         "exactly two hands bracing the box",
-        "no source-video frame, source creator, watermark, subtitle, or overlay text"
+        "no generated keyframe, source-video frame, source creator, watermark, subtitle, or overlay text used as a reference"
       ]
     },
     "2b": {
       "file": "seg02b.png",
       "width": 941,
       "height": 1672,
-      "sha256": "f13656f4fef1efd2302c206fceb0e2e1da591acc1bb5d8a3b1ac677fc462795c",
-      "attempt": 3,
+      "sha256": "cadad4e50945e6f852d49d9f38bfcebfd36a231f5ff304bc256e97a2f5dc54ec",
+      "attempt": 4,
       "checks": [
-        "generated only from target_A2_1.png, the new seg01.png, and written shot instructions",
+        "generated fresh from the registered presenter_master.png and target_A2_1.png only",
         "single complete front-facing handleless bottle",
-        "single lower-side supporting hand with no face or second hand",
+        "one relaxed hand with no face or second hand",
         "complete front label, blue cap, base, and 2L mark",
-        "shallow live handheld close-up with matching kitchen continuity",
-        "no source-video frame, source creator, watermark, subtitle, or overlay text"
+        "shallow live close-up with matching kitchen continuity",
+        "normalized 9:16 canvas with no source-video frame, source creator, watermark, subtitle, or overlay text"
       ]
     },
     "3": {
       "file": "seg03.png",
       "width": 941,
       "height": 1672,
-      "sha256": "c1e7bbe03110f431d45e9801b809add1eea0fad9d0562d9fc7add49547898d10",
-      "attempt": 2,
+      "sha256": "f957984ad532a320056a97b54ec0b7731d4bc130ce09ef7cfa75be0320c91e65",
+      "attempt": 4,
       "checks": [
-        "single right hand",
-        "solid side and shoulder support",
-        "handleless body",
-        "complete back label close-up",
-        "no face",
-        "no second product"
+        "generated scene used the registered presenter_master.png and target_A2_2.png only",
+        "the displayed bottle and dense back label come from original target_A2_2.png pixels, scaled and alpha-composited rather than retyped by the image model",
+        "complete upright handleless silhouette, blue cap, nutrition panel, barcode, ingredients and 2L FULL CREAM line",
+        "exactly one right hand remains behind the product",
+        "no presenter face, second hand, second product, source-video frame, watermark, subtitle, or overlay text"
       ],
-      "note": "Generated from presenter + back label only, so unaffected by the source-frame issue. The image predates the 20:29 prompt rewrite; QC is against the image, not the current prompt text."
+      "note": "Pixel-preserve is implemented by scripts/composite_product_packshot.py; the model-generated label attempt was rejected."
     },
     "4": {
       "file": "seg04.png",
       "width": 941,
       "height": 1672,
-      "sha256": "fd08d60571a34bf9fce95e56b582c95a9152d5084c345d3f5581092849f670a3",
-      "attempt": 7,
+      "sha256": "d77e8f3bc301c855d5d8032057adde8ca99f852582cef215bd30a8ff6a9cecb3",
+      "attempt": 9,
       "checks": [
-        "generated only from target_A2_1.png, the new seg01.png, and written shot instructions",
-        "presenter identity and kitchen continuity",
-        "lively asymmetric forward-leaning mid-speech performance",
-        "single upright front-facing bottle in the same supplied product view",
-        "reference-matched tall proportions, rounded shoulders, short neck, flat base, and two long curved recessed panels",
-        "complete readable front label with a2 roundel, Full cream band, bottom line, and 2L mark",
-        "one empty glass, exactly two valid hands, and one opaque blue cap",
+        "generated scene used the registered presenter_master.png and target_A2_1.png only",
+        "approved presenter identity, kitchen continuity and focused mid-speech pre-pour performance",
+        "the displayed capped upright bottle and complete front label come from original target_A2_1.png pixels, scaled and alpha-composited rather than redrawn",
+        "one empty glass and exactly two valid hands",
         "no milk stream in the pre-pour first frame",
-        "no handle, grip hole, oval pits, package crop, source-video image, watermark, subtitle, or overlay text"
-      ]
+        "no loose cap, handle, grip hole, package crop, extra product, source-video image, watermark, subtitle, or overlay text"
+      ],
+      "note": "Pixel-preserve is implemented by scripts/composite_product_packshot.py; the model-generated product approximation was rejected."
     }
   },
   "reviewed_by": "codex"

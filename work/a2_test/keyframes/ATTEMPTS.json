@@ -72,6 +72,26 @@
           "playful asymmetric mid-speech expression",
           "no watermark, subtitle, or overlay text"
         ]
+      },
+      {
+        "attempt": "review",
+        "file": null,
+        "result": "invalidated",
+        "defects": [
+          "Invalidated after presenter-master registration: this image used the interim presenter.jpg rather than the approved presenter_master.png fingerprint."
+        ]
+      },
+      {
+        "attempt": 6,
+        "file": "seg01.png",
+        "result": "pass",
+        "checks": [
+          "generated fresh from the registered presenter master and target_A2_1.png only",
+          "one upright handleless bottle beside one plain open case",
+          "two anatomically valid hands",
+          "playful raised-brow mid-speech expression",
+          "no source-video image, source creator, subtitle, watermark, or overlay text"
+        ]
       }
     ],
     "2": [
@@ -127,6 +147,26 @@
           "two valid hands bracing a level box",
           "excited mid-speech quantity reveal"
         ]
+      },
+      {
+        "attempt": "review",
+        "file": null,
+        "result": "invalidated",
+        "defects": [
+          "Invalidated after the reference contract changed: this attempt used generated seg01.png as a reference and predates the approved presenter master. Generated keyframes cannot be references."
+        ]
+      },
+      {
+        "attempt": 5,
+        "file": "seg02.png",
+        "result": "pass",
+        "checks": [
+          "generated fresh from the registered presenter master and target_A2_1.png only",
+          "exactly six upright handleless bottles in two rows of three",
+          "six visible blue caps",
+          "two valid hands bracing a level open case",
+          "excited open-mouth quantity reveal with visible effort"
+        ]
       }
     ],
     "2b": [
@@ -172,6 +212,26 @@
           "single supporting hand with no face or second hand",
           "complete front label, cap, base, and 2L mark"
         ]
+      },
+      {
+        "attempt": "review",
+        "file": null,
+        "result": "invalidated",
+        "defects": [
+          "Invalidated after the reference contract changed: this attempt used generated seg01.png as a reference and predates the approved presenter master. Generated keyframes cannot be references."
+        ]
+      },
+      {
+        "attempt": 4,
+        "file": "seg02b.png",
+        "result": "pass",
+        "checks": [
+          "generated fresh from the registered presenter master and target_A2_1.png only",
+          "single complete front-facing handleless bottle",
+          "one relaxed hand with face outside the frame",
+          "complete front label, blue cap, base, and 2L mark",
+          "normalized to the requested 9:16 keyframe canvas"
+        ]
       }
     ],
     "3": [
@@ -197,6 +257,37 @@
           "complete back label",
           "no face",
           "no second product"
+        ]
+      },
+      {
+        "attempt": "review",
+        "file": null,
+        "result": "invalidated",
+        "defects": [
+          "Invalidated after presenter-master registration: the scene used the interim presenter reference."
+        ]
+      },
+      {
+        "attempt": 3,
+        "file": "seg03-imagegen-redraw.png",
+        "result": "failed",
+        "defects": [
+          "The generated close-up looked plausible but the dense back label was still model-rendered replacement copy, which is not acceptable for pixel_preserve mode."
+        ],
+        "next_prompt_delta": [
+          "Keep ImageGen for the hand, room and lighting only.",
+          "Composite the original target_A2_2.png product pixels over the generated scene."
+        ]
+      },
+      {
+        "attempt": 4,
+        "file": "seg03.png",
+        "result": "pass",
+        "checks": [
+          "scene generated from the registered presenter master and target_A2_2.png only",
+          "original target_A2_2.png product pixels are scaled and alpha-composited over the scene",
+          "back-label wording, nutrition panel, barcode, bottle silhouette, and blue cap come from the source packshot",
+          "one right hand remains visible behind the product with no face or second product"
         ]
       }
     ],
@@ -291,6 +382,38 @@
           "complete readable front label without crop or obvious text corruption",
           "one empty glass, two valid hands, and one opaque blue cap",
           "lively forward-leaning mid-speech pre-pour performance"
+        ]
+      },
+      {
+        "attempt": "review",
+        "file": null,
+        "result": "invalidated",
+        "defects": [
+          "Invalidated after the reference contract changed: this attempt used generated seg01.png as a reference and predates the approved presenter master."
+        ]
+      },
+      {
+        "attempt": 8,
+        "file": "seg04-imagegen-redraw.png",
+        "result": "failed",
+        "defects": [
+          "Presenter, expression, glass and capped pre-pour composition passed, but the product remained a model-rendered approximation in a pixel_preserve shot."
+        ],
+        "next_prompt_delta": [
+          "Retain the generated presenter-and-glass scene.",
+          "Composite the original target_A2_1.png product pixels in the same upright front-facing position."
+        ]
+      },
+      {
+        "attempt": 9,
+        "file": "seg04.png",
+        "result": "pass",
+        "checks": [
+          "scene generated fresh from the registered presenter master and target_A2_1.png only",
+          "original target_A2_1.png product pixels are scaled and alpha-composited over the scene",
+          "capped upright bottle keeps the source packshot silhouette and complete front label",
+          "one empty glass, two valid hands, focused mid-speech performance, and no milk stream",
+          "no loose cap, handle, extra product, watermark, subtitle, or overlay text"
         ]
       }
     ]
