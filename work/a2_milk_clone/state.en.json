@@ -1,0 +1,39 @@
+{
+  "schema": "job-state/v1",
+  "job_id": "a2_milk_clone_en",
+  "state": "keyframes_ready",
+  "revision": 8,
+  "updated_at": "2026-09-19T12:42:05.916796Z",
+  "stages": {
+    "beats": {
+      "status": "passed",
+      "updated_at": "2026-09-19T12:26:40.104454Z",
+      "artifact": "work/a2_milk_clone/beats.json"
+    },
+    "facts": {
+      "status": "passed",
+      "updated_at": "2026-09-19T12:26:40.105444Z",
+      "artifact": "inputs/a2_milk_clone/product.en.json"
+    },
+    "scripts": {
+      "status": "passed",
+      "updated_at": "2026-09-19T12:26:40.106445Z",
+      "artifact": "work/a2_milk_clone/variants/v001/script.en.json"
+    },
+    "shots": {
+      "status": "passed",
+      "updated_at": "2026-09-19T12:26:40.106445Z",
+      "artifact": "work/a2_milk_clone/variants/v001/shot_plan.json"
+    },
+    "keyframe_request": {
+      "status": "passed",
+      "updated_at": "2026-09-19T12:26:40.107661Z",
+      "artifact": "work/a2_milk_clone/keyframes/REQUEST.json"
+    },
+    "keyframes": {
+      "status": "passed",
+      "updated_at": "2026-09-19T12:42:05.916796Z",
+      "artifact": "work/a2_milk_clone/keyframes/READY.json"
+    }
+  }
+}

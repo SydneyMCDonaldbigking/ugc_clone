@@ -1,0 +1,50 @@
+{
+  "schema": "script/v1",
+  "language": "en-AU",
+  "mode": "structure",
+  "variant_id": "v001",
+  "adaptations": {
+    "B1": "Keep the immediate product-to-pour hook, replacing the source's universal taste claim with verified product type and A1 protein information.",
+    "B2-B3": "Retain the quantity reveal and back-label proof. Replace the source gift box and bird's-nest ingredients with the verified six-bottle case and milk-only ingredient panel.",
+    "B4": "Keep a second use demonstration, tied to a verified protein figure rather than invented texture or wellness claims.",
+    "B5": "Finish on capacity, approximate serves and the operator-confirmed unit price without urgency, sale or gifting language."
+  },
+  "lines": [
+    {
+      "id": "L1",
+      "segment": 1,
+      "beats": ["B1"],
+      "text": "Full cream milk, naturally A1 protein free—look at that smooth, steady pour.",
+      "claims": ["F1", "F10"],
+      "target_duration_seconds": 5,
+      "delivery": "Warm off-camera voice; open with certainty, then soften into an observant, satisfying finish."
+    },
+    {
+      "id": "L2",
+      "segment": 2,
+      "beats": ["B2", "B3"],
+      "text": "Six bottles per case. Check the panel: only milk, with no additives or permeate.",
+      "claims": ["F2", "F3", "F9"],
+      "target_duration_seconds": 5,
+      "delivery": "Bright on the quantity, then slower and precise as the back label fills the frame."
+    },
+    {
+      "id": "L3",
+      "segment": 3,
+      "beats": ["B4"],
+      "text": "Per one hundred millilitres, it has three point three grams of protein.",
+      "claims": ["F4"],
+      "target_duration_seconds": 5,
+      "delivery": "Measured and factual; let the pour carry the visual emphasis while the number remains clear."
+    },
+    {
+      "id": "L4",
+      "segment": 4,
+      "beats": ["B5"],
+      "text": "Each bottle is two litres, about eight serves, and costs six dollars seventy-nine.",
+      "claims": ["F7", "F8"],
+      "target_duration_seconds": 5,
+      "delivery": "Confident wrap-up with a small pause after the capacity and a clean landing on the price."
+    }
+  ]
+}

@@ -166,6 +166,12 @@ references/<ref_id>/
 5. PROGRESS 里的问题逐条解决,删掉 PROGRESS,然后 `python scripts/reference_archive.py check <ref_id>`
    出现 READY 才算写完。任务文件 `job.json` 用 `reference_archive` 关联档案;档案没写完,`validate` 会报错
 
+**每段必须写镜头,照原片来。** TIMELINE 每段一行 `镜头:景别 | 机位高度与角度 | 运动 | 构图`,`check` 会查;
+分镜的 `camera` 照它填,出图和 H3 提示词都会带上这一行。a2_milk 第一版没写镜头,Codex 只能猜,
+把原片的"第一人称高位俯拍、手握瓶子贴近镜头"画成了"瓶子立在桌上平视拍",六段只对上一段(开箱俯拍)。
+另外,"商品只摆原图有的角度"指的是**商品朝向**(正面或背面对镜头),不是"立在桌上平视拍";
+拿在手里还是放在桌上、镜头角度都照原片。
+
 **出镜方式要在档案里判断,不能默认有人。** 前两条参考片都是真人出镜,流程一度把"出镜人"写死成默认。
 第三条(a2_milk)原片只有手和商品,Codex 照默认先拍了个真人讲解,用户叫停才改回来。现在 ANALYSIS 事实表必须写
 `出镜方式`(`generated_fictional` / `hands_only` / `none`),`check` 会查;任务的 `presenter.mode` 照它填,

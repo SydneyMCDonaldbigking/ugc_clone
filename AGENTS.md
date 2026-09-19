@@ -12,7 +12,7 @@
 | 2 | 写原片档案 | **Claude** | 本地 | 看宫格写 `ANALYSIS.md`、`TIMELINE.md`,补看用 `reference_archive.py tile`;**事实表里判断出镜方式** | 两份档案 | `reference_archive.py check <ref_id>` 显示 READY |
 | 3 | 商品参数表 | **Claude**(事实只能来自用户和包装图) | 本地 | 每条事实挂证据,拿不到的填 null | `inputs/<job>/product.en.json` | `validate` 通过 |
 | 4 | 节拍表 + 稿子 | **Claude** | 本地 | `build_beats.py`,英文稿按节拍表写 | `beats.json`、`variants/vNNN/script.en.json` | `validate` 通过 |
-| 5 | 分镜 + 出图请求 | **Claude** | 本地 | `job.presenter.mode` 照档案的出镜方式填,选对应模板;`first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词 | `shot_plan.json`、`keyframes/REQUEST.json`、`segNN_prompt.txt` | `validate` 通过,**Claude 告诉用户"可以交给 Codex 出图了"** |
+| 5 | 分镜 + 出图请求 | **Claude** | 本地 | `job.presenter.mode` 照档案的出镜方式填,选对应模板;`camera` 照 TIMELINE 的镜头行,`first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词 | `shot_plan.json`、`keyframes/REQUEST.json`、`segNN_prompt.txt` | `validate` 通过,**Claude 告诉用户"可以交给 Codex 出图了"** |
 | 6 | 定妆照 + 参考帧 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩" | `presenter_master.png`、`keyframes/segNN.png`、`QC.json` | Codex 最后写 `keyframes/READY.json` |
 | 7 | 编 H3 提示词 + 渲染 | **Claude** | 编译在本地,渲染在服务器 | 读 READY,按"态度 + 重音"编 `segments.json`,上传、`cc_submit`、单段 `cc_rerun` | 成片 | `cc_status` 出片 |
 | 8 | 验收 | **Claude**(技术 + 台词)、**用户**(画面) | 本地 | 成片再转写对台词;画面交给用户看 | 验收结论 | 用户说"通过" |
@@ -77,7 +77,9 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 4. 出图的四条规矩(`validate` 会拦后三条):
    - 每次都从原图出发:参考图只用已确认的定妆照和商品原图,每次尝试都是一次全新生成
    - 除定妆照外,生成过的图(`keyframes/` 下的任何图)不能再当参考,包括上一段的参考帧
-   - 商品只摆原图有的角度:竖直放,正面或背面对镜头;拿起、倾斜、倒奶交给 H3
+   - 商品的**朝向**和原图一致:正面或背面对着镜头,不转到原图没有的侧面。拿在手里还是放在桌上、
+     镜头角度,都照分镜的 `camera` 和原片(例如原片是第一人称高位俯拍、手握瓶子,就照这样出);
+     倾斜、倒奶这些动作交给 H3
    - 提示词用 `build_keyframe_prompts.py` 生成,约 150 词、只写正面描述;不要自己往里加"不要 XX"
 5. 标签有密集小字时,不得让生成模型重画文字;改用原商品图像素或交给 Claude 走已验证的 `fully_preserved` / 慢推保底路径
 6. 全部图片完成后,最后写 `work/<job>/keyframes/READY.json`,然后停止

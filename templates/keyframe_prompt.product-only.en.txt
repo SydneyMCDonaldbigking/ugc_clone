@@ -2,6 +2,7 @@ Photorealistic vertical 9:16 smartphone photo, the first frame of a product-only
 
 {{REFERENCE_ROLE_MAP}}
 
+Camera: {{CAMERA}}
 Scene: {{FIRST_FRAME}}
 Mood: {{PERFORMANCE}} Only the product and its setting are in frame.
 

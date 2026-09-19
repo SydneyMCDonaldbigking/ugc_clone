@@ -1,0 +1,177 @@
+{
+  "schema": "keyframe-request/v1",
+  "job": "a2_milk_clone",
+  "pipeline_job_id": "a2_milk_clone_en",
+  "variant_id": "v001",
+  "source_job_id": "a2_milk_clone_en",
+  "output_aspect_ratio": "9:16",
+  "prompt_template": "templates/keyframe_prompt.hands-only.en.txt",
+  "source_analysis": "references/a2_milk/ANALYSIS.md",
+  "segments": {
+    "1": {
+      "script_segment": 1,
+      "role": "front-label chilled product hook",
+      "duration_seconds": 3,
+      "prompt_file": "work/a2_milk_clone/keyframes/seg01_prompt.txt",
+      "references": [
+        "target_A2_1.png"
+      ],
+      "reference_roles": {
+        "target_A2_1.png": "product_identity"
+      },
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hand_may_touch_outer_edge_only",
+        "fallback": "static_packshot"
+      },
+      "output": "seg01.png",
+      "checks": [
+        "Exactly one product bottle is visible and it fills the centre of a tight vertical close-up.",
+        "The bottle is upright, tall, flat-fronted, handleless and proportionally identical to target_A2_1.png.",
+        "The blue cap, complete green front label, purple a2 roundel, Full cream line and 2L mark remain recognisable.",
+        "The visible hand has five natural fingers, stays at the outer edge and does not cover the label.",
+        "Condensation and warm household light create a chilled candid look without changing the package.",
+        "No source product, source subtitle, watermark, jug handle, grip opening or added text appears."
+      ]
+    },
+    "1b": {
+      "script_segment": 1,
+      "role": "front-label pre-pour setup",
+      "duration_seconds": 2,
+      "prompt_file": "work/a2_milk_clone/keyframes/seg01b_prompt.txt",
+      "references": [
+        "target_A2_1.png"
+      ],
+      "reference_roles": {
+        "target_A2_1.png": "product_identity"
+      },
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_clear_of_product_front",
+        "first_frame_action": "pre_action_setup",
+        "fallback": "static_product_first_frame"
+      },
+      "output": "seg01b.png",
+      "checks": [
+        "Exactly one capped bottle stands fully upright beside exactly one empty clear glass.",
+        "The bottle silhouette and front label match target_A2_1.png without a handle opening or jug shape.",
+        "Both hands are anatomically plausible and are positioned to begin one pour after the first frame.",
+        "The bottle is not tilted and no milk stream, loose cap, spill or extra product appears in the first frame.",
+        "The scene reads as a candid warm home tabletop recording with no generated caption or watermark."
+      ]
+    },
+    "2": {
+      "script_segment": 2,
+      "role": "six-bottle overhead quantity insert",
+      "duration_seconds": 2,
+      "prompt_file": "work/a2_milk_clone/keyframes/seg02_prompt.txt",
+      "references": [
+        "target_A2_1.png"
+      ],
+      "reference_roles": {
+        "target_A2_1.png": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "only_upper_shoulders_and_caps_need_full_visibility",
+        "fallback": "static_overhead_case"
+      },
+      "output": "seg02.png",
+      "checks": [
+        "Exactly six blue caps and six white bottle shoulders are visible in two rows of three inside one plain open case.",
+        "Every bottle uses the same solid handleless upper-body geometry as target_A2_1.png.",
+        "Both hands are complete and rest naturally on the cardboard case edges.",
+        "The view is overhead and immediately countable, with no seventh bottle or collapsed package.",
+        "No gift box, seasonal decoration, source product, paper carton, caption or watermark appears."
+      ]
+    },
+    "2b": {
+      "script_segment": 2,
+      "role": "back-label ingredient proof closeup",
+      "duration_seconds": 3,
+      "prompt_file": "work/a2_milk_clone/keyframes/seg02b_prompt.txt",
+      "references": [
+        "target_A2_2.png"
+      ],
+      "reference_roles": {
+        "target_A2_2.png": "product_identity"
+      },
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "product_in_front_of_supporting_hand",
+        "fallback": "static_packshot"
+      },
+      "output": "seg02b.png",
+      "checks": [
+        "Exactly one upright handleless bottle fills most of the frame with the back label square to camera.",
+        "The dense back-label layout and every visible claim match target_A2_2.png; any text drift is an automatic rejection and must fall back to H3 fully_preserved.",
+        "Exactly one supporting hand appears, with fingertips restricted to the bottle's outer edge.",
+        "The bottle silhouette remains tall and solid, with no through-handle, grip hole, jug form or side-angle invention.",
+        "No second product, pointing finger, source subtitle, overlay or watermark appears."
+      ]
+    },
+    "3": {
+      "script_segment": 3,
+      "role": "nutrition fact pre-pour setup",
+      "duration_seconds": 5,
+      "prompt_file": "work/a2_milk_clone/keyframes/seg03_prompt.txt",
+      "references": [
+        "target_A2_1.png"
+      ],
+      "reference_roles": {
+        "target_A2_1.png": "product_identity"
+      },
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_clear_of_product_front",
+        "first_frame_action": "pre_action_setup",
+        "fallback": "static_product_first_frame"
+      },
+      "output": "seg03.png",
+      "checks": [
+        "One capped a2 bottle stands fully upright and flat on the desk beside one empty clear glass.",
+        "The complete bottle silhouette and front label are retained from target_A2_1.png at the correct tall proportions.",
+        "The hand approaches from the solid upper side without inventing a handle or covering the front label.",
+        "No milk stream, loose cap, filled glass, solid particles, spill, extra product or extra hand appears in the first frame.",
+        "No generated caption, source subtitle or watermark appears."
+      ]
+    },
+    "4": {
+      "script_segment": 4,
+      "role": "final front-label product and filled-glass hero",
+      "duration_seconds": 5,
+      "prompt_file": "work/a2_milk_clone/keyframes/seg04_prompt.txt",
+      "references": [
+        "target_A2_1.png"
+      ],
+      "reference_roles": {
+        "target_A2_1.png": "product_identity"
+      },
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "product_in_front_of_hands",
+        "fallback": "static_packshot"
+      },
+      "output": "seg04.png",
+      "checks": [
+        "Exactly one upright a2 bottle and one filled clear glass form the final tight tabletop composition.",
+        "The tall handleless bottle, blue cap, complete green front label and visible 2L mark match target_A2_1.png.",
+        "One relaxed hand appears beside the glass base and does not cover the bottle or label.",
+        "The glass contains plain white milk with no solids, foam sculpture or coloured liquid.",
+        "No extra product, gift box, price badge, source subtitle, generated caption, watermark, through-handle or jug silhouette appears."
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{"at": "2026-09-19T12:26:39.968580Z", "event": "job_initialized", "state": "created", "actor": "codex"}
+{"at": "2026-09-19T12:26:40.105444Z", "event": "state_advanced", "state": "beats_ready", "artifact": "work/a2_milk_clone/beats.json", "actor": "codex"}
+{"at": "2026-09-19T12:26:40.105444Z", "event": "state_advanced", "state": "facts_ready", "artifact": "inputs/a2_milk_clone/product.en.json", "actor": "codex"}
+{"at": "2026-09-19T12:26:40.106445Z", "event": "state_advanced", "state": "scripts_ready", "artifact": "work/a2_milk_clone/variants/v001/script.en.json", "actor": "codex"}
+{"at": "2026-09-19T12:26:40.106445Z", "event": "state_advanced", "state": "shots_ready", "artifact": "work/a2_milk_clone/variants/v001/shot_plan.json", "actor": "codex"}
+{"at": "2026-09-19T12:26:40.107661Z", "event": "state_advanced", "state": "awaiting_keyframes", "artifact": "work/a2_milk_clone/keyframes/REQUEST.json", "actor": "codex"}
+{"at": "2026-09-19T12:41:20.303398Z", "event": "keyframes_ready", "state": "keyframes_ready", "actor": "codex"}
+{"at": "2026-09-19T12:42:05.921796Z", "event": "keyframes_ready", "state": "keyframes_ready", "actor": "codex", "note": "idempotent validation rerun"}

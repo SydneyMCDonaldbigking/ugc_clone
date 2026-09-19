@@ -3,6 +3,7 @@ Photorealistic vertical 9:16 smartphone photo, the first frame of a home product
 Image 1: the presenter: face, hair, outfit and room.
 Image 2: the product.
 
+Camera: medium | facing the presenter, eye level | locked-off | presenter centred, glass in the foreground
 Scene: She stands behind the island. One capped a2 bottle stands upright on the island, front label facing the camera, beside one empty clear glass.
 Same person, same outfit, same room and light as Image 1.
 Expression: Focused proof moment: she speaks while preparing to pour, with lips caught mid-phrase, brows attentive, and her gaze naturally moving between the bottle, glass, and viewer rather than holding a fixed smile.

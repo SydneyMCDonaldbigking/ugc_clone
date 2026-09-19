@@ -50,7 +50,8 @@
           "at": "no idea",
           "reaction": "she leans toward the lens and lowers her voice"
         }
-      ]
+      ],
+      "camera": "medium | facing the presenter, phone at chest height, eye level | locked-off | presenter centred from the waist up, box in the lower foreground"
     },
     {
       "id": "S02",
@@ -72,7 +73,8 @@
           "keyframe_id": "2",
           "shot_type": "medium_quantity_display",
           "action": "She presents the complete six-bottle case toward camera.",
-          "first_frame": "She stands behind the island, hands on the edges of an open cardboard box. Inside, six a2 bottles stand upright in two rows of three, front labels facing the camera."
+          "first_frame": "She stands behind the island, hands on the edges of an open cardboard box. Inside, six a2 bottles stand upright in two rows of three, front labels facing the camera.",
+          "camera": "medium | same position, eye level | locked-off | presenter centred, open box filling the lower half"
         },
         {
           "id": "S02B",
@@ -81,7 +83,8 @@
           "shot_type": "handheld_product_hero_closeup",
           "action": "Hard cut to one bottle held close enough for the front label and 2-litre format to dominate the frame.",
           "first_frame": "Close-up: one a2 bottle stands upright on the marble island, front label square to the camera and filling most of the frame. Her fingertips rest on the far edge of the bottle.",
-          "performance": "Face out of frame; one relaxed hand with natural finger spacing and light contact."
+          "performance": "Face out of frame; one relaxed hand with natural finger spacing and light contact.",
+          "camera": "close-up | first-person, slight high angle about 30 degrees | handheld, slight sway | bottle centred, about two thirds of the frame"
         }
       ],
       "continuity": "hard_cut",
@@ -162,7 +165,8 @@
           "at": "only ingredient",
           "reaction": "her voice slows and lands the words"
         }
-      ]
+      ],
+      "camera": "close-up | first-person, slight high angle about 20 degrees | handheld, slight sway | back label centred, about 70 percent of the frame"
     },
     {
       "id": "S04",
@@ -221,7 +225,8 @@
           "at": "three point three grams",
           "reaction": "the milk is streaming into the glass as she says the number"
         }
-      ]
+      ],
+      "camera": "medium | facing the presenter, eye level | locked-off | presenter centred, glass in the foreground"
     }
   ]
 }

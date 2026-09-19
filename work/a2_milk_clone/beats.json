@@ -1,0 +1,110 @@
+{
+  "schema": "beats/v1",
+  "source": {
+    "file": "codex_clone_refs/A2_milk/mlik.mp4",
+    "duration": 28.9,
+    "fps": 30.0,
+    "size": "720x1280"
+  },
+  "speech_rate_cps": 6.0,
+  "cuts": [
+    1.3,
+    5.767,
+    7.0,
+    9.7,
+    11.233,
+    12.833,
+    14.567,
+    16.167,
+    18.1,
+    21.7,
+    22.933,
+    24.233,
+    26.5,
+    27.633
+  ],
+  "structure_notes": [
+    "The source is a hands-only tabletop advert with no visible face.",
+    "New visual evidence arrives every one to two seconds through product, pour, case, label and texture close-ups.",
+    "The adaptation retains the product-to-use, quantity-to-label, proof-to-pour and value-recap relationships while discarding the source brand, gift packaging and unsupported claims.",
+    "No source-derived frame may be used as an ImageGen or H3 reference."
+  ],
+  "beats": [
+    {
+      "id": "B1",
+      "t_start": 0.0,
+      "t_end": 5.767,
+      "function": "product_hook_and_sensory_proof",
+      "hook_type": "product_in_use",
+      "intensity": "high to warm",
+      "cuts_inside": [1.3],
+      "shot": {
+        "type": "front_product_closeup_to_pour_insert",
+        "cut_in": false
+      },
+      "visual_action": "A chilled bottle rotates to the front label, then liquid pours into a bowl and a spoon lifts it.",
+      "visual_sync": "The product name lands as the shot changes from the front label to visible use.",
+      "proof_category": "product_and_pour"
+    },
+    {
+      "id": "B2",
+      "t_start": 5.767,
+      "t_end": 9.7,
+      "function": "quantity_reveal",
+      "intensity": "bright",
+      "cuts_inside": [7.0],
+      "shot": {
+        "type": "case_exterior_to_overhead_quantity",
+        "cut_in": "hard_cut@5.767"
+      },
+      "visual_action": "A case opens to reveal six bottles, then one bottle is lifted toward the camera.",
+      "visual_sync": "The quantity claim lands on the overhead six-bottle view.",
+      "proof_category": "quantity_display"
+    },
+    {
+      "id": "B3",
+      "t_start": 9.7,
+      "t_end": 15.62,
+      "function": "label_and_number_proof",
+      "intensity": "clear and precise",
+      "cuts_inside": [11.233, 12.833, 14.567],
+      "shot": {
+        "type": "back_label_to_front_product_and_cap",
+        "cut_in": "hard_cut@9.7"
+      },
+      "visual_action": "The back label fills the frame, followed by a liquid insert, the front label and a cap-removal setup.",
+      "visual_sync": "Ingredient and number statements appear with readable package evidence.",
+      "proof_category": "package_label"
+    },
+    {
+      "id": "B4",
+      "t_start": 15.62,
+      "t_end": 21.7,
+      "function": "use_proof",
+      "intensity": "measured and satisfying",
+      "cuts_inside": [16.167, 18.1],
+      "shot": {
+        "type": "open_bottle_to_pour_and_glass",
+        "cut_in": false
+      },
+      "visual_action": "The opened product pours into a clear vessel and the filled result is shown close to camera.",
+      "visual_sync": "A verified nutrition fact is spoken while the product is visibly poured.",
+      "proof_category": "pour"
+    },
+    {
+      "id": "B5",
+      "t_start": 21.7,
+      "t_end": 28.9,
+      "function": "value_recap_and_fact_cta",
+      "intensity": "confident finish",
+      "cuts_inside": [22.933, 24.233, 26.5, 27.633],
+      "shot": {
+        "type": "quantity_recap_to_final_product_tableau",
+        "cut_in": "hard_cut@21.7"
+      },
+      "visual_action": "Multiple packages and the prepared drink resolve into a final product-and-result composition.",
+      "visual_sync": "Capacity, servings and operator-confirmed unit price land on the final front-label hero.",
+      "proof_category": "capacity_and_price"
+    }
+  ]
+}

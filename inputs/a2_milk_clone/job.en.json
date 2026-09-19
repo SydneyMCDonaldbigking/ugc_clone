@@ -1,0 +1,31 @@
+{
+  "schema": "ugc-job/v1",
+  "job_id": "a2_milk_clone_en",
+  "reference_video": "codex_clone_refs/A2_milk/mlik.mp4",
+  "reference_archive": "references/a2_milk",
+  "source_language": "zh-CN",
+  "target_language": "en-AU",
+  "mode": "structure",
+  "variants": 1,
+  "segment_duration_seconds": 5,
+  "max_segments_per_render": 4,
+  "product": "inputs/a2_milk_clone/product.en.json",
+  "beats": "work/a2_milk_clone/beats.json",
+  "script": "work/a2_milk_clone/variants/v001/script.en.json",
+  "shot_plan": "work/a2_milk_clone/variants/v001/shot_plan.json",
+  "keyframe_request": "work/a2_milk_clone/keyframes/REQUEST.json",
+  "state_file": "work/a2_milk_clone/state.en.json",
+  "events_file": "work/a2_milk_clone/events.en.jsonl",
+  "presentation": {
+    "mode": "hands_only",
+    "face_visible": false,
+    "scene": "warm timber desk with soft household evening light"
+  },
+  "image_provider": "codex-imagegen",
+  "video_provider": "h3",
+  "human_review_required": true,
+  "presenter": {
+    "mode": "hands_only",
+    "note": "references/a2_milk/ANALYSIS.md: no face on camera, only hands and product on a tabletop."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "a2_milk_clone",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "segments": {
+    "1": {
+      "keyframe": "seg01.png",
+      "extra_refs": ["target_A2_1.png"],
+      "notes": "Hands-only chilled front-label product hero; no face or source frame."
+    },
+    "1b": {
+      "keyframe": "seg01b.png",
+      "extra_refs": ["target_A2_1.png"],
+      "notes": "Hands-only capped pre-pour setup with one empty clear glass."
+    },
+    "2": {
+      "keyframe": "seg02.png",
+      "extra_refs": ["target_A2_1.png"],
+      "notes": "Overhead quantity reveal with exactly six bottles in two rows of three."
+    },
+    "2b": {
+      "keyframe": "seg02b.png",
+      "extra_refs": ["target_A2_2.png"],
+      "notes": "Locked back-label close-up; bind target_A2_2.png as fully_preserved if dense text drifts during H3 motion."
+    },
+    "3": {
+      "keyframe": "seg03.png",
+      "extra_refs": ["target_A2_1.png"],
+      "notes": "Hands-only capped pre-pour setup for the protein fact."
+    },
+    "4": {
+      "keyframe": "seg04.png",
+      "extra_refs": ["target_A2_1.png"],
+      "notes": "Final upright front-label hero beside one filled glass of plain milk."
+    }
+  },
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}

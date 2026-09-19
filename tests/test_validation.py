@@ -211,6 +211,13 @@ class EnglishValidationTests(unittest.TestCase):
         self.assertIn("request.presenter_forbidden", codes)  # the a2 sample binds a presenter master
         self.assertIn("request.template_mode", codes)        # and uses the on-camera template
 
+    def test_camera_is_required_per_keyframe(self) -> None:
+        plan = copy.deepcopy(self.shot_plan)
+        segment = next(s for s in plan["segments"] if not s.get("subshots"))
+        segment["camera"] = "close-up"
+        codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
+        self.assertIn("shots.camera", codes)
+
 
 if __name__ == "__main__":
     unittest.main()

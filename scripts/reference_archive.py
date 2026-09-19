@@ -228,6 +228,8 @@ def scaffold(root: Path, facts: dict, force: bool = False) -> list[str]:
 
 证据:`{l.get('evidence', '')}`
 {cut_note}{low}
+镜头:{todo('景别 | 机位高度与角度(平视 / 斜俯约 45° / 正俯;第一人称还是对面拍)| 运动(固定 / 手持晃动 / 推近 / 跟手)| 构图(主体在哪、占多大)')}
+
 {todo('画面里有什么、谁在动、动作落在哪个词、对观众起什么作用')}
 
 → 改编:{todo('这个关系在我们片子里怎么落;时间跟新台词的词走')}
@@ -283,6 +285,9 @@ def check(root: Path) -> list[str]:
             head = block.splitlines()[0]
             if not re.search(r"\d+(\.\d+)?\s*[–-]\s*\d+(\.\d+)?", head):
                 problems.append(f"TIMELINE 段落缺时间范围:{head}")
+            cam = re.search(r"^镜头[::](.+)$", block, re.M)
+            if not cam or TODO in cam.group(1) or cam.group(1).count("|") + cam.group(1).count("｜") < 3:
+                problems.append(f"TIMELINE 段落缺'镜头:景别 | 角度 | 运动 | 构图':{head}")
             if "→ 改编" not in block:
                 problems.append(f"TIMELINE 段落缺 '→ 改编':{head}")
             for ref in re.findall(r"`(evidence/[^`]+)`", block):

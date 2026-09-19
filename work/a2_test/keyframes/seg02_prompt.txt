@@ -3,6 +3,7 @@ Photorealistic vertical 9:16 smartphone photo, the first frame of a home product
 Image 1: the presenter: face, hair, outfit and room.
 Image 2: the product.
 
+Camera: medium | same position, eye level | locked-off | presenter centred, open box filling the lower half
 Scene: She stands behind the island, hands on the edges of an open cardboard box. Inside, six a2 bottles stand upright in two rows of three, front labels facing the camera.
 Same person, same outfit, same room and light as Image 1.
 Expression: Excited value reveal: bright widened eyes, lifted brows, open mouth caught mid-word, and visible arm and shoulder effort from presenting a heavy six-bottle case.

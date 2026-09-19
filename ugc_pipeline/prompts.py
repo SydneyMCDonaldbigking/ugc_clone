@@ -6,8 +6,9 @@ from typing import Any
 
 # Keyframe prompts are kept short and positive: image models redraw whatever a prompt keeps naming,
 # so forbidden features ("no handle") and the QC checklist stay in REQUEST.json for inspection and are
-# never sent to the model. The product is always shown upright in the same view as its reference photo;
-# motion (lifting, tilting, pouring) is left to H3.
+# never sent to the model. The product keeps the orientation of its reference photo (front or back
+# square to the camera, not turned to an unseen side); whether it is held or set down, and the camera
+# angle, follow the source's shot. Motion (lifting, tilting, pouring) is left to H3.
 FIDELITY_INSTRUCTIONS = {
     "reference_lock": "Keep it identical to the reference photo; simplify the pose rather than change the product.",
     # The original packshot is composited after ImageGen for this mode.  The
@@ -86,6 +87,7 @@ def render_keyframe_prompt(
     values = {
         "REFERENCE_ROLE_MAP": _format_reference_roles(segment_request),
         "FIRST_FRAME": str(first_frame),
+        "CAMERA": str(shot.get("camera") or segment.get("camera", "")),
         "PERFORMANCE": str(shot.get("performance") or segment.get("performance", "")),
         "PRODUCT_NAME": str(product.get("name", "the product")),
         "PRODUCT_IMAGE": _image_label(segment_request, {"product_identity"}, "the product reference"),

@@ -1,0 +1,120 @@
+{
+  "schema": "product/v1",
+  "language": "en-AU",
+  "name": "a2 Milk Full Cream 2L",
+  "brand": "The a2 Milk Company",
+  "spec": {
+    "unit": "bottle",
+    "volume_ml": 2000,
+    "pack_qty": 6
+  },
+  "visual_identity": {
+    "packaging_type": "opaque white rectangular 2-litre HDPE bottle",
+    "silhouette": "tall flat-front bottle with rounded shoulders, a short wide neck, gently tapered sidewalls, and a flat base",
+    "closure": "wide ribbed blue screw cap",
+    "grip_geometry": "shallow curved side indentations only; the plastic body remains solid",
+    "handle": "none",
+    "front_label": "green rectangular label with a large purple a2 roundel, a blue Full cream band, and a visible 2L mark",
+    "back_label": "large white rectangular label with purple heading, cow comparison, nutrition panel, barcode, ingredient line, and 2L FULL CREAM footer",
+    "forbidden_features": [
+      "through-handle",
+      "open grip hole",
+      "jug handle",
+      "detergent-jug silhouette",
+      "paper carton"
+    ],
+    "geometry_evidence": "Read from target_A2_1.png and target_A2_2.png. Both views show a solid handleless body with shallow recessed side panels. No side view was supplied."
+  },
+  "price": {
+    "currency": "AUD",
+    "unit_price": 6.79,
+    "list": null,
+    "box_price": null,
+    "promo_window": null
+  },
+  "storage": "Keep refrigerated below 4°C and consume within five days of opening.",
+  "facts": [
+    {
+      "id": "F1",
+      "text": "Naturally free from A1 protein.",
+      "evidence": "Back label in target_A2_2.png.",
+      "evidence_type": "package_label"
+    },
+    {
+      "id": "F2",
+      "text": "No additives and no permeate.",
+      "evidence": "Back label in target_A2_2.png.",
+      "evidence_type": "package_label"
+    },
+    {
+      "id": "F3",
+      "text": "The only ingredient is milk; the product is homogenised and pasteurised.",
+      "evidence": "Ingredient statement in target_A2_2.png.",
+      "evidence_type": "package_label"
+    },
+    {
+      "id": "F4",
+      "text": "Contains 3.3 grams of protein per 100 millilitres.",
+      "evidence": "Nutrition information panel in target_A2_2.png.",
+      "evidence_type": "nutrition_panel"
+    },
+    {
+      "id": "F5",
+      "text": "Contains 109 milligrams of calcium per 100 millilitres.",
+      "evidence": "Nutrition information panel in target_A2_2.png.",
+      "evidence_type": "nutrition_panel"
+    },
+    {
+      "id": "F6",
+      "text": "Product of Australia.",
+      "evidence": "Country-of-origin statement in target_A2_2.png.",
+      "evidence_type": "package_label"
+    },
+    {
+      "id": "F7",
+      "text": "Each bottle contains 2 litres, or approximately eight 250 millilitre servings.",
+      "evidence": "Front and back labels in target_A2_1.png and target_A2_2.png.",
+      "evidence_type": "package_label"
+    },
+    {
+      "id": "F8",
+      "text": "The operator-provided price is AUD 6.79 per bottle.",
+      "evidence": "Operator-supplied price dated 2026-09-17.",
+      "evidence_type": "operator_confirmation"
+    },
+    {
+      "id": "F9",
+      "text": "A case contains six bottles.",
+      "evidence": "Operator-supplied case quantity dated 2026-09-17.",
+      "evidence_type": "operator_confirmation"
+    },
+    {
+      "id": "F10",
+      "text": "Full cream milk.",
+      "evidence": "Front label in target_A2_1.png.",
+      "evidence_type": "package_label"
+    }
+  ],
+  "forbidden_claims": [
+    "only one percent of cows",
+    "grass fed",
+    "four grams of protein per hundred millilitres",
+    "product of New Zealand",
+    "only available through an importer",
+    "TikTok promotion",
+    "limited time",
+    "best price",
+    "easy to digest",
+    "prevents bloating",
+    "suitable for lactose intolerance",
+    "premium",
+    "bird's nest",
+    "buffalo milk",
+    "daily bottle",
+    "gift box"
+  ],
+  "visual_assets": [
+    "target_A2_1.png",
+    "target_A2_2.png"
+  ]
+}

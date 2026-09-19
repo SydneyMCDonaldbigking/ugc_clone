@@ -487,11 +487,18 @@ def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
         subshots = segment.get("subshots")
         frame_owners = subshots if subshots else [segment]
         for owner in frame_owners:
+            camera = str(owner.get("camera") or segment.get("camera") or "") if isinstance(owner, dict) else ""
+            if camera.count("|") + camera.count("｜") < 3:
+                result.error(
+                    "shots.camera",
+                    f"{path}.camera",
+                    "Every keyframe needs camera 'shot size | height and angle | movement | framing', copied from the source TIMELINE.",
+                )
             if not isinstance(owner, dict) or not str(owner.get("first_frame", "")).strip():
                 result.error(
                     "shots.first_frame",
                     f"{path}.first_frame",
-                    "Every keyframe needs a first_frame: the still moment the image shows, product upright in its reference view.",
+                    "Every keyframe needs a first_frame: the still moment the image shows, product facing the camera as in its reference photo.",
                 )
         if subshots:
             # Each subshot is compiled into its own H3 segment (no cut inside an H3 segment),
@@ -602,7 +609,7 @@ def validate_keyframe_request(
             result.error(
                 "request.product_orientation",
                 f"{path}.product_placement.orientation",
-                "The product must appear in the same view as its reference photo (unchanged_from_reference).",
+                "The product must face the camera as in its reference photo (unchanged_from_reference); held or set down follows the source shot.",
             )
         if fidelity_mode == "pixel_preserve":
             placement = segment.get("product_placement")

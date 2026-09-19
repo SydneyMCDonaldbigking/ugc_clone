@@ -1,0 +1,263 @@
+{
+  "schema": "shot-plan/v1",
+  "language": "en-AU",
+  "variant_id": "v001",
+  "segments": [
+    {
+      "id": "S01",
+      "segment": 1,
+      "duration_seconds": 5,
+      "dialogue": "Full cream milk, naturally A1 protein free—look at that smooth, steady pour.",
+      "shot_type": "product_hero_to_pour_setup",
+      "subject": "A fictional home creator works just beyond the crop at a warm timber desk, with one chilled a2 bottle and one clear drinking glass.",
+      "action": "A tight front-label hero introduces the bottle; a hard cut moves to the upright pre-pour setup and the clip continues into one steady pour.",
+      "performance": "Hands move with relaxed purpose and slight asymmetry, as if the creator has just reached for a cold bottle during a real home recording.",
+      "keyframe_ids": [
+        "1",
+        "1b"
+      ],
+      "subshots": [
+        {
+          "id": "S01A",
+          "duration_seconds": 3,
+          "keyframe_id": "1",
+          "dialogue_slice": "Full cream milk, naturally A1 protein free—",
+          "shot_type": "front_label_product_closeup",
+          "action": "The camera makes a small handheld settle while fingertips turn the bottle a few millimetres toward a perfectly square front-label view.",
+          "first_frame": "First-person view: her hand holds one chilled a2 bottle close to the lens, front label facing the camera and filling most of the frame, condensation on the plastic. Below, a dim warm desk with a blurred laptop keyboard.",
+          "performance": "Face outside the crop; the visible hand has natural finger spacing, gentle contact and the tiny tension of an imminent demonstration.",
+          "camera": "close-up | first-person, phone at chest height looking down about 45 degrees | handheld, slight sway | bottle centred, about two thirds of the frame height"
+        },
+        {
+          "id": "S01B",
+          "duration_seconds": 2,
+          "keyframe_id": "1b",
+          "dialogue_slice": "look at that smooth, steady pour.",
+          "shot_type": "pre_pour_closeup",
+          "action": "The hand lifts and tilts the bottle after the first frame, creating one continuous milk stream into the glass.",
+          "first_frame": "First-person view looking down: one hand holds an empty clear glass low in frame over the dim desk; the other hand holds the uncapped a2 bottle upright just above it, front label facing the camera.",
+          "performance": "A candid preparation moment, with active wrists and naturally uneven fingers rather than a posed product hold.",
+          "camera": "close-up | first-person, looking down about 60 degrees into the glass | handheld | glass in the lower half, bottle in the upper half"
+        }
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "target_A2_1.png"
+      ],
+      "preserve": [
+        "same fictional creator",
+        "same warm desk setting",
+        "handleless flat-front two-litre bottle geometry",
+        "blue cap",
+        "complete green front label",
+        "upright product in every first frame"
+      ],
+      "exclude": [
+        "visible face",
+        "source product",
+        "source subtitles",
+        "generated overlay text",
+        "milk stream in the first frame",
+        "extra bottles",
+        "through-handle",
+        "jug silhouette",
+        "fingers across the front label"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "intention": "The creator immediately turns an ordinary-looking bottle into a tactile, in-use product proof.",
+      "accents": [
+        {
+          "at": "A1 protein free",
+          "reaction": "the hand settles and holds the front label square for a clean factual beat"
+        },
+        {
+          "at": "smooth, steady pour",
+          "reaction": "the wrist commits to one confident uninterrupted pour"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "segment": 2,
+      "duration_seconds": 5,
+      "dialogue": "Six bottles per case. Check the panel: only milk, with no additives or permeate.",
+      "shot_type": "quantity_reveal_to_back_label",
+      "subject": "The same creator's hands present a plain open shipping case and then one upright bottle with its back label facing the camera.",
+      "action": "A short overhead quantity reveal shows six capped bottles; a hard cut moves to a locked back-label close-up.",
+      "performance": "The first gesture is brisk and pleased; the label shot becomes calm and exact, with light natural grip pressure.",
+      "keyframe_ids": [
+        "2",
+        "2b"
+      ],
+      "subshots": [
+        {
+          "id": "S02A",
+          "duration_seconds": 2,
+          "keyframe_id": "2",
+          "dialogue_slice": "Six bottles per case.",
+          "shot_type": "overhead_quantity_insert",
+          "action": "Both hands release the open box flaps and briefly sweep across the two rows to make the count obvious.",
+          "first_frame": "Top-down view into an open plain cardboard box on the dim desk: six a2 bottles stand in two rows of three, blue caps up; both hands rest on the box edges.",
+          "performance": "Face outside the crop; the hands carry a quick reveal energy with slightly bent fingers and uneven resting pressure.",
+          "camera": "medium close-up | directly overhead, about 90 degrees | handheld, nearly still | open box fills the frame"
+        },
+        {
+          "id": "S02B",
+          "duration_seconds": 3,
+          "keyframe_id": "2b",
+          "dialogue_slice": "Check the panel: only milk, with no additives or permeate.",
+          "shot_type": "back_label_product_closeup",
+          "action": "The bottle stays stable while the camera makes a subtle handheld push toward the ingredient panel.",
+          "first_frame": "First-person view: both hands hold one a2 bottle close to the lens, back label facing the camera and filling most of the frame; fingertips only at the side edges.",
+          "performance": "Face outside the crop; the supporting hand is relaxed and believable, holding the package steady for inspection.",
+          "camera": "close-up | first-person, slight high angle about 20 degrees | handheld, slight sway | back label centred, about 70 percent of the frame"
+        }
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "target_A2_1.png",
+        "target_A2_2.png"
+      ],
+      "preserve": [
+        "same fictional creator's hands and outfit",
+        "same warm desk",
+        "exactly six bottles in the quantity insert",
+        "solid handleless bottle body",
+        "back label in the inspection insert"
+      ],
+      "exclude": [
+        "gift packaging",
+        "seasonal graphics",
+        "source brand",
+        "source subtitles",
+        "extra hands",
+        "seventh bottle",
+        "paper cartons",
+        "invented label text",
+        "through-handle",
+        "jug silhouette"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "intention": "The creator first proves the case quantity, then slows down so the viewer can verify the package facts directly.",
+      "accents": [
+        {
+          "at": "Six bottles",
+          "reaction": "both hands open around the complete two-by-three count"
+        },
+        {
+          "at": "Check the panel",
+          "reaction": "the cut lands on a steady square back-label view"
+        },
+        {
+          "at": "no additives or permeate",
+          "reaction": "the grip becomes still while the camera edges closer"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "segment": 3,
+      "duration_seconds": 5,
+      "dialogue": "Per one hundred millilitres, it has three point three grams of protein.",
+      "shot_type": "nutrition_fact_pour",
+      "subject": "The same creator works at the warm desk with one upright front-facing bottle and one empty clear glass.",
+      "action": "After the first frame, one hand lifts the bottle and completes a single clean pour while the glass remains planted on the desk.",
+      "performance": "Hands are focused and slightly busy, with a real change in grip pressure as the heavy two-litre bottle is lifted.",
+      "keyframe_ids": [
+        "3"
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "target_A2_1.png"
+      ],
+      "preserve": [
+        "same fictional creator's hands and outfit",
+        "same warm desk setting",
+        "one upright capped bottle in the first frame",
+        "complete front label",
+        "one empty clear glass"
+      ],
+      "exclude": [
+        "visible face",
+        "milk stream in the first frame",
+        "spilled milk",
+        "solid particles",
+        "extra products",
+        "source subtitles",
+        "through-handle",
+        "jug silhouette"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "first_frame": "First-person view: one hand holds a capped a2 bottle close to the lens, front label facing the camera; the other hand holds an empty clear glass lower in frame over the dim desk.",
+      "intention": "A precise nutrition statement is grounded by a simple, believable use action rather than by decorative graphics.",
+      "accents": [
+        {
+          "at": "three point three grams",
+          "reaction": "the bottle reaches a controlled pouring angle and the milk stream becomes steady"
+        },
+        {
+          "at": "protein",
+          "reaction": "the glass reaches its final level and the wrist begins returning upright"
+        }
+      ],
+      "camera": "close-up | first-person high angle about 45 degrees | handheld, follows the hands | bottle upper centre, glass lower"
+    },
+    {
+      "id": "S04",
+      "segment": 4,
+      "duration_seconds": 5,
+      "dialogue": "Each bottle is two litres, about eight serves, and costs six dollars seventy-nine.",
+      "shot_type": "final_product_and_result_hero",
+      "subject": "One front-facing a2 bottle and one filled glass form a compact final arrangement on the warm timber desk, with the creator just outside frame.",
+      "action": "The bottle remains upright while a hand gently slides the filled glass into its final position and the phone makes a subtle handheld push.",
+      "performance": "The finishing hand movement is relaxed and satisfied, with natural finger timing and a brief still hold at the end.",
+      "keyframe_ids": [
+        "4"
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "target_A2_1.png"
+      ],
+      "preserve": [
+        "same fictional creator's hand and outfit",
+        "same warm desk and household lighting",
+        "single upright handleless bottle",
+        "complete green front label and visible 2L mark",
+        "one filled clear glass"
+      ],
+      "exclude": [
+        "gift box",
+        "sale badge",
+        "price overlay",
+        "source subtitles",
+        "extra bottles",
+        "extra hands",
+        "through-handle",
+        "jug silhouette",
+        "fingers across the label"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "first_frame": "High-angle view of the dim warm desk: one a2 bottle stands upright, front label to the camera, beside a clear glass of milk, with a plain cardboard box behind and a laptop edge in the corner.",
+      "intention": "The creator closes on an uncluttered product-and-result proof while the voice gives only verified capacity, serving and price information.",
+      "accents": [
+        {
+          "at": "two litres",
+          "reaction": "the camera settles on the lower front-label area and visible 2L mark"
+        },
+        {
+          "at": "eight serves",
+          "reaction": "the hand finishes placing the filled glass beside the bottle"
+        },
+        {
+          "at": "six dollars seventy-nine",
+          "reaction": "the hand releases and leaves a clean final hold"
+        }
+      ],
+      "camera": "medium | high angle about 60 degrees looking down at the desk | handheld, settling to still | glass centred, bottle to the left, box behind"
+    }
+  ]
+}
