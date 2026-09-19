@@ -177,6 +177,18 @@ class EnglishValidationTests(unittest.TestCase):
         job["presenter"]["approval"] = {"sha256": "0" * 64, "approved_by": "codex"}
         failed = validate_keyframe_coverage(self.request, self.shot_plan, job, ROOT)
         self.assertIn("presenter.approval", {issue.code for issue in failed.errors})
+    def test_accent_must_anchor_to_dialogue(self) -> None:
+        plan = copy.deepcopy(self.shot_plan)
+        plan["segments"][0]["accents"] = [{"at": "not in the line", "reaction": "nods"}]
+        codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
+        self.assertIn("shots.accent_anchor", codes)
+
+    def test_intention_is_required(self) -> None:
+        plan = copy.deepcopy(self.shot_plan)
+        del plan["segments"][0]["intention"]
+        result = validate_shot_plan(plan, self.script)
+        self.assertIn("required.string", {issue.code for issue in result.errors})
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -126,6 +126,23 @@ asr_venv/bin/python scripts/tile.py $W/../inputs/ref_video.mp4 $W/words.json $W/
 **最值钱的招式要写进 `structure_notes`。** 这条参考片的核心招式是"把自家卖点包装成挑选标准":
 先说"选的时候一定要看好配料表",再把卖点当答案念。换商品时这一招要保留,只换答案。
 
+### 原片档案:ANALYSIS.md + TIMELINE.md(照 hypit 的 reference-video 方法)
+
+节拍表只记"每一拍是什么功能",不够 H3 用。每条参考片再写两份档案(中文,内部用),样例见 `work/a2_test/`:
+
+- **`ANALYSIS.md`,整条片为什么有效**:它想让观众得出什么结论、情绪弧线、每个画面和声音元素在做什么
+  (主画面、插入镜头、贯穿全片的道具、字幕、声音)、哪些作用要保留。事实和解读分开写
+- **`TIMELINE.md`,按原片时间分段**:画面里有什么、谁在动、跟哪个词对齐、对观众起什么作用;
+  每段末尾写一行"→ 改编",说明这个关系在我们片子里怎么落
+
+两条原则(来自 hypit transformations):
+- **保留作用,重做形式**。"说品牌时手拍在箱子上"的作用是"卖点配一个手上的证据",
+  没有品牌纸箱就让手落在瓶子上
+- **时间跟着新台词的词走,不跟原片秒数**。原片"说到价格时挑眉",我们就在新台词说价格的那个词上挑眉
+
+写的时候会发现稿子丢了作用:a2 英文稿把"他不知道"(整条片的反转、悄悄话)写成了 "He was confused.",
+对照 TIMELINE 改成 "He has no idea."。
+
 ## S4 商品参数表
 
 `inputs/<job>/product.json`:每条事实都要有 `id` 和 `evidence`。拿不到的字段填 `null`,**不许编**。
@@ -215,6 +232,19 @@ ffmpeg -ss 4.2 -i review_ready/<id>/<id>.mp4 -frames:v 1 -q:v 2 assets/presenter
      但画面里没有手;声音另外配上
 
 改提示词不换参考图时,用 `cc_rerun.py --prompts-file '{"3": …, "4": …}'` 一次重跑多段,其余段沿用,合并后照样超分。
+
+**H3 很吃"态度 + 重音"(照 hypit video-direction)。** 分镜每段写两个字段,`validate` 会检查:
+
+- `intention`:一句话定这一段的态度,是她对内容和对观众的关系,
+  例如 "She is showing off a find to a friend, barely containing how pleased she is with the deal."
+- `accents`:最多三个,每个钉在这一段台词里**真实存在的词**上,写那一刻的反应,
+  例如 `{"at": "seventy-nine", "reaction": "eyebrows lift into a pleased, knowing smile"}`
+
+编译 H3 的 `detailed_description` 时:第一句写态度,台词按分句放,重音词所在的分句后面紧跟对应反应,
+其余分句不配动作。几条注意:
+- **不要每句都配一个动作**,那是排舞,不是导演
+- **不要让手指比数字**,数量交给台词和后期字幕
+- **台词里说到的东西不等于画面要出现的东西**:"six bottles" 是她说的话,不是让模型在画面上写 6
 
 台词只能用 `(S1) <d>[Chinese] …</d>`。旁白也一样,描述里写明"画外音"就行。
 写好后本地用占位符(`__PRESENTER__`),提交前替换成服务器路径,另存为 `segments.server.json`。

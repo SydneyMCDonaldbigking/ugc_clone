@@ -427,6 +427,22 @@ def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
         elif segment.get("dialogue") != line.get("text"):
             result.error("shots.dialogue", f"{path}.dialogue", "Dialogue must exactly match the approved script.")
         _require_string(segment, "performance", result, path)
+        # Direction for H3 (hypit video-direction): one attitude sentence for the passage, plus a few
+        # reactions pinned to words that actually occur in this segment's dialogue.
+        _require_string(segment, "intention", result, path)
+        accents = segment.get("accents", [])
+        dialogue_lower = str(segment.get("dialogue", "")).lower()
+        if not isinstance(accents, list):
+            result.error("shots.accents", f"{path}.accents", "Accents must be a list.")
+        else:
+            if len(accents) > 3:
+                result.warning("shots.accents_many", f"{path}.accents", "More than three accents turns direction into choreography.")
+            for accent_index, accent in enumerate(accents):
+                accent_path = f"{path}.accents[{accent_index}]"
+                if not isinstance(accent, dict) or not str(accent.get("at", "")).strip() or not str(accent.get("reaction", "")).strip():
+                    result.error("shots.accent", accent_path, "Each accent needs 'at' (a dialogue phrase) and 'reaction'.")
+                elif str(accent["at"]).lower() not in dialogue_lower:
+                    result.error("shots.accent_anchor", f"{accent_path}.at", f"'{accent['at']}' does not occur in this segment's dialogue.")
         keyframe_ids = segment.get("keyframe_ids")
         if (
             not isinstance(keyframe_ids, list)

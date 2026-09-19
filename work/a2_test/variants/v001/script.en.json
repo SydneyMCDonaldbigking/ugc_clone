@@ -4,7 +4,7 @@
   "mode": "structure",
   "variant_id": "v001",
   "adaptations": {
-    "B1-B3": "Keep the playful household hook, but remove the unsupported expensive-milk and promotion claims.",
+    "B1-B3": "Keep the playful household hook, but remove the unsupported expensive-milk and promotion claims. 'He has no idea' keeps the source's conspiratorial twist beat (see TIMELINE 2.30-3.20).",
     "B4-B5": "Use the verified case quantity, bottle size, and operator-confirmed unit price.",
     "B6": "Replace importer scarcity with evidence from the ingredient panel.",
     "B7-B8": "Replace the source authority claims with verified A1 protein and nutrition facts."
@@ -13,36 +13,60 @@
     {
       "id": "L1",
       "segment": 1,
-      "beats": ["B1", "B2", "B3"],
-      "text": "Seeing all this milk, my husband asked if I'd won the lottery. He was confused.",
-      "claims": ["F10"],
+      "beats": [
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "text": "My husband asked if I'd won the lottery. He has no idea.",
+      "claims": [
+        "F10"
+      ],
       "target_duration_seconds": 5,
       "delivery": "Playful and conversational; lower the voice slightly for the final sentence."
     },
     {
       "id": "L2",
       "segment": 2,
-      "beats": ["B4", "B5"],
+      "beats": [
+        "B4",
+        "B5"
+      ],
       "text": "There are six two-litre bottles in the case, and each bottle is six dollars seventy-nine.",
-      "claims": ["F7", "F8", "F9"],
+      "claims": [
+        "F7",
+        "F8",
+        "F9"
+      ],
       "target_duration_seconds": 5,
       "delivery": "Emphasise six bottles, then slow down slightly for the price."
     },
     {
       "id": "L3",
       "segment": 3,
-      "beats": ["B6"],
+      "beats": [
+        "B6"
+      ],
       "text": "Check the panel: milk is the only ingredient, with no additives or permeate.",
-      "claims": ["F2", "F3"],
+      "claims": [
+        "F2",
+        "F3"
+      ],
       "target_duration_seconds": 5,
       "delivery": "Clear off-camera reminder, spoken at an even pace."
     },
     {
       "id": "L4",
       "segment": 4,
-      "beats": ["B7", "B8"],
+      "beats": [
+        "B7",
+        "B8"
+      ],
       "text": "It is A1 protein free, with three point three grams of protein per hundred millilitres.",
-      "claims": ["F1", "F4"],
+      "claims": [
+        "F1",
+        "F4"
+      ],
       "target_duration_seconds": 5,
       "delivery": "Earnest and precise; articulate the nutrition number while pouring."
     }

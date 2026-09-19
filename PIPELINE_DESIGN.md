@@ -408,6 +408,15 @@ Gate:
 - low-confidence and manually corrected spans are recorded;
 - source text never becomes target copy by default.
 
+### S3a — Reference archive: ANALYSIS.md and TIMELINE.md
+
+Borrowed from hypit's reference-video method. Beats alone record *what function* each moment has; H3 also needs *how it lands*.
+
+- `work/<job>/ANALYSIS.md`: what the piece wants the viewer to conclude, the emotional arc, what each visual/sound system does (A-roll, inserts, persistent props, captions, audio), and which roles must survive adaptation. Facts and interpretation stay distinguishable.
+- `work/<job>/TIMELINE.md`: sections named by source time and phase; what is on screen, what moves, which word it aligns to, what it does for the viewer, and an "→ adaptation" line.
+- Adaptation preserves the role and recreates the form; timing binds to words in the new script, not to source seconds.
+- These are internal analysis documents (any language). Their images never go to a generation model.
+
 ### S3 — Beat extraction and sanitization
 
 Inputs:
@@ -544,6 +553,7 @@ Claude Code actions:
 - confirm 9:16 orientation, readable file, and expected segment set;
 - map keyframe to `<Picture 1>` and supplementary product references after it;
 - adapt the H3 prompt so the keyframe governs composition while the product reference reinforces shape/label;
+- build `detailed_description` from the shot plan's `intention` (one attitude sentence first) and `accents` (a reaction placed right after the dialogue clause containing its anchor word); clauses without an accent get no choreography; never ask hands to display numbers, and never turn spoken content into on-screen objects or text;
 - compile dialogue as `(S1) <d>[English] ...</d>` — **unverified**: H3 has only been run with `[Chinese]`; render one short English test segment before the first full job;
 - compile each shot-plan subshot as its own H3 segment (H3 cannot cut inside a segment); subshots must be at least 2 s and add up to the planned segment duration, and the job still stays within 20 s total;
 - create `segments.server.json` with resolved server paths.

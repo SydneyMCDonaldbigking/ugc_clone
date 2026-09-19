@@ -7,7 +7,7 @@
       "id": "S01",
       "segment": 1,
       "duration_seconds": 5,
-      "dialogue": "Seeing all this milk, my husband asked if I'd won the lottery. He was confused.",
+      "dialogue": "My husband asked if I'd won the lottery. He has no idea.",
       "shot_type": "medium_presenter",
       "subject": "The same fictional woman stands behind a white marble kitchen island with a plain open cardboard shipping box.",
       "action": "She opens the box and wraps one hand around the solid upper side of an upright a2 bottle, preparing to lift it while it remains seated in the case.",
@@ -39,7 +39,18 @@
         "jug silhouette"
       ],
       "label_policy": "product_reference_reinforcement",
-      "first_frame": "She stands behind a white marble kitchen island, both hands opening the flaps of a plain cardboard box. One a2 bottle stands upright on the island beside the box, front label facing the camera."
+      "first_frame": "She stands behind a white marble kitchen island, both hands opening the flaps of a plain cardboard box. One a2 bottle stands upright on the island beside the box, front label facing the camera.",
+      "intention": "She is laughing to a friend about her husband's mix-up, then drops into a conspiratorial whisper.",
+      "accents": [
+        {
+          "at": "lottery",
+          "reaction": "her grin peaks, eyebrows up, teasing"
+        },
+        {
+          "at": "no idea",
+          "reaction": "she leans toward the lens and lowers her voice"
+        }
+      ]
     },
     {
       "id": "S02",
@@ -94,7 +105,18 @@
         "open grip hole",
         "jug silhouette"
       ],
-      "label_policy": "product_reference_reinforcement"
+      "label_policy": "product_reference_reinforcement",
+      "intention": "She is showing off a find to a friend, barely containing how pleased she is with the deal.",
+      "accents": [
+        {
+          "at": "six two-litre bottles",
+          "reaction": "an open hand sweeps over the case"
+        },
+        {
+          "at": "seventy-nine",
+          "reaction": "eyebrows lift into a pleased, knowing smile"
+        }
+      ]
     },
     {
       "id": "S03",
@@ -133,7 +155,14 @@
         "jug silhouette"
       ],
       "label_policy": "original_pixels_or_fully_preserved",
-      "first_frame": "Close-up: one a2 bottle stands upright on the marble island, back label square to the camera and filling most of the frame. Her right hand steadies it from behind, fingertips at the side edge."
+      "first_frame": "Close-up: one a2 bottle stands upright on the marble island, back label square to the camera and filling most of the frame. Her right hand steadies it from behind, fingertips at the side edge.",
+      "intention": "Off camera, she calmly points out a fact the viewer can check for themselves.",
+      "accents": [
+        {
+          "at": "only ingredient",
+          "reaction": "her voice slows and lands the words"
+        }
+      ]
     },
     {
       "id": "S04",
@@ -181,7 +210,18 @@
         "fingers across the bottle front"
       ],
       "label_policy": "product_reference_reinforcement",
-      "first_frame": "She stands behind the island. One capped a2 bottle stands upright on the island, front label facing the camera, beside one empty clear glass."
+      "first_frame": "She stands behind the island. One capped a2 bottle stands upright on the island, front label facing the camera, beside one empty clear glass.",
+      "intention": "Busy with her hands, she earnestly tells the viewer a fact, then lets the pour prove it.",
+      "accents": [
+        {
+          "at": "A1 protein free",
+          "reaction": "a small decisive nod"
+        },
+        {
+          "at": "three point three grams",
+          "reaction": "the milk is streaming into the glass as she says the number"
+        }
+      ]
     }
   ]
 }
