@@ -205,7 +205,8 @@ ffmpeg -ss 4.2 -i review_ready/<id>/<id>.mp4 -frames:v 1 -q:v 2 assets/presenter
   出镜人图会把构图拉回中景;ref2va 本质是"参考着重画",营养成分表这种小字必然糊。
   流水线目前**不支持自定义首帧**(`src/workflow.py` 里 `first_frame` 写死为空,只有 `previous_tail`)。
   不改代码的前提下有两条路:
-  1. 这一段只绑商品图一张,设 `fully_preserved`,画面里只写"一只手握住把手、全程不动"
+  1. 这一段只绑商品图一张,设 `fully_preserved`,画面里只写"一只手握住把手、全程不动"。
+     **a2_test 实测有效**(`a2-replica-004`,人工确认通过),保底方案没用上
   2. 保底:`scripts/packshot_clip.sh <图> <out.mp4>` 用原图做 5.2 秒慢推,1440x2560,字 100% 清楚,
      但画面里没有手;声音另外配上
 
