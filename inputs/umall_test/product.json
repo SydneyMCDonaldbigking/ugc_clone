@@ -1,0 +1,27 @@
+{
+  "schema": "product/v0.1",
+  "name": "杨枝甘露奶皮子酸奶",
+  "name_en": "Clotted Cream (Mango Pomelo Sago) Yogurt",
+  "brand": "UMALL 优选",
+  "spec": {"unit": "杯", "pack_qty": 12, "volume_ml": 220},
+  "price": {"currency": "AUD", "unit_price": 6.89, "list": null, "box_price": null, "promo_window": null},
+  "storage": "冷藏 2-6°C",
+  "facts": [
+    {"id": "F1", "text": "配料:全脂牛奶、增稠剂(果胶)、芒果果泥、西柚果肉、酸奶发酵菌", "evidence": "包装配料表(target_umall.jpg)"},
+    {"id": "F2", "text": "奶皮子酸奶,质地厚,勺子能挖起完整一大块", "evidence": "产品图:勺子挖起的整块(target_umall.jpg)"},
+    {"id": "F3", "text": "杨枝甘露风味,配料里有芒果果泥和西柚果肉", "evidence": "包装品名 + 配料表"},
+    {"id": "F4", "text": "需冷藏", "evidence": "包装 *Refrigerated Storage"},
+    {"id": "F5", "text": "一杯 220ml", "evidence": "运营提供 2026-09-17"},
+    {"id": "F6", "text": "一杯 6.89 澳元", "evidence": "运营提供 2026-09-17"},
+    {"id": "F7", "text": "一箱 12 杯", "evidence": "运营提供 2026-09-17"}
+  ],
+  "forbidden_claims": [
+    "低糖/无糖/0蔗糖/0代糖/0乳糖(无证据)",
+    "代餐/减脂/瘦身/控卡(无证据,且涉及功效)",
+    "接近希腊酸奶(原片宣称)",
+    "原价/折扣/限时(未提供)",
+    "整箱价折算(未提供整箱价)",
+    "亲身复购经历(出镜人是虚构的)"
+  ],
+  "visual_assets": ["target_umall.jpg"]
+}

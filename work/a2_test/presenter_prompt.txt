@@ -1,0 +1,9 @@
+subject_definitions:
+A fictional East Asian woman in her early thirties, an upbeat home lifestyle vlogger. Short black hair tied back in a low bun with a few loose strands, bright lively eyes, a wide warm smile, light everyday makeup. She wears a relaxed light-blue oversized T-shirt with no print. She stands behind a white marble kitchen island in a modern, bright open-plan kitchen with pale wood cabinets, a tall fridge in the background and soft daylight from a window on the right.
+
+detailed_description:
+A locked vertical selfie-style medium shot, the phone camera at her chest height about an arm's length away, framing her from the waist up with the empty marble island edge across the bottom of frame. She looks into the lens with an amused, playful expression, lifts both hands in a small shrug, then lowers them to rest flat on the island and gives a cheerful nod, holding still and facing the camera for the last two seconds so her face is clearly visible, evenly lit and in sharp focus.
+
+soundscape: quiet kitchen room tone, faint hum of the fridge. No music.
+
+The island stays completely empty: no bottles, cartons, cups, boxes or props. No printed text, letters, numbers, subtitles, captions, watermarks, logos or brand names anywhere in frame, including on her clothing. No extra fingers or limbs, no distorted hands or face. No morphing, no camera movement, no cuts, no scene warping.

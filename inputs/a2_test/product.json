@@ -1,0 +1,31 @@
+{
+  "schema": "product/v0.1",
+  "name": "a2 全脂牛奶",
+  "name_en": "a2 Milk Full Cream 2L",
+  "brand": "The a2 Milk Company",
+  "spec": {"unit": "瓶", "volume_ml": 2000, "pack_qty": 6},
+  "price": {"currency": "AUD", "unit_price": 6.79, "list": null, "box_price": null, "promo_window": null},
+  "storage": "4°C 以下冷藏,开封后 5 天内喝完",
+  "facts": [
+    {"id": "F1", "text": "天然不含 A1 蛋白(Naturally A1 protein free)", "evidence": "背标 target_A2_2.png"},
+    {"id": "F2", "text": "无添加剂、无 permeate(No additives, no permeate)", "evidence": "背标"},
+    {"id": "F3", "text": "配料只有牛奶(Ingredient: milk),均质、巴氏杀菌", "evidence": "背标配料"},
+    {"id": "F4", "text": "每 100ml 蛋白质 3.3g", "evidence": "背标营养成分表"},
+    {"id": "F5", "text": "每 100ml 钙 109mg", "evidence": "背标营养成分表"},
+    {"id": "F6", "text": "澳洲产(Product of Australia)", "evidence": "背标"},
+    {"id": "F7", "text": "一瓶 2L,约 8 杯 250ml", "evidence": "正标 2L + 背标 servings per package 8"},
+    {"id": "F8", "text": "一瓶 6.79 澳元", "evidence": "运营提供 2026-09-17"},
+    {"id": "F9", "text": "一箱 6 瓶", "evidence": "运营提供 2026-09-17"},
+    {"id": "F10", "text": "全脂(Full cream)", "evidence": "正标"}
+  ],
+  "forbidden_claims": [
+    "全球只有 1% 的奶牛 / 青草草饲(原片数据,a2 标签没有)",
+    "每百毫升蛋白质 4.0 克(a2 实际是 3.3 克)",
+    "新西兰产(a2 这款是澳洲产)",
+    "要找代购才能买到(澳洲超市常见,不真实)",
+    "来抖音搞活动 / 太划算 / 这啥价(没有促销依据)",
+    "好消化 / 不胀气 / 适合乳糖不耐(标签上没写,属于功效宣称)",
+    "贵 / 高端(没有比价依据)"
+  ],
+  "visual_assets": ["target_A2_1.png", "target_A2_2.png"]
+}

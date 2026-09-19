@@ -1,0 +1,278 @@
+{
+  "schema": "beats/v0.1",
+  "source": {
+    "file": "ref_video.mp4",
+    "duration": 16.47,
+    "fps": 30.0,
+    "size": "720x1280"
+  },
+  "speech_rate_cps": 6.5,
+  "total_chars": 107,
+  "cuts": [
+    2.067,
+    4.167,
+    6.733,
+    7.567,
+    9.4,
+    11.6
+  ],
+  "structure_notes": [
+    "A-roll 全程是同一人自拍中景,桌上摆满产品,身后开箱;2.07 和 4.17 是同机位跳剪,只为去掉停顿",
+    "两次真正的插入镜头都在给新信息:6.73 俯拍整箱(量),9.40 杯盖特写(卖点)",
+    "卖点包装成挑选标准(B5→B6):先立'要看配料表'的规矩,再把自家卖点当答案念出来",
+    "价格不报数字,只说'这个价格',靠'一大箱十桶'和黄色强调字幕表达量",
+    "没有下单引导,结尾停在感官证明+对比",
+    "语气:B1-B4 快而随意的闲聊;B5 放慢、提醒口吻;B7-B8 惊叹拖长音(挖坑那一下 13.56-14.96 拉长)"
+  ],
+  "beats": [
+    {
+      "id": "B1",
+      "t_start": 0.0,
+      "t_end": 2.13,
+      "speech": [
+        0.0,
+        2.12
+      ],
+      "function": "hook+pain",
+      "hook_type": "body_anxiety",
+      "char_count": 16,
+      "cps": 7.5,
+      "intensity": "mid,随意吐槽",
+      "pause_after_ms": 20,
+      "cuts_inside": [
+        2.067
+      ],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": false
+      },
+      "visual_action": "单手拿一杯产品晃到镜头前,身后泡沫箱装满产品",
+      "visual_sync": null,
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "最近圆了一大圈,我都没怎么敢吃晚饭,",
+      "asr_text": "最近圆了一大圈,我都没怎么敢吃晚饭,"
+    },
+    {
+      "id": "B2",
+      "t_start": 2.13,
+      "t_end": 3.88,
+      "speech": [
+        2.14,
+        3.86
+      ],
+      "function": "solution+use_case",
+      "char_count": 11,
+      "cps": 6.4,
+      "intensity": "mid",
+      "pause_after_ms": 40,
+      "cuts_inside": [],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": "jump_cut@2.07"
+      },
+      "visual_action": "勺子挖一口送进嘴里,另一只手端着开盖的杯子",
+      "visual_sync": "说'这个'时产品在画面正中",
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "就拿这个无糖酸奶当代餐。",
+      "asr_text": "就拿这个无糖酸奶当代餐。"
+    },
+    {
+      "id": "B3",
+      "t_start": 3.88,
+      "t_end": 6.06,
+      "speech": [
+        3.9,
+        6.04
+      ],
+      "function": "urgency+price_anchor+quantity",
+      "char_count": 17,
+      "cps": 7.9,
+      "intensity": "mid→high",
+      "pause_after_ms": 40,
+      "cuts_inside": [
+        4.167
+      ],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": "jump_cut@4.17"
+      },
+      "visual_action": "手伸向身后的箱子拿起一杯",
+      "visual_sync": "说'一大箱'时手在箱子上",
+      "caption_emphasis": "一大箱10桶(黄字)",
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "趁着它现在这个价格,就到手一大箱十桶,",
+      "asr_text": "趁着它现在这个价格就到处一大箱十桶,"
+    },
+    {
+      "id": "B4",
+      "t_start": 6.06,
+      "t_end": 7.32,
+      "speech": [
+        6.08,
+        7.28
+      ],
+      "function": "social_proof(复购)",
+      "char_count": 9,
+      "cps": 7.5,
+      "intensity": "high,快",
+      "pause_after_ms": 80,
+      "cuts_inside": [
+        6.733
+      ],
+      "shot": {
+        "type": "overhead_insert",
+        "cut_in": "hard_cut@6.73",
+        "cut_out": "hard_cut@7.57"
+      },
+      "visual_action": "先是手把一杯放回箱子,切俯拍:箱内整齐码放的杯子",
+      "visual_sync": "俯拍整箱落在'一大箱'上",
+      "caption_emphasis": null,
+      "proof_category": "quantity_display",
+      "notes": null,
+      "ref_text": "我又赶紧囤了一大箱。",
+      "asr_text": "我又赶紧囤了一大箱。"
+    },
+    {
+      "id": "B5",
+      "t_start": 7.32,
+      "t_end": 9.25,
+      "speech": [
+        7.36,
+        9.2
+      ],
+      "function": "criteria(立规矩)",
+      "char_count": 15,
+      "cps": 8.2,
+      "intensity": "放慢,提醒口吻",
+      "pause_after_ms": 100,
+      "cuts_inside": [
+        7.567
+      ],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": "hard_cut@7.57"
+      },
+      "visual_action": "撕开杯盖膜,把开盖的杯子端到镜头前",
+      "visual_sync": null,
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": "1fps 抽帧漏掉了 8.3-9.2 的字幕,0.25s 加密抽帧才看到",
+      "ref_text": "你们在选的时候,一定要看好配料表,",
+      "asr_text": "你们在选的时候一定要看我配料表,"
+    },
+    {
+      "id": "B6",
+      "t_start": 9.25,
+      "t_end": 11.45,
+      "speech": [
+        9.3,
+        11.44
+      ],
+      "function": "criteria(给答案)=feature",
+      "char_count": 14,
+      "cps": 6.5,
+      "intensity": "mid,逐项点名",
+      "pause_after_ms": 20,
+      "cuts_inside": [
+        9.4
+      ],
+      "shot": {
+        "type": "closeup_insert",
+        "cut_in": "hard_cut@9.40",
+        "cut_out": "hard_cut@11.60"
+      },
+      "visual_action": "杯盖特写,手指依次点盖上印的三项卖点",
+      "visual_sync": "念到哪一项手指点到哪一项",
+      "caption_emphasis": "三项卖点黄字",
+      "proof_category": "label_readout",
+      "notes": null,
+      "ref_text": "要选这种0蔗糖0代糖0乳糖的,",
+      "asr_text": "要选这种淋着糖淋带糖淋乳糖的,"
+    },
+    {
+      "id": "B7",
+      "t_start": 11.45,
+      "t_end": 12.9,
+      "speech": [
+        11.46,
+        12.86
+      ],
+      "function": "sensory_proof(引导看)",
+      "char_count": 9,
+      "cps": 6.4,
+      "intensity": "high,惊叹",
+      "pause_after_ms": 100,
+      "cuts_inside": [
+        11.6
+      ],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": "hard_cut@11.60"
+      },
+      "visual_action": "双手捧杯靠近镜头,勺子插进杯里",
+      "visual_sync": "说'质地'时勺子在杯中",
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "哇塞你看这个质地啊,",
+      "asr_text": "哇塞你看这个质地啊,"
+    },
+    {
+      "id": "B8",
+      "t_start": 12.9,
+      "t_end": 15.09,
+      "speech": [
+        12.96,
+        15.08
+      ],
+      "function": "sensory_proof(证明动作)",
+      "char_count": 7,
+      "cps": 3.3,
+      "intensity": "high,拖长音",
+      "pause_after_ms": 20,
+      "cuts_inside": [],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": false
+      },
+      "visual_action": "勺子挖起一整块举到杯子上方,杯里留下一个坑",
+      "visual_sync": "'一挖'对应勺子抬起,'一个坑'时镜头能看到坑",
+      "caption_emphasis": null,
+      "proof_category": "texture_scoop",
+      "notes": null,
+      "ref_text": "哇,一挖一个坑啊,",
+      "asr_text": "哇,一窝一个坑啊,"
+    },
+    {
+      "id": "B9",
+      "t_start": 15.09,
+      "t_end": 16.47,
+      "speech": [
+        15.1,
+        16.46
+      ],
+      "function": "comparison",
+      "char_count": 9,
+      "cps": 6.6,
+      "intensity": "mid,收尾",
+      "pause_after_ms": 7,
+      "cuts_inside": [],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": false
+      },
+      "visual_action": "保持举着勺子里的那块给镜头看",
+      "visual_sync": null,
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "就很接近于希腊酸奶。",
+      "asr_text": "就很接近于西纳酸。"
+    }
+  ]
+}

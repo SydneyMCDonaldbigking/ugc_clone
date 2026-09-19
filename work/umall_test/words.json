@@ -1,0 +1,588 @@
+{
+  "schema": "words/v0.1",
+  "audio": "audio.wav",
+  "duration": 16.485,
+  "engine": "faster-whisper",
+  "model": "large-v3",
+  "language": "zh",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.86,
+      "text": "最近圆了一大圈,我都没怎么敢吃晚饭,就拿这个无糖酸奶当代餐。",
+      "words": [
+        {
+          "word": "最近",
+          "start": 0.0,
+          "end": 0.1,
+          "score": 0.529
+        },
+        {
+          "word": "圆",
+          "start": 0.1,
+          "end": 0.26,
+          "score": 0.986
+        },
+        {
+          "word": "了",
+          "start": 0.26,
+          "end": 0.34,
+          "score": 0.998
+        },
+        {
+          "word": "一",
+          "start": 0.34,
+          "end": 0.42,
+          "score": 0.997
+        },
+        {
+          "word": "大",
+          "start": 0.42,
+          "end": 0.56,
+          "score": 0.999
+        },
+        {
+          "word": "圈,",
+          "start": 0.56,
+          "end": 0.76,
+          "score": 1.0
+        },
+        {
+          "word": "我",
+          "start": 0.82,
+          "end": 0.96,
+          "score": 0.949
+        },
+        {
+          "word": "都",
+          "start": 0.96,
+          "end": 1.0,
+          "score": 0.986
+        },
+        {
+          "word": "没",
+          "start": 1.0,
+          "end": 1.18,
+          "score": 0.974
+        },
+        {
+          "word": "怎么",
+          "start": 1.18,
+          "end": 1.32,
+          "score": 0.935
+        },
+        {
+          "word": "敢",
+          "start": 1.32,
+          "end": 1.52,
+          "score": 0.816
+        },
+        {
+          "word": "吃",
+          "start": 1.52,
+          "end": 1.68,
+          "score": 0.996
+        },
+        {
+          "word": "晚",
+          "start": 1.68,
+          "end": 1.8,
+          "score": 0.979
+        },
+        {
+          "word": "饭,",
+          "start": 1.8,
+          "end": 2.12,
+          "score": 0.999
+        },
+        {
+          "word": "就",
+          "start": 2.14,
+          "end": 2.28,
+          "score": 0.821
+        },
+        {
+          "word": "拿",
+          "start": 2.28,
+          "end": 2.44,
+          "score": 0.978
+        },
+        {
+          "word": "这个",
+          "start": 2.44,
+          "end": 2.6,
+          "score": 0.606
+        },
+        {
+          "word": "无",
+          "start": 2.6,
+          "end": 2.76,
+          "score": 0.991
+        },
+        {
+          "word": "糖",
+          "start": 2.76,
+          "end": 2.94,
+          "score": 0.999
+        },
+        {
+          "word": "酸",
+          "start": 2.94,
+          "end": 3.14,
+          "score": 0.958
+        },
+        {
+          "word": "奶",
+          "start": 3.14,
+          "end": 3.24,
+          "score": 0.992
+        },
+        {
+          "word": "当",
+          "start": 3.24,
+          "end": 3.4,
+          "score": 0.982
+        },
+        {
+          "word": "代",
+          "start": 3.4,
+          "end": 3.56,
+          "score": 0.693
+        },
+        {
+          "word": "餐。",
+          "start": 3.56,
+          "end": 3.86,
+          "score": 0.988
+        }
+      ]
+    },
+    {
+      "start": 3.9,
+      "end": 7.28,
+      "text": "趁着它现在这个价格就到处一大箱十桶,我又赶紧囤了一大箱。",
+      "words": [
+        {
+          "word": "趁",
+          "start": 3.9,
+          "end": 4.02,
+          "score": 0.79
+        },
+        {
+          "word": "着",
+          "start": 4.02,
+          "end": 4.1,
+          "score": 0.973
+        },
+        {
+          "word": "它",
+          "start": 4.1,
+          "end": 4.14,
+          "score": 0.817
+        },
+        {
+          "word": "现在",
+          "start": 4.14,
+          "end": 4.34,
+          "score": 0.968
+        },
+        {
+          "word": "这个",
+          "start": 4.34,
+          "end": 4.5,
+          "score": 0.969
+        },
+        {
+          "word": "价",
+          "start": 4.5,
+          "end": 4.72,
+          "score": 0.999
+        },
+        {
+          "word": "格",
+          "start": 4.72,
+          "end": 4.82,
+          "score": 0.999
+        },
+        {
+          "word": "就到",
+          "start": 4.82,
+          "end": 5.0,
+          "score": 0.604
+        },
+        {
+          "word": "处",
+          "start": 5.0,
+          "end": 5.22,
+          "score": 0.94
+        },
+        {
+          "word": "一",
+          "start": 5.22,
+          "end": 5.32,
+          "score": 0.993
+        },
+        {
+          "word": "大",
+          "start": 5.32,
+          "end": 5.46,
+          "score": 0.997
+        },
+        {
+          "word": "箱",
+          "start": 5.46,
+          "end": 5.64,
+          "score": 0.998
+        },
+        {
+          "word": "十",
+          "start": 5.64,
+          "end": 5.8,
+          "score": 0.341
+        },
+        {
+          "word": "桶,",
+          "start": 5.8,
+          "end": 6.04,
+          "score": 0.994
+        },
+        {
+          "word": "我",
+          "start": 6.08,
+          "end": 6.14,
+          "score": 0.96
+        },
+        {
+          "word": "又",
+          "start": 6.14,
+          "end": 6.2,
+          "score": 1.0
+        },
+        {
+          "word": "赶",
+          "start": 6.2,
+          "end": 6.4,
+          "score": 0.998
+        },
+        {
+          "word": "紧",
+          "start": 6.4,
+          "end": 6.46,
+          "score": 0.997
+        },
+        {
+          "word": "囤",
+          "start": 6.46,
+          "end": 6.68,
+          "score": 0.746
+        },
+        {
+          "word": "了",
+          "start": 6.68,
+          "end": 6.78,
+          "score": 0.992
+        },
+        {
+          "word": "一",
+          "start": 6.78,
+          "end": 6.84,
+          "score": 0.999
+        },
+        {
+          "word": "大",
+          "start": 6.84,
+          "end": 7.02,
+          "score": 0.999
+        },
+        {
+          "word": "箱。",
+          "start": 7.02,
+          "end": 7.28,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "start": 7.36,
+      "end": 16.46,
+      "text": "你们在选的时候一定要看我配料表,要选这种淋着糖淋带糖淋乳糖的,哇塞你看这个质地啊,哇,一窝一个坑啊,就很接近于西纳酸。",
+      "words": [
+        {
+          "word": "你们",
+          "start": 7.36,
+          "end": 7.56,
+          "score": 0.959
+        },
+        {
+          "word": "在",
+          "start": 7.56,
+          "end": 7.7,
+          "score": 0.997
+        },
+        {
+          "word": "选",
+          "start": 7.7,
+          "end": 7.9,
+          "score": 1.0
+        },
+        {
+          "word": "的时候",
+          "start": 7.9,
+          "end": 8.02,
+          "score": 0.996
+        },
+        {
+          "word": "一定要",
+          "start": 8.02,
+          "end": 8.4,
+          "score": 0.69
+        },
+        {
+          "word": "看",
+          "start": 8.4,
+          "end": 8.66,
+          "score": 0.998
+        },
+        {
+          "word": "我",
+          "start": 8.66,
+          "end": 8.76,
+          "score": 0.401
+        },
+        {
+          "word": "配",
+          "start": 8.76,
+          "end": 8.9,
+          "score": 0.999
+        },
+        {
+          "word": "料",
+          "start": 8.9,
+          "end": 9.06,
+          "score": 1.0
+        },
+        {
+          "word": "表,",
+          "start": 9.06,
+          "end": 9.2,
+          "score": 0.998
+        },
+        {
+          "word": "要",
+          "start": 9.3,
+          "end": 9.4,
+          "score": 1.0
+        },
+        {
+          "word": "选",
+          "start": 9.4,
+          "end": 9.62,
+          "score": 1.0
+        },
+        {
+          "word": "这",
+          "start": 9.62,
+          "end": 9.7,
+          "score": 0.974
+        },
+        {
+          "word": "种",
+          "start": 9.7,
+          "end": 9.78,
+          "score": 1.0
+        },
+        {
+          "word": "淋",
+          "start": 9.78,
+          "end": 10.0,
+          "score": 0.779
+        },
+        {
+          "word": "着",
+          "start": 10.0,
+          "end": 10.08,
+          "score": 0.607
+        },
+        {
+          "word": "糖",
+          "start": 10.08,
+          "end": 10.28,
+          "score": 1.0
+        },
+        {
+          "word": "淋",
+          "start": 10.28,
+          "end": 10.5,
+          "score": 0.76
+        },
+        {
+          "word": "带",
+          "start": 10.5,
+          "end": 10.62,
+          "score": 0.691
+        },
+        {
+          "word": "糖",
+          "start": 10.62,
+          "end": 10.76,
+          "score": 0.999
+        },
+        {
+          "word": "淋",
+          "start": 10.76,
+          "end": 11.0,
+          "score": 0.994
+        },
+        {
+          "word": "乳",
+          "start": 11.0,
+          "end": 11.16,
+          "score": 1.0
+        },
+        {
+          "word": "糖",
+          "start": 11.16,
+          "end": 11.32,
+          "score": 0.999
+        },
+        {
+          "word": "的,",
+          "start": 11.32,
+          "end": 11.44,
+          "score": 0.997
+        },
+        {
+          "word": "哇",
+          "start": 11.46,
+          "end": 11.58,
+          "score": 0.934
+        },
+        {
+          "word": "塞",
+          "start": 11.58,
+          "end": 11.8,
+          "score": 0.963
+        },
+        {
+          "word": "你看",
+          "start": 11.8,
+          "end": 11.94,
+          "score": 0.744
+        },
+        {
+          "word": "这个",
+          "start": 11.94,
+          "end": 12.2,
+          "score": 0.997
+        },
+        {
+          "word": "质",
+          "start": 12.2,
+          "end": 12.54,
+          "score": 1.0
+        },
+        {
+          "word": "地",
+          "start": 12.54,
+          "end": 12.74,
+          "score": 0.994
+        },
+        {
+          "word": "啊,",
+          "start": 12.74,
+          "end": 12.86,
+          "score": 0.517
+        },
+        {
+          "word": "哇,",
+          "start": 12.96,
+          "end": 13.46,
+          "score": 0.459
+        },
+        {
+          "word": "一",
+          "start": 13.56,
+          "end": 14.06,
+          "score": 0.983
+        },
+        {
+          "word": "窝",
+          "start": 14.06,
+          "end": 14.4,
+          "score": 0.908
+        },
+        {
+          "word": "一个",
+          "start": 14.4,
+          "end": 14.62,
+          "score": 0.99
+        },
+        {
+          "word": "坑",
+          "start": 14.62,
+          "end": 14.96,
+          "score": 0.999
+        },
+        {
+          "word": "啊,",
+          "start": 14.96,
+          "end": 15.08,
+          "score": 0.939
+        },
+        {
+          "word": "就",
+          "start": 15.1,
+          "end": 15.18,
+          "score": 1.0
+        },
+        {
+          "word": "很",
+          "start": 15.18,
+          "end": 15.38,
+          "score": 1.0
+        },
+        {
+          "word": "接",
+          "start": 15.38,
+          "end": 15.64,
+          "score": 1.0
+        },
+        {
+          "word": "近",
+          "start": 15.64,
+          "end": 15.8,
+          "score": 1.0
+        },
+        {
+          "word": "于",
+          "start": 15.8,
+          "end": 15.92,
+          "score": 0.999
+        },
+        {
+          "word": "西",
+          "start": 15.92,
+          "end": 16.12,
+          "score": 0.626
+        },
+        {
+          "word": "纳",
+          "start": 16.12,
+          "end": 16.32,
+          "score": 0.97
+        },
+        {
+          "word": "酸。",
+          "start": 16.32,
+          "end": 16.46,
+          "score": 0.852
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "segments": 3,
+    "words": 92,
+    "low_confidence_words": 3
+  }
+}

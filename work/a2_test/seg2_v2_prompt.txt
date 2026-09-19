@@ -1,0 +1,14 @@
+subject_definitions:
+<Picture 1> is the authority for the presenter: the same woman, face, short black hair in a low bun, light-blue plain T-shirt, bright modern kitchen.
+<Picture 2> is the authority for the product: the 2-litre white milk bottle with blue cap, handle, and green a2 front label. The bottles are rigid, full, heavy plastic bottles.
+
+retention_analysis:
+<Picture 1>: identity_preserved. Face, hair, outfit and kitchen carry over.
+<Picture 2>: attribute_transfer. Bottle shape, blue cap, handle and green front label carry over; its white background does not.
+
+detailed_description:
+A vertical selfie-style medium shot at chest height. A plain brown cardboard shipping box sits on the marble island in front of her, already open with its flaps folded down flat against the sides, and the box stays completely still on the island for the whole shot, never tilted, lifted or pushed. Inside it, six identical bottles from <Picture 2> stand upright in two neat rows of three, their blue caps facing up. She gestures with an open palm over the rows of caps and says with emphasis, (S1) <d>[Chinese] 这一箱到手六瓶，</d> then grips one bottle from the front row by its handle, lifts it straight up out of the box and holds it beside her face, front label to camera, saying a little slower and clearly, (S1) <d>[Chinese] 你看看这价，两升一瓶，六块七毛九澳币。</d> The other five bottles stay exactly where they are, upright and motionless.
+
+soundscape: her clear close-mic Mandarin voice, a light plastic knock as the bottle is lifted, quiet kitchen room tone. No music.
+
+Every bottle stays rigid and keeps its exact shape: never sagging, collapsing, squashing, bending, melting, sinking or falling over. The box never tilts and its contents never shift. No bottles appear or disappear except the one she lifts out. No subtitles, captions, price tags, watermarks or extra text; the only printing is the front label from <Picture 2>, kept stable on every bottle. The box is plain with no printing. No milk cartons or other products. No extra fingers, no distorted hands. No morphing, no cuts, no camera movement beyond slight handheld sway.

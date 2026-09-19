@@ -1,0 +1,20 @@
+# 媒体不进仓库:参考视频/抽帧含原博主肖像与作品,成片过大,品牌产品图是第三方商标图
+*.mp4
+*.mov
+*.webm
+*.wav
+*.mp3
+*.jpg
+*.jpeg
+*.png
+*.webp
+out/
+work/*/frames/
+
+# 本地环境与密钥
+.conda/
+.venv/
+__pycache__/
+*.pyc
+.env
+**/openrouter/key

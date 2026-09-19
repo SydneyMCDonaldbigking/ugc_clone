@@ -1,0 +1,9 @@
+subject_definitions:
+A fictional young East Asian woman in her mid twenties, a home lifestyle vlogger. Long straight dark brown hair falling past her shoulders, soft natural makeup, a warm friendly face. She wears a loose cream-coloured knit cardigan over a plain white top. She sits behind a light oak dining table in a bright, tidy apartment dining area with warm beige walls, a large window with sheer curtains on the left and a few green plants in the background.
+
+detailed_description:
+A locked vertical selfie-style medium shot, the phone camera at her eye level about an arm's length away, framing her from the waist up with the empty table edge across the bottom of frame. Soft natural daylight from the window falls on the left side of her face. She looks straight into the lens with a relaxed smile, tucks a strand of hair behind her ear with her right hand, then rests both hands lightly on the table and gives a small, friendly nod, holding still and facing the camera for the last two seconds so her face is clearly visible, evenly lit and in sharp focus.
+
+soundscape: quiet apartment room tone, faint birdsong outside the window. No music.
+
+The table stays completely empty: no cups, food, packaging or props. No printed text, letters, numbers, subtitles, captions, watermarks, logos or brand names anywhere in frame. No extra fingers or limbs, no distorted hands or face. No morphing, no camera movement, no cuts, no scene warping.

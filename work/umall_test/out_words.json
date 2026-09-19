@@ -1,0 +1,605 @@
+{
+  "schema": "words/v0.1",
+  "audio": "out_audio.wav",
+  "duration": 20.672,
+  "engine": "faster-whisper",
+  "model": "large-v3",
+  "language": "zh",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.56,
+      "text": "最近嘴馋的不行,我都没怎么赶出去买甜品,生出来这个杨枝甘露酸奶当下午茶。",
+      "words": [
+        {
+          "word": "最近",
+          "start": 0.0,
+          "end": 0.16,
+          "score": 0.983
+        },
+        {
+          "word": "嘴",
+          "start": 0.16,
+          "end": 0.44,
+          "score": 0.998
+        },
+        {
+          "word": "馋",
+          "start": 0.44,
+          "end": 0.6,
+          "score": 0.958
+        },
+        {
+          "word": "的",
+          "start": 0.6,
+          "end": 0.7,
+          "score": 0.807
+        },
+        {
+          "word": "不行,",
+          "start": 0.7,
+          "end": 0.9,
+          "score": 0.996
+        },
+        {
+          "word": "我",
+          "start": 1.04,
+          "end": 1.16,
+          "score": 0.926
+        },
+        {
+          "word": "都",
+          "start": 1.16,
+          "end": 1.26,
+          "score": 0.988
+        },
+        {
+          "word": "没",
+          "start": 1.26,
+          "end": 1.42,
+          "score": 0.932
+        },
+        {
+          "word": "怎么",
+          "start": 1.42,
+          "end": 1.56,
+          "score": 0.969
+        },
+        {
+          "word": "赶",
+          "start": 1.56,
+          "end": 1.78,
+          "score": 0.683
+        },
+        {
+          "word": "出去",
+          "start": 1.78,
+          "end": 1.96,
+          "score": 0.977
+        },
+        {
+          "word": "买",
+          "start": 1.96,
+          "end": 2.2,
+          "score": 0.998
+        },
+        {
+          "word": "甜",
+          "start": 2.2,
+          "end": 2.36,
+          "score": 0.979
+        },
+        {
+          "word": "品,",
+          "start": 2.36,
+          "end": 2.6,
+          "score": 0.995
+        },
+        {
+          "word": "生",
+          "start": 2.66,
+          "end": 2.78,
+          "score": 0.104
+        },
+        {
+          "word": "出来",
+          "start": 2.78,
+          "end": 2.96,
+          "score": 0.928
+        },
+        {
+          "word": "这个",
+          "start": 2.96,
+          "end": 3.08,
+          "score": 0.794
+        },
+        {
+          "word": "杨",
+          "start": 3.08,
+          "end": 3.34,
+          "score": 0.812
+        },
+        {
+          "word": "枝",
+          "start": 3.34,
+          "end": 3.42,
+          "score": 0.933
+        },
+        {
+          "word": "甘",
+          "start": 3.42,
+          "end": 3.6,
+          "score": 0.995
+        },
+        {
+          "word": "露",
+          "start": 3.6,
+          "end": 3.7,
+          "score": 1.0
+        },
+        {
+          "word": "酸",
+          "start": 3.7,
+          "end": 3.86,
+          "score": 0.999
+        },
+        {
+          "word": "奶",
+          "start": 3.86,
+          "end": 4.0,
+          "score": 1.0
+        },
+        {
+          "word": "当",
+          "start": 4.0,
+          "end": 4.1,
+          "score": 0.991
+        },
+        {
+          "word": "下",
+          "start": 4.1,
+          "end": 4.26,
+          "score": 0.997
+        },
+        {
+          "word": "午",
+          "start": 4.26,
+          "end": 4.4,
+          "score": 1.0
+        },
+        {
+          "word": "茶。",
+          "start": 4.4,
+          "end": 4.56,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "start": 4.96,
+      "end": 20.5,
+      "text": "6块8毛9澳币一杯,到手一大箱12杯,我赶紧囤了一大箱,你们在选的时候一定要看好配料表,要选这种有芒果果泥,稀有果肉的,哇塞,你看这个质地啊,哇,一挖一个坑啊,就是杨枝甘露的味道。",
+      "words": [
+        {
+          "word": "6",
+          "start": 4.96,
+          "end": 5.28,
+          "score": 0.714
+        },
+        {
+          "word": "块",
+          "start": 5.28,
+          "end": 5.54,
+          "score": 0.959
+        },
+        {
+          "word": "8",
+          "start": 5.54,
+          "end": 5.72,
+          "score": 0.665
+        },
+        {
+          "word": "毛",
+          "start": 5.72,
+          "end": 5.92,
+          "score": 0.999
+        },
+        {
+          "word": "9",
+          "start": 5.92,
+          "end": 6.1,
+          "score": 0.987
+        },
+        {
+          "word": "澳",
+          "start": 6.1,
+          "end": 6.32,
+          "score": 0.974
+        },
+        {
+          "word": "币",
+          "start": 6.32,
+          "end": 6.46,
+          "score": 1.0
+        },
+        {
+          "word": "一",
+          "start": 6.46,
+          "end": 6.6,
+          "score": 0.964
+        },
+        {
+          "word": "杯,",
+          "start": 6.6,
+          "end": 6.76,
+          "score": 0.999
+        },
+        {
+          "word": "到",
+          "start": 6.9,
+          "end": 7.04,
+          "score": 0.963
+        },
+        {
+          "word": "手",
+          "start": 7.04,
+          "end": 7.3,
+          "score": 0.997
+        },
+        {
+          "word": "一",
+          "start": 7.3,
+          "end": 7.48,
+          "score": 0.985
+        },
+        {
+          "word": "大",
+          "start": 7.48,
+          "end": 7.62,
+          "score": 1.0
+        },
+        {
+          "word": "箱",
+          "start": 7.62,
+          "end": 7.9,
+          "score": 1.0
+        },
+        {
+          "word": "12",
+          "start": 7.9,
+          "end": 8.22,
+          "score": 0.917
+        },
+        {
+          "word": "杯,",
+          "start": 8.22,
+          "end": 8.56,
+          "score": 0.999
+        },
+        {
+          "word": "我",
+          "start": 8.68,
+          "end": 9.02,
+          "score": 1.0
+        },
+        {
+          "word": "赶",
+          "start": 9.02,
+          "end": 9.18,
+          "score": 1.0
+        },
+        {
+          "word": "紧",
+          "start": 9.18,
+          "end": 9.34,
+          "score": 1.0
+        },
+        {
+          "word": "囤",
+          "start": 9.34,
+          "end": 9.54,
+          "score": 0.969
+        },
+        {
+          "word": "了",
+          "start": 9.54,
+          "end": 9.62,
+          "score": 0.998
+        },
+        {
+          "word": "一",
+          "start": 9.62,
+          "end": 9.7,
+          "score": 1.0
+        },
+        {
+          "word": "大",
+          "start": 9.7,
+          "end": 9.8,
+          "score": 1.0
+        },
+        {
+          "word": "箱,",
+          "start": 9.8,
+          "end": 10.08,
+          "score": 1.0
+        },
+        {
+          "word": "你们",
+          "start": 10.2,
+          "end": 10.46,
+          "score": 0.999
+        },
+        {
+          "word": "在",
+          "start": 10.46,
+          "end": 10.64,
+          "score": 0.999
+        },
+        {
+          "word": "选",
+          "start": 10.64,
+          "end": 10.88,
+          "score": 1.0
+        },
+        {
+          "word": "的时候",
+          "start": 10.88,
+          "end": 11.04,
+          "score": 1.0
+        },
+        {
+          "word": "一定要",
+          "start": 11.04,
+          "end": 11.56,
+          "score": 0.908
+        },
+        {
+          "word": "看",
+          "start": 11.56,
+          "end": 11.84,
+          "score": 1.0
+        },
+        {
+          "word": "好",
+          "start": 11.84,
+          "end": 12.0,
+          "score": 1.0
+        },
+        {
+          "word": "配",
+          "start": 12.0,
+          "end": 12.12,
+          "score": 1.0
+        },
+        {
+          "word": "料",
+          "start": 12.12,
+          "end": 12.32,
+          "score": 1.0
+        },
+        {
+          "word": "表,",
+          "start": 12.32,
+          "end": 12.48,
+          "score": 1.0
+        },
+        {
+          "word": "要",
+          "start": 12.62,
+          "end": 12.94,
+          "score": 1.0
+        },
+        {
+          "word": "选",
+          "start": 12.94,
+          "end": 13.18,
+          "score": 1.0
+        },
+        {
+          "word": "这",
+          "start": 13.18,
+          "end": 13.26,
+          "score": 1.0
+        },
+        {
+          "word": "种",
+          "start": 13.26,
+          "end": 13.44,
+          "score": 1.0
+        },
+        {
+          "word": "有",
+          "start": 13.44,
+          "end": 13.56,
+          "score": 1.0
+        },
+        {
+          "word": "芒",
+          "start": 13.56,
+          "end": 13.82,
+          "score": 1.0
+        },
+        {
+          "word": "果",
+          "start": 13.82,
+          "end": 14.0,
+          "score": 1.0
+        },
+        {
+          "word": "果",
+          "start": 14.0,
+          "end": 14.16,
+          "score": 0.994
+        },
+        {
+          "word": "泥,",
+          "start": 14.16,
+          "end": 14.4,
+          "score": 0.999
+        },
+        {
+          "word": "稀",
+          "start": 14.44,
+          "end": 14.68,
+          "score": 0.781
+        },
+        {
+          "word": "有",
+          "start": 14.68,
+          "end": 14.76,
+          "score": 0.96
+        },
+        {
+          "word": "果",
+          "start": 14.76,
+          "end": 14.96,
+          "score": 0.998
+        },
+        {
+          "word": "肉",
+          "start": 14.96,
+          "end": 15.1,
+          "score": 1.0
+        },
+        {
+          "word": "的,",
+          "start": 15.1,
+          "end": 15.28,
+          "score": 1.0
+        },
+        {
+          "word": "哇",
+          "start": 15.36,
+          "end": 15.62,
+          "score": 0.998
+        },
+        {
+          "word": "塞,",
+          "start": 15.62,
+          "end": 15.86,
+          "score": 0.992
+        },
+        {
+          "word": "你看",
+          "start": 15.88,
+          "end": 16.02,
+          "score": 0.999
+        },
+        {
+          "word": "这个",
+          "start": 16.02,
+          "end": 16.26,
+          "score": 1.0
+        },
+        {
+          "word": "质",
+          "start": 16.26,
+          "end": 16.52,
+          "score": 1.0
+        },
+        {
+          "word": "地",
+          "start": 16.52,
+          "end": 16.68,
+          "score": 0.999
+        },
+        {
+          "word": "啊,",
+          "start": 16.68,
+          "end": 16.84,
+          "score": 0.958
+        },
+        {
+          "word": "哇,",
+          "start": 16.9,
+          "end": 17.64,
+          "score": 0.976
+        },
+        {
+          "word": "一",
+          "start": 17.74,
+          "end": 17.86,
+          "score": 1.0
+        },
+        {
+          "word": "挖",
+          "start": 17.86,
+          "end": 18.1,
+          "score": 0.998
+        },
+        {
+          "word": "一个",
+          "start": 18.1,
+          "end": 18.26,
+          "score": 1.0
+        },
+        {
+          "word": "坑",
+          "start": 18.26,
+          "end": 18.6,
+          "score": 1.0
+        },
+        {
+          "word": "啊,",
+          "start": 18.6,
+          "end": 18.76,
+          "score": 1.0
+        },
+        {
+          "word": "就是",
+          "start": 18.84,
+          "end": 19.24,
+          "score": 1.0
+        },
+        {
+          "word": "杨",
+          "start": 19.24,
+          "end": 19.54,
+          "score": 1.0
+        },
+        {
+          "word": "枝",
+          "start": 19.54,
+          "end": 19.72,
+          "score": 0.999
+        },
+        {
+          "word": "甘",
+          "start": 19.72,
+          "end": 19.92,
+          "score": 1.0
+        },
+        {
+          "word": "露",
+          "start": 19.92,
+          "end": 20.1,
+          "score": 1.0
+        },
+        {
+          "word": "的",
+          "start": 20.1,
+          "end": 20.18,
+          "score": 1.0
+        },
+        {
+          "word": "味",
+          "start": 20.18,
+          "end": 20.3,
+          "score": 1.0
+        },
+        {
+          "word": "道。",
+          "start": 20.3,
+          "end": 20.5,
+          "score": 1.0
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "segments": 2,
+    "words": 96,
+    "low_confidence_words": 1
+  }
+}

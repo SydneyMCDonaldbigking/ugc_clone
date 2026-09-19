@@ -1,0 +1,12 @@
+subject_definitions:
+<Picture 1> is the authority for the product and its back label: a 2-litre white plastic milk bottle with a blue screw cap and a built-in handle on the upper body, seen from the back, with the white back label covering the lower half: purple heading, two purple cow illustrations, the round a2 badge, the nutrition table on the left, the barcode on the right, and the small ingredient lines at the bottom.
+
+retention_analysis:
+<Picture 1>: fully_preserved. The bottle's exact silhouette, handle position, blue cap, and the whole back label - its layout, colours, cow illustrations, badge, nutrition table, barcode and all text - stay exactly as shown, pixel-faithful, never redrawn, re-lettered, blurred or invented. Only its plain white studio background is replaced.
+
+detailed_description:
+A locked vertical close-up product shot framed exactly like <Picture 1>: the single bottle upright and centred, its back label facing the lens squarely and filling the lower half of the frame, the blue cap near the top edge. Behind it is a softly out-of-focus bright kitchen with a white marble surface. One woman's hand, with the edge of a light-blue T-shirt sleeve, rests around the bottle's handle from the right side and holds the bottle completely still the whole time; this is the only hand in frame. The bottle does not turn, tilt or move; only the background light shifts very slightly. Her off-screen voice speaks in a clear, reminding tone, (S1) <d>[Chinese] 他家的奶，你看配料表，</d> (S1) <d>[Chinese] 就只有牛奶一样，</d> (S1) <d>[Chinese] 还没有添加剂。</d>
+
+soundscape: her close off-screen Mandarin voice, quiet kitchen room tone. No music.
+
+Only one hand in frame, never a second hand, no pointing finger, no face, no person's body. The bottle keeps its exact shape and never rotates. No subtitles, captions, watermarks or text other than the back label exactly as in <Picture 1>. No other products, bottles, cartons or brands. No morphing, no cuts, no camera movement.

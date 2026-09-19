@@ -1,0 +1,246 @@
+{
+  "schema": "beats/v0.1",
+  "source": {
+    "file": "ref_video.mp4",
+    "duration": 18.67,
+    "fps": 30.0,
+    "size": "720x1280"
+  },
+  "speech_rate_cps": 6.2,
+  "total_chars": 109,
+  "cuts": [
+    6.733,
+    7.9,
+    9.3,
+    10.633,
+    12.3
+  ],
+  "structure_notes": [
+    "开头是家庭小剧场式钩子:老公吐槽'你是不是发财了',制造'贵'的悬念,马上用'他不知道'反转",
+    "0-6.7s 一个连续中景:抱箱进画、拍箱、撕胶带开箱;6.73 硬切俯拍打开的整箱(量),7.9 切回中景端起内托",
+    "价格只吊胃口不报数('你去看看这啥价'),靠整箱 24 盒的视觉量感撑",
+    "9.3-10.6 插入镜头:手持两盒产品特写,落在'他家的奶'上",
+    "卖点两连击都是'数字化权威':全球 1% 奶牛 + 每百毫升 4.0 克蛋白;第二个数字配倒奶进杯的证明动作",
+    "没有下单引导,结尾停在倒奶+数字",
+    "语速极快(约 7 字/秒),背景音乐很重"
+  ],
+  "beats": [
+    {
+      "id": "B1",
+      "t_start": 0.0,
+      "t_end": 2.3,
+      "speech": [
+        1.07,
+        2.17
+      ],
+      "function": "hook",
+      "hook_type": "identity(家庭小剧场)",
+      "char_count": 17,
+      "cps": 15.5,
+      "intensity": "high,调侃",
+      "pause_after_ms": 1090,
+      "cuts_inside": [],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": false
+      },
+      "visual_action": "抱着一箱产品走进画面放到桌上的另一箱上,再抱起一箱朝镜头",
+      "visual_sync": null,
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "我老公问我是不是发财了,买这么贵的奶,",
+      "asr_text": "发财了,这么知道,"
+    },
+    {
+      "id": "B2",
+      "t_start": 2.3,
+      "t_end": 3.2,
+      "speech": [
+        2.3,
+        3.2
+      ],
+      "function": "twist",
+      "char_count": 4,
+      "cps": 4.4,
+      "intensity": "mid,压低",
+      "pause_after_ms": 60,
+      "cuts_inside": [],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": false
+      },
+      "visual_action": "双手扶箱,对镜头摊手",
+      "visual_sync": null,
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "他不知道,",
+      "asr_text": ""
+    },
+    {
+      "id": "B3",
+      "t_start": 3.2,
+      "t_end": 4.85,
+      "speech": [
+        3.26,
+        4.58
+      ],
+      "function": "solution+deal(品牌+活动)",
+      "char_count": 14,
+      "cps": 10.6,
+      "intensity": "high",
+      "pause_after_ms": 310,
+      "cuts_inside": [],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": false
+      },
+      "visual_action": "手拍箱顶,开始撕胶带",
+      "visual_sync": "说品牌名时手在箱子印的品牌上",
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "纽仕兰的纯牛奶来抖音搞活动了,",
+      "asr_text": "纽仕兰的纯牛奶,抖音,"
+    },
+    {
+      "id": "B4",
+      "t_start": 4.85,
+      "t_end": 6.9,
+      "speech": [
+        4.89,
+        6.96
+      ],
+      "function": "quantity",
+      "char_count": 8,
+      "cps": 3.9,
+      "intensity": "high",
+      "pause_after_ms": 0,
+      "cuts_inside": [
+        6.733
+      ],
+      "shot": {
+        "type": "medium_selfie→overhead_insert",
+        "cut_in": "hard_cut@6.73"
+      },
+      "visual_action": "掀开箱盖;切俯拍:打开的箱子里整齐码满小盒",
+      "visual_sync": "'24瓶'落在俯拍满箱上",
+      "caption_emphasis": null,
+      "proof_category": "quantity_display",
+      "notes": null,
+      "ref_text": "这一箱到手24瓶。",
+      "asr_text": "一箱,倒数24瓶。你看"
+    },
+    {
+      "id": "B5",
+      "t_start": 6.9,
+      "t_end": 9.15,
+      "speech": [
+        6.96,
+        8.96
+      ],
+      "function": "price_tease",
+      "char_count": 11,
+      "cps": 5.5,
+      "intensity": "high→mid",
+      "pause_after_ms": 80,
+      "cuts_inside": [
+        7.9
+      ],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": "hard_cut@7.90"
+      },
+      "visual_action": "双手把整托产品端到镜头前",
+      "visual_sync": null,
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "你去看看这啥价,太划算了。",
+      "asr_text": "看这啥价,太划算了。"
+    },
+    {
+      "id": "B6",
+      "t_start": 9.15,
+      "t_end": 12.3,
+      "speech": [
+        9.04,
+        12.24
+      ],
+      "function": "scarcity",
+      "char_count": 19,
+      "cps": 5.9,
+      "intensity": "mid",
+      "pause_after_ms": 0,
+      "cuts_inside": [
+        9.3,
+        10.633
+      ],
+      "shot": {
+        "type": "closeup_insert→medium",
+        "cut_in": "hard_cut@9.30",
+        "cut_out": "hard_cut@10.63"
+      },
+      "visual_action": "手持两盒特写,正面朝镜头;切回中景,两手各拿一盒举起",
+      "visual_sync": "'他家的奶'落在特写上",
+      "caption_emphasis": null,
+      "proof_category": "product_hero",
+      "notes": null,
+      "ref_text": "他家的奶,我之前都是要找代购才能买得到的。",
+      "asr_text": "他家的奶我之前都是要找代购才能买得到的。要"
+    },
+    {
+      "id": "B7",
+      "t_start": 12.3,
+      "t_end": 15.55,
+      "speech": [
+        12.24,
+        15.52
+      ],
+      "function": "authority_stat",
+      "char_count": 18,
+      "cps": 5.5,
+      "intensity": "mid,认真",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": "hard_cut@12.30"
+      },
+      "visual_action": "用红剪刀剪开一盒的开口",
+      "visual_sync": null,
+      "caption_emphasis": null,
+      "proof_category": null,
+      "notes": null,
+      "ref_text": "要知道全球只有1%的奶牛,是青草草饲的。",
+      "asr_text": "知道全球只有1%的奶,它是青草草丝的。他"
+    },
+    {
+      "id": "B8",
+      "t_start": 15.55,
+      "t_end": 18.67,
+      "speech": [
+        15.52,
+        18.58
+      ],
+      "function": "spec_proof",
+      "char_count": 18,
+      "cps": 5.9,
+      "intensity": "mid→high",
+      "pause_after_ms": 87,
+      "cuts_inside": [],
+      "shot": {
+        "type": "medium_selfie",
+        "cut_in": false
+      },
+      "visual_action": "拿玻璃杯,把奶倒进杯里,倒满举给镜头",
+      "visual_sync": "报数字时奶正在倒进杯子",
+      "caption_emphasis": null,
+      "proof_category": "pour",
+      "notes": null,
+      "ref_text": "他家这个奶,每百毫升蛋白质就到了4.0克。",
+      "asr_text": "家这个奶没百毫升,但白质就到了4.0。"
+    }
+  ]
+}
