@@ -1,0 +1,163 @@
+{
+  "schema": "shot-plan/v1",
+  "language": "en-AU",
+  "variant_id": "v001",
+  "segments": [
+    {
+      "id": "S01",
+      "segment": 1,
+      "duration_seconds": 5,
+      "dialogue": "Need a simple snack for the table? Meet Crown Almond Biscuits, ready to share.",
+      "shot_type": "box_and_packet_family_share_hook",
+      "subject": "The creator's hands present one CROWN retail box and one white individual packet over a bright neutral home table.",
+      "action": "The hands hold the box close to the lens, then lower it onto the table while the second hand brings one individual packet forward.",
+      "performance": "Only natural hands and forearms appear; the movements feel quick, pleased and slightly imperfect rather than staged.",
+      "keyframe_ids": ["1"],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": ["codex_clone_refs/crown_almond_bis/ref_pic2.jpg"],
+      "preserve": [
+        "cream-white CROWN box",
+        "dark teal top and base",
+        "large navy Korean front lettering",
+        "lime-green corner label",
+        "golden rectangular biscuit product image"
+      ],
+      "exclude": [
+        "visible face",
+        "source product",
+        "green vegetable-snack bag",
+        "round biscuits",
+        "price text",
+        "generated captions",
+        "watermark",
+        "invented English package copy"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "first_frame": "First-person hands-only view over a bright neutral home table: both hands hold one complete CROWN Almond Biscuits retail box close to the lens in the same front three-quarter orientation as the supplied box photo, with the front panel unobstructed.",
+      "intention": "The creator turns a simple family-table question into an immediate, recognisable product introduction.",
+      "accents": [
+        {"at": "Crown Almond Biscuits", "reaction": "the box settles squarely in the centre for a clean brand beat"},
+        {"at": "share", "reaction": "one hand begins opening away from the box as if inviting someone else to take one"}
+      ],
+      "camera": "close-up | first-person high angle about 40 degrees | handheld with slight settling sway | box centred and filling about two thirds of the vertical frame"
+    },
+    {
+      "id": "S02",
+      "segment": 2,
+      "duration_seconds": 5,
+      "dialogue": "Open the box, pass the little packets around, and set the biscuits in the middle.",
+      "shot_type": "open_packet_to_shared_plate",
+      "subject": "The same creator's hands work over the table with one white CROWN packet, several golden rectangular biscuits and a small light-coloured sharing plate.",
+      "action": "One hand opens the packet after the first frame while the other steadies it; several biscuits slide into the centre plate and the opened packet is passed toward the edge of frame.",
+      "performance": "The hands move briskly with natural finger spacing and slight asymmetry, like setting out a casual snack for others nearby.",
+      "keyframe_ids": ["2"],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "preserve": [
+        "white individual packet shape",
+        "CROWN packet branding",
+        "golden rectangular biscuits with rounded corners",
+        "same bright tabletop setting"
+      ],
+      "exclude": [
+        "visible face",
+        "green packaging",
+        "round vegetable biscuits",
+        "stated packet count",
+        "price overlay",
+        "source subtitles",
+        "watermark",
+        "extra fingers"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "first_frame": "First-person high-angle view: both hands hold one intact white CROWN individual packet just above an empty shallow cream ceramic plate, packet front facing the camera; the retail box stands softly out of focus behind it.",
+      "intention": "A package-opening action makes the family-sharing message feel practical and immediate without relying on unsupported claims.",
+      "accents": [
+        {"at": "Open the box", "reaction": "the fingertips take a firm but natural opening grip"},
+        {"at": "in the middle", "reaction": "the last biscuit settles in the centre of the shared plate"}
+      ],
+      "camera": "medium close-up | first-person high angle about 55 degrees | handheld following the hands | packet upper centre and empty plate filling the lower half"
+    },
+    {
+      "id": "S03",
+      "segment": 3,
+      "duration_seconds": 5,
+      "dialogue": "Show the golden biscuits up close, then break one open and pair it with milk.",
+      "shot_type": "biscuit_break_to_milk_pairing",
+      "subject": "The creator's hands hold one intact golden rectangular biscuit near the lens, with a clear glass of milk and a small plate lower on the table.",
+      "action": "After the first frame the biscuit is broken once into two clean halves; one half moves toward the rim of the milk glass for a light dip.",
+      "performance": "The fingers apply believable pressure at the centre, then relax into a gentle milk-pairing gesture; the face remains outside frame.",
+      "keyframe_ids": ["3"],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "preserve": [
+        "golden rectangular biscuit shape",
+        "softly rounded corners",
+        "visible baked surface",
+        "plain white milk",
+        "same bright tabletop"
+      ],
+      "exclude": [
+        "visible face",
+        "round biscuits",
+        "green vegetable pieces",
+        "filled cereal bowl",
+        "multiple milk glasses",
+        "source packaging",
+        "caption",
+        "watermark"
+      ],
+      "label_policy": "product_shape_from_reference",
+      "first_frame": "First-person macro view: two hands hold one complete golden rectangular Crown almond biscuit close to the lens, still intact; one clear glass of plain milk sits lower in frame beside a small plate holding two more biscuits.",
+      "intention": "The creator replaces abstract taste claims with a close physical demonstration and the operator-approved milk serving idea.",
+      "accents": [
+        {"at": "break one open", "reaction": "both thumbs meet at the centre and begin one decisive break"},
+        {"at": "with milk", "reaction": "one half moves calmly toward the glass rim"}
+      ],
+      "camera": "macro close-up | first-person slight high angle about 25 degrees | handheld, tiny focus breathing | intact biscuit centred, milk glass lower right"
+    },
+    {
+      "id": "S04",
+      "segment": 4,
+      "duration_seconds": 5,
+      "dialogue": "Put a few out to share, and come give Crown Almond Biscuits a try.",
+      "shot_type": "final_family_share_tableau_and_cta",
+      "subject": "One CROWN retail box, two white packets, a small plate of golden rectangular biscuits and one glass of milk form a compact final tabletop arrangement.",
+      "action": "A hand slides the sharing plate into the middle, then lifts one biscuit toward the lens while the other hand rests near an unopened packet.",
+      "performance": "The final movement is open, friendly and unhurried, ending with a short natural hold for the call to action.",
+      "keyframe_ids": ["4"],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "preserve": [
+        "complete CROWN retail box front",
+        "white individual packets",
+        "golden rectangular biscuits",
+        "one clear glass of milk",
+        "same bright neutral tabletop"
+      ],
+      "exclude": [
+        "visible face",
+        "price badge",
+        "discount language",
+        "pack-count text",
+        "green vegetable-snack branding",
+        "round biscuits",
+        "generated overlay",
+        "watermark",
+        "fingers covering the box front"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "first_frame": "High-angle hands-only tabletop hero: the complete CROWN Almond Biscuits box stands at the back in the same visible orientation as the supplied product photo; two white packets sit beside it, a cream plate of golden rectangular biscuits is centred, and one clear glass of milk stands to the right.",
+      "intention": "The creator resolves the fast product demonstration into a calm, shareable result and a natural invitation to try it.",
+      "accents": [
+        {"at": "to share", "reaction": "the plate comes to rest at the exact centre of the table"},
+        {"at": "give Crown Almond Biscuits a try", "reaction": "one biscuit rises toward the lens and holds still"}
+      ],
+      "camera": "medium close-up | first-person high angle about 55 degrees | handheld push settling to still | plate centred, box behind, milk glass at right"
+    }
+  ]
+}

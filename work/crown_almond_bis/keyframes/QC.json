@@ -1,0 +1,72 @@
+{
+  "schema": "keyframe-qc/v1",
+  "job": "crown_almond_bis",
+  "pipeline_job_id": "crown_almond_bis_en",
+  "variant_id": "v001",
+  "source_analysis": "references/crown_almond_bis/ANALYSIS.md",
+  "result": "pass",
+  "pending_segments": [],
+  "segments": {
+    "1": {
+      "file": "seg01.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "d2d042a11f7f0477d6f6a75a57bde4a580f1b2ea7cdefd8fa9d0132bcc5fd944",
+      "attempt": 2,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic2.jpg only",
+        "first-person high-angle close-up with the complete box centred and held in the supplied front three-quarter orientation",
+        "exactly two anatomically plausible hands and forearms appear with no face",
+        "cream-white carton, dark teal top and base, rectangular geometry and CROWN brand treatment follow the original product reference",
+        "plain table and wall contain no added caption, decorative copy, watermark, source-video frame or source creator"
+      ],
+      "note": "Attempt 1 was rejected for decorative English text on a background mug. Bind ref_pic2.jpg as an extra product reference and use fully_preserved treatment if dense package copy drifts during H3 motion."
+    },
+    "2": {
+      "file": "seg02.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "7b4d2e3bdc14de750b0e61eaf2aa6b8e92e97ee87a19c003d2ddd12d985d8b58",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "first-person high-angle packet reveal above one empty cream plate",
+        "one intact white pillow packet faces the camera while the retail box stays behind it",
+        "exactly two anatomically plausible hands and forearms appear with no face",
+        "packet and box retain the supplied white, cream and dark-teal brand treatment",
+        "no opened packet, loose biscuit, source-video frame, source product, subtitle, overlay or watermark"
+      ]
+    },
+    "3": {
+      "file": "seg03.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "703a8c7b06a35b8f0d43c385d58459dc2aa9b3df3ad1c609e3c05cca51595bd5",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "macro first-person view with one complete intact rectangular biscuit held close to the lens",
+        "exactly two anatomically plausible hands appear with no face",
+        "one milk glass sits lower right and exactly two additional biscuits sit on the plate",
+        "golden color, thin rectangular proportions, rounded corners and baked surface follow the product reference",
+        "no broken biscuit in the first frame, source-video frame, subtitle, overlay or watermark"
+      ]
+    },
+    "4": {
+      "file": "seg04.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "c88975e832bbaa790ae055fd3d6c2cbe17e176ef74e6a0ff00ecd08b61fb5b24",
+      "attempt": 2,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "high-angle final sharing tableau with box behind, exactly two intact packets, centred biscuit plate and one milk glass",
+        "exactly two anatomically plausible hands present the plate with no face",
+        "box, packet and biscuit silhouettes, colors and front orientations follow the supplied product reference",
+        "plain table and wall contain no added caption, decorative copy, watermark, source-video frame or source creator"
+      ],
+      "note": "Attempt 1 was rejected for decorative English text on the wall. Bind ref_pic1.jpg as an extra product reference and use fully_preserved treatment if dense package copy drifts during H3 motion."
+    }
+  },
+  "reviewed_by": "codex"
+}

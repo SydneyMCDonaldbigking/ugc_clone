@@ -8,6 +8,7 @@
     "schema": {"const": "script/v1"},
     "language": {"type": "string", "pattern": "^en(?:-|$)"},
     "mode": {"const": "structure"},
+    "audio_mode": {"enum": ["dialogue", "silent"]},
     "variant_id": {"type": "string", "minLength": 1},
     "lines": {
       "type": "array",
@@ -19,7 +20,8 @@
           "id": {"type": "string", "minLength": 1},
           "segment": {"type": "integer", "minimum": 1},
           "beats": {"type": "array", "minItems": 1, "items": {"type": "string"}},
-          "text": {"type": "string", "minLength": 1},
+          "text": {"type": "string"},
+          "visual_direction": {"type": "string", "minLength": 1},
           "claims": {"type": "array", "items": {"type": "string"}},
           "target_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
           "delivery": {"type": "string", "minLength": 1}

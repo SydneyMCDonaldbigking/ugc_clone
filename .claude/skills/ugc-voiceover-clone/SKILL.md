@@ -35,10 +35,13 @@ description: 拿一条别人跑通的带货口播视频,拆出节拍表,换成�
 
 ## 分工
 
-- **本地 Windows:所有分析和准备**。转写(conda 环境 `ugc_asr`,4070 够用)、原片档案、节拍表、写稿、参考帧、
-  H3 提示词,全部在本地做完
-- **服务器 `doubleflow`:只负责出视频**。拿到稿子和参考图提交 H3,出片后拉回。只能走国内镜像,工作目录 `/opt/ugc_clone`
+- **Codex / 本地 Windows:默认负责生成视频前的全部分析和准备(S1–S6)**。转写(conda 环境 `ugc_asr`,4070 够用)、
+  原片档案、节拍表、商品事实、英文稿、分镜、参考帧与 QC 连续做完,写 `READY.json` 后运行 `keyframe-status` 和 `preflight`
+- **Claude / 服务器 `doubleflow`:默认从 S7 开始负责出视频和成片验收**。重新运行 `preflight --actor claude` 通过后拿稿子和参考图提交 H3,
+  出片后拉回、重跑问题段并完成技术/台词验收。只能走国内镜像,工作目录 `/opt/ugc_clone`
   (2026-09-19 起。之前转写也在服务器上做,服务器经常掉线,分析就跟着卡住)
+
+用户明确改派时可以换人,但实际执行者必须在 `events.en.jsonl` 记录 `actor`。默认情况下 S1–S6 不等待 Claude。
 
 ```
 /opt/ugc_clone/
@@ -209,7 +212,15 @@ umall_test 把杯盖特写单独做成第 3 段(旁白是画外音,手指逐项�
 **出镜人和分镜参考图。** 当前默认由 Codex 会话内置 ImageGen 在本地完成,不再用 H3 文生视频截帧做定妆照。
 `generated_fictional` 先出 3 张不带商品的候选定妆照并登记唯一的 `presenter_master.png`;
 `hands_only` 和 `none` 不生成定妆照。每个分镜都从已登记定妆照(如需要)和商品原图重新生成,
-验收后写 `QC.json`,最后一步才写 `READY.json`。
+验收后写 `QC.json`,图片全部完成后才写 `READY.json`。随后运行:
+
+```powershell
+D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline keyframe-status inputs/<job>/job.en.json --actor codex
+D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/job.en.json --actor codex
+```
+
+`keyframe-status` 将渲染输入哈希封存进状态。封存后任何稿子、分镜、商品引用、QC、READY 或参考帧变化都会让预检失败;
+预检会把旧 READY 改名为 `READY.invalidated.<UTC>.json` 并退回 `awaiting_keyframes`,修复后必须重新封存。
 
 **参考图编号。** 交接给 H3 时,每段 `<Picture 1>` 是该段已经验收的 keyframe;
 `READY.json` 的 `extra_refs` 按顺序成为后续图片,通常 `<Picture 2>` 是商品原图。每张图的迁移范围要分开写。
@@ -272,6 +283,7 @@ umall_test 实测:4 段二采加超分,出 1440x2560、20.67 秒,耗时约 25 �
 
 ## S7 取回 + S8 验收
 
+- 上传或提交 H3 前先运行 `D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/job.en.json --actor claude`;只有 PASS 才继续
 - 用 `scp` 取回成片和 `report.json`,用 `sha256sum` 对照 `qa.technical.sha256`(本地没装 paramiko,不用 `cc_fetch.py`)
 - **台词核对**:从成片抽出音轨,跑同一个 `transcribe.py`,和 `script.json` 逐句对。
   置信度低于 0.3 的字,多半是 H3 读错了,不是转写的问题。

@@ -23,6 +23,27 @@ class SchemaContractTests(unittest.TestCase):
         ]["additionalProperties"]["enum"]
         self.assertNotIn("composition_only", roles)
 
+    def test_integrity_snapshot_schema_pins_sha256_values(self):
+        schema = json.loads(
+            (REPO_ROOT / "schemas" / "artifact-integrity.schema.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(schema["properties"]["schema"]["const"], "artifact-integrity/v1")
+        self.assertEqual(
+            schema["properties"]["files"]["additionalProperties"]["pattern"],
+            "^[0-9a-f]{64}$",
+        )
+
+    def test_preflight_report_schema_has_explicit_pass_fail_status(self):
+        schema = json.loads(
+            (REPO_ROOT / "schemas" / "preflight-report.schema.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(schema["properties"]["schema"]["const"], "render-preflight/v1")
+        self.assertEqual(set(schema["properties"]["status"]["enum"]), {"pass", "failed"})
+
 
 if __name__ == "__main__":
     unittest.main()

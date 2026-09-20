@@ -1,0 +1,88 @@
+{
+  "schema": "product/v1",
+  "language": "en-AU",
+  "name": "Crown Almond Biscuits",
+  "brand": "CROWN",
+  "spec": {
+    "unit": "retail box",
+    "pack_qty": null,
+    "net_weight": null
+  },
+  "visual_identity": {
+    "packaging_type": "wide cream-white rectangular paperboard retail box with a dark teal top and base, accompanied by small white pillow packets",
+    "silhouette": "shallow rectangular box wider than it is tall; individual packets are compact rectangles; biscuits are thin golden rectangles with softly rounded corners",
+    "closure": "folded paperboard carton and crimp-sealed individual packet seams",
+    "grip_geometry": "none; the box and packets have flat uninterrupted panels",
+    "handle": "none",
+    "front_label": "CROWN in black at the upper left, large dark navy Korean lettering across the cream panel, a lime-green corner label, and a product image of stacked golden biscuits with almonds",
+    "back_label": "not supplied; do not infer, recreate or use a back panel as evidence",
+    "forbidden_features": [
+      "green vegetable-snack bag",
+      "round vegetable biscuits",
+      "shipping case with a stated quantity",
+      "jar",
+      "resealable stand-up pouch",
+      "plastic tub",
+      "handle",
+      "invented English label copy"
+    ],
+    "geometry_evidence": "Read from codex_clone_refs/crown_almond_bis/ref_pic1.jpg and ref_pic2.jpg. No back-label image was supplied."
+  },
+  "price": null,
+  "facts": [
+    {
+      "id": "F1",
+      "text": "The advertised product is Crown Almond Biscuits by CROWN.",
+      "evidence": "Operator confirmation dated 2026-09-20 and the visible CROWN front packaging in both supplied product images.",
+      "evidence_type": "operator_confirmation_and_product_image"
+    },
+    {
+      "id": "F2",
+      "text": "The supplied product photography shows a retail box, individual white packets and golden rectangular biscuits.",
+      "evidence": "Visible product presentation in codex_clone_refs/crown_almond_bis/ref_pic1.jpg and box geometry in ref_pic2.jpg.",
+      "evidence_type": "product_image"
+    },
+    {
+      "id": "F3",
+      "text": "Present the biscuits as a snack to put out and share with the family.",
+      "evidence": "Operator-confirmed messaging dated 2026-09-20.",
+      "evidence_type": "operator_confirmation"
+    },
+    {
+      "id": "F4",
+      "text": "The biscuits can be served with milk.",
+      "evidence": "Operator-confirmed serving suggestion dated 2026-09-20.",
+      "evidence_type": "operator_confirmation"
+    },
+    {
+      "id": "F5",
+      "text": "Approved call to action: Come give Crown Almond Biscuits a try.",
+      "evidence": "Operator-approved call to action dated 2026-09-20.",
+      "evidence_type": "operator_confirmation"
+    }
+  ],
+  "forbidden_claims": [
+    "single-digit price",
+    "twelve packs",
+    "ten vegetables",
+    "vegetable pieces",
+    "milky aroma",
+    "vegetable aroma",
+    "salty and crispy",
+    "my whole family loves these",
+    "my children love these",
+    "healthy",
+    "nutritious",
+    "high protein",
+    "low sugar",
+    "product of Korea",
+    "limited time",
+    "best price",
+    "discount",
+    "premium"
+  ],
+  "visual_assets": [
+    "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+    "codex_clone_refs/crown_almond_bis/ref_pic2.jpg"
+  ]
+}

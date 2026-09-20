@@ -9,10 +9,13 @@
 
 ## 0. 分工
 
+默认所有权:Codex 在本地连续完成 S1–S6;Claude 只在 `READY.json` 完成封存且 `PREFLIGHT.json.status = pass` 后进入 S7–S8。
+用户明确改派时可以换人,但必须在 `events.en.jsonl` 记录实际 `actor`。
+
 | 在哪跑 | 做什么 |
 |---|---|
-| 本地(Windows) | 建档、faster-whisper 转写、证据宫格、节拍表、商品事实、英文稿、分镜、ImageGen 参考帧、验收。统一使用 `D:/anaconda/envs/ugc_asr/python.exe` |
-| 服务器 `doubleflow` | 只接收已通过门禁的英文稿和参考图,执行 H3 渲染、局部重跑与交付。**模型和包只能走镜像源** |
+| 本地(Windows,默认 Codex) | 建档、faster-whisper 转写、证据宫格、节拍表、商品事实、英文稿、分镜、ImageGen 参考帧与参考帧 QC。统一使用 `D:/anaconda/envs/ugc_asr/python.exe` |
+| 服务器 `doubleflow`(默认 Claude) | 只接收已通过门禁的英文稿和参考图,执行 H3 渲染、局部重跑与交付。**模型和包只能走镜像源** |
 
 镜像源约定(服务器):
 
@@ -42,6 +45,8 @@ ugc_clone_pipeline/
     variants/vNNN/script.en.json
     variants/vNNN/shot_plan.json
     keyframes/REQUEST.json / QC.json / READY.json
+    keyframes/READY.invalidated.<UTC>.json  失效交接信号的可恢复审计副本
+    PREFLIGHT.json                         最新渲染前门禁报告
     state.en.json / events.en.jsonl
   out/<job>/               成片
   scripts/                 各阶段脚本
@@ -64,7 +69,7 @@ S1 建档+转写 ─▶ S2 原片档案 ─▶ S3 节拍表 ─┐
 
 ## 3. 各阶段
 
-### S1 建档 + 转写(本地)
+### S1 建档 + 转写(本地,默认 Codex)
 
 - 输入:用户提供的参考视频文件
 - 做:
@@ -81,14 +86,14 @@ S1 建档+转写 ─▶ S2 原片档案 ─▶ S3 节拍表 ─┐
 | 读细节 | `--at` 指定时刻,原分辨率单帧 |
 | 切点 | 每秒采 12 帧、阈值 0.1 的结果只算候选,要人看确认;本流程默认阈值 0.3 |
 
-### S2 写原片档案(本地)
+### S2 写原片档案(本地,默认 Codex)
 
 - 先看 `references/<ref_id>/evidence/overview/`,再完成 `ANALYSIS.md` 和 `TIMELINE.md`
 - `TIMELINE.md` 每段必须写镜头、动作、表情、话画同步和改编意图;事实与解读分开
 - 看不清时用 `reference_archive.py tile`,但原片截图只能用于分析,不能交给 ImageGen 或 H3
 - 通过条件:`reference_archive.py check <ref_id>` 输出 `READY`
 
-### S3 节拍表(本地,agent 标注)
+### S3 节拍表(本地,默认 Codex 标注)
 
 - 输入:参考档案中的逐词时间戳、切点和 `labels.json`
 - 做:
@@ -98,13 +103,13 @@ S1 建档+转写 ─▶ S2 原片档案 ─▶ S3 节拍表 ─┐
 - 输出:`beats.json`;第 4 节是历史 v0.1 示例,当前契约同时受 `schemas/` 和 `ugc_pipeline.validation` 约束
 - 通过条件:每拍都有 `function`;时间窗首尾相接,覆盖整条视频
 
-### S4 商品参数表(人填,agent 校验)
+### S4 商品参数表(用户供事实,默认 Codex 整理和校验)
 
 - 输入:商品图、包装、详情页、运营给的价格
 - 输出:`product.en.json`,schema 见 `schemas/product.schema.json`
 - 硬规则:**每条卖点和宣称必须挂 `evidence`**,即证据出处(包装配料表、检测报告、详情页截图)。没证据的不能进口播
 
-### S5 写口播稿(本地,agent)
+### S5 写口播稿(本地,默认 Codex)
 
 - 输入:`beats.json`(生成阶段不得读取 `ref_text`)+ `product.en.json`
 - 做:逐拍生成新台词,一次出 N 个变体
@@ -127,17 +132,30 @@ S1 建档+转写 ─▶ S2 原片档案 ─▶ S3 节拍表 ─┐
     这个模式的稿子不能批量发布
   - umall_test 先跑 `replica`(2026-09-17 老板要求先按原稿做、看测试结果);结构版备份在 `script_structure_v1.json`
 
-### S6 分镜 + ImageGen 参考帧(本地)
+无台词参考片走 `audio_mode: silent`:建档可不运行 ASR;`beats.json` 只记录镜头节拍;`script.en.json`
+每段 `text` 必须为空并填写 `visual_direction`;`shot_plan.json` 的 `dialogue` 为空、`accents` 为空。
+H3 生成保持静音,不得为了满足口播字段而编造台词或字幕。
 
-- Claude 根据 `ANALYSIS.md` / `TIMELINE.md` 写英文稿、`shot_plan.json` 和 `REQUEST.json`,再用 `build_keyframe_prompts.py` 编译只含正面描述的提示词
+### S6 分镜 + ImageGen 参考帧(本地,默认 Codex)
+
+- Codex 根据 `ANALYSIS.md` / `TIMELINE.md` 写英文稿、`shot_plan.json` 和 `REQUEST.json`,再用 `build_keyframe_prompts.py` 编译只含正面描述的提示词
 - Codex 只使用商品原图和已登记定妆照生成 9:16 参考帧;不得使用原片帧或上一张生成图
 - 密集小字用 `pixel_preserve` 贴回原商品像素,或交给 H3 `fully_preserved` / 静态慢推保底
-- QC 全通过后最后写 `READY.json`;这是 Claude 可以进入 S7 的唯一交接信号
+- QC 全通过后写 `READY.json`,再依次执行 `keyframe-status --actor codex` 和 `preflight --actor codex`;只有最新 `PREFLIGHT.json.status = pass` 才授权 Claude 进入 S7
+- `keyframe-status` 会封存稿子、分镜、商品引用、QC、READY 与全部参考帧的 SHA256;之后任何一项漂移都会使预检失败、隔离旧 READY 并退回 `awaiting_keyframes`
 - H3 台词使用 `(S1) <d>[English] ...</d>`。历史 `[Chinese]` 提示词只作为测试记录,不得用于新任务
 - H3 仍遵守**单任务 ≤ 20s / 4 段**;需要插入镜头时在分镜里拆成 subshot 或独立段
   - 服务器重启后 ComfyUI 和 worker 都要手动拉起;`cc_status.py` 必须在仓库目录下跑,否则找不到 config
 
 ### S7 渲染取回(服务器)
+
+Claude 在任何上传或付费渲染前先运行:
+
+```powershell
+D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/job.en.json --actor claude
+```
+
+只有 PASS 才能继续;失败时按报告修复或退回 Codex,不得沿用已经隔离的 READY。
 
 `cc_submit.py --segments-file` → `cc_status.py --wait --deliver` → 本地 `cc_fetch.py`
 单段有问题就用 `cc_rerun.py` 只重跑那一段。

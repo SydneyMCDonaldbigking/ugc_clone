@@ -1,0 +1,239 @@
+{
+  "schema": "beats/v0.1",
+  "audio_mode": "silent",
+  "source": {
+    "file": "codex_clone_refs/fish_glass/ref_video.mp4",
+    "duration": 26.53,
+    "fps": 30.0,
+    "size": "720x1280"
+  },
+  "speech_rate_cps": 0.0,
+  "total_chars": 0,
+  "cuts": [
+    1.467,
+    2.967,
+    8.033,
+    10.067,
+    11.467,
+    17.267,
+    21.633,
+    23.067
+  ],
+  "structure_notes": [
+    "The source is a silent hands-only product ritual with nine hard-cut shots and no dialogue-dependent timing.",
+    "Preserve the result-first hook, empty-product inspection, two drink-building sequences, tactile stirring and final lift-to-lens loop.",
+    "Replace the source ocean-lettered glass with the supplied transparent double-wall fish-pattern glass in every shot.",
+    "Do not reproduce source product text, blue checkerboard graphics, coloured fish, branded drink containers or source-derived frames.",
+    "Two glasses are styling instances for two drink recipes and must not be framed as retail pack quantity."
+  ],
+  "beats": [
+    {
+      "id": "B1",
+      "t_start": 0.0,
+      "t_end": 1.467,
+      "speech": null,
+      "function": "finished_two_drink_hook",
+      "hook_type": "result_first",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "fresh and immediate",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "two_glass_hero",
+        "cut_in": false
+      },
+      "visual_action": "Two completed drinks sit side by side on a low dark wooden tray as focus snaps cleanly onto the glasses.",
+      "visual_sync": "The visual result is legible within the first second.",
+      "caption_emphasis": null,
+      "proof_category": "styled_use_result",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    },
+    {
+      "id": "B2",
+      "t_start": 1.467,
+      "t_end": 2.967,
+      "speech": null,
+      "function": "empty_glass_identity_reveal",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "careful and tactile",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "two_hand_empty_glass_rotation",
+        "cut_in": "hard_cut@1.467"
+      },
+      "visual_action": "Two hands tilt and rotate one empty fish-pattern glass to reveal the double-wall silhouette, rim, motif and thick base.",
+      "visual_sync": "One quarter-turn completes before the next cut.",
+      "caption_emphasis": null,
+      "proof_category": "visible_product_identity",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    },
+    {
+      "id": "B3",
+      "t_start": 2.967,
+      "t_end": 8.033,
+      "speech": null,
+      "function": "ice_and_citrus_loading",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "light and rhythmic",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "ice_drop_and_fruit_insert",
+        "cut_in": "hard_cut@2.967"
+      },
+      "visual_action": "Metal tongs place three or four clear ice cubes into the upright glass, then add one small citrus slice.",
+      "visual_sync": "Each ice drop creates a short beat; the fruit is the final accent.",
+      "caption_emphasis": null,
+      "proof_category": "transparent_body_use",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    },
+    {
+      "id": "B4",
+      "t_start": 8.033,
+      "t_end": 10.067,
+      "speech": null,
+      "function": "clear_sparkling_pour",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "crisp and refreshing",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "clear_liquid_pour",
+        "cut_in": "hard_cut@8.033"
+      },
+      "visual_action": "A plain glass pitcher pours a steady stream of clear sparkling water over the ice.",
+      "visual_sync": "The liquid rises visibly through the clear double wall.",
+      "caption_emphasis": null,
+      "proof_category": "drink_styling",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    },
+    {
+      "id": "B5",
+      "t_start": 10.067,
+      "t_end": 11.467,
+      "speech": null,
+      "function": "bubble_and_glass_macro",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "calm and detailed",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "extreme_closeup_bubbles",
+        "cut_in": "hard_cut@10.067"
+      },
+      "visual_action": "The filled glass holds still while fine bubbles rise around the ice and citrus.",
+      "visual_sync": "The short still insert lets the fish motif and double wall read clearly.",
+      "caption_emphasis": null,
+      "proof_category": "visible_material_detail",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    },
+    {
+      "id": "B6",
+      "t_start": 11.467,
+      "t_end": 17.267,
+      "speech": null,
+      "function": "second_drink_ice_and_milk_setup",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "smooth and progressive",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "remove_first_glass_then_ice_and_milk",
+        "cut_in": "hard_cut@11.467"
+      },
+      "visual_action": "A hand lifts away the clear drink; a second matching glass receives ice and then a steady pour of white milk.",
+      "visual_sync": "The removal bridges directly into the second recipe setup.",
+      "caption_emphasis": null,
+      "proof_category": "alternate_drink_styling",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    },
+    {
+      "id": "B7",
+      "t_start": 17.267,
+      "t_end": 21.633,
+      "speech": null,
+      "function": "coffee_layer_and_two_drink_result",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "satisfying transformation",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "coffee_pour_to_two_glass_hero",
+        "cut_in": "hard_cut@17.267"
+      },
+      "visual_action": "Dark coffee pours from a clear pitcher into the milk, creating a brown-white cloud before the two finished drinks appear together.",
+      "visual_sync": "The colour bloom resolves into the paired result.",
+      "caption_emphasis": null,
+      "proof_category": "styled_use_result",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    },
+    {
+      "id": "B8",
+      "t_start": 21.633,
+      "t_end": 23.067,
+      "speech": null,
+      "function": "stirring_interaction",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "casual and tactile",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "two_glass_stir",
+        "cut_in": "hard_cut@21.633"
+      },
+      "visual_action": "A clear stirrer makes one or two small circles in the clear drink while the milk coffee remains still.",
+      "visual_sync": "The citrus follows the gentle circular motion.",
+      "caption_emphasis": null,
+      "proof_category": "handheld_use",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    },
+    {
+      "id": "B9",
+      "t_start": 23.067,
+      "t_end": 26.533,
+      "speech": null,
+      "function": "lift_to_lens_and_final_loop",
+      "char_count": 0,
+      "cps": 0.0,
+      "intensity": "friendly and complete",
+      "pause_after_ms": 0,
+      "cuts_inside": [],
+      "shot": {
+        "type": "single_hand_lift_and_final_hero",
+        "cut_in": "hard_cut@23.067"
+      },
+      "visual_action": "One hand lifts the clear drink toward the lens until it becomes a soft foreground wipe, then the view returns to the two finished glasses.",
+      "visual_sync": "The final hold recreates the opening composition.",
+      "caption_emphasis": null,
+      "proof_category": "handheld_use",
+      "notes": null,
+      "ref_text": "",
+      "asr_text": ""
+    }
+  ]
+}

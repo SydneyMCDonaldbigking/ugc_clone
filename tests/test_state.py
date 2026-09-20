@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from ugc_pipeline.state import can_transition, has_reached, initial_state, record_stage, transition
+from ugc_pipeline.state import can_transition, has_reached, initial_state, invalidate_to, record_stage, transition
 
 
 class StateTests(unittest.TestCase):
@@ -33,6 +33,25 @@ class StateTests(unittest.TestCase):
             updated["stages"]["keyframe_request"]["artifact"],
             "work/job/keyframes/REQUEST.json",
         )
+
+    def test_explicit_invalidation_can_roll_ready_job_back(self) -> None:
+        state = transition(
+            initial_state("job-1"),
+            "keyframes_ready",
+            stage="keyframes",
+            artifact="work/job/keyframes/READY.json",
+            metadata={"integrity": {"schema": "artifact-integrity/v1", "files": {}}},
+        )
+        updated = invalidate_to(
+            state,
+            "awaiting_keyframes",
+            stage="keyframes",
+            reason="keyframe hash changed",
+        )
+        self.assertEqual(updated["state"], "awaiting_keyframes")
+        self.assertEqual(updated["stages"]["keyframes"]["status"], "invalidated")
+        self.assertEqual(updated["stages"]["keyframes"]["reason"], "keyframe hash changed")
+        self.assertIn("integrity", updated["stages"]["keyframes"])
 
 
 if __name__ == "__main__":

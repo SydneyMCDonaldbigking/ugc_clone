@@ -1,0 +1,78 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "fish_glass",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "audio_mode": "silent",
+  "segments": {
+    "1": {
+      "keyframe": "seg01.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Opening two-drink hero: iced milk coffee left and clear sparkling lemon drink right; use a very gentle push-in and fast focus settle."
+    },
+    "2": {
+      "keyframe": "seg02.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Two-hand empty-glass display; rotate slowly while keeping the suspended inner chamber and fish motif readable."
+    },
+    "3": {
+      "keyframe": "seg03.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "First ice-drop setup; continue with deliberate individual cube drops from the tongs."
+    },
+    "4": {
+      "keyframe": "seg04.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Corrected full-size 1.5-litre household glass water pitcher, visibly about 1.8 times the target glass width. Begin the clear sparkling-water stream only after the first frame and keep the target glass upright.",
+      "prompt_hint": "Keep the water pitcher at realistic adult household scale: approximately 1.5 litres, broad body about 1.7 to 2 times the target glass width, with only one hand and forearm visible."
+    },
+    "5": {
+      "keyframe": "seg05.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Locked sparkling-drink macro; emphasize bubbles, ice, lemon and the double-wall fish-pattern material."
+    },
+    "6a": {
+      "keyframe": "seg06a.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_2.jpg"],
+      "notes": "Completed clear drink pre-lift; lift vertically out of frame with one natural exterior-wall grip."
+    },
+    "6b": {
+      "keyframe": "seg06b.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Second empty-glass ice setup; drop the single held cube cleanly into the glass."
+    },
+    "6c": {
+      "keyframe": "seg06c.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Milk-pour pre-action; start a smooth white milk stream after the first frame."
+    },
+    "7a": {
+      "keyframe": "seg07a.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Coffee-pour pre-action; pour dark coffee into iced milk and preserve the visible colour bloom."
+    },
+    "7b": {
+      "keyframe": "seg07b.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Paired completed-drinks result; settle into a restrained pull-back and hold."
+    },
+    "8": {
+      "keyframe": "seg08.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Stir the right clear citrus drink with a small controlled circular motion while the left coffee remains still."
+    },
+    "9a": {
+      "keyframe": "seg09a.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_2.jpg"],
+      "notes": "Pre-lift first frame; lift the right clear drink straight toward the lens while the milk coffee stays behind."
+    },
+    "9b": {
+      "keyframe": "seg09b.png",
+      "extra_refs": ["codex_clone_refs/fish_glass/pic_1.jpg"],
+      "notes": "Final two-drink hero; use a subtle settling pull-back and a calm locked ending hold."
+    }
+  },
+  "handoff_notes": "Silent visual clone: generate no dialogue, voiceover, vocal performance, subtitles or caption overlays. Preserve the reference shot order and source edit durations in the shot plan, then assemble the generated clips to 26.533 seconds.",
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}

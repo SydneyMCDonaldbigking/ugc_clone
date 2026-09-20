@@ -1,0 +1,50 @@
+{
+  "schema": "script/v1",
+  "language": "en-AU",
+  "mode": "structure",
+  "variant_id": "v001",
+  "adaptations": {
+    "B1": "Keep the source's immediate family-sharing hook while removing the creator's fabricated personal history.",
+    "B2-B3": "Replace the unsupported price and pack-count reveal with a truthful box-open and individual-packet demonstration.",
+    "B4-B5": "Use the supplied front packaging and visible biscuit shape only; omit ingredient, aroma and nutrition claims.",
+    "B6-B7": "Retain the break-open action and milk serving idea, then finish with the operator-approved try-it call to action."
+  },
+  "lines": [
+    {
+      "id": "L1",
+      "segment": 1,
+      "beats": ["B1"],
+      "text": "Need a simple snack for the table? Meet Crown Almond Biscuits, ready to share.",
+      "claims": ["F1", "F3"],
+      "target_duration_seconds": 5,
+      "delivery": "Warm off-camera voice; open conversationally, then brighten on the product name."
+    },
+    {
+      "id": "L2",
+      "segment": 2,
+      "beats": ["B2", "B3"],
+      "text": "Open the box, pass the little packets around, and set the biscuits in the middle.",
+      "claims": ["F2", "F3"],
+      "target_duration_seconds": 5,
+      "delivery": "Inviting and practical, with an easy lift on pass and a gentle landing on middle."
+    },
+    {
+      "id": "L3",
+      "segment": 3,
+      "beats": ["B4", "B5"],
+      "text": "Show the golden biscuits up close, then break one open and pair it with milk.",
+      "claims": ["F2", "F4"],
+      "target_duration_seconds": 5,
+      "delivery": "A little slower and demonstrative, letting the break and milk action provide the emphasis."
+    },
+    {
+      "id": "L4",
+      "segment": 4,
+      "beats": ["B6", "B7"],
+      "text": "Put a few out to share, and come give Crown Almond Biscuits a try.",
+      "claims": ["F1", "F3", "F5"],
+      "target_duration_seconds": 5,
+      "delivery": "Friendly finish with a brief pause after share and a clean, natural call to action."
+    }
+  ]
+}

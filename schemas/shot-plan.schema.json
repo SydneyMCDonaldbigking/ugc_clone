@@ -8,6 +8,7 @@
     "schema": {"const": "shot-plan/v1"},
     "language": {"type": "string", "pattern": "^en(?:-|$)"},
     "variant_id": {"type": "string", "minLength": 1},
+    "audio_mode": {"enum": ["dialogue", "silent"]},
     "segments": {
       "type": "array",
       "minItems": 1,

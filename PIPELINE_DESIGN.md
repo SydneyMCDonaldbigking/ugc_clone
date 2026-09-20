@@ -31,12 +31,13 @@ These are design constraints, not open questions.
 
 1. Reference videos may contain any language. Source transcription stays isolated in analysis artifacts.
 2. All new audience-facing output is English only: voice-over, dialogue, captions, CTA, price copy, on-screen overlays, and H3 dialogue tags.
+   A visually driven source may instead declare `audio_mode: silent`; then dialogue is empty, each script line carries an English `visual_direction`, and H3 receives no dialogue tag.
 3. Production variants use `structure` mode. `replica` remains test-only and cannot enter the publishing path.
 4. Segment length defaults to 5 seconds. One H3 job contains no more than four segments / 20 seconds.
 5. Product claims must resolve to an evidence-bearing fact ID. Unknown values stay `null`; they are never inferred.
 6. Codex uses the ImageGen tool built into the current session. The pipeline does not integrate OpenAI Image API or OpenRouter for the default keyframe path.
-7. Codex stops after image inspection and the atomic creation of `READY.json`.
-8. Claude Code owns server transfer, H3 prompt adaptation, rendering, reruns, assembly, and final QA after `READY.json` appears.
+7. Codex stops after image inspection, atomic creation of `READY.json`, integrity sealing with `keyframe-status`, and a passing local `preflight`.
+8. Claude Code owns server transfer, H3 prompt adaptation, rendering, reruns, assembly, and final QA only after rerunning `preflight --actor claude` successfully.
 9. Generated packaging text is not trusted. Dense labels use original pixels, `fully_preserved`, or a static packshot fallback.
 10. Nothing is auto-published. A human approval state is mandatory.
 12. How people appear follows the reference, never a default: `presenter.mode` is `generated_fictional` (someone talks to camera), `hands_only` or `none` (voice-over), read from the archive's ANALYSIS and enforced by `validate` (template and reference roles must match the mode; only `generated_fictional` gets a presenter master).
@@ -49,14 +50,14 @@ The authoritative, stage-by-stage owner table (who, where, command, output, done
 | Actor | Owns | Stops at |
 | --- | --- | --- |
 | Operator | Supplies the reference video, product images, verified product facts, price, market, and final approval | Approves or rejects the final deliverable |
-| Claude Code | Orchestration, source analysis, beat construction, English script generation, shot planning, keyframe request creation, H3 submission, reruns, assembly, technical QA | Produces a final review package |
-| Codex | Reads the keyframe request, uses built-in ImageGen, inspects/iterates images, writes keyframe files and `READY.json` | `keyframes_ready` |
+| Codex | Default owner of all local pre-render work: source analysis and transcription, beat construction, product evidence, English script generation, shot planning, keyframe request creation, built-in ImageGen, image QC, `READY.json`, integrity sealing and preflight | `keyframes_ready` with a passing `PREFLIGHT.json` |
+| Claude Code | Starts only after its own passing preflight; owns H3 prompt adaptation, server transfer, rendering, reruns, assembly, and technical/dialogue QA | Produces a final review package |
 | Local workstation | Transcription (conda env `ugc_asr`, RTX 4070), reference archive, scripts, keyframes, H3 prompt compilation | Hands finished scripts and keyframes to the server |
 | GPU server | H3 generation and upscaling only | Returns artifacts and machine report |
 
-No actor silently takes over another actor's stage. Handoffs happen through versioned JSON files and artifact hashes.
+No actor silently takes over another actor's stage. The default handoff is Codex → Claude at a validated, integrity-sealed `READY.json` plus passing `PREFLIGHT.json`; handoffs happen through versioned JSON files and artifact hashes.
 
-The planning stages (beats, English script, shot plan, keyframe request) may be authored by either agent **when the operator asks for it**; in the a2_test_en bootstrap Codex authored them. Whoever writes a planning artifact states so in the event log (`"actor": "codex"` / `"claude"`), and the other agent reviews it before building on it. Image generation stays with Codex; server transfer, H3 and final QA stay with Claude.
+Codex authors the planning stages (transcription/archive, beats, product evidence, English script, shot plan and keyframe request) by default and continues directly into ImageGen. The operator may explicitly reassign a stage; whoever writes an artifact records `"actor": "codex"` or `"claude"` in the event log. Server transfer, H3 and final QA stay with Claude.
 
 ## 4. Top-level flow
 
@@ -75,7 +76,7 @@ S5  English structure-mode script variants
  ↓
 S6  Shot planning and keyframe requests
  ↓
-S7  Codex ImageGen keyframes → READY.json
+S7  Codex ImageGen keyframes → READY.json → integrity seal → PREFLIGHT.json
  ↓
 S8  Keyframe intake and H3 prompt compilation
  ↓
@@ -152,6 +153,8 @@ work/<job>/
         seg03.png
         seg04.png
         READY.json
+        READY.invalidated.<UTC>.json
+      PREFLIGHT.json
       segments.json
       segments.server.json
       render_manifest.json
@@ -299,7 +302,7 @@ Each segment describes one continuous action. Cuts inside a segment are invalid.
 
 ### 7.5 `REQUEST.json`
 
-Written by Claude Code after shot planning and consumed by Codex.
+Written by Codex after shot planning and consumed by Codex's ImageGen stage. A user-directed alternate author records its actor in the event log.
 
 ```json
 {
@@ -349,7 +352,7 @@ Written by Codex only after every listed image exists and has been inspected.
 }
 ```
 
-`READY.json` is the completion signal, not a scratch file. It must be written last and preferably atomically through a temporary file followed by a same-directory rename.
+`READY.json` is a proposed completion signal, not a scratch file. It must be written after all images and QC, preferably atomically through a temporary file followed by a same-directory rename. It authorizes no render until `keyframe-status` seals the inputs and `preflight` writes a passing `PREFLIGHT.json`.
 
 ## 8. Stage specifications
 
@@ -496,7 +499,7 @@ For every line, produce:
 - negative constraints;
 - English H3 dialogue.
 
-Claude Code writes `REQUEST.json` and advances the job to `awaiting_keyframes`.
+Codex writes `REQUEST.json`, advances the job to `awaiting_keyframes`, and continues directly into the ImageGen stage.
 
 Coverage gate:
 
@@ -521,8 +524,9 @@ Codex workflow:
 8. Inspect each result for identity, hands, product shape/count, composition, original-brand leakage, and unwanted text.
 9. Iterate only the failed image.
 10. Save final images as `segNN.png`.
-11. Write `READY.json` last.
-12. Stop. Do not submit H3 or modify Claude's orchestration.
+11. Write `READY.json` after all images and QC.
+12. Run `keyframe-status --actor codex` to validate the request/READY contract and seal every render-authorizing input by SHA256.
+13. Run `preflight --actor codex`; stop only after it writes `PREFLIGHT.json` with `status: pass`. Do not submit H3 or modify Claude's rendering orchestration.
 
 Keyframe rules:
 
@@ -545,6 +549,7 @@ Keyframe rules:
 - keyframe prompts stay short and positive (about 150 words): only the still first-frame scene, the expression, and "copy the product from Image N". Forbidden features and the QC checklist stay in `REQUEST.json` for inspection and are not sent to the model, because naming a feature ("no handle") primes it;
 - the product keeps the orientation of its reference photo (front or back square to the camera); whether it is held or set down, and the camera angle, follow the source shot recorded in TIMELINE (`镜头:` line) and the shot plan's required `camera` field (`shot size | height and angle | movement | framing`). Lifting, tilting and pouring happen in H3, not in the keyframe;
 - `READY.json` is forbidden while `QC.json.result` is not `pass`, any request key lacks a QC entry, or any QC hash differs from the current image;
+- after sealing, any changed, added, or missing render input invalidates the handoff: the active READY is recoverably renamed `READY.invalidated.<UTC>.json`, an event records the actor/reason/diff, and state returns to `awaiting_keyframes`;
 - presenter shots must capture a speaking or reacting instant with beat-specific facial expression, gaze, asymmetric posture, and believable object weight;
 - repeating the same closed-mouth smile across segments is a QC failure, even when identity and product continuity pass;
 - prompts must prohibit catalogue posing, frozen symmetrical posture, and generic polite smiles.
@@ -553,7 +558,8 @@ Keyframe rules:
 
 Claude Code actions:
 
-- validate `READY.json` and every referenced file;
+- run `preflight inputs/<job>/job.en.json --actor claude` before any upload or paid render, and stop unless it passes;
+- validate `READY.json` and every referenced file through that gate;
 - confirm 9:16 orientation, readable file, and expected segment set;
 - map keyframe to `<Picture 1>` and supplementary product references after it;
 - adapt the H3 prompt so the keyframe governs composition while the product reference reinforces shape/label;
@@ -725,6 +731,7 @@ ugc-pipeline init <job.json>
 ugc-pipeline validate <job>
 ugc-pipeline advance <job> --until awaiting_keyframes
 ugc-pipeline keyframe-status <job>
+ugc-pipeline preflight <job> --actor <codex|claude>
 ugc-pipeline resume <job>
 ugc-pipeline rerun <job> --segment 3
 ugc-pipeline qa <job>
@@ -748,14 +755,14 @@ Unit tests:
 - path containment;
 - state transitions;
 - cache keys;
-- `REQUEST.json` and `READY.json` validation.
+- `REQUEST.json`, `QC.json`, `READY.json`, integrity snapshot and preflight validation.
 
 Integration tests without paid generation:
 
 - run the two historical jobs through schema adapters;
 - produce an English A2 dry-run through `awaiting_keyframes`;
 - inject fixture keyframes and continue through an H3 submission dry-run;
-- simulate missing image, bad hash, duplicate READY, interrupted render, and partial report;
+- simulate missing image, bad hash, stale sealed input, recoverable READY invalidation, duplicate READY, interrupted render, and partial report;
 - verify resume does not duplicate submissions.
 
 Live acceptance test:
@@ -798,12 +805,13 @@ Status: implemented through `awaiting_keyframes`; render-stage orchestration is 
 
 ### Phase C — Codex ImageGen handoff
 
-Status: local generation, QC and atomic READY handoff are implemented and completed for both `a2_test_en` and `a2_milk_clone_en`. Automatic Claude watcher pickup has not yet produced an English H3 output in this repository.
+Status: local generation, QC, atomic READY handoff, integrity sealing and render preflight are implemented. Automatic Claude watcher pickup has not yet produced an English H3 output in this repository.
 
 - validate the existing Claude watcher contract;
 - run the first A2 segment through built-in ImageGen;
 - inspect and iterate the image;
 - write `READY.json` atomically;
+- seal the exact render inputs and pass preflight;
 - verify Claude resumes from the handoff.
 
 ### Phase D — H3 execution and targeted recovery
@@ -836,8 +844,8 @@ The pipeline is designed and implemented when all of the following are true:
 - reference text is separated from generation input;
 - new audience-facing content is English only;
 - every product claim is evidence-backed;
-- Claude can advance a job to `awaiting_keyframes`;
-- Codex can generate and inspect frames, then signal with `READY.json`;
+- Codex can take a new job continuously from ingestion through `awaiting_keyframes`;
+- Codex can generate and inspect frames, seal the exact render inputs, and produce a passing `PREFLIGHT.json`;
 - Claude can resume without manual path reconstruction;
 - a failed segment can be rerun independently;
 - an interrupted job resumes without duplicate paid work;
@@ -853,6 +861,6 @@ Use `a2_test` as the migration case because it already has:
 - beats, script, and four H3 prompts;
 - a known label-closeup failure;
 - successful single-segment rerun history;
-- an active Codex-to-Claude `READY.json` handoff convention.
+- an active Codex-to-Claude sealed READY plus preflight handoff convention.
 
-The first local milestone is complete: both English jobs reached validated `READY.json` handoffs. The next live milestone is for Claude to consume one of those handoffs, return an English H3 segment, and pass transcript plus human visual review. The first batch milestone remains one accepted three-variant English structure run.
+The first local milestone is complete: local jobs can reach validated, integrity-sealed READY handoffs with passing preflight reports. The next live milestone is for Claude to consume one of those handoffs, return an English H3 segment, and pass transcript plus human visual review. The first batch milestone remains one accepted three-variant English structure run.

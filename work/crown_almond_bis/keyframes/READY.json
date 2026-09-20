@@ -1,0 +1,40 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "crown_almond_bis",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "segments": {
+    "1": {
+      "keyframe": "seg01.png",
+      "extra_refs": [
+        "codex_clone_refs/crown_almond_bis/ref_pic2.jpg"
+      ],
+      "notes": "Hands-only front three-quarter box hook on a plain home table.",
+      "prompt_hint": "Bind ref_pic2.jpg as the product identity reference; use fully_preserved treatment for the carton if any dense package copy drifts."
+    },
+    "2": {
+      "keyframe": "seg02.png",
+      "extra_refs": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "notes": "Intact individual packet held above an empty sharing plate before opening."
+    },
+    "3": {
+      "keyframe": "seg03.png",
+      "extra_refs": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "notes": "Intact biscuit macro with two biscuits on a plate and milk at lower right."
+    },
+    "4": {
+      "keyframe": "seg04.png",
+      "extra_refs": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "notes": "Final family-sharing tableau with box, exactly two packets, biscuit plate and milk.",
+      "prompt_hint": "Keep the product layout from the keyframe but use ref_pic1.jpg as the authoritative packaging source; apply fully_preserved treatment if dense package copy drifts."
+    }
+  },
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}

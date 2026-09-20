@@ -1,0 +1,18 @@
+{
+ "overview": [
+  "overview/overview_01_000.0-011.0s.jpg",
+  "overview/overview_02_012.0-023.0s.jpg",
+  "overview/overview_03_024.0-026.0s.jpg"
+ ],
+ "cuts": [
+  "cuts/cut_01.467s.jpg",
+  "cuts/cut_02.967s.jpg",
+  "cuts/cut_08.033s.jpg",
+  "cuts/cut_10.067s.jpg",
+  "cuts/cut_11.467s.jpg",
+  "cuts/cut_17.267s.jpg",
+  "cuts/cut_21.633s.jpg",
+  "cuts/cut_23.067s.jpg"
+ ],
+ "lines": []
+}

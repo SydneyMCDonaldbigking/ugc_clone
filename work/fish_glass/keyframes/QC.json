@@ -1,0 +1,201 @@
+{
+  "schema": "keyframe-qc/v1",
+  "job": "fish_glass",
+  "pipeline_job_id": "fish_glass_silent_en",
+  "variant_id": "v001",
+  "source_analysis": "references/fish_glass/ANALYSIS.md",
+  "result": "pass",
+  "pending_segments": [],
+  "segments": {
+    "1": {
+      "file": "seg01.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "a33739065d15da61b64d1b06a83effb7c9597e14e1a1ef4d22a88382033bb573",
+      "attempt": 2,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "two matching target glasses form the opening still-life hero on a low wooden tray",
+        "milk coffee is on the left and clear sparkling lemon water is on the right",
+        "both glasses retain the tall transparent double-wall form, thick base and frosted fish pattern",
+        "the frame contains only the styled tabletop scene with no source-video frame, source product, person, caption or watermark"
+      ],
+      "note": "Attempt 1 was rejected because hands, arms and part of a torso entered the still-life frame."
+    },
+    "2": {
+      "file": "seg02.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "a6302290a68294e45a430be6c2481e221f5e60afeee8738ce546177fccf47896",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "one complete empty target glass is held diagonally by exactly two natural hands",
+        "one hand touches the outer rim and the other supports the thick base",
+        "the suspended inner chamber, transparent outer wall and fish motifs remain clearly visible",
+        "no liquid, source-video frame, source graphics, face, caption or watermark appears"
+      ]
+    },
+    "3": {
+      "file": "seg03.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "d90ec0aee59607f391e93c46e13ecc4e9b091d0b732e43e840760492f431c7be",
+      "attempt": 2,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "one empty upright target glass is centred on the wooden tray",
+        "metal tongs hold exactly one clear ice cube directly above the open rim",
+        "only the fingertips controlling the tongs enter the crop",
+        "no source-video frame, torso, extra glass, caption or watermark appears"
+      ],
+      "note": "Attempt 1 was rejected because a sweater-clad torso occupied the left side of the frame."
+    },
+    "4": {
+      "file": "seg04.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "1e7b632ae1031f38c36e457abd513b0b4f065201d41167cb72fa6ab47e573b5f",
+      "attempt": 4,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "one upright target glass contains clear ice cubes and one lemon slice",
+        "one valid hand holds a full-size 1.5-litre household clear glass water pitcher above the upper-left rim",
+        "the broad pitcher body is visibly about 1.8 times the target glass width and reads as a normal adult household water pitcher",
+        "all liquid remains inside the pitcher with a clear dry gap before the pour begins",
+        "only one hand and forearm appear; no source-video frame, torso, branded vessel, caption or watermark appears"
+      ],
+      "note": "Attempt 1 was rejected because the liquid stream had already begun and a torso entered the crop. Attempt 2 used an undersized creamer-like pitcher. Attempt 3 corrected the scale but exposed a torso and placed lemon inside the pitcher. Attempt 4 is the accepted full-size-pitcher frame."
+    },
+    "5": {
+      "file": "seg05.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "c6a60be4effa8fbc6b78a3c905def7fedd91c2f60763e4789e3aaab2c683b798",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "one complete target glass fills the macro composition with rim and thick base intact",
+        "the clear drink contains ice, lemon and fine sparkling bubbles",
+        "the transparent double wall and repeated frosted fish motifs remain legible",
+        "no hand, source-video frame, source lettering, caption or watermark appears"
+      ]
+    },
+    "6a": {
+      "file": "seg06a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "ec4c2325489edf7158f5a86e74111794fa32355e685b7ce806dd16a84ab505ca",
+      "attempt": 2,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_2.jpg only",
+        "one target glass contains clear sparkling water, ice and one lemon slice",
+        "exactly one right hand wraps naturally around the outer upper wall",
+        "all fingertips remain on the exterior while the upright base rests on the tray",
+        "no second hand, source-video frame, spill, face, caption or watermark appears"
+      ],
+      "note": "Attempt 1 was rejected because fingers appeared inside the glass and the drink was amber rather than clear."
+    },
+    "6b": {
+      "file": "seg06b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "271aa6f55e121e99bf4a28c4c58990f6640f4e968f14745d1d15ae556e799ac4",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "one second empty target glass stands upright in the centre of the tray",
+        "metal tongs hold exactly one clear ice cube above the open rim",
+        "the glass identity, thick base and frosted fish pattern remain complete",
+        "no source-video frame, extra glass, face, caption or watermark appears"
+      ]
+    },
+    "6c": {
+      "file": "seg06c.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "ad71043111f3472a07077e3a8559250ca2b31c6d305465acca39cd0a4627c948",
+      "attempt": 2,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "one upright target glass contains three large clear ice cubes and no liquid",
+        "one valid hand holds a plain white ceramic pitcher above the rim and the short forearm exits through the upper-left edge",
+        "the milk remains inside the pitcher before the pour starts",
+        "no torso, source-video frame, branded carton, extra hand, face, caption or watermark appears"
+      ],
+      "note": "Attempt 1 passed the basic object checks but was withdrawn during the final pre-render visual audit because a body edge entered the left crop. Attempt 2 is the approved hands-and-forearm-only frame."
+    },
+    "7a": {
+      "file": "seg07a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "9ad1c962f774ae63353706647a95f5e7cb1feb88a5b493af8f08492a717642d2",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "one target glass is filled about two thirds with iced milk",
+        "one valid hand holds a plain transparent pitcher containing dark coffee above the rim",
+        "the milk surface remains undisturbed before the coffee stream begins",
+        "no source-video frame, branded vessel, extra hand, face, caption or watermark appears"
+      ]
+    },
+    "7b": {
+      "file": "seg07b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "c9dc4134274b3849c8bf07ba6dc121e5a8c8e1f529fc049ff7402772a011fa7a",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "exactly two matching target glasses stand side by side on the tray",
+        "a swirled iced milk coffee is on the left and a clear iced citrus drink is on the right",
+        "both complete bases, double-wall silhouettes and frosted fish motifs remain visible",
+        "no source-video frame, person, caption or watermark appears"
+      ]
+    },
+    "8": {
+      "file": "seg08.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "be8b6dda944bd1eb136434a663f0c571878332b3b09f050f21c272e8e89e25c5",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "the paired finished drinks stay centred with the clear citrus drink at right as the action focus",
+        "exactly one hand holds the top of one slim transparent stirrer inside the right glass",
+        "both product silhouettes, bases and fish patterns remain complete",
+        "no source-video frame, splash, face, caption or watermark appears"
+      ]
+    },
+    "9a": {
+      "file": "seg09a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "8c1c60737e0477668387bbc3f89adda9ba7cea9bbb30e396c33712ad36e6bc17",
+      "attempt": 2,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_2.jpg only",
+        "the clear iced lemon drink stands upright at right foreground with milk coffee behind left",
+        "exactly one right hand wraps around the upper-middle exterior wall",
+        "the thick base remains fully on the tray in a valid pre-lift first frame",
+        "no source-video frame, spill, face, caption or watermark appears"
+      ],
+      "note": "Attempt 1 was rejected because the drink was amber and the glass was already lifted and tilted."
+    },
+    "9b": {
+      "file": "seg09b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "983fed74441bff37031fcef79c5ec4b5d3f829a83dfbb7dd9bca13737bba26c3",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/fish_glass/pic_1.jpg only",
+        "the final hero shows exactly two matching target glasses on the low dark wooden tray",
+        "milk coffee is on the left and clear sparkling citrus is on the right",
+        "both complete glasses retain the target double-wall construction, thick bases and fish motifs",
+        "no source-video frame, person, caption or watermark appears"
+      ]
+    }
+  },
+  "reviewed_by": "codex"
+}

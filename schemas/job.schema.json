@@ -31,6 +31,7 @@
     "source_language": {"type": "string", "minLength": 1},
     "target_language": {"type": "string", "pattern": "^en(?:-|$)"},
     "mode": {"const": "structure"},
+    "audio_mode": {"enum": ["dialogue", "silent"]},
     "variants": {"type": "integer", "minimum": 1},
     "segment_duration_seconds": {"type": "number", "minimum": 1, "maximum": 10},
     "max_segments_per_render": {"type": "integer", "minimum": 1, "maximum": 4},

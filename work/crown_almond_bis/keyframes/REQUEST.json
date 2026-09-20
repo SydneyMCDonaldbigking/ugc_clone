@@ -1,0 +1,106 @@
+{
+  "schema": "keyframe-request/v1",
+  "job": "crown_almond_bis",
+  "pipeline_job_id": "crown_almond_bis_en",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "output_aspect_ratio": "9:16",
+  "prompt_template": "templates/keyframe_prompt.hands-only.en.txt",
+  "source_analysis": "references/crown_almond_bis/ANALYSIS.md",
+  "segments": {
+    "1": {
+      "script_segment": 1,
+      "role": "front-box family-share hook",
+      "duration_seconds": 5,
+      "prompt_file": "work/crown_almond_bis/keyframes/seg01_prompt.txt",
+      "references": ["codex_clone_refs/crown_almond_bis/ref_pic2.jpg"],
+      "reference_roles": {"codex_clone_refs/crown_almond_bis/ref_pic2.jpg": "product_identity"},
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_touch_outer_box_edges_only",
+        "fallback": "static_packshot"
+      },
+      "output": "seg01.png",
+      "checks": [
+        "Exactly one complete CROWN retail box appears in the same front three-quarter orientation as ref_pic2.jpg.",
+        "The cream box, dark teal top and base, CROWN mark, large navy Korean lettering and lime-green corner label remain recognisable.",
+        "Exactly two anatomically plausible hands touch only the outer box edges and no face appears.",
+        "The bright neutral home table replaces the source setting without any source product, subtitle or watermark.",
+        "No price, quantity, English package rewrite, green snack bag or round biscuit appears."
+      ]
+    },
+    "2": {
+      "script_segment": 2,
+      "role": "individual packet above shared plate",
+      "duration_seconds": 5,
+      "prompt_file": "work/crown_almond_bis/keyframes/seg02_prompt.txt",
+      "references": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "reference_roles": {"codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"},
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "packet_front_unobstructed",
+        "first_frame_action": "pre_action_setup",
+        "fallback": "static_packet_and_plate"
+      },
+      "output": "seg02.png",
+      "checks": [
+        "Exactly one intact white CROWN packet is held above exactly one empty cream plate.",
+        "The packet remains a compact crimp-sealed rectangle and its visible CROWN branding follows ref_pic1.jpg.",
+        "Both hands are complete and positioned to open the packet after the first frame.",
+        "The box may appear softly behind but no unsupported quantity, price or label copy is added.",
+        "No face, source product, green packaging, round biscuits, caption or watermark appears."
+      ]
+    },
+    "3": {
+      "script_segment": 3,
+      "role": "intact rectangular biscuit with milk setup",
+      "duration_seconds": 5,
+      "prompt_file": "work/crown_almond_bis/keyframes/seg03_prompt.txt",
+      "references": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "reference_roles": {"codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"},
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "fingertips_touch_biscuit_edges_only",
+        "first_frame_action": "pre_action_setup",
+        "fallback": "static_biscuit_and_milk"
+      },
+      "output": "seg03.png",
+      "checks": [
+        "One intact golden rectangular biscuit with softly rounded corners fills the centre close-up.",
+        "Exactly two hands hold the biscuit at opposite outer edges, ready to break it after the first frame.",
+        "Exactly one clear glass of plain white milk sits lower right and one small plate holds two additional matching biscuits.",
+        "No biscuit is broken or dipped in the first frame, and no round vegetable biscuit is substituted.",
+        "No face, source packaging, text overlay, subtitle or watermark appears."
+      ]
+    },
+    "4": {
+      "script_segment": 4,
+      "role": "final product share tableau",
+      "duration_seconds": 5,
+      "prompt_file": "work/crown_almond_bis/keyframes/seg04_prompt.txt",
+      "references": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "reference_roles": {"codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"},
+      "product_fidelity_mode": "pixel_preserve",
+      "product_placement": {
+        "pose_source": "product_identity_reference",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_clear_of_box_front",
+        "fallback": "static_packshot"
+      },
+      "output": "seg04.png",
+      "checks": [
+        "One complete CROWN box, two white packets, one plate of golden rectangular biscuits and one glass of milk form the final composition.",
+        "The package and biscuit identity match ref_pic1.jpg and the box front remains unobstructed.",
+        "Hands enter only at the plate and packet edges with natural anatomy; no face appears.",
+        "No price, discount, pack count, invented English label, green vegetable packaging or round biscuits appears.",
+        "No source subtitle, generated caption or watermark appears."
+      ]
+    }
+  }
+}

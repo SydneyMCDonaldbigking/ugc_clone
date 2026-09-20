@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "render-preflight/v1",
+  "title": "Local-to-H3 render preflight report",
+  "type": "object",
+  "required": ["schema", "job", "status", "actor", "checked_at", "changed_artifacts", "issues"],
+  "properties": {
+    "schema": {"const": "render-preflight/v1"},
+    "job": {"type": "string", "minLength": 1},
+    "status": {"enum": ["pass", "failed"]},
+    "actor": {"type": "string", "minLength": 1},
+    "checked_at": {"type": "string", "format": "date-time"},
+    "changed_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "status", "expected", "actual"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "status": {"enum": ["changed", "added", "missing", "invalid"]},
+          "expected": {"type": "string"},
+          "actual": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "keyframe_count": {"type": "integer", "minimum": 0},
+    "expected_h3_batches": {"type": "integer", "minimum": 0},
+    "visual_qc": {"type": "object"},
+    "integrity": {
+      "type": "object",
+      "required": ["schema", "digest", "files"],
+      "properties": {
+        "schema": {"const": "artifact-integrity/v1"},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "files": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "product/v1",
+  "language": "en-AU",
+  "name": "Double-Wall Fish-Pattern Glass",
+  "brand": "Unbranded",
+  "category": "drinking glass",
+  "price": null,
+  "visual_identity": {
+    "packaging_type": "one unboxed transparent drinking glass with a glass-within-glass double-wall construction",
+    "silhouette": "tall straight cylindrical outer wall, slightly narrower suspended inner drinking chamber, open circular rim and a thick clear rounded base",
+    "closure": "open rim with no lid, cap or straw",
+    "grip_geometry": "smooth cylindrical body held naturally around the upper-middle outer wall or supported at the base",
+    "handle": "none",
+    "front_label": "no label or logo; repeated small frosted-white fish silhouettes appear around the clear walls",
+    "back_label": "no separate back panel; the fish motif continues around the transparent glass",
+    "dimensions": "15 cm high and 6.8 cm wide as printed beside the product in pic_1.jpg",
+    "forbidden_features": [
+      "handle",
+      "stem or foot",
+      "lid, cap or straw",
+      "blue checkerboard base print",
+      "blue English slogan",
+      "coloured cartoon fish",
+      "source product lettering",
+      "opaque body",
+      "single-wall silhouette",
+      "packaging or retail box"
+    ],
+    "geometry_evidence": "codex_clone_refs/fish_glass/pic_1.jpg and codex_clone_refs/fish_glass/pic_2.jpg"
+  },
+  "facts": [
+    {
+      "id": "F1",
+      "text": "The product is a tall transparent double-wall drinking glass decorated with repeated fish silhouettes.",
+      "evidence": "codex_clone_refs/fish_glass/pic_1.jpg",
+      "evidence_type": "supplied product image"
+    },
+    {
+      "id": "F2",
+      "text": "The supplied dimension image shows the glass as 15 cm high and 6.8 cm wide.",
+      "evidence": "codex_clone_refs/fish_glass/pic_1.jpg",
+      "evidence_type": "dimension annotation in supplied product image"
+    },
+    {
+      "id": "F3",
+      "text": "The supplied lifestyle image shows the glass held in one hand with an amber-coloured drink inside.",
+      "evidence": "codex_clone_refs/fish_glass/pic_2.jpg",
+      "evidence_type": "supplied lifestyle product image"
+    }
+  ],
+  "forbidden_claims": [
+    "heat resistant",
+    "insulated",
+    "anti-scald",
+    "dishwasher safe",
+    "borosilicate",
+    "lead free",
+    "exact capacity",
+    "set of two",
+    "two-pack",
+    "premium quality",
+    "discount",
+    "limited offer"
+  ],
+  "visual_assets": [
+    "codex_clone_refs/fish_glass/pic_1.jpg",
+    "codex_clone_refs/fish_glass/pic_2.jpg"
+  ]
+}

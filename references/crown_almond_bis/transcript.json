@@ -1,0 +1,704 @@
+{
+  "schema": "words/v0.1",
+  "audio": "audio.wav",
+  "duration": 18.9,
+  "engine": "faster-whisper",
+  "model": "large-v3",
+  "language": "zh",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.7,
+      "text": "本来是给儿子买的这个蔬菜小饼干,结果收到货我们全家都抢着吃。",
+      "words": [
+        {
+          "word": "本",
+          "start": 0.0,
+          "end": 0.08,
+          "score": 0.954
+        },
+        {
+          "word": "来",
+          "start": 0.08,
+          "end": 0.2,
+          "score": 0.954
+        },
+        {
+          "word": "是",
+          "start": 0.2,
+          "end": 0.3,
+          "score": 0.996
+        },
+        {
+          "word": "给",
+          "start": 0.3,
+          "end": 0.42,
+          "score": 0.991
+        },
+        {
+          "word": "儿",
+          "start": 0.42,
+          "end": 0.54,
+          "score": 0.998
+        },
+        {
+          "word": "子",
+          "start": 0.54,
+          "end": 0.7,
+          "score": 0.999
+        },
+        {
+          "word": "买",
+          "start": 0.7,
+          "end": 0.86,
+          "score": 0.999
+        },
+        {
+          "word": "的",
+          "start": 0.86,
+          "end": 0.94,
+          "score": 0.995
+        },
+        {
+          "word": "这个",
+          "start": 0.94,
+          "end": 1.1,
+          "score": 0.938
+        },
+        {
+          "word": "蔬",
+          "start": 1.1,
+          "end": 1.34,
+          "score": 0.996
+        },
+        {
+          "word": "菜",
+          "start": 1.34,
+          "end": 1.48,
+          "score": 1.0
+        },
+        {
+          "word": "小",
+          "start": 1.48,
+          "end": 1.58,
+          "score": 0.998
+        },
+        {
+          "word": "饼",
+          "start": 1.58,
+          "end": 1.76,
+          "score": 1.0
+        },
+        {
+          "word": "干,",
+          "start": 1.76,
+          "end": 1.9,
+          "score": 0.999
+        },
+        {
+          "word": "结",
+          "start": 1.94,
+          "end": 2.04,
+          "score": 0.943
+        },
+        {
+          "word": "果",
+          "start": 2.04,
+          "end": 2.18,
+          "score": 1.0
+        },
+        {
+          "word": "收",
+          "start": 2.18,
+          "end": 2.3,
+          "score": 0.994
+        },
+        {
+          "word": "到",
+          "start": 2.3,
+          "end": 2.42,
+          "score": 0.997
+        },
+        {
+          "word": "货",
+          "start": 2.42,
+          "end": 2.64,
+          "score": 0.999
+        },
+        {
+          "word": "我们",
+          "start": 2.64,
+          "end": 2.78,
+          "score": 0.846
+        },
+        {
+          "word": "全",
+          "start": 2.78,
+          "end": 2.96,
+          "score": 0.96
+        },
+        {
+          "word": "家",
+          "start": 2.96,
+          "end": 3.14,
+          "score": 1.0
+        },
+        {
+          "word": "都",
+          "start": 3.14,
+          "end": 3.24,
+          "score": 0.962
+        },
+        {
+          "word": "抢",
+          "start": 3.24,
+          "end": 3.44,
+          "score": 0.989
+        },
+        {
+          "word": "着",
+          "start": 3.44,
+          "end": 3.5,
+          "score": 0.864
+        },
+        {
+          "word": "吃。",
+          "start": 3.5,
+          "end": 3.7,
+          "score": 0.998
+        }
+      ]
+    },
+    {
+      "start": 3.8,
+      "end": 5.9,
+      "text": "各位数到手,满满一大箱12包。",
+      "words": [
+        {
+          "word": "各",
+          "start": 3.8,
+          "end": 4.04,
+          "score": 0.478
+        },
+        {
+          "word": "位",
+          "start": 4.04,
+          "end": 4.2,
+          "score": 0.843
+        },
+        {
+          "word": "数",
+          "start": 4.2,
+          "end": 4.32,
+          "score": 0.996
+        },
+        {
+          "word": "到",
+          "start": 4.32,
+          "end": 4.46,
+          "score": 0.994
+        },
+        {
+          "word": "手,",
+          "start": 4.46,
+          "end": 4.66,
+          "score": 0.997
+        },
+        {
+          "word": "满",
+          "start": 4.74,
+          "end": 4.92,
+          "score": 1.0
+        },
+        {
+          "word": "满",
+          "start": 4.92,
+          "end": 5.06,
+          "score": 1.0
+        },
+        {
+          "word": "一",
+          "start": 5.06,
+          "end": 5.16,
+          "score": 0.992
+        },
+        {
+          "word": "大",
+          "start": 5.16,
+          "end": 5.24,
+          "score": 0.999
+        },
+        {
+          "word": "箱",
+          "start": 5.24,
+          "end": 5.42,
+          "score": 0.996
+        },
+        {
+          "word": "12",
+          "start": 5.42,
+          "end": 5.62,
+          "score": 0.577
+        },
+        {
+          "word": "包。",
+          "start": 5.62,
+          "end": 5.9,
+          "score": 0.998
+        }
+      ]
+    },
+    {
+      "start": 5.96,
+      "end": 8.78,
+      "text": "一打开就闻到了浓浓的奶香和蔬菜的清香。",
+      "words": [
+        {
+          "word": "一",
+          "start": 5.96,
+          "end": 6.24,
+          "score": 0.998
+        },
+        {
+          "word": "打",
+          "start": 6.24,
+          "end": 6.42,
+          "score": 1.0
+        },
+        {
+          "word": "开",
+          "start": 6.42,
+          "end": 6.62,
+          "score": 1.0
+        },
+        {
+          "word": "就",
+          "start": 6.62,
+          "end": 6.72,
+          "score": 0.999
+        },
+        {
+          "word": "闻",
+          "start": 6.72,
+          "end": 6.92,
+          "score": 1.0
+        },
+        {
+          "word": "到了",
+          "start": 6.92,
+          "end": 7.06,
+          "score": 0.998
+        },
+        {
+          "word": "浓",
+          "start": 7.06,
+          "end": 7.28,
+          "score": 1.0
+        },
+        {
+          "word": "浓",
+          "start": 7.28,
+          "end": 7.46,
+          "score": 1.0
+        },
+        {
+          "word": "的",
+          "start": 7.46,
+          "end": 7.56,
+          "score": 1.0
+        },
+        {
+          "word": "奶",
+          "start": 7.56,
+          "end": 7.68,
+          "score": 1.0
+        },
+        {
+          "word": "香",
+          "start": 7.68,
+          "end": 7.84,
+          "score": 0.999
+        },
+        {
+          "word": "和",
+          "start": 7.84,
+          "end": 8.02,
+          "score": 0.998
+        },
+        {
+          "word": "蔬",
+          "start": 8.02,
+          "end": 8.22,
+          "score": 1.0
+        },
+        {
+          "word": "菜",
+          "start": 8.22,
+          "end": 8.36,
+          "score": 1.0
+        },
+        {
+          "word": "的",
+          "start": 8.36,
+          "end": 8.44,
+          "score": 1.0
+        },
+        {
+          "word": "清",
+          "start": 8.44,
+          "end": 8.54,
+          "score": 0.996
+        },
+        {
+          "word": "香。",
+          "start": 8.54,
+          "end": 8.78,
+          "score": 1.0
+        }
+      ]
+    },
+    {
+      "start": 8.9,
+      "end": 14.14,
+      "text": "它是由10种蔬菜精心搭配而成,圆圆的小饼干上裹满了蔬菜粒,吃起来咸香酥脆的。",
+      "words": [
+        {
+          "word": "它",
+          "start": 8.9,
+          "end": 9.02,
+          "score": 0.989
+        },
+        {
+          "word": "是",
+          "start": 9.02,
+          "end": 9.2,
+          "score": 1.0
+        },
+        {
+          "word": "由",
+          "start": 9.2,
+          "end": 9.32,
+          "score": 0.998
+        },
+        {
+          "word": "10",
+          "start": 9.32,
+          "end": 9.5,
+          "score": 0.585
+        },
+        {
+          "word": "种",
+          "start": 9.5,
+          "end": 9.66,
+          "score": 1.0
+        },
+        {
+          "word": "蔬",
+          "start": 9.66,
+          "end": 9.9,
+          "score": 1.0
+        },
+        {
+          "word": "菜",
+          "start": 9.9,
+          "end": 9.98,
+          "score": 1.0
+        },
+        {
+          "word": "精",
+          "start": 9.98,
+          "end": 10.1,
+          "score": 0.998
+        },
+        {
+          "word": "心",
+          "start": 10.1,
+          "end": 10.34,
+          "score": 0.999
+        },
+        {
+          "word": "搭",
+          "start": 10.34,
+          "end": 10.52,
+          "score": 1.0
+        },
+        {
+          "word": "配",
+          "start": 10.52,
+          "end": 10.66,
+          "score": 1.0
+        },
+        {
+          "word": "而",
+          "start": 10.66,
+          "end": 10.76,
+          "score": 1.0
+        },
+        {
+          "word": "成,",
+          "start": 10.76,
+          "end": 10.96,
+          "score": 1.0
+        },
+        {
+          "word": "圆",
+          "start": 11.08,
+          "end": 11.22,
+          "score": 1.0
+        },
+        {
+          "word": "圆",
+          "start": 11.22,
+          "end": 11.34,
+          "score": 1.0
+        },
+        {
+          "word": "的",
+          "start": 11.34,
+          "end": 11.38,
+          "score": 0.999
+        },
+        {
+          "word": "小",
+          "start": 11.38,
+          "end": 11.52,
+          "score": 1.0
+        },
+        {
+          "word": "饼",
+          "start": 11.52,
+          "end": 11.7,
+          "score": 1.0
+        },
+        {
+          "word": "干",
+          "start": 11.7,
+          "end": 11.82,
+          "score": 1.0
+        },
+        {
+          "word": "上",
+          "start": 11.82,
+          "end": 11.94,
+          "score": 0.997
+        },
+        {
+          "word": "裹",
+          "start": 11.94,
+          "end": 12.18,
+          "score": 0.543
+        },
+        {
+          "word": "满",
+          "start": 12.18,
+          "end": 12.3,
+          "score": 1.0
+        },
+        {
+          "word": "了",
+          "start": 12.3,
+          "end": 12.4,
+          "score": 0.996
+        },
+        {
+          "word": "蔬",
+          "start": 12.4,
+          "end": 12.56,
+          "score": 1.0
+        },
+        {
+          "word": "菜",
+          "start": 12.56,
+          "end": 12.7,
+          "score": 1.0
+        },
+        {
+          "word": "粒,",
+          "start": 12.7,
+          "end": 12.86,
+          "score": 0.997
+        },
+        {
+          "word": "吃",
+          "start": 12.9,
+          "end": 13.02,
+          "score": 0.999
+        },
+        {
+          "word": "起",
+          "start": 13.02,
+          "end": 13.18,
+          "score": 1.0
+        },
+        {
+          "word": "来",
+          "start": 13.18,
+          "end": 13.3,
+          "score": 0.999
+        },
+        {
+          "word": "咸",
+          "start": 13.3,
+          "end": 13.48,
+          "score": 0.998
+        },
+        {
+          "word": "香",
+          "start": 13.48,
+          "end": 13.58,
+          "score": 0.999
+        },
+        {
+          "word": "酥",
+          "start": 13.58,
+          "end": 13.8,
+          "score": 0.998
+        },
+        {
+          "word": "脆",
+          "start": 13.8,
+          "end": 13.98,
+          "score": 1.0
+        },
+        {
+          "word": "的。",
+          "start": 13.98,
+          "end": 14.14,
+          "score": 0.999
+        }
+      ]
+    },
+    {
+      "start": 14.24,
+      "end": 17.64,
+      "text": "饿的时候来一包真的太过瘾了,拿来泡牛奶吃也很不错。",
+      "words": [
+        {
+          "word": "饿",
+          "start": 14.24,
+          "end": 14.42,
+          "score": 0.954
+        },
+        {
+          "word": "的时候",
+          "start": 14.42,
+          "end": 14.56,
+          "score": 0.999
+        },
+        {
+          "word": "来",
+          "start": 14.56,
+          "end": 14.84,
+          "score": 0.999
+        },
+        {
+          "word": "一",
+          "start": 14.84,
+          "end": 14.98,
+          "score": 0.999
+        },
+        {
+          "word": "包",
+          "start": 14.98,
+          "end": 15.1,
+          "score": 0.999
+        },
+        {
+          "word": "真的",
+          "start": 15.1,
+          "end": 15.28,
+          "score": 0.998
+        },
+        {
+          "word": "太",
+          "start": 15.28,
+          "end": 15.5,
+          "score": 1.0
+        },
+        {
+          "word": "过",
+          "start": 15.5,
+          "end": 15.68,
+          "score": 1.0
+        },
+        {
+          "word": "瘾",
+          "start": 15.68,
+          "end": 15.88,
+          "score": 0.999
+        },
+        {
+          "word": "了,",
+          "start": 15.88,
+          "end": 16.0,
+          "score": 0.992
+        },
+        {
+          "word": "拿",
+          "start": 16.16,
+          "end": 16.26,
+          "score": 0.98
+        },
+        {
+          "word": "来",
+          "start": 16.26,
+          "end": 16.4,
+          "score": 1.0
+        },
+        {
+          "word": "泡",
+          "start": 16.4,
+          "end": 16.62,
+          "score": 1.0
+        },
+        {
+          "word": "牛",
+          "start": 16.62,
+          "end": 16.76,
+          "score": 0.999
+        },
+        {
+          "word": "奶",
+          "start": 16.76,
+          "end": 16.88,
+          "score": 1.0
+        },
+        {
+          "word": "吃",
+          "start": 16.88,
+          "end": 17.02,
+          "score": 0.999
+        },
+        {
+          "word": "也",
+          "start": 17.02,
+          "end": 17.18,
+          "score": 0.999
+        },
+        {
+          "word": "很",
+          "start": 17.18,
+          "end": 17.34,
+          "score": 0.999
+        },
+        {
+          "word": "不",
+          "start": 17.34,
+          "end": 17.44,
+          "score": 1.0
+        },
+        {
+          "word": "错。",
+          "start": 17.44,
+          "end": 17.64,
+          "score": 1.0
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "segments": 5,
+    "words": 109,
+    "low_confidence_words": 1
+  }
+}

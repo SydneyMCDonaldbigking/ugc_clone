@@ -2,26 +2,26 @@
 
 ## 谁负责什么(以这张表为准,其他文档冲突时照这里)
 
-**原则:本地做全部分析、稿子和参考图;服务器只拿稿子和参考图出 H3 视频。**
+**原则:生成视频之前的本地准备默认全部由 Codex 连续完成;服务器只拿已验收的稿子和参考图出 H3 视频。**
 默认负责人如下;用户明确指派时可以换人,换人的一方在 `events.en.jsonl` 里写 `"actor"`。
 
 | # | 阶段 | 负责 | 在哪 | 怎么做 | 产出 | 做完的信号 |
 |---|---|---|---|---|---|---|
 | 0 | 给素材 | **用户** | — | 参考视频、商品图、价格、卖法、目标语言 | `inputs/<job>/` 原始文件 | 用户在对话里说"开始" |
-| 1 | 建档 + 转写 | **Claude** | 本地(conda `ugc_asr`) | `python scripts/reference_archive.py init <视频> <ref_id> --transcribe [--vad]` | `references/<ref_id>/` 事实、证据宫格、文档骨架 | 命令跑完 |
-| 2 | 写原片档案 | **Claude** | 本地 | 看宫格写 `ANALYSIS.md`、`TIMELINE.md`,补看用 `reference_archive.py tile`;**事实表里判断出镜方式** | 两份档案 | `reference_archive.py check <ref_id>` 显示 READY |
-| 3 | 商品参数表 | **Claude**(事实只能来自用户和包装图) | 本地 | 每条事实挂证据,拿不到的填 null | `inputs/<job>/product.en.json` | `validate` 通过 |
-| 4 | 节拍表 + 稿子 | **Claude** | 本地 | `build_beats.py`,英文稿按节拍表写 | `beats.json`、`variants/vNNN/script.en.json` | `validate` 通过 |
-| 5 | 分镜 + 出图请求 | **Claude** | 本地 | `job.presenter.mode` 照档案的出镜方式填,选对应模板;`camera` 照 TIMELINE 的镜头行,`first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词 | `shot_plan.json`、`keyframes/REQUEST.json`、`segNN_prompt.txt` | `validate` 通过,**Claude 告诉用户"可以交给 Codex 出图了"** |
-| 6 | 定妆照 + 参考帧 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩" | `presenter_master.png`、`keyframes/segNN.png`、`QC.json` | Codex 最后写 `keyframes/READY.json` |
-| 7 | 编 H3 提示词 + 渲染 | **Claude** | 编译在本地,渲染在服务器 | 读 READY,按"态度 + 重音"编 `segments.json`,上传、`cc_submit`、单段 `cc_rerun` | 成片 | `cc_status` 出片 |
+| 1 | 建档 + 转写 | **Codex** | 本地(conda `ugc_asr`) | `python scripts/reference_archive.py init <视频> <ref_id> --transcribe [--vad]` | `references/<ref_id>/` 事实、证据宫格、文档骨架 | 命令跑完 |
+| 2 | 写原片档案 | **Codex** | 本地 | 看宫格写 `ANALYSIS.md`、`TIMELINE.md`,补看用 `reference_archive.py tile`;**事实表里判断出镜方式** | 两份档案 | `reference_archive.py check <ref_id>` 显示 READY |
+| 3 | 商品参数表 | **Codex**(事实只能来自用户和包装图) | 本地 | 每条事实挂证据,拿不到的填 null | `inputs/<job>/product.en.json` | `validate` 通过 |
+| 4 | 节拍表 + 稿子 | **Codex** | 本地 | `build_beats.py`,英文稿按节拍表写 | `beats.json`、`variants/vNNN/script.en.json` | `validate` 通过 |
+| 5 | 分镜 + 出图请求 | **Codex** | 本地 | `job.presenter.mode` 照档案的出镜方式填,选对应模板;`camera` 照 TIMELINE 的镜头行,`first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词 | `shot_plan.json`、`keyframes/REQUEST.json`、`segNN_prompt.txt` | `validate` 通过后直接进入第 6 步 |
+| 6 | 定妆照 + 参考帧 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩" | `presenter_master.png`、`keyframes/segNN.png`、`QC.json`、`READY.json` | `keyframe-status` 和 `preflight` 均通过 |
+| 7 | 编 H3 提示词 + 渲染 | **Claude** | 编译在本地,渲染在服务器 | 先跑 `preflight --actor claude`,再按"态度 + 重音"编 `segments.json`,上传、`cc_submit`、单段 `cc_rerun` | 成片 | `cc_status` 出片 |
 | 8 | 验收 | **Claude**(技术 + 台词)、**用户**(画面) | 本地 | 成片再转写对台词;画面交给用户看 | 验收结论 | 用户说"通过" |
 
 几条边界:
 
-- **转写只由 Claude 在本地做**(第 1 步)。Codex 不跑转写、不碰服务器
-- **Codex 只做第 6 步**。第 1-5 步的产出是它的输入;发现输入有问题(比如分镜要求的画面画不出来),
-  写进 `QC.json` 的说明里交回,不自己改稿子和分镜
+- **Codex 默认连续完成第 1–6 步**,包括本地转写、档案、事实表、英文稿、分镜、出图和 QC;第 1–5 步不再等待 Claude 交接
+- Codex 在第 6 步发现前序输入有问题时,应在证据范围内直接修正对应稿子或分镜,重新运行 `validate`,并把变更记进 `events.en.jsonl`
+- **Claude 默认从第 7 步开始**,只在 `keyframes/READY.json` 存在、`keyframe-status` 已封存输入且最新 `PREFLIGHT.json.status = pass` 时接手 H3 生成、重跑和成片验收
 - **服务器只在第 7 步出现**。服务器掉线只影响第 7 步,前面的步骤照常做
 - 每一步都有"做完的信号";没看到上一步的信号,下一步不开始
 - **出镜方式跟原片走,不默认有人**。原片有人对镜头说话才用 `generated_fictional`(出定妆照、做真人出镜);
@@ -63,7 +63,10 @@
 **音视频和图片不进仓库**(见 `.gitignore`):参考视频和抽帧里是原博主的脸和作品,成片太大,
 品牌产品图是别人的商标图。需要时由人在本地提供。
 
-## 现在要你接手的:用 Codex 内置 ImageGen 出每段参考帧
+## Codex 默认负责的本地流程(第 1–6 步)
+
+Codex 收到用户的“开始”信号后,按表格从建档和转写一路做到参考帧验收,中途不因等待另一个 agent 停下。
+第 1–5 步的命令、数据契约和门禁见主 skill 与 `WORKFLOW.md`;第 6 步使用 Codex 内置 ImageGen,规则如下。
 
 **问题**:H3 用的是 ref2va 多参考图模式,每段只绑"出镜人中景图 + 白底产品图"两张,构图全靠文字描述。
 a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变了、没拍成特写、多出一只手。
@@ -82,7 +85,7 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
      倾斜、倒奶这些动作交给 H3
    - 提示词用 `build_keyframe_prompts.py` 生成,约 150 词、只写正面描述;不要自己往里加"不要 XX"
 5. 标签有密集小字时,不得让生成模型重画文字;改用原商品图像素或交给 Claude 走已验证的 `fully_preserved` / 慢推保底路径
-6. 全部图片完成后,最后写 `work/<job>/keyframes/READY.json`,然后停止
+6. 全部图片完成后写 `work/<job>/keyframes/READY.json`,再用 `keyframe-status` 封存所有渲染输入,最后跑 `preflight`;两条命令都通过后停止
 
 **明确不做**:
 
@@ -90,7 +93,7 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 - 不上传服务器,不提交 H3,不重跑视频,不做最终成片验收
 - 不改 Claude 的监听、服务器和 H3 编排逻辑
 
-以上后半段工作由 Claude Code 在看到 `READY.json` 后接手。
+Claude Code 只在看到 `READY.json` 且重新运行 `preflight --actor claude` 通过后接手第 7–8 步。
 
 **6a 定妆照(只在 `presenter.mode = generated_fictional` 时做;自动,不用等用户)**
 
@@ -122,14 +125,23 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 
 ## 做完图怎么交给 Claude Code(自动交接)
 
-Claude Code 在同一个文件夹里盯着 `work/<job>/keyframes/READY.json`。你**最后一步**写这个文件,
-Claude 看到后会自动接手:检查图 → 传服务器 → H3 单段重跑 → 出片。**图全部写完之后再写 READY.json**,
-不要先写。
+Claude Code 在同一个文件夹里读取 `work/<job>/keyframes/READY.json` 和 `work/<job>/PREFLIGHT.json`。
+**图全部写完之后再写 READY.json**,不要先写。随后必须执行:
+
+```powershell
+D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline keyframe-status inputs/<job>/job.en.json --actor codex
+D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/job.en.json --actor codex
+```
+
+两条命令通过后才算交接完成。Claude 接手时再运行同一条 `preflight` 命令并把 actor 改为 `claude`,通过后才能传服务器。
+如果封存后的稿子、分镜、商品图、QC、READY 或参考帧发生变化,预检会把当前 `READY.json` 可恢复地改名为
+`READY.invalidated.<UTC>.json`,状态退回 `awaiting_keyframes`;修好后重新执行 `keyframe-status` 和 `preflight`。
 
 ```
 work/<job>/keyframes/
   seg03.png            每段一张参考帧,9:16 竖图,文件名 segNN.png(NN 是分镜号)
-  READY.json           最后写
+  READY.json           图片和 QC 完成后写;门禁通过前不授权渲染
+work/<job>/PREFLIGHT.json  最后一次本地预检报告
 ```
 
 `READY.json` 的格式:

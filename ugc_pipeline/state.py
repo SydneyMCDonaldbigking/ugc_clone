@@ -61,7 +61,14 @@ def has_reached(current: str, target: str) -> bool:
     return STATES.index(current) >= STATES.index(target)
 
 
-def transition(state: dict[str, Any], target: str, *, stage: str | None = None, artifact: str | None = None) -> dict[str, Any]:
+def transition(
+    state: dict[str, Any],
+    target: str,
+    *,
+    stage: str | None = None,
+    artifact: str | None = None,
+    metadata: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     current = str(state.get("state"))
     if not can_transition(current, target):
         raise ValueError(f"Invalid state transition: {current} -> {target}")
@@ -73,6 +80,8 @@ def transition(state: dict[str, Any], target: str, *, stage: str | None = None, 
         stage_entry: dict[str, Any] = {"status": "passed", "updated_at": updated["updated_at"]}
         if artifact:
             stage_entry["artifact"] = artifact
+        if metadata:
+            stage_entry.update(json.loads(json.dumps(metadata)))
         updated.setdefault("stages", {})[stage] = stage_entry
     return updated
 
@@ -86,6 +95,41 @@ def record_stage(state: dict[str, Any], stage: str, artifact: str) -> dict[str, 
         "updated_at": updated["updated_at"],
         "artifact": artifact,
     }
+    return updated
+
+
+def invalidate_to(
+    state: dict[str, Any],
+    target: str,
+    *,
+    stage: str,
+    reason: str,
+    artifact: str | None = None,
+) -> dict[str, Any]:
+    """Roll a job back after an approved artifact becomes stale.
+
+    Normal transitions remain forward-only. This explicit invalidation path preserves the
+    previous stage metadata for audit while marking it unusable.
+    """
+    current = str(state.get("state"))
+    if current in TERMINAL_STATES or current not in STATES or target not in STATES:
+        raise ValueError(f"Invalid state invalidation: {current} -> {target}")
+    if STATES.index(target) > STATES.index(current):
+        raise ValueError(f"Invalid state invalidation: {current} -> {target}")
+    updated = json.loads(json.dumps(state))
+    updated["state"] = target
+    updated["revision"] = int(updated.get("revision", 0)) + 1
+    updated["updated_at"] = utc_now()
+    previous = updated.setdefault("stages", {}).get(stage, {})
+    stage_entry = json.loads(json.dumps(previous)) if isinstance(previous, dict) else {}
+    stage_entry.update({
+        "status": "invalidated",
+        "updated_at": updated["updated_at"],
+        "reason": reason,
+    })
+    if artifact:
+        stage_entry["artifact"] = artifact
+    updated["stages"][stage] = stage_entry
     return updated
 
 

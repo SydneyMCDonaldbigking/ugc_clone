@@ -1,0 +1,66 @@
+{
+  "schema": "job-state/v1",
+  "job_id": "crown_almond_bis_en",
+  "state": "keyframes_ready",
+  "revision": 9,
+  "updated_at": "2026-09-20T05:34:55.425065Z",
+  "stages": {
+    "beats": {
+      "status": "passed",
+      "updated_at": "2026-09-20T02:01:02.684205Z",
+      "artifact": "work/crown_almond_bis/beats.json"
+    },
+    "facts": {
+      "status": "passed",
+      "updated_at": "2026-09-20T02:01:02.685200Z",
+      "artifact": "inputs/crown_almond_bis/product.en.json"
+    },
+    "scripts": {
+      "status": "passed",
+      "updated_at": "2026-09-20T02:01:02.685200Z",
+      "artifact": "work/crown_almond_bis/variants/v001/script.en.json"
+    },
+    "shots": {
+      "status": "passed",
+      "updated_at": "2026-09-20T02:01:02.685200Z",
+      "artifact": "work/crown_almond_bis/variants/v001/shot_plan.json"
+    },
+    "keyframe_request": {
+      "status": "passed",
+      "updated_at": "2026-09-20T02:01:02.686201Z",
+      "artifact": "work/crown_almond_bis/keyframes/REQUEST.json"
+    },
+    "keyframes": {
+      "status": "passed",
+      "updated_at": "2026-09-20T05:34:55.425065Z",
+      "artifact": "work/crown_almond_bis/keyframes/READY.json",
+      "integrity": {
+        "schema": "artifact-integrity/v1",
+        "digest": "d4927413b2362d941c13fb8946af8f9f82cd2e6af3961ee6fbc4414d8a53982b",
+        "files": {
+          "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "144e56bdcee507cf46c73a38950b32ed99350751e38c355b996fd12a373e24c3",
+          "codex_clone_refs/crown_almond_bis/ref_pic2.jpg": "41a7d7e8a06eb9da7f11736b2a2bbe265d1cd5c90c9485403ad82ef16571a8e3",
+          "inputs/crown_almond_bis/job.en.json": "7f0f317d072350ea65361af893e5e15a102459ff0fc3cf2651f5b4c5f6347fc0",
+          "inputs/crown_almond_bis/product.en.json": "06126a71c471637c3e5bc85c0471db5499436aeb45a7bfb68e3a15d118821015",
+          "work/crown_almond_bis/beats.json": "5043b2d370d164dfa113039485b974df15ecf8ae94702b0fb8b0f2819d8a77ef",
+          "work/crown_almond_bis/keyframes/QC.json": "226826c23a1e19063a372890e9a19907829b8a3d677e18971840252346dff910",
+          "work/crown_almond_bis/keyframes/READY.json": "4a606ab97c756eeeee035aadc16527ca91ff462b5e93a3146021a5aa037d1d5f",
+          "work/crown_almond_bis/keyframes/REQUEST.json": "6d869b925e3e4393d69d651744043d896eea1123b06368f81e8b26c4e254023b",
+          "work/crown_almond_bis/keyframes/seg01.png": "d2d042a11f7f0477d6f6a75a57bde4a580f1b2ea7cdefd8fa9d0132bcc5fd944",
+          "work/crown_almond_bis/keyframes/seg02.png": "7b4d2e3bdc14de750b0e61eaf2aa6b8e92e97ee87a19c003d2ddd12d985d8b58",
+          "work/crown_almond_bis/keyframes/seg03.png": "703a8c7b06a35b8f0d43c385d58459dc2aa9b3df3ad1c609e3c05cca51595bd5",
+          "work/crown_almond_bis/keyframes/seg04.png": "c88975e832bbaa790ae055fd3d6c2cbe17e176ef74e6a0ff00ecd08b61fb5b24",
+          "work/crown_almond_bis/variants/v001/script.en.json": "94067e9b32ca2fca78f8e50c52899fa1e201f34542e2e6c05276235867b755c4",
+          "work/crown_almond_bis/variants/v001/shot_plan.json": "0361a28b3cab7984ebcc83a3be066f5f26e4263f023397cb4b17d4c752a77d1c"
+        }
+      },
+      "reviewed_by": "codex",
+      "attempts": {
+        "1": 2,
+        "2": 1,
+        "3": 1,
+        "4": 2
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-"""S3 节拍表:词级时间 + 切点 + 人工标注 → beats.json。纯标准库,本地可跑。
+"""S3 节拍表:词级时间(可为空) + 切点 + 人工标注 → beats.json。纯标准库,本地可跑。
 
 用法: python build_beats.py <work_dir> <labels.json>
 
@@ -17,7 +17,8 @@ def main():
     cuts = json.loads((work / "cuts.json").read_text(encoding="utf-8"))
     probe = json.loads((work / "probe.json").read_text(encoding="utf-8"))
 
-    words = [w for s in words_doc["segments"] for w in s["words"]]
+    words = [w for s in words_doc.get("segments", []) for w in s.get("words", [])]
+    audio_mode = labels.get("audio_mode", "dialogue")
     punct = ",。!?、,.!? "
 
     video = next(s for s in probe["streams"] if s["codec_type"] == "video")
@@ -37,12 +38,12 @@ def main():
         speech_end = ws[-1]["end"] if ws else t1
         nxt = labels["beats"][i + 1]["t"][0] if i + 1 < len(labels["beats"]) else duration
         nxt_ws = [w for w in words if w["start"] >= speech_end]
-        pause = round(((nxt_ws[0]["start"] if nxt_ws else duration) - speech_end) * 1000)
+        pause = 0 if audio_mode == "silent" else round(((nxt_ws[0]["start"] if nxt_ws else duration) - speech_end) * 1000)
         beats.append({
             "id": lab["id"],
             "t_start": t0,
             "t_end": t1,
-            "speech": [round(speech_start, 2), round(speech_end, 2)],
+            "speech": None if audio_mode == "silent" else [round(speech_start, 2), round(speech_end, 2)],
             "function": lab["function"],
             **({"hook_type": lab["hook_type"]} if "hook_type" in lab else {}),
             "char_count": chars,
@@ -60,13 +61,14 @@ def main():
             "asr_text": asr_text,
         })
 
-    speech_time = words[-1]["end"] - words[0]["start"]
+    speech_time = words[-1]["end"] - words[0]["start"] if words else duration
     out = {
         "schema": "beats/v0.1",
+        "audio_mode": audio_mode,
         "source": {"file": labels["source"], "duration": round(duration, 2),
                    "fps": round(int(num) / int(den), 2),
                    "size": f'{video["width"]}x{video["height"]}'},
-        "speech_rate_cps": round(spoken_chars / speech_time, 1),
+        "speech_rate_cps": round(spoken_chars / max(speech_time, 0.1), 1),
         "total_chars": spoken_chars,
         "cuts": [c["t"] for c in cuts],
         "structure_notes": labels.get("structure_notes", []),

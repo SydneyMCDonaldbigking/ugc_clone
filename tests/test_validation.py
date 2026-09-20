@@ -14,6 +14,7 @@ from ugc_pipeline.validation import (
     validate_keyframe_request,
     validate_keyframe_qc,
     validate_product,
+    validate_ready_against_request,
     validate_script,
     validate_shot_plan,
     validate_source_alignment,
@@ -68,6 +69,24 @@ class EnglishValidationTests(unittest.TestCase):
         result = validate_script(script, self.beats, self.product)
         self.assertIn("script.word_budget", {issue.code for issue in result.errors})
 
+    def test_silent_script_accepts_empty_dialogue_with_visual_direction(self) -> None:
+        script = copy.deepcopy(self.script)
+        script["audio_mode"] = "silent"
+        for line in script["lines"]:
+            line["text"] = ""
+            line["claims"] = []
+            line["visual_direction"] = "Replicate the approved camera and product action without spoken dialogue."
+        result = validate_script(script, self.beats, self.product)
+        self.assertTrue(result.ok, result.issues)
+
+    def test_silent_script_rejects_spoken_text(self) -> None:
+        script = copy.deepcopy(self.script)
+        script["audio_mode"] = "silent"
+        for line in script["lines"]:
+            line["visual_direction"] = "Replicate the approved camera and product action."
+        result = validate_script(script, self.beats, self.product)
+        self.assertIn("script.silent_text", {issue.code for issue in result.errors})
+
     def test_source_video_mismatch_fails(self) -> None:
         beats = copy.deepcopy(self.beats)
         beats["source"]["file"] = "wrong-video.mp4"
@@ -111,6 +130,19 @@ class EnglishValidationTests(unittest.TestCase):
         qc["result"] = "failed"
         result = validate_keyframe_qc(qc, qc_path, self.request)
         self.assertIn("qc.result", {issue.code for issue in result.errors})
+
+    def test_qc_dimensions_must_match_png(self) -> None:
+        qc_path = ROOT / "work/a2_test/keyframes/QC.json"
+        qc = copy.deepcopy(load_json(qc_path))
+        qc["segments"]["1"]["width"] += 1
+        result = validate_keyframe_qc(qc, qc_path, self.request)
+        self.assertIn("qc.dimensions", {issue.code for issue in result.errors})
+
+    def test_ready_output_must_match_request(self) -> None:
+        ready = copy.deepcopy(load_json(ROOT / "work/a2_test/keyframes/READY.json"))
+        ready["segments"]["1"]["keyframe"] = "seg02.png"
+        result = validate_ready_against_request(ready, self.request, self.job)
+        self.assertIn("ready.output", {issue.code for issue in result.errors})
 
     def test_source_video_frame_reference_fails(self) -> None:
         request = copy.deepcopy(self.request)

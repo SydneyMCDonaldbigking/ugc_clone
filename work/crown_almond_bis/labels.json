@@ -1,0 +1,90 @@
+{
+  "source": "codex_clone_refs/crown_almond_bis/ref_video.mp4",
+  "structure_notes": [
+    "The source is hands-only throughout; no face or talking-head presenter appears.",
+    "The hook uses a family-sharing reversal, followed by quantity, package, product-detail, break-open and milk-use proof.",
+    "The adaptation keeps the family-sharing function and milk use case but drops price, pack count, ingredient, aroma and taste claims.",
+    "The camera stays close to the tabletop product, alternating first-person high angles, direct overhead inserts and macro hand demonstrations.",
+    "No source-derived frame may be used as an ImageGen or H3 reference."
+  ],
+  "beats": [
+    {
+      "id": "B1",
+      "t": [0.0, 3.7],
+      "function": "family_share_hook",
+      "hook_type": "social_sharing",
+      "intensity": "bright surprise",
+      "shot": {"type": "hands_only_biscuit_closeups", "cut_in": false},
+      "visual_action": "Hands lift several biscuits from a full basket and fan them toward the lens.",
+      "visual_sync": "The family-sharing reversal lands as both hands present more biscuits.",
+      "proof_category": "product_abundance",
+      "ref_text_corrected": "本来是给儿子买的这个蔬菜小饼干,结果收到货我们全家都抢着吃。"
+    },
+    {
+      "id": "B2",
+      "t": [3.7, 5.9],
+      "function": "value_and_package_reveal",
+      "intensity": "pleased reveal",
+      "shot": {"type": "overhead_box_to_single_pack", "cut_in": "hard_cut@3.87"},
+      "visual_action": "A shipping box opens, then one retail pack is lifted close to camera.",
+      "visual_sync": "The quantity statement lands on the overhead box view.",
+      "proof_category": "package_display",
+      "ref_text_corrected": "个位数到手,满满一大箱12包。"
+    },
+    {
+      "id": "B3",
+      "t": [5.9, 8.78],
+      "function": "open_and_reveal",
+      "intensity": "curious and inviting",
+      "shot": {"type": "package_open_to_food_closeup", "cut_in": "hard_cut@5.80"},
+      "visual_action": "The package opens and biscuits move into the creator's hands and basket.",
+      "visual_sync": "The words about opening land exactly on the tear-open action.",
+      "proof_category": "open_package",
+      "ref_text_corrected": "一打开就闻到了浓浓的奶香和蔬菜的清香。"
+    },
+    {
+      "id": "B4",
+      "t": [8.78, 10.96],
+      "function": "package_identity_proof",
+      "intensity": "clear and explanatory",
+      "shot": {"type": "front_package_closeup", "cut_in": "hard_cut@9.33"},
+      "visual_action": "The front package fills the frame while a fingertip points at its printed claim area.",
+      "visual_sync": "The ingredient number lands on the package-front point.",
+      "proof_category": "package_front",
+      "ref_text_corrected": "它是由10种蔬菜精心搭配而成,"
+    },
+    {
+      "id": "B5",
+      "t": [10.96, 12.86],
+      "function": "shape_and_surface_proof",
+      "intensity": "observant",
+      "shot": {"type": "stacked_biscuit_macro", "cut_in": "hard_cut@11.20"},
+      "visual_action": "Hands show biscuit edges in two stacks, then turn several fronts toward the lens.",
+      "visual_sync": "The shape and surface statement lands on the closest biscuit.",
+      "proof_category": "visible_product_detail",
+      "ref_text_corrected": "圆圆的小饼干上裹满了蔬菜粒,"
+    },
+    {
+      "id": "B6",
+      "t": [12.86, 16.0],
+      "function": "break_and_share_use",
+      "intensity": "satisfying",
+      "shot": {"type": "basket_to_break_open_macro", "cut_in": "hard_cut@13.47"},
+      "visual_action": "A full basket is shown, then two hands break one biscuit and reveal the interior.",
+      "visual_sync": "The sensory phrase lands as the biscuit separates into two halves.",
+      "proof_category": "break_open",
+      "ref_text_corrected": "吃起来咸香酥脆的。饿的时候来一包真的太过瘾了,"
+    },
+    {
+      "id": "B7",
+      "t": [16.0, 19.03],
+      "function": "milk_pairing_and_finish",
+      "intensity": "warm finish",
+      "shot": {"type": "biscuit_and_milk_closeup", "cut_in": "hard_cut@16.70"},
+      "visual_action": "Biscuits are placed in milk and lifted with a spoon for the final result.",
+      "visual_sync": "The milk use case lands on the cut to the bowl.",
+      "proof_category": "serving_suggestion",
+      "ref_text_corrected": "拿来泡牛奶吃也很不错。"
+    }
+  ]
+}

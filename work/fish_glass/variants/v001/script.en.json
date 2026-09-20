@@ -1,0 +1,115 @@
+{
+  "schema": "script/v1",
+  "language": "en-AU",
+  "mode": "structure",
+  "audio_mode": "silent",
+  "variant_id": "v001",
+  "adaptations": {
+    "B1": "Keep the result-first two-drink hook while replacing the source ocean-lettered glasses with the supplied fish-pattern double-wall glass.",
+    "B2": "Retain the tactile empty-glass rotation so the target silhouette and fish motif are visible before ingredients enter.",
+    "B3-B5": "Recreate the ice, citrus, clear pour and bubble macro as a transparent cold-drink sequence without source branding.",
+    "B6-B7": "Recreate the second drink as ice, milk and coffee in separate continuous shots, followed by the paired result.",
+    "B8-B9": "Finish with stirring, a single-hand lift toward the lens and a return to the opening hero composition."
+  },
+  "lines": [
+    {
+      "id": "L1",
+      "segment": 1,
+      "beats": ["B1"],
+      "text": "",
+      "visual_direction": "Begin on two finished drinks in matching fish-pattern glasses; snap focus from soft to crisp and hold the fresh paired result.",
+      "claims": ["F1"],
+      "target_duration_seconds": 5,
+      "source_edit_duration_seconds": 1.467,
+      "delivery": "Silent visual beat; music or natural ambience only."
+    },
+    {
+      "id": "L2",
+      "segment": 2,
+      "beats": ["B2"],
+      "text": "",
+      "visual_direction": "Two hands tilt and rotate one empty glass by a quarter turn, revealing its double wall, fish motif, rim and thick base.",
+      "claims": ["F1"],
+      "target_duration_seconds": 5,
+      "source_edit_duration_seconds": 1.5,
+      "delivery": "Silent tactile product inspection."
+    },
+    {
+      "id": "L3",
+      "segment": 3,
+      "beats": ["B3"],
+      "text": "",
+      "visual_direction": "Metal tongs place several clear ice cubes into the upright glass and finish with one small citrus slice.",
+      "claims": ["F1"],
+      "target_duration_seconds": 5,
+      "source_edit_duration_seconds": 5.066,
+      "delivery": "Silent rhythmic ingredient-loading beat."
+    },
+    {
+      "id": "L4",
+      "segment": 4,
+      "beats": ["B4"],
+      "text": "",
+      "visual_direction": "A full-size 1.5-litre household clear glass water pitcher pours sparkling water in one steady stream over the ice while the glass remains centred and upright.",
+      "claims": ["F1"],
+      "target_duration_seconds": 5,
+      "source_edit_duration_seconds": 2.034,
+      "delivery": "Silent crisp pour."
+    },
+    {
+      "id": "L5",
+      "segment": 5,
+      "beats": ["B5"],
+      "text": "",
+      "visual_direction": "Hold an extreme close-up of the completed clear drink while fine bubbles rise around the ice and citrus through the fish-pattern double wall.",
+      "claims": ["F1"],
+      "target_duration_seconds": 5,
+      "source_edit_duration_seconds": 1.4,
+      "delivery": "Silent material-detail pause."
+    },
+    {
+      "id": "L6",
+      "segment": 6,
+      "beats": ["B6"],
+      "text": "",
+      "visual_direction": "In three separate shots, lift away the completed clear drink, load ice into a second matching glass, then pour in milk.",
+      "claims": ["F1", "F3"],
+      "target_duration_seconds": 6,
+      "source_edit_duration_seconds": 5.8,
+      "delivery": "Silent three-shot transition into the second drink."
+    },
+    {
+      "id": "L7",
+      "segment": 7,
+      "beats": ["B7"],
+      "text": "",
+      "visual_direction": "Pour dark coffee into the iced milk to create a natural colour bloom, then cut to both completed drinks resting side by side.",
+      "claims": ["F1"],
+      "target_duration_seconds": 5,
+      "source_edit_duration_seconds": 4.366,
+      "delivery": "Silent transformation followed by a result hold."
+    },
+    {
+      "id": "L8",
+      "segment": 8,
+      "beats": ["B8"],
+      "text": "",
+      "visual_direction": "Stir the clear citrus drink with one transparent stirrer while the milk coffee remains still beside it.",
+      "claims": ["F1"],
+      "target_duration_seconds": 5,
+      "source_edit_duration_seconds": 1.434,
+      "delivery": "Silent light interaction beat."
+    },
+    {
+      "id": "L9",
+      "segment": 9,
+      "beats": ["B9"],
+      "text": "",
+      "visual_direction": "Lift the clear drink toward the lens for a soft glass wipe, then return to the paired finished-drink hero and hold.",
+      "claims": ["F1", "F3"],
+      "target_duration_seconds": 5,
+      "source_edit_duration_seconds": 3.466,
+      "delivery": "Silent closing gesture and final hold."
+    }
+  ]
+}

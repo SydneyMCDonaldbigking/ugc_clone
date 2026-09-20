@@ -109,6 +109,10 @@ def validate_job(job: Any, repo_root: Path) -> ValidationResult:
     if mode and mode != "structure":
         result.error("mode.production", "job.mode", "Production jobs must use structure mode.")
 
+    audio_mode = job.get("audio_mode", "dialogue")
+    if audio_mode not in {"dialogue", "silent"}:
+        result.error("audio_mode.invalid", "job.audio_mode", "Expected dialogue or silent.")
+
     variants = job.get("variants")
     if not isinstance(variants, int) or variants < 1:
         result.error("variants.range", "job.variants", "Variants must be a positive integer.")
@@ -288,6 +292,9 @@ def validate_script(script: Any, beats: dict[str, Any], product: dict[str, Any])
         result.error("language.target", "script.language", "Script language must be English.")
     if script.get("mode") != "structure":
         result.error("mode.production", "script.mode", "Production scripts must use structure mode.")
+    audio_mode = script.get("audio_mode", "dialogue")
+    if audio_mode not in {"dialogue", "silent"}:
+        result.error("audio_mode.invalid", "script.audio_mode", "Expected dialogue or silent.")
 
     lines = script.get("lines")
     if not isinstance(lines, list) or not lines:
@@ -305,7 +312,18 @@ def validate_script(script: Any, beats: dict[str, Any], product: dict[str, Any])
         if not isinstance(line, dict):
             result.error("type.object", path, "Expected a line object.")
             continue
-        text = _require_string(line, "text", result, path) or ""
+        raw_text = line.get("text")
+        if not isinstance(raw_text, str):
+            result.error("required.string", f"{path}.text", "Expected a string.")
+            text = ""
+        else:
+            text = raw_text
+        if audio_mode == "dialogue" and not text.strip():
+            result.error("required.string", f"{path}.text", "Dialogue mode requires non-empty spoken text.")
+        if audio_mode == "silent":
+            if text:
+                result.error("script.silent_text", f"{path}.text", "Silent mode requires an empty dialogue string.")
+            _require_string(line, "visual_direction", result, path)
         line_beats = line.get("beats")
         if not isinstance(line_beats, list) or not all(isinstance(value, str) for value in line_beats):
             result.error("script.beats", f"{path}.beats", "Expected a list of beat IDs.")
@@ -325,7 +343,7 @@ def validate_script(script: Any, beats: dict[str, Any], product: dict[str, Any])
         duration = line.get("target_duration_seconds", 5)
         if not isinstance(duration, (int, float)) or duration <= 0:
             result.error("duration.invalid", f"{path}.target_duration_seconds", "Expected a positive duration.")
-        else:
+        elif audio_mode == "dialogue":
             words = count_words(text)
             hard_min = max(1, math.floor(float(duration) * 1.5))
             hard_max = math.ceil(float(duration) * 3.4)
@@ -350,7 +368,8 @@ def validate_script(script: Any, beats: dict[str, Any], product: dict[str, Any])
                 result.error("claims.forbidden", f"{path}.text", f"Forbidden claim: {phrase}")
         if re.search(r"\d", text) and not claims:
             result.error("claims.number", f"{path}.text", "Numeric claims require at least one fact reference.")
-        all_text.append(text)
+        if text:
+            all_text.append(text)
 
     dropped = script.get("dropped_beats", {})
     dropped_ids = list(dropped) if isinstance(dropped, dict) else []
@@ -423,6 +442,10 @@ def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
         result.error("schema.unsupported", "shot_plan.schema", "Expected shot-plan/v1.")
     if not str(plan.get("language", "")).lower().startswith("en"):
         result.error("language.target", "shot_plan.language", "Shot plan language must be English.")
+    audio_mode = script.get("audio_mode", "dialogue")
+    plan_audio_mode = plan.get("audio_mode", "dialogue")
+    if plan_audio_mode != audio_mode:
+        result.error("audio_mode.mismatch", "shot_plan.audio_mode", "Shot plan audio_mode must match the approved script.")
     segments = plan.get("segments")
     if not isinstance(segments, list) or not segments:
         result.error("shots.required", "shot_plan.segments", "At least one segment is required.")
@@ -460,6 +483,8 @@ def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
         else:
             if len(accents) > 3:
                 result.warning("shots.accents_many", f"{path}.accents", "More than three accents turns direction into choreography.")
+            if audio_mode == "silent" and accents:
+                result.error("shots.silent_accents", f"{path}.accents", "Silent mode cannot anchor reactions to dialogue.")
             for accent_index, accent in enumerate(accents):
                 accent_path = f"{path}.accents[{accent_index}]"
                 if not isinstance(accent, dict) or not str(accent.get("at", "")).strip() or not str(accent.get("reaction", "")).strip():
@@ -769,6 +794,71 @@ def validate_ready(ready: Any, ready_path: Path, repo_root: Path) -> ValidationR
     return result
 
 
+def validate_ready_against_request(
+    ready: Any,
+    request: dict[str, Any],
+    job: dict[str, Any],
+) -> ValidationResult:
+    result = ValidationResult()
+    if not isinstance(ready, dict):
+        return result
+    if ready.get("job") != request.get("job"):
+        result.error("ready.job", "ready.job", "READY job must match the keyframe request job.")
+    if ready.get("variant_id") != request.get("variant_id"):
+        result.error("ready.variant", "ready.variant_id", "READY variant must match the keyframe request.")
+    if ready.get("source_job_id") != request.get("source_job_id"):
+        result.error("ready.source_job", "ready.source_job_id", "READY source_job_id must match the keyframe request.")
+    pipeline_job_id = ready.get("pipeline_job_id")
+    if pipeline_job_id is not None and pipeline_job_id != job.get("job_id"):
+        result.error("ready.pipeline_job", "ready.pipeline_job_id", "READY pipeline_job_id must match job.job_id.")
+    job_audio_mode = job.get("audio_mode", "dialogue")
+    ready_audio_mode = ready.get("audio_mode")
+    if ready_audio_mode is not None and ready_audio_mode != job_audio_mode:
+        result.error("ready.audio_mode", "ready.audio_mode", "READY audio_mode must match the job.")
+    if job_audio_mode == "silent" and ready_audio_mode != "silent":
+        result.error("ready.audio_mode", "ready.audio_mode", "Silent jobs must declare audio_mode=silent in READY.")
+
+    ready_segments = ready.get("segments")
+    request_segments = request.get("segments")
+    if not isinstance(ready_segments, dict) or not isinstance(request_segments, dict):
+        return result
+    if set(ready_segments) != set(request_segments):
+        result.error(
+            "ready.coverage",
+            "ready.segments",
+            "READY.json must cover every requested keyframe exactly once.",
+        )
+        return result
+    for segment_id, requested in request_segments.items():
+        completed = ready_segments.get(segment_id)
+        path = f"ready.segments.{segment_id}"
+        if not isinstance(requested, dict) or not isinstance(completed, dict):
+            continue
+        if completed.get("keyframe") != requested.get("output"):
+            result.error("ready.output", f"{path}.keyframe", "READY keyframe must match the requested output filename.")
+        roles = requested.get("reference_roles")
+        product_refs = [
+            raw_path for raw_path, role in (roles.items() if isinstance(roles, dict) else [])
+            if role == "product_identity"
+        ]
+        extra_refs = completed.get("extra_refs", [])
+        if extra_refs != product_refs:
+            result.error(
+                "ready.product_refs",
+                f"{path}.extra_refs",
+                "READY extra_refs must exactly match the requested product_identity reference order.",
+            )
+    return result
+
+
+def _png_dimensions(path: Path) -> tuple[int, int] | None:
+    with path.open("rb") as handle:
+        header = handle.read(24)
+    if len(header) != 24 or header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
+        return None
+    return int.from_bytes(header[16:20], "big"), int.from_bytes(header[20:24], "big")
+
+
 def validate_keyframe_qc(
     qc: Any,
     qc_path: Path,
@@ -814,9 +904,32 @@ def validate_keyframe_qc(
         expected_hash = segment.get("sha256")
         if not isinstance(expected_hash, str) or sha256_file(candidate) != expected_hash.lower():
             result.error("qc.hash", f"{path}.sha256", f"QC hash does not match {filename}.")
+        dimensions = _png_dimensions(candidate)
+        if dimensions is None:
+            result.error("qc.png", f"{path}.file", f"{filename} is not a valid PNG image.")
+        else:
+            width, height = dimensions
+            if segment.get("width") != width or segment.get("height") != height:
+                result.error(
+                    "qc.dimensions",
+                    path,
+                    f"QC dimensions do not match {filename}: actual {width}x{height}.",
+                )
+            if width < 720 or height < 1280:
+                result.error("qc.resolution", path, f"Keyframe {filename} is below the 720x1280 minimum.")
+            if abs((width / height) - (9 / 16)) > 0.01:
+                result.error("qc.aspect", path, f"Keyframe {filename} is not 9:16 (actual {width}x{height}).")
         checks = segment.get("checks")
         if not isinstance(checks, list) or not checks or not all(isinstance(value, str) and value for value in checks):
             result.error("qc.checks", f"{path}.checks", "Visual inspection checks are required.")
+        else:
+            request_checks = requested_segment.get("checks")
+            if isinstance(request_checks, list) and len(checks) < len(request_checks):
+                result.error(
+                    "qc.checks_incomplete",
+                    f"{path}.checks",
+                    "QC must record at least as many visual checks as the keyframe request requires.",
+                )
     return result
 
 
@@ -852,6 +965,8 @@ def validate_bundle(job_path: Path, repo_root: Path) -> tuple[ValidationResult, 
     result.extend(validate_beats(beats))
     result.extend(validate_source_alignment(job, beats))
     result.extend(validate_script(script, beats, product))
+    if job.get("audio_mode", "dialogue") != script.get("audio_mode", "dialogue"):
+        result.error("audio_mode.mismatch", "script.audio_mode", "Script audio_mode must match job.audio_mode.")
     result.extend(validate_shot_plan(shot_plan, script))
     result.extend(validate_keyframe_request(request, repo_root, product))
     result.extend(validate_keyframe_coverage(request, shot_plan, job, repo_root))
