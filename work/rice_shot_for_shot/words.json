@@ -1,0 +1,767 @@
+{
+  "schema": "words/v0.1",
+  "audio": "audio.wav",
+  "duration": 22.452,
+  "engine": "faster-whisper",
+  "model": "large-v3",
+  "language": "zh",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.38,
+      "text": "千万别吃东北大米,我怕你吃过一次啊,别的大米就再吃不下去了,特别是这个东北五肠大米,它真是太香了,又算没有菜也能吃上好几碗。",
+      "words": [
+        {
+          "word": "千",
+          "start": 0.0,
+          "end": 0.14,
+          "score": 0.862
+        },
+        {
+          "word": "万",
+          "start": 0.14,
+          "end": 0.3,
+          "score": 1.0
+        },
+        {
+          "word": "别",
+          "start": 0.3,
+          "end": 0.44,
+          "score": 1.0
+        },
+        {
+          "word": "吃",
+          "start": 0.44,
+          "end": 0.62,
+          "score": 1.0
+        },
+        {
+          "word": "东",
+          "start": 0.62,
+          "end": 0.76,
+          "score": 1.0
+        },
+        {
+          "word": "北",
+          "start": 0.76,
+          "end": 0.88,
+          "score": 1.0
+        },
+        {
+          "word": "大",
+          "start": 0.88,
+          "end": 1.0,
+          "score": 1.0
+        },
+        {
+          "word": "米,",
+          "start": 1.0,
+          "end": 1.18,
+          "score": 1.0
+        },
+        {
+          "word": "我",
+          "start": 1.24,
+          "end": 1.46,
+          "score": 0.997
+        },
+        {
+          "word": "怕",
+          "start": 1.46,
+          "end": 1.54,
+          "score": 1.0
+        },
+        {
+          "word": "你",
+          "start": 1.54,
+          "end": 1.64,
+          "score": 1.0
+        },
+        {
+          "word": "吃",
+          "start": 1.64,
+          "end": 1.8,
+          "score": 1.0
+        },
+        {
+          "word": "过",
+          "start": 1.8,
+          "end": 1.9,
+          "score": 1.0
+        },
+        {
+          "word": "一次",
+          "start": 1.9,
+          "end": 2.08,
+          "score": 0.999
+        },
+        {
+          "word": "啊,",
+          "start": 2.08,
+          "end": 2.26,
+          "score": 0.824
+        },
+        {
+          "word": "别",
+          "start": 2.28,
+          "end": 2.64,
+          "score": 0.999
+        },
+        {
+          "word": "的",
+          "start": 2.64,
+          "end": 2.76,
+          "score": 1.0
+        },
+        {
+          "word": "大",
+          "start": 2.76,
+          "end": 2.88,
+          "score": 1.0
+        },
+        {
+          "word": "米",
+          "start": 2.88,
+          "end": 3.06,
+          "score": 1.0
+        },
+        {
+          "word": "就",
+          "start": 3.06,
+          "end": 3.18,
+          "score": 1.0
+        },
+        {
+          "word": "再",
+          "start": 3.18,
+          "end": 3.3,
+          "score": 1.0
+        },
+        {
+          "word": "吃",
+          "start": 3.3,
+          "end": 3.48,
+          "score": 0.789
+        },
+        {
+          "word": "不",
+          "start": 3.48,
+          "end": 3.58,
+          "score": 1.0
+        },
+        {
+          "word": "下去",
+          "start": 3.58,
+          "end": 3.8,
+          "score": 1.0
+        },
+        {
+          "word": "了,",
+          "start": 3.8,
+          "end": 4.04,
+          "score": 1.0
+        },
+        {
+          "word": "特",
+          "start": 4.08,
+          "end": 4.3,
+          "score": 0.999
+        },
+        {
+          "word": "别",
+          "start": 4.3,
+          "end": 4.48,
+          "score": 1.0
+        },
+        {
+          "word": "是",
+          "start": 4.48,
+          "end": 4.56,
+          "score": 1.0
+        },
+        {
+          "word": "这个",
+          "start": 4.56,
+          "end": 4.68,
+          "score": 1.0
+        },
+        {
+          "word": "东",
+          "start": 4.68,
+          "end": 4.84,
+          "score": 1.0
+        },
+        {
+          "word": "北",
+          "start": 4.84,
+          "end": 5.04,
+          "score": 1.0
+        },
+        {
+          "word": "五",
+          "start": 5.04,
+          "end": 5.12,
+          "score": 0.761
+        },
+        {
+          "word": "肠",
+          "start": 5.12,
+          "end": 5.28,
+          "score": 0.799
+        },
+        {
+          "word": "大",
+          "start": 5.28,
+          "end": 5.42,
+          "score": 1.0
+        },
+        {
+          "word": "米,",
+          "start": 5.42,
+          "end": 5.6,
+          "score": 1.0
+        },
+        {
+          "word": "它",
+          "start": 5.68,
+          "end": 5.78,
+          "score": 0.969
+        },
+        {
+          "word": "真",
+          "start": 5.78,
+          "end": 5.94,
+          "score": 1.0
+        },
+        {
+          "word": "是",
+          "start": 5.94,
+          "end": 6.04,
+          "score": 1.0
+        },
+        {
+          "word": "太",
+          "start": 6.04,
+          "end": 6.16,
+          "score": 1.0
+        },
+        {
+          "word": "香",
+          "start": 6.16,
+          "end": 6.42,
+          "score": 1.0
+        },
+        {
+          "word": "了,",
+          "start": 6.42,
+          "end": 6.56,
+          "score": 1.0
+        },
+        {
+          "word": "又",
+          "start": 6.72,
+          "end": 6.88,
+          "score": 0.795
+        },
+        {
+          "word": "算",
+          "start": 6.88,
+          "end": 6.98,
+          "score": 1.0
+        },
+        {
+          "word": "没有",
+          "start": 6.98,
+          "end": 7.14,
+          "score": 1.0
+        },
+        {
+          "word": "菜",
+          "start": 7.14,
+          "end": 7.38,
+          "score": 1.0
+        },
+        {
+          "word": "也",
+          "start": 7.38,
+          "end": 7.5,
+          "score": 1.0
+        },
+        {
+          "word": "能",
+          "start": 7.5,
+          "end": 7.6,
+          "score": 1.0
+        },
+        {
+          "word": "吃",
+          "start": 7.6,
+          "end": 7.78,
+          "score": 1.0
+        },
+        {
+          "word": "上",
+          "start": 7.78,
+          "end": 7.9,
+          "score": 1.0
+        },
+        {
+          "word": "好",
+          "start": 7.9,
+          "end": 8.04,
+          "score": 1.0
+        },
+        {
+          "word": "几",
+          "start": 8.04,
+          "end": 8.24,
+          "score": 1.0
+        },
+        {
+          "word": "碗。",
+          "start": 8.24,
+          "end": 8.38,
+          "score": 0.999
+        }
+      ]
+    },
+    {
+      "start": 8.48,
+      "end": 21.66,
+      "text": "这一箱是石金装,里面就有五小袋都是真空包装的,东北黑土地种植,一年直产这一季,不抛光不打蜡,油汪汪亮晶晶的,颗粒饱满,软糯劲道,米香浓郁,自己吃过年过节送人都很不错。",
+      "words": [
+        {
+          "word": "这",
+          "start": 8.48,
+          "end": 8.8,
+          "score": 0.989
+        },
+        {
+          "word": "一",
+          "start": 8.8,
+          "end": 8.94,
+          "score": 0.998
+        },
+        {
+          "word": "箱",
+          "start": 8.94,
+          "end": 9.08,
+          "score": 0.99
+        },
+        {
+          "word": "是",
+          "start": 9.08,
+          "end": 9.2,
+          "score": 1.0
+        },
+        {
+          "word": "石",
+          "start": 9.2,
+          "end": 9.36,
+          "score": 0.924
+        },
+        {
+          "word": "金",
+          "start": 9.36,
+          "end": 9.48,
+          "score": 0.598
+        },
+        {
+          "word": "装,",
+          "start": 9.48,
+          "end": 9.7,
+          "score": 0.8
+        },
+        {
+          "word": "里",
+          "start": 9.76,
+          "end": 9.94,
+          "score": 1.0
+        },
+        {
+          "word": "面",
+          "start": 9.94,
+          "end": 10.1,
+          "score": 1.0
+        },
+        {
+          "word": "就",
+          "start": 10.1,
+          "end": 10.16,
+          "score": 1.0
+        },
+        {
+          "word": "有",
+          "start": 10.16,
+          "end": 10.28,
+          "score": 1.0
+        },
+        {
+          "word": "五",
+          "start": 10.28,
+          "end": 10.38,
+          "score": 0.948
+        },
+        {
+          "word": "小",
+          "start": 10.38,
+          "end": 10.52,
+          "score": 1.0
+        },
+        {
+          "word": "袋",
+          "start": 10.52,
+          "end": 10.72,
+          "score": 0.996
+        },
+        {
+          "word": "都是",
+          "start": 10.72,
+          "end": 10.9,
+          "score": 0.995
+        },
+        {
+          "word": "真",
+          "start": 10.9,
+          "end": 11.14,
+          "score": 1.0
+        },
+        {
+          "word": "空",
+          "start": 11.14,
+          "end": 11.28,
+          "score": 1.0
+        },
+        {
+          "word": "包",
+          "start": 11.28,
+          "end": 11.44,
+          "score": 1.0
+        },
+        {
+          "word": "装",
+          "start": 11.44,
+          "end": 11.66,
+          "score": 1.0
+        },
+        {
+          "word": "的,",
+          "start": 11.66,
+          "end": 11.8,
+          "score": 1.0
+        },
+        {
+          "word": "东",
+          "start": 11.86,
+          "end": 12.24,
+          "score": 1.0
+        },
+        {
+          "word": "北",
+          "start": 12.24,
+          "end": 12.48,
+          "score": 1.0
+        },
+        {
+          "word": "黑",
+          "start": 12.48,
+          "end": 12.6,
+          "score": 1.0
+        },
+        {
+          "word": "土",
+          "start": 12.6,
+          "end": 12.74,
+          "score": 1.0
+        },
+        {
+          "word": "地",
+          "start": 12.74,
+          "end": 12.9,
+          "score": 1.0
+        },
+        {
+          "word": "种",
+          "start": 12.9,
+          "end": 13.08,
+          "score": 0.999
+        },
+        {
+          "word": "植,",
+          "start": 13.08,
+          "end": 13.3,
+          "score": 1.0
+        },
+        {
+          "word": "一",
+          "start": 13.38,
+          "end": 13.64,
+          "score": 1.0
+        },
+        {
+          "word": "年",
+          "start": 13.64,
+          "end": 13.84,
+          "score": 1.0
+        },
+        {
+          "word": "直",
+          "start": 13.84,
+          "end": 13.98,
+          "score": 0.828
+        },
+        {
+          "word": "产",
+          "start": 13.98,
+          "end": 14.22,
+          "score": 1.0
+        },
+        {
+          "word": "这",
+          "start": 14.22,
+          "end": 14.32,
+          "score": 1.0
+        },
+        {
+          "word": "一",
+          "start": 14.32,
+          "end": 14.44,
+          "score": 1.0
+        },
+        {
+          "word": "季,",
+          "start": 14.44,
+          "end": 14.6,
+          "score": 0.999
+        },
+        {
+          "word": "不",
+          "start": 14.62,
+          "end": 14.94,
+          "score": 1.0
+        },
+        {
+          "word": "抛",
+          "start": 14.94,
+          "end": 15.18,
+          "score": 0.996
+        },
+        {
+          "word": "光",
+          "start": 15.18,
+          "end": 15.3,
+          "score": 0.999
+        },
+        {
+          "word": "不",
+          "start": 15.3,
+          "end": 15.42,
+          "score": 1.0
+        },
+        {
+          "word": "打",
+          "start": 15.42,
+          "end": 15.58,
+          "score": 0.998
+        },
+        {
+          "word": "蜡,",
+          "start": 15.58,
+          "end": 15.76,
+          "score": 0.98
+        },
+        {
+          "word": "油",
+          "start": 15.88,
+          "end": 16.14,
+          "score": 0.977
+        },
+        {
+          "word": "汪",
+          "start": 16.14,
+          "end": 16.34,
+          "score": 0.991
+        },
+        {
+          "word": "汪",
+          "start": 16.34,
+          "end": 16.52,
+          "score": 1.0
+        },
+        {
+          "word": "亮",
+          "start": 16.52,
+          "end": 16.56,
+          "score": 0.934
+        },
+        {
+          "word": "晶",
+          "start": 16.56,
+          "end": 16.82,
+          "score": 0.997
+        },
+        {
+          "word": "晶",
+          "start": 16.82,
+          "end": 16.98,
+          "score": 1.0
+        },
+        {
+          "word": "的,",
+          "start": 16.98,
+          "end": 17.1,
+          "score": 1.0
+        },
+        {
+          "word": "颗",
+          "start": 17.14,
+          "end": 17.44,
+          "score": 0.997
+        },
+        {
+          "word": "粒",
+          "start": 17.44,
+          "end": 17.54,
+          "score": 1.0
+        },
+        {
+          "word": "饱",
+          "start": 17.54,
+          "end": 17.7,
+          "score": 0.999
+        },
+        {
+          "word": "满,",
+          "start": 17.7,
+          "end": 17.9,
+          "score": 1.0
+        },
+        {
+          "word": "软",
+          "start": 17.94,
+          "end": 18.3,
+          "score": 0.997
+        },
+        {
+          "word": "糯",
+          "start": 18.3,
+          "end": 18.46,
+          "score": 0.999
+        },
+        {
+          "word": "劲",
+          "start": 18.46,
+          "end": 18.6,
+          "score": 0.967
+        },
+        {
+          "word": "道,",
+          "start": 18.6,
+          "end": 18.76,
+          "score": 0.947
+        },
+        {
+          "word": "米",
+          "start": 18.88,
+          "end": 19.16,
+          "score": 0.982
+        },
+        {
+          "word": "香",
+          "start": 19.16,
+          "end": 19.34,
+          "score": 0.996
+        },
+        {
+          "word": "浓",
+          "start": 19.34,
+          "end": 19.54,
+          "score": 1.0
+        },
+        {
+          "word": "郁,",
+          "start": 19.54,
+          "end": 19.74,
+          "score": 1.0
+        },
+        {
+          "word": "自己",
+          "start": 19.78,
+          "end": 20.02,
+          "score": 1.0
+        },
+        {
+          "word": "吃",
+          "start": 20.02,
+          "end": 20.2,
+          "score": 1.0
+        },
+        {
+          "word": "过",
+          "start": 20.2,
+          "end": 20.34,
+          "score": 0.999
+        },
+        {
+          "word": "年",
+          "start": 20.34,
+          "end": 20.48,
+          "score": 1.0
+        },
+        {
+          "word": "过",
+          "start": 20.48,
+          "end": 20.64,
+          "score": 0.999
+        },
+        {
+          "word": "节",
+          "start": 20.64,
+          "end": 20.84,
+          "score": 1.0
+        },
+        {
+          "word": "送",
+          "start": 20.84,
+          "end": 20.94,
+          "score": 1.0
+        },
+        {
+          "word": "人",
+          "start": 20.94,
+          "end": 21.1,
+          "score": 1.0
+        },
+        {
+          "word": "都",
+          "start": 21.1,
+          "end": 21.24,
+          "score": 1.0
+        },
+        {
+          "word": "很",
+          "start": 21.24,
+          "end": 21.38,
+          "score": 1.0
+        },
+        {
+          "word": "不",
+          "start": 21.38,
+          "end": 21.46,
+          "score": 1.0
+        },
+        {
+          "word": "错。",
+          "start": 21.46,
+          "end": 21.66,
+          "score": 1.0
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "segments": 2,
+    "words": 123,
+    "low_confidence_words": 0
+  }
+}

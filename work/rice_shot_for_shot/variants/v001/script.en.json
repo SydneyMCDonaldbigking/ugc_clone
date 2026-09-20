@@ -1,0 +1,61 @@
+{
+  "schema": "script/v1",
+  "language": "en-AU",
+  "mode": "structure",
+  "variant_id": "v001",
+  "adaptations": {
+    "B1": "Keep the immediate raw-to-cooked rice hook without repeating the source's superiority claim.",
+    "B2": "Preserve the cooked-rice close-ups and delayed product reveal.",
+    "B3": "Replace unsupported pack-count and growing claims with visible name, weight and clear-bag facts.",
+    "B4": "Use visible uncooked grains rather than sensory or production claims.",
+    "B5": "Finish on the complete target pack with a neutral kitchen-focused call to action."
+  },
+  "lines": [
+    {
+      "id": "L1",
+      "segment": 1,
+      "beats": ["B1"],
+      "text": "Start with the grains, then lift the lid and take a close look at the rice.",
+      "claims": [],
+      "target_duration_seconds": 5.567,
+      "delivery": "Quick, curious and conversational, with a small lift on lift the lid."
+    },
+    {
+      "id": "L2",
+      "segment": 2,
+      "beats": ["B2"],
+      "text": "From chopsticks to the bowl, every close-up brings the rice right into view.",
+      "claims": [],
+      "target_duration_seconds": 4.833,
+      "delivery": "Warm and brisk, moving cleanly with the two food cuts and product reveal."
+    },
+    {
+      "id": "L3",
+      "segment": 3,
+      "beats": ["B3"],
+      "text": "This is Royal Umbrella Thai Jasmine Rice in a clear five-kilo bag.",
+      "claims": ["F1", "F2", "F4"],
+      "target_duration_seconds": 4.2,
+      "delivery": "Clear and factual, with emphasis on Royal Umbrella and five-kilo bag."
+    },
+    {
+      "id": "L4",
+      "segment": 4,
+      "beats": ["B4"],
+      "text": "The clear pack lets you see the grains before it reaches your pantry.",
+      "claims": ["F4"],
+      "target_duration_seconds": 4.367,
+      "delivery": "Steady and tactile, leaving room for the longer grain-handling shot."
+    },
+    {
+      "id": "L5",
+      "segment": 5,
+      "beats": ["B5"],
+      "text": "Check the front label, then choose the pack for your kitchen.",
+      "claims": ["F1"],
+      "target_duration_seconds": 3.6,
+      "delivery": "Friendly, concise close with a clean pause on kitchen."
+    }
+  ]
+}
+

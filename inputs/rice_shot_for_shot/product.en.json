@@ -1,0 +1,78 @@
+{
+  "schema": "product/v1",
+  "language": "en-AU",
+  "name": "Royal Umbrella Thai Jasmine Rice",
+  "brand": "ROYAL UMBRELLA",
+  "spec": {
+    "unit": "retail bag",
+    "pack_qty": 1,
+    "net_weight": "5 kg"
+  },
+  "visual_identity": {
+    "packaging_type": "large clear rectangular plastic rice bag with a white sealed top, red side seams, and one dominant red-and-gold front label",
+    "silhouette": "tall soft-sided rectangular pillow bag, wider through the filled middle, with a gently uneven sealed top and a flat filled base",
+    "closure": "factory heat-sealed plastic top and bottom seams",
+    "grip_geometry": "soft flexible bag gripped only at its outer edges or supported from below",
+    "handle": "none",
+    "front_label": "large red panel with gold border, ROYAL UMBRELLA arched across the top, THAI JASMINE RICE below it, a gold tiered-umbrella illustration, and a green circular seal",
+    "back_label": "not supplied; keep the supplied front facing the camera and do not invent a back panel",
+    "forbidden_features": [
+      "cardboard shipping case",
+      "multiple small vacuum bags",
+      "red Wuchang rice package",
+      "side or back label invented from an unseen view",
+      "bottle",
+      "jar",
+      "handle",
+      "resealable zipper"
+    ],
+    "geometry_evidence": "Read from codex_clone_refs/rice/rice.jpg. Only one front-facing packshot was supplied."
+  },
+  "price": null,
+  "facts": [
+    {
+      "id": "F1",
+      "text": "The advertised product is Royal Umbrella Thai Jasmine Rice.",
+      "evidence": "The brand and product name are legible on the supplied front packshot at codex_clone_refs/rice/rice.jpg.",
+      "evidence_type": "product_image"
+    },
+    {
+      "id": "F2",
+      "text": "The supplied bag is labelled Net Weight 5 kg.",
+      "evidence": "Net Weight 5 kg is legible at the lower left of the main red front label in codex_clone_refs/rice/rice.jpg.",
+      "evidence_type": "product_image"
+    },
+    {
+      "id": "F3",
+      "text": "The front label states 100% Pure Thai Jasmine Rice and Product of Thailand.",
+      "evidence": "Both statements are legible on the supplied front label in codex_clone_refs/rice/rice.jpg.",
+      "evidence_type": "product_image"
+    },
+    {
+      "id": "F4",
+      "text": "The clear bag lets the uncooked rice grains remain visible around the front label.",
+      "evidence": "Visible transparent packaging and rice grains in codex_clone_refs/rice/rice.jpg.",
+      "evidence_type": "product_image"
+    }
+  ],
+  "forbidden_claims": [
+    "wuchang",
+    "northeast rice",
+    "black soil",
+    "one crop a year",
+    "unpolished",
+    "unwaxed",
+    "vacuum packed",
+    "five small bags",
+    "soft and chewy",
+    "rich aroma",
+    "best rice",
+    "discount",
+    "limited time",
+    "gift"
+  ],
+  "visual_assets": [
+    "codex_clone_refs/rice/rice.jpg"
+  ]
+}
+

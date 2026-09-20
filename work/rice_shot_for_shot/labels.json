@@ -1,0 +1,69 @@
+{
+  "source": "codex_clone_refs/rice/rice.mp4",
+  "structure_notes": [
+    "The source is hands-only throughout; no face or talking-head presenter appears.",
+    "The edit moves from raw rice to cooked rice, then to packaging proof, back to food texture, and ends on the package.",
+    "The adaptation preserves all thirteen source shot windows while replacing unsupported origin, process, aroma and texture claims.",
+    "One warm wood table is the hard background identity; close-ups may use stronger bokeh and tighter crop.",
+    "No source-derived frame may be used as an ImageGen or H3 reference."
+  ],
+  "beats": [
+    {
+      "id": "B1",
+      "t": [0.0, 5.567],
+      "function": "raw_to_cooked_hook",
+      "hook_type": "sensory_reveal",
+      "intensity": "fast curiosity",
+      "shot": {"type": "raw_rice_to_cooker_to_handful", "cut_in": false},
+      "visual_action": "Raw grains hard-cut to a rice-cooker reveal, a cooked-rice close-up and two hands lifting uncooked grains.",
+      "visual_sync": "The counter-intuitive opening rides the immediate raw-to-cooked contrast.",
+      "proof_category": "food_visual",
+      "ref_text_corrected": "千万别吃东北大米，我怕你吃过一次啊，别的大米就再吃不下去了，特别是这个东北五常大米。"
+    },
+    {
+      "id": "B2",
+      "t": [5.567, 10.4],
+      "function": "cooked_rice_to_product_reveal",
+      "intensity": "close and appetising",
+      "shot": {"type": "chopsticks_to_bowl_to_pack", "cut_in": "hard_cut@5.567"},
+      "visual_action": "Chopsticks lift cooked rice, a hand presents a small bowl, then the retail pack appears upright.",
+      "visual_sync": "The package arrives only after two cooked-rice result shots.",
+      "proof_category": "product_reveal",
+      "ref_text_corrected": "它真是太香了，就算没有菜也能吃上好几碗。这一箱是十斤装。"
+    },
+    {
+      "id": "B3",
+      "t": [10.4, 14.6],
+      "function": "package_identity_proof",
+      "intensity": "clear and factual",
+      "shot": {"type": "package_detail_sequence", "cut_in": "hard_cut@10.4"},
+      "visual_action": "Three brisk packaging views move from abundance to visible grains and a complete front-label view.",
+      "visual_sync": "The central package sequence replaces unsupported source pack-count and origin claims with visible target-pack facts.",
+      "proof_category": "package_front",
+      "ref_text_corrected": "里面有五小袋，都是真空包装的，东北黑土地种植，一年只产这一季。"
+    },
+    {
+      "id": "B4",
+      "t": [14.6, 18.967],
+      "function": "raw_grain_texture_proof",
+      "intensity": "tactile and steady",
+      "shot": {"type": "tray_and_handful_macro", "cut_in": "hard_cut@14.6"},
+      "visual_action": "Grains fall into a shallow rattan tray before both hands lift them for a close tactile view.",
+      "visual_sync": "One continuous macro shot carries the evidence while unsupported production claims are removed.",
+      "proof_category": "visible_grains",
+      "ref_text_corrected": "不抛光不打蜡，油汪汪亮晶晶的，颗粒饱满，软糯劲道。"
+    },
+    {
+      "id": "B5",
+      "t": [18.967, 22.567],
+      "function": "cooked_result_and_pack_finish",
+      "intensity": "warm finish",
+      "shot": {"type": "cooked_rice_to_pack_endboard", "cut_in": "hard_cut@18.967"},
+      "visual_action": "A cooked-rice chopstick macro hard-cuts to the complete retail pack for the final hold.",
+      "visual_sync": "The call to action lands on the clean front-pack finish.",
+      "proof_category": "product_identity",
+      "ref_text_corrected": "米香浓郁，自己吃，过年过节送人都很不错。"
+    }
+  ]
+}
+

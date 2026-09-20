@@ -1,0 +1,14 @@
+Use case: photorealistic-natural
+Asset type: empty three-angle scene identity pack for vertical UGC product keyframes
+Scene ID: warm-wood-greenery-rice-table
+Camera view: Eye-level or gently low oblique smartphone view that establishes the filming space, with natural depth and enough clean working surface in the foreground.
+View relationship: This is the base scene-identity view.
+Scene contract:
+table identity, hard invariant: One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.
+setting, soft guide: A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.
+backdrop, soft guide: Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.
+lighting, soft guide: Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.
+palette, soft guide: Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.
+fixed_props, soft guide: A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them.
+Composition: vertical 9:16 smartphone photograph, unoccupied filming set, clean usable foreground, believable home texture and slight candid imperfection. Angle-dependent crop, parallax, focus depth, visible props and small local exposure differences should feel natural.
+Content: an empty background plate prepared for later product and hand compositing, with all named fixed props resting naturally in the environment.

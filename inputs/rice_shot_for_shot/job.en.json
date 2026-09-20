@@ -1,0 +1,46 @@
+{
+  "schema": "ugc-job/v1",
+  "job_id": "rice_sfs_en",
+  "reference_video": "codex_clone_refs/rice/rice.mp4",
+  "reference_archive": "references/rice_reference",
+  "source_language": "zh-CN",
+  "target_language": "en-AU",
+  "mode": "structure",
+  "visual_mode": "shot_for_shot",
+  "variants": 1,
+  "segment_duration_seconds": 5,
+  "max_segments_per_render": 5,
+  "product": "inputs/rice_shot_for_shot/product.en.json",
+  "beats": "work/rice_shot_for_shot/beats.json",
+  "shot_map": "work/rice_shot_for_shot/shot_map.json",
+  "script": "work/rice_shot_for_shot/variants/v001/script.en.json",
+  "shot_plan": "work/rice_shot_for_shot/variants/v001/shot_plan.json",
+  "keyframe_request": "work/rice_shot_for_shot/keyframes/REQUEST.json",
+  "h3_clip_plan": "work/rice_shot_for_shot/h3_clip_plan.json",
+  "h3_segments": "work/rice_shot_for_shot/segments.json",
+  "state_file": "work/rice_shot_for_shot/state.en.json",
+  "events_file": "work/rice_shot_for_shot/events.en.jsonl",
+  "presentation": {
+    "mode": "hands_only",
+    "face_visible": false,
+    "scene": "warm home rice-review tabletop with one consistent natural-wood surface, deep green plants and close food imagery"
+  },
+  "presenter": {
+    "mode": "hands_only",
+    "note": "The source contains only hands, rice, cookware and packaging; no face appears."
+  },
+  "render_plan": {
+    "keyframe_count": 9,
+    "h3_clip_count": 5,
+    "max_segments_per_h3_job": 4,
+    "expected_h3_batches": 2,
+    "edit_to_source_duration_seconds": 22.567,
+    "h3_audio_mode": "silent",
+    "voiceover_strategy": "continuous_english_master_track",
+    "note": "Generate five timed H3 clips carrying all thirteen source microshots. Trim each clip to its exact source window, join without retiming, then lay one continuous English voice-over over the 22.567-second edit."
+  },
+  "image_provider": "codex-imagegen",
+  "video_provider": "h3",
+  "human_review_required": true
+}
+

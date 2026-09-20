@@ -1,0 +1,152 @@
+{
+  "schema": "shot-map/v1",
+  "visual_mode": "shot_for_shot",
+  "reference_video": "codex_clone_refs/rice/rice.mp4",
+  "source_duration_seconds": 22.567,
+  "cut_times_seconds": [
+    0.967,
+    2.533,
+    3.567,
+    5.567,
+    7.2,
+    9.2,
+    10.4,
+    11.633,
+    12.867,
+    14.6,
+    18.967,
+    20.567
+  ],
+  "shots": [
+    {
+      "id": "SH001",
+      "source_start_seconds": 0.0,
+      "source_end_seconds": 0.967,
+      "source_edit_duration_seconds": 0.967,
+      "analysis_frame_time_seconds": 0.483,
+      "source_dialogue": "千万别吃东北大",
+      "cut_in": "start",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH002",
+      "source_start_seconds": 0.967,
+      "source_end_seconds": 2.533,
+      "source_edit_duration_seconds": 1.566,
+      "analysis_frame_time_seconds": 1.75,
+      "source_dialogue": "大米,我怕你吃过一次啊,别",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH003",
+      "source_start_seconds": 2.533,
+      "source_end_seconds": 3.567,
+      "source_edit_duration_seconds": 1.034,
+      "analysis_frame_time_seconds": 3.05,
+      "source_dialogue": "别的大米就再吃不",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH004",
+      "source_start_seconds": 3.567,
+      "source_end_seconds": 5.567,
+      "source_edit_duration_seconds": 2.0,
+      "analysis_frame_time_seconds": 4.567,
+      "source_dialogue": "不下去了,特别是这个东北五肠大米,",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH005",
+      "source_start_seconds": 5.567,
+      "source_end_seconds": 7.2,
+      "source_edit_duration_seconds": 1.633,
+      "analysis_frame_time_seconds": 6.383,
+      "source_dialogue": "米,它真是太香了,又算没有菜",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH006",
+      "source_start_seconds": 7.2,
+      "source_end_seconds": 9.2,
+      "source_edit_duration_seconds": 2.0,
+      "analysis_frame_time_seconds": 8.2,
+      "source_dialogue": "菜也能吃上好几碗。这一箱是",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH007",
+      "source_start_seconds": 9.2,
+      "source_end_seconds": 10.4,
+      "source_edit_duration_seconds": 1.2,
+      "analysis_frame_time_seconds": 9.8,
+      "source_dialogue": "石金装,里面就有五小",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH008",
+      "source_start_seconds": 10.4,
+      "source_end_seconds": 11.633,
+      "source_edit_duration_seconds": 1.233,
+      "analysis_frame_time_seconds": 11.017,
+      "source_dialogue": "小袋都是真空包装",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH009",
+      "source_start_seconds": 11.633,
+      "source_end_seconds": 12.867,
+      "source_edit_duration_seconds": 1.234,
+      "analysis_frame_time_seconds": 12.25,
+      "source_dialogue": "装的,东北黑土地",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH010",
+      "source_start_seconds": 12.867,
+      "source_end_seconds": 14.6,
+      "source_edit_duration_seconds": 1.733,
+      "analysis_frame_time_seconds": 13.734,
+      "source_dialogue": "地种植,一年直产这一季,",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH011",
+      "source_start_seconds": 14.6,
+      "source_end_seconds": 18.967,
+      "source_edit_duration_seconds": 4.367,
+      "analysis_frame_time_seconds": 16.784,
+      "source_dialogue": "不抛光不打蜡,油汪汪亮晶晶的,颗粒饱满,软糯劲道,米",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH012",
+      "source_start_seconds": 18.967,
+      "source_end_seconds": 20.567,
+      "source_edit_duration_seconds": 1.6,
+      "analysis_frame_time_seconds": 19.767,
+      "source_dialogue": "米香浓郁,自己吃过年过",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH013",
+      "source_start_seconds": 20.567,
+      "source_end_seconds": 22.567,
+      "source_edit_duration_seconds": 2.0,
+      "analysis_frame_time_seconds": 21.567,
+      "source_dialogue": "过节送人都很不错。",
+      "cut_in": "hard_cut",
+      "cut_out": "end"
+    }
+  ]
+}
