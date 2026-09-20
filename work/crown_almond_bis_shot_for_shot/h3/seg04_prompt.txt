@@ -1,0 +1,25 @@
+subject_definitions:
+<Picture 1> is a generated target-product composition keyframe for the timed montage.
+<Picture 2> is a generated target-product composition keyframe for the timed montage.
+<Picture 3> is the original product identity authority for package, shape, colour and branding.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
+<Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
+<Picture 3>: attribute_transfer. Preserve the original product identity throughout every cut.
+
+detailed_description:
+Finish with three clear actions in source order: pass one biscuit from a handful, lower one whole biscuit into a single milk bowl, then lift the result on one spoon. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-1.133 seconds — start on <Picture 1>; scheduled microshot: sharing handful: the second hand takes the top biscuit from a steady palm above the plate
+1.133-1.9 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: milk dip: hard cut to one whole biscuit lowered edge-first into the milk without splashing
+1.9-3.466 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: spoon result lift: hard cut to one spoon lifting the milk-paired rectangular biscuit slowly toward the lens
+3.466-5 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+Friendly hands-only close with quick decisive actions and a steady final spoon lift. Preserve the source's practical milk-pairing ending and leave a short clean hold for the English call to action.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. Keep the original target product identity stable across every hard cut. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.

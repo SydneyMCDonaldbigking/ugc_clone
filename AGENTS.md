@@ -12,9 +12,9 @@
 | 2 | 写原片档案 | **Codex** | 本地 | 看宫格写 `ANALYSIS.md`、`TIMELINE.md`,补看用 `reference_archive.py tile`;**事实表里判断出镜方式** | 两份档案 | `reference_archive.py check <ref_id>` 显示 READY |
 | 3 | 商品参数表 | **Codex**(事实只能来自用户和包装图) | 本地 | 每条事实挂证据,拿不到的填 null | `inputs/<job>/product.en.json` | `validate` 通过 |
 | 4 | 节拍表 + 稿子 | **Codex** | 本地 | `build_beats.py`,英文稿按节拍表写 | `beats.json`、`variants/vNNN/script.en.json` | `validate` 通过 |
-| 5 | 分镜 + 出图请求 | **Codex** | 本地 | `job.presenter.mode` 照档案的出镜方式填,选对应模板;`camera` 照 TIMELINE 的镜头行,`first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词 | `shot_plan.json`、`keyframes/REQUEST.json`、`segNN_prompt.txt` | `validate` 通过后直接进入第 6 步 |
-| 6 | 定妆照 + 参考帧 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩" | `presenter_master.png`、`keyframes/segNN.png`、`QC.json`、`READY.json` | `keyframe-status` 和 `preflight` 均通过 |
-| 7 | 编 H3 提示词 + 渲染 | **Claude** | 编译在本地,渲染在服务器 | 先跑 `preflight --actor claude`,再按"态度 + 重音"编 `segments.json`,上传、`cc_submit`、单段 `cc_rerun` | 成片 | `cc_status` 出片 |
+| 5 | 分镜 + 出图请求 | **Codex** | 本地 | `job.presenter.mode` 照档案的出镜方式填,选对应模板;`camera` 照 TIMELINE 的镜头行,`first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词;`shot_for_shot` 同时生成 `h3_clip_plan.json` | `shot_plan.json`、`keyframes/REQUEST.json`、`h3_clip_plan.json`、`segNN_prompt.txt` | `validate` 通过后直接进入第 6 步 |
+| 6 | 定妆照 + 参考帧 + H3 提交包 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩";READY 后用确定性编译器生成 `segments.json` | `presenter_master.png`、`keyframes/segNN.png`、`QC.json`、`READY.json`、`segments.json` | `keyframe-status` 和 `preflight` 均通过 |
+| 7 | H3 渲染 | **Claude** | 服务器 | 先跑 `preflight --actor claude`,只上传已封存的 `segments.json` 和引用资产,再执行 `cc_submit`、单段 `cc_rerun` | 成片 | `cc_status` 出片 |
 | 8 | 验收 | **Claude**(技术 + 台词)、**用户**(画面) | 本地 | 成片再转写对台词;画面交给用户看 | 验收结论 | 用户说"通过" |
 
 几条边界:
@@ -85,7 +85,7 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
      倾斜、倒奶这些动作交给 H3
    - 提示词用 `build_keyframe_prompts.py` 生成,约 150 词、只写正面描述;不要自己往里加"不要 XX"
 5. 标签有密集小字时,不得让生成模型重画文字;改用原商品图像素或交给 Claude 走已验证的 `fully_preserved` / 慢推保底路径
-6. 全部图片完成后写 `work/<job>/keyframes/READY.json`,再用 `keyframe-status` 封存所有渲染输入,最后跑 `preflight`;两条命令都通过后停止
+6. 全部图片完成后写 `work/<job>/keyframes/READY.json`;`shot_for_shot` 随后运行 `build_timed_h3_prompts.py` 生成确定性的 `segments.json`,再用 `keyframe-status` 同时校验并封存图片、逐切点计划和 H3 提交包,最后跑 `preflight`;两条门禁都通过后停止
 
 **明确不做**:
 
@@ -119,21 +119,26 @@ Claude Code 只在看到 `READY.json` 且重新运行 `preflight --actor claude`
 
 出好的参考帧交给 H3 前要注意:
 
-- 每段绑一张参考帧,再加一张产品图作补充,迁移范围分开写(见 skill 的 S6)
+- **参考帧数不等于 H3 视频数。** 优先把连续的镜头节拍编进同一条 5 秒左右的 H3 视频,每条绑定 2–3 张 Picture;
+  prompt 必须逐行写清 `<Picture N>` 在 `x–y seconds` 内负责的构图、动作和切点,不能把每张参考帧都单独渲染后再二次拼接
+- 每条 H3 视频的**总参考图数**是 2–3 张。使用 1–2 张生成参考帧时可把商品原图放在最后一张补身份;
+  已经使用 3 张生成参考帧时不再额外绑定商品图
+- 只有一条视频塞不下时长、动作冲突明显或需要隔离重试时才拆成下一条 H3 视频;拆分依据写入 `h3_clip_plan` / `timed_shots`,不按关键帧数量机械拆分
 - **参考帧里不能有原博主的脸或原片里的产品**
 - 出镜人必须是虚构人物,每段都用同一个人
 
 ## 做完图怎么交给 Claude Code(自动交接)
 
 Claude Code 在同一个文件夹里读取 `work/<job>/keyframes/READY.json` 和 `work/<job>/PREFLIGHT.json`。
-**图全部写完之后再写 READY.json**,不要先写。随后必须执行:
+**图全部写完之后再写 READY.json**,不要先写。`shot_for_shot` 先编译最终 H3 提交包,随后再封存和预检:
 
 ```powershell
+D:/anaconda/envs/ugc_asr/python.exe -B scripts/build_timed_h3_prompts.py inputs/<job>/job.en.json
 D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline keyframe-status inputs/<job>/job.en.json --actor codex
 D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/job.en.json --actor codex
 ```
 
-两条命令通过后才算交接完成。Claude 接手时再运行同一条 `preflight` 命令并把 actor 改为 `claude`,通过后才能传服务器。
+确定性编译、封存、预检全部通过后才算交接完成。Claude 接手时再运行同一条 `preflight` 命令并把 actor 改为 `claude`,通过后只能消费已封存的 `segments.json`,不能在上传前手改 prompt、图片顺序或秒数。
 如果封存后的稿子、分镜、商品图、QC、READY 或参考帧发生变化,预检会把当前 `READY.json` 可恢复地改名为
 `READY.invalidated.<UTC>.json`,状态退回 `awaiting_keyframes`;修好后重新执行 `keyframe-status` 和 `preflight`。
 
@@ -164,9 +169,10 @@ work/<job>/PREFLIGHT.json  最后一次本地预检报告
 
 - `source_job_id`:在哪一轮成片的基础上重跑。全新的英文片填 `null` 并列出全部参考帧;只有明确基于已有 H3 任务做局部重跑时才填任务 ID
   (中文版 `a2-replica-004` 的片段不能沿用到英文版)
-- `keyframe` 会作为该段的 `<Picture 1>`,`extra_refs` 按顺序排在后面(路径相对仓库根目录)
+- `keyframe` 和 `extra_refs` 是已验收的参考图资产,不是“一张图生成一条视频”的指令。H3 编译层可按
+  `h3_clip_plan` / `timed_shots` 把相邻资产重新编号为同一条视频的 `<Picture 1>`–`<Picture 3>`
 - `READY.json` 必须与同目录 `REQUEST.json` 的分镜集合完全一致。局部重跑可以沿用上一轮 H3 的其他已生成片段,但绝不能沿用参考原片画面
-- 画面需要调整时,可以在该段加 `"prompt_hint": "..."`,Claude 会据此改写该段的 H3 提示词
+- 画面需要调整时,把调整写回 `shot_plan` 的上游分镜规格,重新生成 `h3_clip_plan` 和 `segments.json`,再执行 `keyframe-status`、`preflight`;不能直接手改两份派生产物或已封存的 H3 提示词
 
 ## 红线(任何模式都一样)
 

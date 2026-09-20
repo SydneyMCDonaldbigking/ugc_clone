@@ -139,7 +139,22 @@ class EnglishValidationTests(unittest.TestCase):
         self.assertIn("qc.dimensions", {issue.code for issue in result.errors})
 
     def test_ready_output_must_match_request(self) -> None:
-        ready = copy.deepcopy(load_json(ROOT / "work/a2_test/keyframes/READY.json"))
+        ready = {
+            "job": self.request["job"],
+            "variant_id": self.request["variant_id"],
+            "source_job_id": self.request["source_job_id"],
+            "segments": {
+                segment_id: {
+                    "keyframe": requested["output"],
+                    "extra_refs": [
+                        path
+                        for path, role in requested["reference_roles"].items()
+                        if role == "product_identity"
+                    ],
+                }
+                for segment_id, requested in self.request["segments"].items()
+            },
+        }
         ready["segments"]["1"]["keyframe"] = "seg02.png"
         result = validate_ready_against_request(ready, self.request, self.job)
         self.assertIn("ready.output", {issue.code for issue in result.errors})
@@ -159,13 +174,13 @@ class EnglishValidationTests(unittest.TestCase):
         codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
         self.assertIn("reference.source_frame", codes)
 
-    def test_subshot_shorter_than_h3_minimum_fails(self) -> None:
+    def test_timed_subshot_may_be_shorter_than_h3_clip_minimum(self) -> None:
         plan = copy.deepcopy(self.shot_plan)
         segment = next(s for s in plan["segments"] if s.get("subshots"))
         segment["subshots"][0]["duration_seconds"] = 3.5
         segment["subshots"][1]["duration_seconds"] = 1.5
         codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
-        self.assertIn("shots.subshot_duration", codes)
+        self.assertNotIn("shots.subshot_duration", codes)
 
     def test_subshot_durations_must_fill_segment(self) -> None:
         plan = copy.deepcopy(self.shot_plan)

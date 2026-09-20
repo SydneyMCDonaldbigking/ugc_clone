@@ -1,0 +1,55 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "crown_almond_bis_shot_for_shot",
+  "pipeline_job_id": "crown_almond_bis_sfs_en",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "segments": {
+    "1a": {
+      "keyframe": "seg1a.png",
+      "extra_refs": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "notes": "Opened white packet, full biscuit plate and one reaching hand for the rapid abundance montage."
+    },
+    "1b": {
+      "keyframe": "seg1b.png",
+      "extra_refs": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "notes": "Direct-overhead retail-box opening anchor with white packets visible.",
+      "prompt_hint": "Use this as Picture 2 in H3 clip S01; the cut to this overhead setup occurs at 3.867 seconds. Keep the original product photo as Picture 3 identity authority."
+    },
+    "2a": {
+      "keyframe": "seg2a.png",
+      "extra_refs": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "notes": "Sealed packet above an empty plate before the tear-open and packet-to-plate microshots."
+    },
+    "2b": {
+      "keyframe": "seg2b.png",
+      "extra_refs": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "notes": "Box-front and whole-biscuit identity anchor.",
+      "prompt_hint": "Use this as Picture 2 in H3 clip S02; switch from the packet setup at 2.5 seconds inside the clip."
+    },
+    "3a": {
+      "keyframe": "seg3a.png",
+      "extra_refs": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "notes": "Two-stack biscuit macro anchor for the edge, surface and plate proof cuts."
+    },
+    "3b": {
+      "keyframe": "seg3b.png",
+      "extra_refs": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "notes": "Intact pre-break biscuit anchor.",
+      "prompt_hint": "Use this as Picture 2 in H3 clip S03; switch to the break setup at 3.767 seconds and keep the biscuit intact until the instructed snap."
+    },
+    "4a": {
+      "keyframe": "seg4a.png",
+      "extra_refs": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "notes": "Four-biscuit sharing handful with a second hand ready to take one."
+    },
+    "4b": {
+      "keyframe": "seg4b.png",
+      "extra_refs": ["codex_clone_refs/crown_almond_bis/ref_pic1.jpg"],
+      "notes": "Single spoon, biscuit and milk-bowl anchor for the final two cuts.",
+      "prompt_hint": "Use this as Picture 2 in H3 clip S04; hard cut to the milk setup at 1.133 seconds, then to the spoon lift at 1.9 seconds."
+    }
+  },
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}

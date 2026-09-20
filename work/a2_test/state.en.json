@@ -1,9 +1,9 @@
 {
   "schema": "job-state/v1",
   "job_id": "a2_test_en",
-  "state": "keyframes_ready",
-  "revision": 8,
-  "updated_at": "2026-09-20T01:24:51.150109Z",
+  "state": "awaiting_keyframes",
+  "revision": 10,
+  "updated_at": "2026-09-20T06:13:01.613517Z",
   "stages": {
     "beats": {
       "status": "passed",
@@ -31,9 +31,10 @@
       "artifact": "work/a2_test/keyframes/REQUEST.json"
     },
     "keyframes": {
-      "status": "passed",
-      "updated_at": "2026-09-20T01:24:51.150109Z",
-      "artifact": "work/a2_test/keyframes/READY.json"
+      "status": "invalidated",
+      "updated_at": "2026-09-20T06:13:01.613517Z",
+      "artifact": "work/a2_test/keyframes/READY.invalidated.20260920T061301Z.json",
+      "reason": "Approved render inputs changed after keyframe approval."
     }
   }
 }

@@ -1,0 +1,43 @@
+{
+  "schema": "render-preflight/v1",
+  "job": "a2_milk_clone_en",
+  "status": "pass",
+  "actor": "claude",
+  "checked_at": "2026-09-20T06:13:02.059412Z",
+  "changed_artifacts": [],
+  "issues": [],
+  "pipeline_job_id": "a2_milk_clone_en",
+  "variant_id": "v001",
+  "audio_mode": "dialogue",
+  "keyframe_count": 6,
+  "max_segments_per_h3_batch": 4,
+  "expected_h3_batches": 2,
+  "exact_edit_duration_seconds": null,
+  "visual_qc": {
+    "result": "pass",
+    "reviewed_by": "codex",
+    "segments": 6
+  },
+  "integrity": {
+    "schema": "artifact-integrity/v1",
+    "digest": "0025fdf00013aa9ef03d4a3f5d3499f218181196e814f5b03ab91eb10239cabc",
+    "files": {
+      "inputs/a2_milk_clone/job.en.json": "cda31537177cb41a6f9bdbb39950c1f2e8a37dbff7ace49a9b5d327ccc0b9834",
+      "inputs/a2_milk_clone/product.en.json": "36c76171937aec86b4e562c1c0ae4c4cb0ed5b58be5aef7407eb88d97872465e",
+      "target_A2_1.png": "2262a2f0ad96a31188d992cd1987821cc9b5e913e0c5a1d34bdb05faa9850711",
+      "target_A2_2.png": "64af414b06d83a7ef8883b450fe2225bf25bd6f8d7ccdcf0894ceb5b137e8edb",
+      "work/a2_milk_clone/beats.json": "a720283bb99817646c4c4282d5b71d243cbd315b35f85b020126bce74ed84b43",
+      "work/a2_milk_clone/keyframes/QC.json": "9d53898d17132a020315ef5a23b50b7c46c745986a46b5510762d02bce4289a7",
+      "work/a2_milk_clone/keyframes/READY.json": "c88c901bf75dfe2d966a0bd3fa6b7f11a21f03bb3844e960155215352142bdc7",
+      "work/a2_milk_clone/keyframes/REQUEST.json": "479093f495b06164242224bc7a9bc4123cb028da6926fc2ff39b1cf34b517eaa",
+      "work/a2_milk_clone/keyframes/seg01.png": "5f2496942e0f7e5efc0255f8a68e2595e86709b1494148327bd06914dce46156",
+      "work/a2_milk_clone/keyframes/seg01b.png": "51eeb32e0692d71cf55548aa65e54db11df8975ffa1b40c15b300b502c153775",
+      "work/a2_milk_clone/keyframes/seg02.png": "241e8c689ceeeb20850406500c314d1d0b5349d11ee9f5522649f418beb11d06",
+      "work/a2_milk_clone/keyframes/seg02b.png": "39d973ef5a2012b72d46f1e3b38897d4ea2aea87dea51467c013458cb05528e6",
+      "work/a2_milk_clone/keyframes/seg03.png": "66ed27a79892ff76f2ac2b73f5a6ab99cd4d9b1db8c9ef0ce8501c12208a74dd",
+      "work/a2_milk_clone/keyframes/seg04.png": "7743dc593c6027ee26a05125f0d550191aa8db8c4db117bba84e16f2468c916f",
+      "work/a2_milk_clone/variants/v001/script.en.json": "23e27a3f04fa2e6517e04c4a12d8701dbf3780e38c551485bc6870407da4ca82",
+      "work/a2_milk_clone/variants/v001/shot_plan.json": "d5e0cbed43c35fc5980e256850d6acc43511de09a14f7a6d876ada3852ac5f65"
+    }
+  }
+}

@@ -9,12 +9,13 @@
   "audio_mode": "silent",
   "variants": 1,
   "segment_duration_seconds": 5,
-  "max_segments_per_render": 4,
+  "max_segments_per_render": 20,
   "product": "inputs/fish_glass/product.en.json",
   "beats": "work/fish_glass/beats.json",
   "script": "work/fish_glass/variants/v001/script.en.json",
   "shot_plan": "work/fish_glass/variants/v001/shot_plan.json",
   "keyframe_request": "work/fish_glass/keyframes/REQUEST.json",
+  "h3_clip_plan": "work/fish_glass/h3_clip_plan.json",
   "state_file": "work/fish_glass/state.en.json",
   "events_file": "work/fish_glass/events.en.jsonl",
   "presentation": {
@@ -30,10 +31,11 @@
   },
   "render_plan": {
     "keyframe_count": 13,
-    "max_segments_per_h3_job": 4,
-    "expected_h3_batches": 4,
+    "h3_clip_count": 6,
+    "max_segments_per_h3_job": 20,
+    "expected_h3_batches": 1,
     "edit_to_source_duration_seconds": 26.533,
-    "note": "Generate one continuous H3 clip per keyframe, then trim and assemble to the source edit durations."
+    "note": "Compile the 13 approved keyframes into six timed multi-reference H3 clips. Each clip uses no more than three pictures and names the exact Picture/time window in its prompt."
   },
   "image_provider": "codex-imagegen",
   "video_provider": "h3",

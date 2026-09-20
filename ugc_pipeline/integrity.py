@@ -27,7 +27,7 @@ def collect_preflight_paths(
 ) -> list[Path]:
     """Return every local artifact whose bytes authorize an H3 submission."""
     paths: set[Path] = {job_path.resolve(), qc_path.resolve(), ready_path.resolve()}
-    for key in ("product", "beats", "script", "shot_plan", "keyframe_request"):
+    for key in ("product", "beats", "script", "shot_plan", "keyframe_request", "h3_clip_plan", "h3_segments"):
         _add_repo_path(paths, repo_root, job.get(key))
 
     presenter = job.get("presenter")

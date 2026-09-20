@@ -1,0 +1,45 @@
+{
+  "schema": "ugc-job/v1",
+  "job_id": "crown_almond_bis_sfs_en",
+  "reference_video": "codex_clone_refs/crown_almond_bis/ref_video.mp4",
+  "reference_archive": "references/crown_almond_bis",
+  "source_language": "zh-CN",
+  "target_language": "en-AU",
+  "mode": "structure",
+  "visual_mode": "shot_for_shot",
+  "variants": 1,
+  "segment_duration_seconds": 5,
+  "max_segments_per_render": 4,
+  "product": "inputs/crown_almond_bis/product.en.json",
+  "beats": "work/crown_almond_bis/beats.json",
+  "shot_map": "work/crown_almond_bis_shot_for_shot/shot_map.json",
+  "script": "work/crown_almond_bis_shot_for_shot/variants/v001/script.en.json",
+  "shot_plan": "work/crown_almond_bis_shot_for_shot/variants/v001/shot_plan.json",
+  "keyframe_request": "work/crown_almond_bis_shot_for_shot/keyframes/REQUEST.json",
+  "h3_clip_plan": "work/crown_almond_bis_shot_for_shot/h3_clip_plan.json",
+  "h3_segments": "work/crown_almond_bis_shot_for_shot/segments.json",
+  "state_file": "work/crown_almond_bis_shot_for_shot/state.en.json",
+  "events_file": "work/crown_almond_bis_shot_for_shot/events.en.jsonl",
+  "presentation": {
+    "mode": "hands_only",
+    "face_visible": false,
+    "scene": "bright, saturated, close-range home snack-review tabletop with target packets repeated in the background"
+  },
+  "presenter": {
+    "mode": "hands_only",
+    "note": "The source contains only hands, packages, biscuits and milk; no face appears."
+  },
+  "render_plan": {
+    "keyframe_count": 8,
+    "h3_clip_count": 4,
+    "max_segments_per_h3_job": 4,
+    "expected_h3_batches": 1,
+    "edit_to_source_duration_seconds": 19.033,
+    "h3_audio_mode": "silent",
+    "voiceover_strategy": "continuous_english_master_track",
+    "note": "Generate four H3 clips. Each clip uses two generated composition keyframes plus one original product photo and performs the source microshot hard cuts at the Hypit timestamps inside the prompt. Trim the clips to the exact source windows, join them without retiming, then lay one continuous English voice-over over the 19.033-second edit."
+  },
+  "image_provider": "codex-imagegen",
+  "video_provider": "h3",
+  "human_review_required": true
+}

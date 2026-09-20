@@ -30,14 +30,14 @@ The finished system begins with a reference video plus product evidence and ends
 These are design constraints, not open questions.
 
 1. Reference videos may contain any language. Source transcription stays isolated in analysis artifacts.
-2. All new audience-facing output is English only: voice-over, dialogue, captions, CTA, price copy, on-screen overlays, and H3 dialogue tags.
-   A visually driven source may instead declare `audio_mode: silent`; then dialogue is empty, each script line carries an English `visual_direction`, and H3 receives no dialogue tag.
+2. All new audience-facing output is English only: voice-over, dialogue, captions, CTA, price copy, on-screen overlays, and H3 dialogue tags. `audio_mode` describes the final edit; `render_plan.h3_audio_mode` separately describes whether H3 itself speaks. Exact-timing `shot_for_shot` clips render silent and receive one continuous English master voice-over after trimming.
+   A visually driven source may instead declare `audio_mode: silent`; then dialogue is empty, each script line carries an English `visual_direction`, and neither H3 nor the final edit receives dialogue.
 3. Production variants use `structure` mode. `replica` remains test-only and cannot enter the publishing path.
-4. Segment length defaults to 5 seconds. One H3 job contains no more than four segments / 20 seconds.
+4. H3 clips default to about 5 seconds, may be 2–15 seconds each, and a submission contains at most 20 clips. Internal microshots may be shorter than 2 seconds.
 5. Product claims must resolve to an evidence-bearing fact ID. Unknown values stay `null`; they are never inferred.
 6. Codex uses the ImageGen tool built into the current session. The pipeline does not integrate OpenAI Image API or OpenRouter for the default keyframe path.
-7. Codex stops after image inspection, atomic creation of `READY.json`, integrity sealing with `keyframe-status`, and a passing local `preflight`.
-8. Claude Code owns server transfer, H3 prompt adaptation, rendering, reruns, assembly, and final QA only after rerunning `preflight --actor claude` successfully.
+7. For `shot_for_shot`, Codex stops only after image inspection, atomic creation of `READY.json`, deterministic compilation of `h3_clip_plan.json` and `segments.json`, semantic validation, integrity sealing with `keyframe-status`, and a passing local `preflight`.
+8. Claude Code owns server transfer, rendering, reruns, assembly, and final QA only after rerunning `preflight --actor claude` successfully. It consumes sealed `shot_for_shot` prompts without editing their timing or Picture order.
 9. Generated packaging text is not trusted. Dense labels use original pixels, `fully_preserved`, or a static packshot fallback.
 10. Nothing is auto-published. A human approval state is mandatory.
 12. How people appear follows the reference, never a default: `presenter.mode` is `generated_fictional` (someone talks to camera), `hands_only` or `none` (voice-over), read from the archive's ANALYSIS and enforced by `validate` (template and reference roles must match the mode; only `generated_fictional` gets a presenter master).
@@ -50,8 +50,8 @@ The authoritative, stage-by-stage owner table (who, where, command, output, done
 | Actor | Owns | Stops at |
 | --- | --- | --- |
 | Operator | Supplies the reference video, product images, verified product facts, price, market, and final approval | Approves or rejects the final deliverable |
-| Codex | Default owner of all local pre-render work: source analysis and transcription, beat construction, product evidence, English script generation, shot planning, keyframe request creation, built-in ImageGen, image QC, `READY.json`, integrity sealing and preflight | `keyframes_ready` with a passing `PREFLIGHT.json` |
-| Claude Code | Starts only after its own passing preflight; owns H3 prompt adaptation, server transfer, rendering, reruns, assembly, and technical/dialogue QA | Produces a final review package |
+| Codex | Default owner of all local pre-render work: source analysis and transcription, beat construction, product evidence, English script generation, shot planning, keyframe request creation, built-in ImageGen, image QC, `READY.json`, deterministic shot-for-shot H3 compilation, integrity sealing and preflight | `keyframes_ready` with a passing `PREFLIGHT.json` |
+| Claude Code | Starts only after its own passing preflight; consumes the sealed shot-for-shot submission package and owns server transfer, rendering, reruns, assembly, and technical/dialogue QA | Produces a final review package |
 | Local workstation | Transcription (conda env `ugc_asr`, RTX 4070), reference archive, scripts, keyframes, H3 prompt compilation | Hands finished scripts and keyframes to the server |
 | GPU server | H3 generation and upscaling only | Returns artifacts and machine report |
 
@@ -525,8 +525,9 @@ Codex workflow:
 9. Iterate only the failed image.
 10. Save final images as `segNN.png`.
 11. Write `READY.json` after all images and QC.
-12. Run `keyframe-status --actor codex` to validate the request/READY contract and seal every render-authorizing input by SHA256.
-13. Run `preflight --actor codex`; stop only after it writes `PREFLIGHT.json` with `status: pass`. Do not submit H3 or modify Claude's rendering orchestration.
+12. For `shot_for_shot`, run `build_timed_h3_prompts.py` to deterministically compile the final `segments.json` from the validated shot plan, H3 clip plan and READY image paths.
+13. Run `keyframe-status --actor codex`; it must reject any cut-time, Picture-order, image-list or prompt drift before sealing every render-authorizing input by SHA256.
+14. Run `preflight --actor codex`; stop only after it writes `PREFLIGHT.json` with `status: pass`. Do not submit H3 or modify Claude's rendering orchestration.
 
 Keyframe rules:
 
@@ -554,18 +555,18 @@ Keyframe rules:
 - repeating the same closed-mouth smile across segments is a QC failure, even when identity and product continuity pass;
 - prompts must prohibit catalogue posing, frozen symmetrical posture, and generic polite smiles.
 
-### S8 — Keyframe intake and H3 compilation
+### S8 — Sealed H3 package intake
 
 Claude Code actions:
 
 - run `preflight inputs/<job>/job.en.json --actor claude` before any upload or paid render, and stop unless it passes;
 - validate `READY.json` and every referenced file through that gate;
 - confirm 9:16 orientation, readable file, and expected segment set;
-- map keyframe to `<Picture 1>` and supplementary product references after it;
-- adapt the H3 prompt so the keyframe governs composition while the product reference reinforces shape/label;
-- build `detailed_description` from the shot plan's `intention` (one attitude sentence first) and `accents` (a reaction placed right after the dialogue clause containing its anchor word); clauses without an accent get no choreography; never ask hands to display numbers, and never turn spoken content into on-screen objects or text;
-- compile dialogue as `(S1) <d>[English] ...</d>` — **unverified**: H3 has only been run with `[Chinese]`; render one short English test segment before the first full job;
-- compile each shot-plan subshot as its own H3 segment (H3 cannot cut inside a segment); subshots must be at least 2 s and add up to the planned segment duration, and the job still stays within 20 s total;
+- confirm the sealed `h3_clip_plan.json` groups composition assets rather than treating one keyframe as one video;
+- confirm every sealed clip binds 2–3 total Pictures and that `segments.json` exactly matches the deterministic compiler output;
+- do not hand-edit Picture order, prompt text, cut seconds or image paths after preflight. Requested changes go back to the approved shot plan, are recompiled by Codex, and are sealed again;
+- for ordinary non-shot-for-shot talking-head work, English H3 dialogue remains `(S1) <d>[English] ...</d>` and requires the documented short live test. Exact-timing `shot_for_shot` H3 clips remain silent and receive the approved continuous English master voice-over after trimming;
+- after fetch, require `scripts/check_shot_rhythm.py` to compare actual hard cuts with the Hypit timing master before assembly;
 - create `segments.server.json` with resolved server paths.
 
 The current renderer treats the generated image as the primary H3 reference frame. True custom-first-frame execution is not required by this design and does not justify modifying the dirty external renderer repository.
@@ -574,7 +575,8 @@ The current renderer treats the generated image as the primary H3 reference fram
 
 Rules:
 
-- maximum four 5-second segments per render job;
+- maximum 20 H3 clips per render job, each 2–15 seconds under the current server configuration;
+- an H3 clip may contain several short internal hard cuts; after fetch, reject a `shot_for_shot` clip if an expected cut is missing or drifts more than 0.13 seconds, or if an unplanned hard cut is detected;
 - original hard cuts do not use previous-tail continuity;
 - continuous presenter scenes may use previous-tail only when reference numbering is recomputed;
 - a segment failure triggers a segment rerun, not a full regeneration;

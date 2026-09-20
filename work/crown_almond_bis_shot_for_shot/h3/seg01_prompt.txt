@@ -1,0 +1,28 @@
+subject_definitions:
+<Picture 1> is a generated target-product composition keyframe for the timed montage.
+<Picture 2> is a generated target-product composition keyframe for the timed montage.
+<Picture 3> is the original product identity authority for package, shape, colour and branding.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
+<Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
+<Picture 3>: attribute_transfer. Preserve the original product identity throughout every cut.
+
+detailed_description:
+Build the opening as six brisk product shots: a flash of abundance, an open packet over a plate, a hand gathering biscuits, two changing handful views, then a direct overhead box-opening reveal. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-0.1 seconds — start on <Picture 1>; scheduled microshot: two-plate product flash: show a near-instant close flash of two overlapping biscuit plates and a white packet
+0.1-0.967 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: open packet above plate: hold one opened white packet above the full plate and tilt it slightly toward the biscuits
+0.967-2.233 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: gather from plate: one hand gathers several separate rectangular biscuits from the plate and lifts them
+2.233-3.033 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: two-hand biscuit fan: jump to two hands presenting four biscuits in a loose fan close to the lens
+3.033-3.867 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: single-palm handful: jump to one palm holding an overlapping handful and make one quick angle change
+3.867-5.8 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: overhead box opening: hard cut overhead as two hands open the retail box and reveal white packets
+5.8-6 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+Fast, slightly imperfect first-person snack-review gestures with believable grip pressure and no visible face. Match the source's immediate abundance hook and its sharp switch into package proof while making the target product recognisable within the first second.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. Keep the original target product identity stable across every hard cut. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.

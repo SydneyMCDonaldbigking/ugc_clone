@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shot-map/v1",
+  "title": "Exact source shot map",
+  "type": "object",
+  "required": [
+    "schema",
+    "visual_mode",
+    "reference_video",
+    "source_duration_seconds",
+    "cut_times_seconds",
+    "shots"
+  ],
+  "properties": {
+    "schema": {"const": "shot-map/v1"},
+    "visual_mode": {"const": "shot_for_shot"},
+    "reference_video": {"type": "string", "minLength": 1},
+    "source_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+    "cut_times_seconds": {
+      "type": "array",
+      "items": {"type": "number", "exclusiveMinimum": 0}
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "source_start_seconds",
+          "source_end_seconds",
+          "source_edit_duration_seconds"
+        ],
+        "properties": {
+          "id": {"type": "string", "pattern": "^SH[0-9]{3}$"},
+          "source_start_seconds": {"type": "number", "minimum": 0},
+          "source_end_seconds": {"type": "number", "exclusiveMinimum": 0},
+          "source_edit_duration_seconds": {"type": "number", "exclusiveMinimum": 0}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

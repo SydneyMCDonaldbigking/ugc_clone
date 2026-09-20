@@ -11,6 +11,7 @@ from .io import load_json, resolve_repo_path, sha256_file
 
 CJK_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
 WORD_RE = re.compile(r"[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*")
+VISUAL_MODES = {"structure_remix", "shot_for_shot"}
 
 
 @dataclass(frozen=True)
@@ -109,6 +110,20 @@ def validate_job(job: Any, repo_root: Path) -> ValidationResult:
     if mode and mode != "structure":
         result.error("mode.production", "job.mode", "Production jobs must use structure mode.")
 
+    visual_mode = job.get("visual_mode", "structure_remix")
+    if visual_mode not in VISUAL_MODES:
+        result.error(
+            "visual_mode.invalid",
+            "job.visual_mode",
+            f"Expected one of {sorted(VISUAL_MODES)}.",
+        )
+    if visual_mode == "shot_for_shot" and not isinstance(job.get("shot_map"), str):
+        result.error(
+            "shot_map.required",
+            "job.shot_map",
+            "shot_for_shot jobs require a repository-relative shot_map path.",
+        )
+
     audio_mode = job.get("audio_mode", "dialogue")
     if audio_mode not in {"dialogue", "silent"}:
         result.error("audio_mode.invalid", "job.audio_mode", "Expected dialogue or silent.")
@@ -118,17 +133,24 @@ def validate_job(job: Any, repo_root: Path) -> ValidationResult:
         result.error("variants.range", "job.variants", "Variants must be a positive integer.")
 
     segment_duration = job.get("segment_duration_seconds")
-    if not isinstance(segment_duration, (int, float)) or not 1 <= segment_duration <= 10:
-        result.error("duration.range", "job.segment_duration_seconds", "Segment duration must be 1-10 seconds.")
+    if not isinstance(segment_duration, (int, float)) or not 1 <= segment_duration <= 15:
+        result.error("duration.range", "job.segment_duration_seconds", "Segment duration must be 1-15 seconds.")
 
     max_segments = job.get("max_segments_per_render")
-    if not isinstance(max_segments, int) or not 1 <= max_segments <= 4:
-        result.error("segments.limit", "job.max_segments_per_render", "A render may contain at most four segments.")
+    if not isinstance(max_segments, int) or not 1 <= max_segments <= 20:
+        result.error("segments.limit", "job.max_segments_per_render", "A render may contain at most twenty H3 clips.")
 
     if job.get("image_provider") != "codex-imagegen":
         result.error("provider.image", "job.image_provider", "Default keyframe provider must be codex-imagegen.")
 
-    for key in ("reference_video", "product", "beats", "script", "shot_plan", "keyframe_request"):
+    artifact_keys = ["reference_video", "product", "beats", "script", "shot_plan", "keyframe_request"]
+    if isinstance(job.get("h3_clip_plan"), str):
+        artifact_keys.append("h3_clip_plan")
+    if isinstance(job.get("h3_segments"), str):
+        artifact_keys.append("h3_segments")
+    if visual_mode == "shot_for_shot":
+        artifact_keys.append("shot_map")
+    for key in artifact_keys:
         raw_path = job.get(key)
         if not isinstance(raw_path, str) or not raw_path:
             result.error("path.required", f"job.{key}", "Expected a repository-relative path.")
@@ -510,7 +532,19 @@ def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
             result.error("shots.references", f"{path}.references", "At least one image reference is required.")
         _check_reference_origin(references, None, result, path)
         subshots = segment.get("subshots")
-        frame_owners = subshots if subshots else [segment]
+        reference_frames = segment.get("reference_frames")
+        if reference_frames is not None and (
+            not isinstance(reference_frames, list)
+            or not reference_frames
+            or not all(isinstance(frame, dict) for frame in reference_frames)
+        ):
+            result.error(
+                "shots.reference_frames",
+                f"{path}.reference_frames",
+                "reference_frames must be a non-empty list of keyframe descriptions.",
+            )
+            reference_frames = []
+        frame_owners = reference_frames or subshots or [segment]
         for owner in frame_owners:
             camera = str(owner.get("camera") or segment.get("camera") or "") if isinstance(owner, dict) else ""
             if camera.count("|") + camera.count("｜") < 3:
@@ -525,18 +559,26 @@ def validate_shot_plan(plan: Any, script: dict[str, Any]) -> ValidationResult:
                     f"{path}.first_frame",
                     "Every keyframe needs a first_frame: the still moment the image shows, product facing the camera as in its reference photo.",
                 )
+        if reference_frames:
+            frame_ids = [str(frame.get("keyframe_id", "")) for frame in reference_frames]
+            if isinstance(keyframe_ids, list) and frame_ids != [str(value) for value in keyframe_ids]:
+                result.error(
+                    "shots.reference_frame_keyframes",
+                    f"{path}.reference_frames",
+                    "reference_frames must list the segment keyframe_ids in order.",
+                )
         if subshots:
-            # Each subshot is compiled into its own H3 segment (no cut inside an H3 segment),
-            # so each must meet the H3 minimum and together they must fill the planned duration.
+            # A subshot is a timed Picture cue inside a grouped multi-reference H3 clip.
+            # Its edit window may be shorter than H3's minimum standalone clip duration.
             durations = [sub.get("duration_seconds") for sub in subshots if isinstance(sub, dict)]
             if len(durations) != len(subshots) or not all(isinstance(value, (int, float)) for value in durations):
                 result.error("shots.subshots", f"{path}.subshots", "Every subshot needs a numeric duration_seconds.")
             else:
-                if any(value < H3_MIN_SEGMENT_SECONDS for value in durations):
+                if any(value <= 0 for value in durations):
                     result.error(
                         "shots.subshot_duration",
                         f"{path}.subshots",
-                        f"Each subshot becomes one H3 segment and must last at least {H3_MIN_SEGMENT_SECONDS} s.",
+                        "Timed Picture windows must have positive duration.",
                     )
                 if abs(sum(durations) - float(segment.get("duration_seconds", 0))) > 0.01:
                     result.error(
@@ -794,6 +836,195 @@ def validate_ready(ready: Any, ready_path: Path, repo_root: Path) -> ValidationR
     return result
 
 
+def validate_shot_map(shot_map: Any, job: dict[str, Any]) -> ValidationResult:
+    """Validate the exact source edit timeline used by shot_for_shot jobs."""
+
+    result = ValidationResult()
+    if not _require_object(shot_map, result, "shot_map"):
+        return result
+    if shot_map.get("schema") != "shot-map/v1":
+        result.error("schema.unsupported", "shot_map.schema", "Expected shot-map/v1.")
+    if shot_map.get("visual_mode") != "shot_for_shot":
+        result.error("visual_mode.mismatch", "shot_map.visual_mode", "Expected shot_for_shot.")
+    if Path(str(shot_map.get("reference_video", ""))).as_posix() != Path(str(job.get("reference_video", ""))).as_posix():
+        result.error(
+            "source.mismatch",
+            "shot_map.reference_video",
+            "Shot map must identify the job reference_video.",
+        )
+
+    source_duration = shot_map.get("source_duration_seconds")
+    if not isinstance(source_duration, (int, float)) or source_duration <= 0:
+        result.error("shot_map.duration", "shot_map.source_duration_seconds", "Expected a positive duration.")
+        source_duration = None
+
+    shots = shot_map.get("shots")
+    if not isinstance(shots, list) or not shots:
+        result.error("shot_map.shots", "shot_map.shots", "At least one exact source shot is required.")
+        return result
+
+    previous_end = 0.0
+    seen: set[str] = set()
+    derived_cuts: list[float] = []
+    for index, shot in enumerate(shots, start=1):
+        path = f"shot_map.shots[{index - 1}]"
+        if not isinstance(shot, dict):
+            result.error("type.object", path, "Expected an object.")
+            continue
+        expected_id = f"SH{index:03d}"
+        shot_id = shot.get("id")
+        if shot_id != expected_id:
+            result.error("shot_map.order", f"{path}.id", f"Expected {expected_id}.")
+        if isinstance(shot_id, str):
+            if shot_id in seen:
+                result.error("shot_map.duplicate", f"{path}.id", f"Duplicate shot ID: {shot_id}")
+            seen.add(shot_id)
+        start = shot.get("source_start_seconds")
+        end = shot.get("source_end_seconds")
+        duration = shot.get("source_edit_duration_seconds")
+        if not all(isinstance(value, (int, float)) for value in (start, end, duration)):
+            result.error("shot_map.interval", path, "Shot times and duration must be numeric.")
+            continue
+        if abs(float(start) - previous_end) > 0.001:
+            result.error("shot_map.coverage", f"{path}.source_start_seconds", "Shots must be contiguous.")
+        if float(end) <= float(start) or abs((float(end) - float(start)) - float(duration)) > 0.001:
+            result.error("shot_map.interval", path, "Expected start < end and duration=end-start.")
+        if index > 1:
+            derived_cuts.append(round(float(start), 3))
+        previous_end = float(end)
+
+    if source_duration is not None and abs(previous_end - float(source_duration)) > 0.001:
+        result.error("shot_map.coverage", "shot_map.shots", "Shots must cover the complete source duration.")
+    declared_cuts = shot_map.get("cut_times_seconds")
+    try:
+        normalized_cuts = [round(float(value), 3) for value in declared_cuts]
+    except (TypeError, ValueError):
+        normalized_cuts = []
+    if normalized_cuts != derived_cuts:
+        result.error("shot_map.cuts", "shot_map.cut_times_seconds", "Cut times must equal the shot boundaries.")
+    return result
+
+
+def validate_shot_for_shot_coverage(
+    shot_map: dict[str, Any],
+    plan: dict[str, Any],
+    request: dict[str, Any],
+    job: dict[str, Any],
+) -> ValidationResult:
+    """Pin every source microshot to a timed cut inside a small set of H3 clips."""
+
+    result = ValidationResult()
+    source_shots = [shot for shot in shot_map.get("shots", []) if isinstance(shot, dict)]
+    source_by_id = {str(shot.get("id")): shot for shot in source_shots}
+    expected_ids = list(source_by_id)
+    plan_segments = [segment for segment in plan.get("segments", []) if isinstance(segment, dict)]
+    request_segments = request.get("segments") if isinstance(request.get("segments"), dict) else {}
+
+    actual_ids: list[str] = []
+    expected_keyframes: list[str] = []
+    previous_source_end = 0.0
+    for segment_index, segment in enumerate(plan_segments):
+        path = f"shot_plan.segments[{segment_index}]"
+        duration = segment.get("duration_seconds")
+        if not isinstance(duration, (int, float)) or not 2 <= float(duration) <= 15:
+            result.error("shot_for_shot.h3_duration", f"{path}.duration_seconds", "Each H3 clip must last 2-15 seconds.")
+
+        keyframe_ids = segment.get("keyframe_ids") if isinstance(segment.get("keyframe_ids"), list) else []
+        if not 1 <= len(keyframe_ids) <= 3:
+            result.error(
+                "shot_for_shot.reference_count",
+                f"{path}.keyframe_ids",
+                "Each H3 clip must use one to three generated keyframes and bind only two or three total Pictures.",
+            )
+        expected_keyframes.extend(str(value) for value in keyframe_ids)
+
+        source_start = segment.get("source_start_seconds")
+        source_end = segment.get("source_end_seconds")
+        edit_duration = segment.get("source_edit_duration_seconds")
+        if not all(isinstance(value, (int, float)) for value in (source_start, source_end, edit_duration)):
+            result.error("shot_for_shot.clip_window", path, "Each clip needs numeric source start, end and edit duration.")
+            continue
+        if abs(float(source_start) - previous_source_end) > 0.001:
+            result.error("shot_for_shot.clip_coverage", f"{path}.source_start_seconds", "H3 clip source windows must be contiguous.")
+        if float(source_end) <= float(source_start) or abs(float(source_end) - float(source_start) - float(edit_duration)) > 0.001:
+            result.error("shot_for_shot.clip_window", path, "Expected source_start < source_end and edit duration=end-start.")
+        if isinstance(duration, (int, float)) and float(duration) + 0.001 < float(edit_duration):
+            result.error("shot_for_shot.clip_too_short", f"{path}.duration_seconds", "The H3 render must cover its complete source edit window.")
+        previous_source_end = float(source_end)
+
+        timed_shots = segment.get("timed_shots")
+        if not isinstance(timed_shots, list) or not timed_shots:
+            result.error("shot_for_shot.timed_shots", f"{path}.timed_shots", "Each H3 clip needs timed microshots.")
+            continue
+        previous_clip_end = 0.0
+        for timed_index, timed in enumerate(timed_shots):
+            timed_path = f"{path}.timed_shots[{timed_index}]"
+            if not isinstance(timed, dict):
+                result.error("type.object", timed_path, "Expected a timed microshot object.")
+                continue
+            source_id = str(timed.get("source_shot_id", ""))
+            actual_ids.append(source_id)
+            source = source_by_id.get(source_id)
+            if source is None:
+                result.error("shot_for_shot.unknown_source", f"{timed_path}.source_shot_id", f"Unknown source shot {source_id}.")
+                continue
+            for field in ("source_start_seconds", "source_end_seconds"):
+                value = timed.get(field)
+                expected = source.get(field)
+                if not isinstance(value, (int, float)) or abs(float(value) - float(expected)) > 0.001:
+                    result.error("shot_for_shot.timing", f"{timed_path}.{field}", f"Expected {expected}.")
+            clip_start = timed.get("clip_start_seconds")
+            clip_end = timed.get("clip_end_seconds")
+            expected_clip_start = round(float(source["source_start_seconds"]) - float(source_start), 3)
+            expected_clip_end = round(float(source["source_end_seconds"]) - float(source_start), 3)
+            if not isinstance(clip_start, (int, float)) or abs(float(clip_start) - expected_clip_start) > 0.001:
+                result.error("shot_for_shot.clip_timing", f"{timed_path}.clip_start_seconds", f"Expected {expected_clip_start}.")
+            if not isinstance(clip_end, (int, float)) or abs(float(clip_end) - expected_clip_end) > 0.001:
+                result.error("shot_for_shot.clip_timing", f"{timed_path}.clip_end_seconds", f"Expected {expected_clip_end}.")
+            if isinstance(clip_start, (int, float)) and abs(float(clip_start) - previous_clip_end) > 0.001:
+                result.error("shot_for_shot.clip_timing", f"{timed_path}.clip_start_seconds", "Timed microshots must be contiguous.")
+            if isinstance(clip_end, (int, float)):
+                previous_clip_end = float(clip_end)
+            picture_id = str(timed.get("picture_keyframe_id", ""))
+            if picture_id not in [str(value) for value in keyframe_ids]:
+                result.error("shot_for_shot.picture", f"{timed_path}.picture_keyframe_id", "Timed shot must use a keyframe from its H3 clip.")
+        if abs(previous_clip_end - float(edit_duration)) > 0.001:
+            result.error("shot_for_shot.clip_timing", f"{path}.timed_shots", "Timed microshots must fill the source edit window.")
+
+    if actual_ids != expected_ids:
+        result.error(
+            "shot_for_shot.coverage",
+            "shot_plan.segments",
+            f"Timed source shots {actual_ids} do not exactly equal {expected_ids}.",
+        )
+    if abs(previous_source_end - float(shot_map.get("source_duration_seconds", 0))) > 0.001:
+        result.error("shot_for_shot.clip_coverage", "shot_plan.segments", "H3 clip windows must cover the full source duration.")
+    if list(request_segments) != expected_keyframes:
+        result.error(
+            "shot_for_shot.request_order",
+            "request.segments",
+            "Keyframe request order must match all H3 clip keyframes in order.",
+        )
+
+    render_plan = job.get("render_plan")
+    if not isinstance(render_plan, dict):
+        result.error("shot_for_shot.render_plan", "job.render_plan", "shot_for_shot jobs require a render_plan.")
+    else:
+        h3_count = len(plan_segments)
+        expected_batches = math.ceil(h3_count / int(job.get("max_segments_per_render", 4))) if h3_count else 0
+        checks = {
+            "keyframe_count": len(expected_keyframes),
+            "h3_clip_count": h3_count,
+            "expected_h3_batches": expected_batches,
+            "edit_to_source_duration_seconds": shot_map.get("source_duration_seconds"),
+        }
+        for field, expected in checks.items():
+            value = render_plan.get(field)
+            if not isinstance(value, (int, float)) or abs(float(value) - float(expected)) > 0.001:
+                result.error("shot_for_shot.render_plan", f"job.render_plan.{field}", f"Expected {expected}.")
+    return result
+
+
 def validate_ready_against_request(
     ready: Any,
     request: dict[str, Any],
@@ -970,7 +1201,7 @@ def validate_bundle(job_path: Path, repo_root: Path) -> tuple[ValidationResult, 
     result.extend(validate_shot_plan(shot_plan, script))
     result.extend(validate_keyframe_request(request, repo_root, product))
     result.extend(validate_keyframe_coverage(request, shot_plan, job, repo_root))
-    return result, {
+    bundle = {
         "job": job,
         "product": product,
         "beats": beats,
@@ -978,3 +1209,13 @@ def validate_bundle(job_path: Path, repo_root: Path) -> tuple[ValidationResult, 
         "shot_plan": shot_plan,
         "request": request,
     }
+    if job.get("visual_mode", "structure_remix") == "shot_for_shot":
+        try:
+            shot_map = load_json(resolve_repo_path(repo_root, job["shot_map"]))
+        except Exception as exc:
+            result.error("shot_map.load", "job.shot_map", str(exc))
+        else:
+            result.extend(validate_shot_map(shot_map, job))
+            result.extend(validate_shot_for_shot_coverage(shot_map, shot_plan, request, job))
+            bundle["shot_map"] = shot_map
+    return result, bundle

@@ -31,20 +31,35 @@
     "source_language": {"type": "string", "minLength": 1},
     "target_language": {"type": "string", "pattern": "^en(?:-|$)"},
     "mode": {"const": "structure"},
+    "visual_mode": {"enum": ["structure_remix", "shot_for_shot"]},
+    "shot_map": {"type": "string", "minLength": 1},
     "audio_mode": {"enum": ["dialogue", "silent"]},
     "variants": {"type": "integer", "minimum": 1},
-    "segment_duration_seconds": {"type": "number", "minimum": 1, "maximum": 10},
-    "max_segments_per_render": {"type": "integer", "minimum": 1, "maximum": 4},
+    "segment_duration_seconds": {"type": "number", "minimum": 1, "maximum": 15},
+    "max_segments_per_render": {"type": "integer", "minimum": 1, "maximum": 20},
     "product": {"type": "string", "minLength": 1},
     "beats": {"type": "string", "minLength": 1},
     "script": {"type": "string", "minLength": 1},
     "shot_plan": {"type": "string", "minLength": 1},
     "keyframe_request": {"type": "string", "minLength": 1},
+    "h3_clip_plan": {"type": "string", "minLength": 1},
+    "h3_segments": {"type": "string", "minLength": 1},
     "state_file": {"type": "string", "minLength": 1},
     "events_file": {"type": "string", "minLength": 1},
     "image_provider": {"const": "codex-imagegen"},
     "video_provider": {"const": "h3"},
     "human_review_required": {"const": true}
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"visual_mode": {"const": "shot_for_shot"}},
+        "required": ["visual_mode"]
+      },
+      "then": {
+        "required": ["shot_map", "h3_clip_plan", "h3_segments"]
+      }
+    }
+  ],
   "additionalProperties": true
 }

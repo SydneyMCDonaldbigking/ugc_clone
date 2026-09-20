@@ -1,0 +1,29 @@
+subject_definitions:
+<Picture 1> is a generated target-product composition keyframe for the timed montage.
+<Picture 2> is a generated target-product composition keyframe for the timed montage.
+<Picture 3> is the original product identity authority for package, shape, colour and branding.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
+<Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
+<Picture 3>: attribute_transfer. Preserve the original product identity throughout every cut.
+
+detailed_description:
+Run seven tight tactile shots from stacked biscuit edges through surface and plate views into one clean centre break and a final two-halves macro. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-0.767 seconds — start on <Picture 1>; scheduled microshot: two edge stacks: hold two short biscuit stacks side by side and align their thin edges
+0.767-1.434 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: single palm profile: jump to one palm supporting an overlapping row in side profile
+1.434-2.234 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: surface fan macro: hard cut to fingertips fanning three biscuit fronts close to the lens
+2.234-3.034 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: full plate overhead: jump directly overhead to a plate filled edge to edge with separate rectangular biscuits
+3.034-3.767 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: angled plate texture pass: hard cut oblique as one hand lightly shifts two top biscuits across the pile
+3.767-4.467 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: break setup and snap: hard cut to one intact biscuit between two hands and complete one decisive centre break
+4.467-5.134 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: two-halves interior macro: jump to the two clean halves separated a few centimetres with broken edges toward the light
+5.134-6 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+Hands remain close to the lens with believable pressure, fast reframing and a relaxed release after the break. Keep the source's dense visual proof rhythm while selling only visible shape, serving and break-open actions.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. Keep the original target product identity stable across every hard cut. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.

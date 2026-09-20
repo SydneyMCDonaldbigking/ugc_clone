@@ -9,6 +9,8 @@ from typing import Any
 
 from .io import load_json, resolve_repo_path
 from .integrity import build_integrity_snapshot
+from .h3_plan import load_h3_clip_plan
+from .h3_segments import load_h3_segments
 from .preflight import (
     preflight_report_path,
     quarantine_ready,
@@ -146,6 +148,41 @@ def command_keyframe_status(args: argparse.Namespace, repo_root: Path) -> int:
     ready = load_json(ready_path)
     result.extend(validate_ready(ready, ready_path, repo_root))
     result.extend(validate_ready_against_request(ready, request, job))
+    shot_for_shot = job.get("visual_mode", "structure_remix") == "shot_for_shot"
+    h3_clip_plan = None
+    if shot_for_shot or isinstance(job.get("h3_clip_plan"), str):
+        try:
+            h3_clip_plan = load_h3_clip_plan(repo_root, job, request)
+        except (FileNotFoundError, KeyError, TypeError, ValueError) as exc:
+            result.error("keyframes.h3_clip_plan", "job.h3_clip_plan", str(exc))
+        if shot_for_shot and h3_clip_plan is None:
+            result.error(
+                "keyframes.h3_clip_plan",
+                "job.h3_clip_plan",
+                "shot_for_shot handoff requires a validated h3_clip_plan.",
+            )
+    if h3_clip_plan is not None and (
+        shot_for_shot or isinstance(job.get("h3_segments"), str)
+    ):
+        try:
+            h3_segments = load_h3_segments(
+                repo_root,
+                job,
+                bundle["shot_plan"],
+                request,
+                request_path,
+                ready,
+                h3_clip_plan,
+            )
+        except (FileNotFoundError, KeyError, TypeError, ValueError) as exc:
+            result.error("keyframes.h3_segments", "job.h3_segments", str(exc))
+        else:
+            if shot_for_shot and h3_segments is None:
+                result.error(
+                    "keyframes.h3_segments",
+                    "job.h3_segments",
+                    "shot_for_shot handoff requires deterministic, validated h3_segments.",
+                )
     print_result(result)
     if not result.ok:
         return 1

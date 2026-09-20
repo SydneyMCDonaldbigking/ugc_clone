@@ -4,6 +4,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from ugc_pipeline.io import load_json, write_json_atomic
 from ugc_pipeline.preflight import quarantine_ready, validate_render_preflight
@@ -13,6 +14,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PreflightTests(unittest.TestCase):
+    def test_shot_for_shot_requires_validated_h3_segments(self) -> None:
+        job_path = ROOT / "inputs/crown_almond_bis/job.shot-for-shot.en.json"
+        with patch("ugc_pipeline.preflight.load_h3_segments", return_value=None):
+            result, report, _ = validate_render_preflight(job_path, ROOT, actor="test")
+
+        self.assertFalse(result.ok)
+        self.assertFalse(report["h3_segments_validated"])
+        self.assertIn("preflight.h3_segments", [issue.code for issue in result.errors])
+
     def test_current_render_queue_passes_without_integrity_drift(self) -> None:
         for relative_job in (
             "inputs/crown_almond_bis/job.en.json",

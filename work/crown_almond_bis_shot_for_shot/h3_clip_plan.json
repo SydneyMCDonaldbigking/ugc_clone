@@ -1,0 +1,297 @@
+{
+  "schema": "h3-clip-plan/v1",
+  "job_id": "crown_almond_bis_sfs_en",
+  "variant_id": "v001",
+  "max_reference_images": 3,
+  "total_edit_duration_seconds": 19.033,
+  "clips": [
+    {
+      "id": "S01",
+      "duration_seconds": 6.0,
+      "trim_duration_seconds": 5.8,
+      "keyframe_ids": [
+        "1a",
+        "1b"
+      ],
+      "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+      "cues": [
+        {
+          "keyframe_id": "1a",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 3.867,
+          "transition": "start",
+          "action": "show a near-instant close flash of two overlapping biscuit plates and a white packet Then hold one opened white packet above the full plate and tilt it slightly toward the biscuits Then one hand gathers several separate rectangular biscuits from the plate and lifts them Then jump to two hands presenting four biscuits in a loose fan close to the lens Then jump to one palm holding an overlapping handful and make one quick angle change."
+        },
+        {
+          "keyframe_id": "1b",
+          "picture": 2,
+          "start_seconds": 3.867,
+          "end_seconds": 5.8,
+          "transition": "hard_cut",
+          "action": "hard cut overhead as two hands open the retail box and reveal white packets."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH001",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 0.1,
+          "transition": "start",
+          "action": "two-plate product flash: show a near-instant close flash of two overlapping biscuit plates and a white packet"
+        },
+        {
+          "source_shot_id": "SH002",
+          "picture": 1,
+          "start_seconds": 0.1,
+          "end_seconds": 0.967,
+          "transition": "hard_cut",
+          "action": "open packet above plate: hold one opened white packet above the full plate and tilt it slightly toward the biscuits"
+        },
+        {
+          "source_shot_id": "SH003",
+          "picture": 1,
+          "start_seconds": 0.967,
+          "end_seconds": 2.233,
+          "transition": "hard_cut",
+          "action": "gather from plate: one hand gathers several separate rectangular biscuits from the plate and lifts them"
+        },
+        {
+          "source_shot_id": "SH004",
+          "picture": 1,
+          "start_seconds": 2.233,
+          "end_seconds": 3.033,
+          "transition": "hard_cut",
+          "action": "two-hand biscuit fan: jump to two hands presenting four biscuits in a loose fan close to the lens"
+        },
+        {
+          "source_shot_id": "SH005",
+          "picture": 1,
+          "start_seconds": 3.033,
+          "end_seconds": 3.867,
+          "transition": "hard_cut",
+          "action": "single-palm handful: jump to one palm holding an overlapping handful and make one quick angle change"
+        },
+        {
+          "source_shot_id": "SH006",
+          "picture": 2,
+          "start_seconds": 3.867,
+          "end_seconds": 5.8,
+          "transition": "hard_cut",
+          "action": "overhead box opening: hard cut overhead as two hands open the retail box and reveal white packets"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "duration_seconds": 5.0,
+      "trim_duration_seconds": 4.633,
+      "keyframe_ids": [
+        "2a",
+        "2b"
+      ],
+      "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+      "cues": [
+        {
+          "keyframe_id": "2a",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 2.5,
+          "transition": "start",
+          "action": "lift one packet from a loose spread of matching packets toward the lens Then hard cut closer as both hands tear one packet seam and reveal one whole biscuit Then hard cut wider and tip the opened packet so one biscuit settles onto the plate."
+        },
+        {
+          "keyframe_id": "2b",
+          "picture": 2,
+          "start_seconds": 2.5,
+          "end_seconds": 4.633,
+          "transition": "hard_cut",
+          "action": "jump to one palm holding a generous overlapping stack of rectangular biscuits near the lens Then hard cut to the complete box front while the other hand holds one matching biscuit beside it."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH007",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 0.9,
+          "transition": "start",
+          "action": "packet spread reveal: lift one packet from a loose spread of matching packets toward the lens"
+        },
+        {
+          "source_shot_id": "SH008",
+          "picture": 1,
+          "start_seconds": 0.9,
+          "end_seconds": 1.6,
+          "transition": "hard_cut",
+          "action": "tear-open macro: hard cut closer as both hands tear one packet seam and reveal one whole biscuit"
+        },
+        {
+          "source_shot_id": "SH009",
+          "picture": 1,
+          "start_seconds": 1.6,
+          "end_seconds": 2.5,
+          "transition": "hard_cut",
+          "action": "packet to plate: hard cut wider and tip the opened packet so one biscuit settles onto the plate"
+        },
+        {
+          "source_shot_id": "SH010",
+          "picture": 2,
+          "start_seconds": 2.5,
+          "end_seconds": 3.533,
+          "transition": "hard_cut",
+          "action": "biscuit handful: jump to one palm holding a generous overlapping stack of rectangular biscuits near the lens"
+        },
+        {
+          "source_shot_id": "SH011",
+          "picture": 2,
+          "start_seconds": 3.533,
+          "end_seconds": 4.633,
+          "transition": "hard_cut",
+          "action": "box-front proof: hard cut to the complete box front while the other hand holds one matching biscuit beside it"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "duration_seconds": 6.0,
+      "trim_duration_seconds": 5.134,
+      "keyframe_ids": [
+        "3a",
+        "3b"
+      ],
+      "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+      "cues": [
+        {
+          "keyframe_id": "3a",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 3.767,
+          "transition": "start",
+          "action": "hold two short biscuit stacks side by side and align their thin edges Then jump to one palm supporting an overlapping row in side profile Then hard cut to fingertips fanning three biscuit fronts close to the lens Then jump directly overhead to a plate filled edge to edge with separate rectangular biscuits Then hard cut oblique as one hand lightly shifts two top biscuits across the pile."
+        },
+        {
+          "keyframe_id": "3b",
+          "picture": 2,
+          "start_seconds": 3.767,
+          "end_seconds": 5.134,
+          "transition": "hard_cut",
+          "action": "hard cut to one intact biscuit between two hands and complete one decisive centre break Then jump to the two clean halves separated a few centimetres with broken edges toward the light."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH012",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 0.767,
+          "transition": "start",
+          "action": "two edge stacks: hold two short biscuit stacks side by side and align their thin edges"
+        },
+        {
+          "source_shot_id": "SH013",
+          "picture": 1,
+          "start_seconds": 0.767,
+          "end_seconds": 1.434,
+          "transition": "hard_cut",
+          "action": "single palm profile: jump to one palm supporting an overlapping row in side profile"
+        },
+        {
+          "source_shot_id": "SH014",
+          "picture": 1,
+          "start_seconds": 1.434,
+          "end_seconds": 2.234,
+          "transition": "hard_cut",
+          "action": "surface fan macro: hard cut to fingertips fanning three biscuit fronts close to the lens"
+        },
+        {
+          "source_shot_id": "SH015",
+          "picture": 1,
+          "start_seconds": 2.234,
+          "end_seconds": 3.034,
+          "transition": "hard_cut",
+          "action": "full plate overhead: jump directly overhead to a plate filled edge to edge with separate rectangular biscuits"
+        },
+        {
+          "source_shot_id": "SH016",
+          "picture": 1,
+          "start_seconds": 3.034,
+          "end_seconds": 3.767,
+          "transition": "hard_cut",
+          "action": "angled plate texture pass: hard cut oblique as one hand lightly shifts two top biscuits across the pile"
+        },
+        {
+          "source_shot_id": "SH017",
+          "picture": 2,
+          "start_seconds": 3.767,
+          "end_seconds": 4.467,
+          "transition": "hard_cut",
+          "action": "break setup and snap: hard cut to one intact biscuit between two hands and complete one decisive centre break"
+        },
+        {
+          "source_shot_id": "SH018",
+          "picture": 2,
+          "start_seconds": 4.467,
+          "end_seconds": 5.134,
+          "transition": "hard_cut",
+          "action": "two-halves interior macro: jump to the two clean halves separated a few centimetres with broken edges toward the light"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "duration_seconds": 5.0,
+      "trim_duration_seconds": 3.466,
+      "keyframe_ids": [
+        "4a",
+        "4b"
+      ],
+      "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+      "cues": [
+        {
+          "keyframe_id": "4a",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 1.133,
+          "transition": "start",
+          "action": "the second hand takes the top biscuit from a steady palm above the plate."
+        },
+        {
+          "keyframe_id": "4b",
+          "picture": 2,
+          "start_seconds": 1.133,
+          "end_seconds": 3.466,
+          "transition": "hard_cut",
+          "action": "hard cut to one whole biscuit lowered edge-first into the milk without splashing Then hard cut to one spoon lifting the milk-paired rectangular biscuit slowly toward the lens."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH019",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 1.133,
+          "transition": "start",
+          "action": "sharing handful: the second hand takes the top biscuit from a steady palm above the plate"
+        },
+        {
+          "source_shot_id": "SH020",
+          "picture": 2,
+          "start_seconds": 1.133,
+          "end_seconds": 1.9,
+          "transition": "hard_cut",
+          "action": "milk dip: hard cut to one whole biscuit lowered edge-first into the milk without splashing"
+        },
+        {
+          "source_shot_id": "SH021",
+          "picture": 2,
+          "start_seconds": 1.9,
+          "end_seconds": 3.466,
+          "transition": "hard_cut",
+          "action": "spoon result lift: hard cut to one spoon lifting the milk-paired rectangular biscuit slowly toward the lens"
+        }
+      ]
+    }
+  ]
+}

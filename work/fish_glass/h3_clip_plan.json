@@ -1,0 +1,167 @@
+{
+  "schema": "h3-clip-plan/v1",
+  "job_id": "fish_glass_silent_en",
+  "variant_id": "v001",
+  "max_reference_images": 3,
+  "total_edit_duration_seconds": 26.533,
+  "clips": [
+    {
+      "id": "H01",
+      "duration_seconds": 5,
+      "trim_duration_seconds": 2.967,
+      "keyframe_ids": ["1", "2"],
+      "product_reference": "codex_clone_refs/fish_glass/pic_1.jpg",
+      "cues": [
+        {
+          "keyframe_id": "1",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 1.467,
+          "transition": "start",
+          "action": "Begin on the two finished drinks and snap from slightly soft focus to crisp focus while both glasses remain still."
+        },
+        {
+          "keyframe_id": "2",
+          "picture": 2,
+          "start_seconds": 1.467,
+          "end_seconds": 2.967,
+          "transition": "hard_cut",
+          "action": "Cut cleanly to the empty glass in two hands; tilt it diagonally and make one controlled quarter-turn so the double wall, fish motif, rim and thick base read clearly."
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "duration_seconds": 6,
+      "trim_duration_seconds": 5.066,
+      "keyframe_ids": ["3"],
+      "product_reference": "codex_clone_refs/fish_glass/pic_1.jpg",
+      "cues": [
+        {
+          "keyframe_id": "3",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 5.066,
+          "transition": "start",
+          "action": "Use slim tongs to place three large clear ice cubes into the upright glass one by one, then place one small lemon slice against the inner wall."
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "duration_seconds": 5,
+      "trim_duration_seconds": 3.434,
+      "keyframe_ids": ["4", "5"],
+      "product_reference": "codex_clone_refs/fish_glass/pic_1.jpg",
+      "cues": [
+        {
+          "keyframe_id": "4",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 2.034,
+          "transition": "start",
+          "action": "The full-size 1.5-litre glass pitcher pours one steady sparkling-water stream over the ice; keep the target glass upright and centred."
+        },
+        {
+          "keyframe_id": "5",
+          "picture": 2,
+          "start_seconds": 2.034,
+          "end_seconds": 3.434,
+          "transition": "hard_cut",
+          "action": "Cut to the extreme close-up; fine bubbles climb around the ice and lemon while the complete rim, fish pattern and thick base stay readable."
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "duration_seconds": 6,
+      "trim_duration_seconds": 5.8,
+      "keyframe_ids": ["6a", "6b", "6c"],
+      "product_reference": null,
+      "cues": [
+        {
+          "keyframe_id": "6a",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 1.633,
+          "transition": "start",
+          "action": "One right hand closes around the completed clear drink and lifts it vertically out of frame."
+        },
+        {
+          "keyframe_id": "6b",
+          "picture": 2,
+          "start_seconds": 1.633,
+          "end_seconds": 3.9,
+          "transition": "hard_cut",
+          "action": "Drop the held ice cube into the second empty matching glass, then add two more cubes with the same tongs."
+        },
+        {
+          "keyframe_id": "6c",
+          "picture": 3,
+          "start_seconds": 3.9,
+          "end_seconds": 5.8,
+          "transition": "hard_cut",
+          "action": "Cut cleanly to the white ceramic pitcher and begin a smooth milk stream over the three cubes; only one hand and a short forearm remain visible."
+        }
+      ]
+    },
+    {
+      "id": "H05",
+      "duration_seconds": 5,
+      "trim_duration_seconds": 4.366,
+      "keyframe_ids": ["7a", "7b"],
+      "product_reference": "codex_clone_refs/fish_glass/pic_1.jpg",
+      "cues": [
+        {
+          "keyframe_id": "7a",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 2.733,
+          "transition": "start",
+          "action": "Pour dark coffee into the iced milk and keep the natural brown-white colour bloom visible without stirring."
+        },
+        {
+          "keyframe_id": "7b",
+          "picture": 2,
+          "start_seconds": 2.733,
+          "end_seconds": 4.366,
+          "transition": "hard_cut",
+          "action": "Cut to both completed drinks side by side and settle into a restrained pull-back while both glasses remain still."
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "duration_seconds": 5,
+      "trim_duration_seconds": 4.9,
+      "keyframe_ids": ["8", "9a", "9b"],
+      "product_reference": null,
+      "cues": [
+        {
+          "keyframe_id": "8",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 1.434,
+          "transition": "start",
+          "action": "Make one small controlled circular stir in the clear citrus drink while the milk coffee remains still beside it."
+        },
+        {
+          "keyframe_id": "9a",
+          "picture": 2,
+          "start_seconds": 1.434,
+          "end_seconds": 3.034,
+          "transition": "hard_cut",
+          "action": "Cut to the exterior-wall grip and lift the clear drink straight toward the lens until it becomes a soft foreground wipe."
+        },
+        {
+          "keyframe_id": "9b",
+          "picture": 3,
+          "start_seconds": 3.034,
+          "end_seconds": 4.9,
+          "transition": "foreground_wipe_cut",
+          "action": "Use the glass wipe as the cut into the final clean two-drink hero; make a subtle settling pull-back and finish on a calm locked hold."
+        }
+      ]
+    }
+  ]
+}

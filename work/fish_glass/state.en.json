@@ -2,8 +2,8 @@
   "schema": "job-state/v1",
   "job_id": "fish_glass_silent_en",
   "state": "keyframes_ready",
-  "revision": 11,
-  "updated_at": "2026-09-20T05:45:45.373097Z",
+  "revision": 12,
+  "updated_at": "2026-09-20T08:47:07.613959Z",
   "stages": {
     "beats": {
       "status": "passed",
@@ -32,17 +32,18 @@
     },
     "keyframes": {
       "status": "passed",
-      "updated_at": "2026-09-20T05:45:45.373097Z",
+      "updated_at": "2026-09-20T08:47:07.613959Z",
       "artifact": "work/fish_glass/keyframes/READY.json",
       "integrity": {
         "schema": "artifact-integrity/v1",
-        "digest": "ce5bf3e91d7bab066a95aa19a9f983d2af6c375c46524023fd1a7ca808a5922b",
+        "digest": "10f78ad45e5ef94d425694d3e0aa87e4b18ef00287638564c367390ec3808dc2",
         "files": {
           "codex_clone_refs/fish_glass/pic_1.jpg": "2008b29d7db563a2adf1eba7fbfc8e38096d61a7f23629eba7da15144030354e",
           "codex_clone_refs/fish_glass/pic_2.jpg": "a67fe94eca297f0af75c3ab70fe31397bb98225d5bd0f0531f44cc0bd3a384f3",
-          "inputs/fish_glass/job.en.json": "7d651a66cf08c3bf546e1d9a384e6daf98e2020d08dd2e720b57bb331985d0f9",
+          "inputs/fish_glass/job.en.json": "c4bad4508647660bd98bacb39ddc9543ea272fb257f6dbf801537395e535c874",
           "inputs/fish_glass/product.en.json": "e531bfddf099bef2a52be7e161cdc2aae2344107d3181190a5322b3ce9f0533e",
           "work/fish_glass/beats.json": "c35520fb36650f4c68a15c4eac67a5ff43a16fbfb82b2b8d2f389db310b82815",
+          "work/fish_glass/h3_clip_plan.json": "e7351f857dfe7d9e16934f0991401889b36fccba33a39ba20d291acb08363b85",
           "work/fish_glass/keyframes/QC.json": "e4476f2558387a9d1b3310743029935feebcfa15d1acd54546d7352c86462a96",
           "work/fish_glass/keyframes/READY.json": "5b39571d1467fdebcf6f23b8dc3bd0ae30de8d21903a9b7f4352ee3c286b4a28",
           "work/fish_glass/keyframes/REQUEST.json": "a399643b6293fcc813ed4371bfd09fe58358ac762c65a643a2eecf1f5520aa27",

@@ -29,6 +29,8 @@
       "items": {"type": "object"}
     },
     "keyframe_count": {"type": "integer", "minimum": 0},
+    "h3_clip_count": {"type": "integer", "minimum": 0},
+    "h3_segments_validated": {"type": "boolean"},
     "expected_h3_batches": {"type": "integer", "minimum": 0},
     "visual_qc": {"type": "object"},
     "integrity": {

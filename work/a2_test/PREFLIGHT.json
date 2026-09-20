@@ -1,0 +1,30 @@
+{
+  "schema": "render-preflight/v1",
+  "job": "a2_test_en",
+  "status": "failed",
+  "actor": "claude",
+  "checked_at": "2026-09-20T06:13:01.609501Z",
+  "changed_artifacts": [
+    {
+      "path": "<snapshot>",
+      "status": "missing",
+      "expected": "artifact-integrity/v1",
+      "actual": "none"
+    }
+  ],
+  "issues": [
+    {
+      "level": "error",
+      "code": "preflight.state",
+      "path": "state.state",
+      "message": "Job must be keyframes_ready before rendering."
+    },
+    {
+      "level": "error",
+      "code": "preflight.integrity_drift",
+      "path": "state.stages.keyframes.integrity",
+      "message": "Approved render inputs changed after READY: <snapshot>."
+    }
+  ],
+  "ready_invalidated_to": "work/a2_test/keyframes/READY.invalidated.20260920T061301Z.json"
+}

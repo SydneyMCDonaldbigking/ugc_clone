@@ -36,8 +36,8 @@ description: 拿一条别人跑通的带货口播视频,拆出节拍表,换成�
 ## 分工
 
 - **Codex / 本地 Windows:默认负责生成视频前的全部分析和准备(S1–S6)**。转写(conda 环境 `ugc_asr`,4070 够用)、
-  原片档案、节拍表、商品事实、英文稿、分镜、参考帧与 QC 连续做完,写 `READY.json` 后运行 `keyframe-status` 和 `preflight`
-- **Claude / 服务器 `doubleflow`:默认从 S7 开始负责出视频和成片验收**。重新运行 `preflight --actor claude` 通过后拿稿子和参考图提交 H3,
+  原片档案、节拍表、商品事实、英文稿、分镜、参考帧与 QC 连续做完;`shot_for_shot` 在 READY 后确定性编译 H3 提交包,再运行 `keyframe-status` 和 `preflight`
+- **Claude / 服务器 `doubleflow`:默认从 S7 开始负责出视频和成片验收**。重新运行 `preflight --actor claude` 通过后拿已封存的 `segments.json` 和参考图提交 H3,
   出片后拉回、重跑问题段并完成技术/台词验收。只能走国内镜像,工作目录 `/opt/ugc_clone`
   (2026-09-19 起。之前转写也在服务器上做,服务器经常掉线,分析就跟着卡住)
 
@@ -204,26 +204,61 @@ umall_test 里原稿到我们商品的对照(同类商品可以直接参考):
 
 ## S6 参考帧 + S7 H3 提示词
 
-每段 5 秒一个连续动作,段内不切镜。**单任务不超过 20 秒 / 4 段**(25 秒会爆内存,见 HANDOFF)。
+关键帧是构图资产,不是“一帧一条 H3 视频”。优先把相邻节拍编进同一条约 5 秒的视频:每条绑定 2–3 张 Picture,
+并在 prompt 里逐项写 `<Picture N>` 的起止秒数、动作和硬切/遮挡切时刻。普通结构复用一条视频通常只有 1–2 个内部切点;
+`shot_for_shot` 则保留 Hypit 检出的全部原切点,可在同一条约 5 秒视频内包含多个短促小镜头。只有时长放不下、动作相互冲突或需要隔离重试时才拆成下一条视频。
 
-**原片的插入镜头放不进一段里。** 要么单独占一段,要么舍弃。
-umall_test 把杯盖特写单独做成第 3 段(旁白是画外音,手指逐项点标签);0.8 秒的俯拍整箱并进了第 2 段的中景。
+**声音是逐段决定的,同一个任务也不保证同一个人。** 流水线**不支持音色参考**(导演台模板里的 `@A1` 没接进
+`build_generation_prompt`),声音只由提示词和 seed 决定,而且**每一段各决定一次**。
+
+2026-09-20 实测(放在一个任务、同一个 seed 里渲染,按 ASR 词区间测基频中位数):
+
+| 任务 | 各段基频 | 跨段差 |
+|---|---|---|
+| `a2milk-en-full` 6 段 | 131 / 137 / 156 / **200** / 142 / 138 Hz | 52.5% |
+| `crown-en-full` 4 段 | 150 / **198** / 140 / 163 Hz | 40.7% |
+
+两条片子都是**只有一段**明显跳高(听感上换成了另一个人),其余各段彼此在 19% 以内。
+所以"一个任务 = 一个声音"是错的:一个任务只是减少漂移,拆成多个任务会更差(之前 A/B 两批是 165 vs 137 Hz)。
+
+怎么办:
+
+- **画外音的片子(`hands_only` / `none`,画面里没有脸)最稳的做法是把 H3 渲成无人声,再用一路 TTS 统一配音后合轨**,
+  声音 100% 一致,也不用为了声音重跑视频
+- 要留 H3 的声音,就用 `cc_rerun.py` 把跳高的那一段换个 seed 重跑,直到落回其余段的区间
+- 检查用 `python scripts/voice_check.py a.wav b.wav`(整段音频)。**有倒奶、撕包装这类周期性响动时它会被带偏**,
+  要准就按 ASR 的词区间取帧再测;自相关还容易报成 2 倍频,判读时先想一下倍频错误
+
+**单任务上限(2026-09-20 服务器代码已改,旧的"20 秒 / 4 段"作废)**:最多 20 段,每段 2–15 秒,总时长没有硬上限。
+超分不再对整条一次性做:合并成一条后按 `chunk_seconds`(当前 18 秒)切块,逐块超分再拼,所以 25 秒爆内存那个限制没有了。
+提交前用 `grep -n "MAX_SEGMENTS" src/workflow.py` 和 `grep -n chunk_seconds config/*.yaml` 复核当前值。
+
+**原片的插入镜头可以放进同一条 H3 视频。** 给插入镜头分配自己的 Picture,在
+`timed_picture_timeline` 里写清起止秒数和切点即可。单独拆视频只用于时长、动作冲突或重试隔离,不能按关键帧数量机械拆。
+
+**逐镜头节奏模式。** 用户要求 `shot_for_shot` 时,`shot_map.json` 是时间主表:原片每个切点和小镜头顺序都保留,
+英文台词在原时间窗内改写,不能反过来拉长或压缩镜头。用 `build_timed_h3_plan.py` 把全部小镜头编进少量 H3 视频,
+取回后用 `check_shot_rhythm.py` 对实际硬切逐项验收;默认漂移超过 0.13 秒、漏切或多切都退回该段重跑。
 
 **出镜人和分镜参考图。** 当前默认由 Codex 会话内置 ImageGen 在本地完成,不再用 H3 文生视频截帧做定妆照。
 `generated_fictional` 先出 3 张不带商品的候选定妆照并登记唯一的 `presenter_master.png`;
 `hands_only` 和 `none` 不生成定妆照。每个分镜都从已登记定妆照(如需要)和商品原图重新生成,
-验收后写 `QC.json`,图片全部完成后才写 `READY.json`。随后运行:
+验收后写 `QC.json`,图片全部完成后才写 `READY.json`。`shot_for_shot` 先从获批的
+`shot_plan` / `h3_clip_plan` / READY 图片路径确定性编译最终 `segments.json`,随后运行:
 
 ```powershell
+D:/anaconda/envs/ugc_asr/python.exe -B scripts/build_timed_h3_prompts.py inputs/<job>/job.en.json
 D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline keyframe-status inputs/<job>/job.en.json --actor codex
 D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/job.en.json --actor codex
 ```
 
-`keyframe-status` 将渲染输入哈希封存进状态。封存后任何稿子、分镜、商品引用、QC、READY 或参考帧变化都会让预检失败;
+`keyframe-status` 会先逐切点核对 `shot_map`、`shot_plan`、`h3_clip_plan`,并确认 `segments.json` 与确定性编译结果逐字段相同,
+再将渲染输入哈希封存进状态。封存后任何稿子、分镜、prompt、Picture 顺序、商品引用、QC、READY 或参考帧变化都会让预检失败;
 预检会把旧 READY 改名为 `READY.invalidated.<UTC>.json` 并退回 `awaiting_keyframes`,修复后必须重新封存。
 
-**参考图编号。** 交接给 H3 时,每段 `<Picture 1>` 是该段已经验收的 keyframe;
-`READY.json` 的 `extra_refs` 按顺序成为后续图片,通常 `<Picture 2>` 是商品原图。每张图的迁移范围要分开写。
+**参考图编号。** `READY.json` 记录已验收的图片资产;编译 H3 时按 `h3_clip_plan` / `timed_shots` 把相邻 keyframe
+重新编号为一条视频的 `<Picture 1>`–`<Picture 3>`。每条视频总共绑定 2–3 张 Picture:有 1–2 张生成 keyframe 时,
+商品原图通常放最后一张补身份;已有 3 张生成 keyframe 时不再加第 4 张。每张图的时间窗和迁移范围必须分开写。
 原片截图、anchor、storyboard、cuts 和上一段生成的 keyframe 都不能作为新的生成参考。
 
 **提示词里写了什么,画面里就会出现什么**(a2_test 第一版有两处穿帮,都出在我自己的写法上):
@@ -254,7 +289,8 @@ D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/jo
   2. 保底:`scripts/packshot_clip.sh <图> <out.mp4>` 用原图做 5.2 秒慢推,1440x2560,字 100% 清楚,
      但画面里没有手;声音另外配上
 
-改提示词不换参考图时,用 `cc_rerun.py --prompts-file '{"3": …, "4": …}'` 一次重跑多段,其余段沿用,合并后照样超分。
+普通历史任务改提示词不换参考图时,可用 `cc_rerun.py --prompts-file '{"3": …, "4": …}'` 一次重跑多段。
+`shot_for_shot` 不允许在服务器端手改已封存 prompt:先把调整写回本地分镜,重新编译、封存、预检后再提交或重跑。
 
 **H3 很吃"态度 + 重音"(照 hypit video-direction)。** 分镜每段写两个字段,`validate` 会检查:
 
@@ -269,8 +305,9 @@ D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/jo
 - **不要让手指比数字**,数量交给台词和后期字幕
 - **台词里说到的东西不等于画面要出现的东西**:"six bottles" 是她说的话,不是让模型在画面上写 6
 
-新任务台词只能用 `(S1) <d>[English] …</d>`。旁白也一样,描述里写明"画外音"就行。
-`[Chinese]` 只存在于历史 `replica` 测试产物,不得复制到新成片。
+普通真人口播的新任务台词只能用 `(S1) <d>[English] …</d>`。`shot_for_shot` 的 H3 层必须静音,
+精确裁切后再合入一条连续英文母带;此时 `audio_mode: dialogue` 表示最终成片有英文声音,
+`render_plan.h3_audio_mode: silent` 表示 H3 自身不发声。`[Chinese]` 只存在于历史 `replica` 测试产物,不得复制到新成片。
 写好后本地用占位符(`__PRESENTER__`),提交前替换成服务器路径,另存为 `segments.server.json`。
 
 ```bash
@@ -283,7 +320,7 @@ umall_test 实测:4 段二采加超分,出 1440x2560、20.67 秒,耗时约 25 �
 
 ## S7 取回 + S8 验收
 
-- 上传或提交 H3 前先运行 `D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/job.en.json --actor claude`;只有 PASS 才继续
+- 上传或提交 H3 前先运行 `D:/anaconda/envs/ugc_asr/python.exe -B -m ugc_pipeline preflight inputs/<job>/job.en.json --actor claude`;只有 PASS 才继续。`shot_for_shot` 只能消费已封存的 `segments.json`,不能再改 prompt、秒数或图片顺序
 - 用 `scp` 取回成片和 `report.json`,用 `sha256sum` 对照 `qa.technical.sha256`(本地没装 paramiko,不用 `cc_fetch.py`)
 - **台词核对**:从成片抽出音轨,跑同一个 `transcribe.py`,和 `script.json` 逐句对。
   置信度低于 0.3 的字,多半是 H3 读错了,不是转写的问题。

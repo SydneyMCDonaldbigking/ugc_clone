@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "h3-clip-plan/v1",
+  "title": "Timed multi-reference H3 clip plan",
+  "type": "object",
+  "required": ["schema", "job_id", "variant_id", "max_reference_images", "total_edit_duration_seconds", "clips"],
+  "properties": {
+    "schema": {"const": "h3-clip-plan/v1"},
+    "job_id": {"type": "string", "minLength": 1},
+    "variant_id": {"type": "string", "minLength": 1},
+    "max_reference_images": {"const": 3},
+    "total_edit_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+    "clips": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "duration_seconds", "trim_duration_seconds", "keyframe_ids", "product_reference", "cues"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "duration_seconds": {"type": "number", "minimum": 2, "maximum": 15},
+          "trim_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+          "keyframe_ids": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "product_reference": {
+            "oneOf": [
+              {"type": "string", "minLength": 1},
+              {"type": "null"}
+            ]
+          },
+          "cues": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": ["keyframe_id", "picture", "start_seconds", "end_seconds", "transition", "action"],
+              "properties": {
+                "keyframe_id": {"type": "string", "minLength": 1},
+                "picture": {"type": "integer", "minimum": 1, "maximum": 3},
+                "start_seconds": {"type": "number", "minimum": 0},
+                "end_seconds": {"type": "number", "exclusiveMinimum": 0},
+                "transition": {"enum": ["start", "hard_cut", "foreground_wipe_cut"]},
+                "action": {"type": "string", "minLength": 1}
+              },
+              "additionalProperties": false
+            }
+          },
+          "timed_shots": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["source_shot_id", "picture", "start_seconds", "end_seconds", "transition", "action"],
+              "properties": {
+                "source_shot_id": {"type": "string", "pattern": "^SH[0-9]{3}$"},
+                "picture": {"type": "integer", "minimum": 1, "maximum": 3},
+                "start_seconds": {"type": "number", "minimum": 0},
+                "end_seconds": {"type": "number", "exclusiveMinimum": 0},
+                "transition": {"enum": ["start", "hard_cut", "foreground_wipe_cut"]},
+                "action": {"type": "string", "minLength": 1}
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

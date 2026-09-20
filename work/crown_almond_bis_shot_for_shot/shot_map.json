@@ -1,0 +1,240 @@
+{
+  "schema": "shot-map/v1",
+  "visual_mode": "shot_for_shot",
+  "reference_video": "codex_clone_refs/crown_almond_bis/ref_video.mp4",
+  "source_duration_seconds": 19.033,
+  "cut_times_seconds": [
+    0.1,
+    0.967,
+    2.233,
+    3.033,
+    3.867,
+    5.8,
+    6.7,
+    7.4,
+    8.3,
+    9.333,
+    10.433,
+    11.2,
+    11.867,
+    12.667,
+    13.467,
+    14.2,
+    14.9,
+    15.567,
+    16.7,
+    17.467
+  ],
+  "shots": [
+    {
+      "id": "SH001",
+      "source_start_seconds": 0.0,
+      "source_end_seconds": 0.1,
+      "source_edit_duration_seconds": 0.1,
+      "analysis_frame_time_seconds": 0.05,
+      "source_dialogue": "本来",
+      "cut_in": "start",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH002",
+      "source_start_seconds": 0.1,
+      "source_end_seconds": 0.967,
+      "source_edit_duration_seconds": 0.867,
+      "analysis_frame_time_seconds": 0.533,
+      "source_dialogue": "来是给儿子买的这个",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH003",
+      "source_start_seconds": 0.967,
+      "source_end_seconds": 2.233,
+      "source_edit_duration_seconds": 1.266,
+      "analysis_frame_time_seconds": 1.6,
+      "source_dialogue": "这个蔬菜小饼干,结果收",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH004",
+      "source_start_seconds": 2.233,
+      "source_end_seconds": 3.033,
+      "source_edit_duration_seconds": 0.8,
+      "analysis_frame_time_seconds": 2.633,
+      "source_dialogue": "收到货我们全家",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH005",
+      "source_start_seconds": 3.033,
+      "source_end_seconds": 3.867,
+      "source_edit_duration_seconds": 0.834,
+      "analysis_frame_time_seconds": 3.45,
+      "source_dialogue": "家都抢着吃。各",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH006",
+      "source_start_seconds": 3.867,
+      "source_end_seconds": 5.8,
+      "source_edit_duration_seconds": 1.933,
+      "analysis_frame_time_seconds": 4.833,
+      "source_dialogue": "各位数到手,满满一大箱12包。",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH007",
+      "source_start_seconds": 5.8,
+      "source_end_seconds": 6.7,
+      "source_edit_duration_seconds": 0.9,
+      "analysis_frame_time_seconds": 6.25,
+      "source_dialogue": "包。一打开就",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH008",
+      "source_start_seconds": 6.7,
+      "source_end_seconds": 7.4,
+      "source_edit_duration_seconds": 0.7,
+      "analysis_frame_time_seconds": 7.05,
+      "source_dialogue": "就闻到了浓浓",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH009",
+      "source_start_seconds": 7.4,
+      "source_end_seconds": 8.3,
+      "source_edit_duration_seconds": 0.9,
+      "analysis_frame_time_seconds": 7.85,
+      "source_dialogue": "浓的奶香和蔬菜",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH010",
+      "source_start_seconds": 8.3,
+      "source_end_seconds": 9.333,
+      "source_edit_duration_seconds": 1.033,
+      "analysis_frame_time_seconds": 8.817,
+      "source_dialogue": "菜的清香。它是由10",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH011",
+      "source_start_seconds": 9.333,
+      "source_end_seconds": 10.433,
+      "source_edit_duration_seconds": 1.1,
+      "analysis_frame_time_seconds": 9.883,
+      "source_dialogue": "10种蔬菜精心搭",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH012",
+      "source_start_seconds": 10.433,
+      "source_end_seconds": 11.2,
+      "source_edit_duration_seconds": 0.767,
+      "analysis_frame_time_seconds": 10.816,
+      "source_dialogue": "搭配而成,圆",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH013",
+      "source_start_seconds": 11.2,
+      "source_end_seconds": 11.867,
+      "source_edit_duration_seconds": 0.667,
+      "analysis_frame_time_seconds": 11.534,
+      "source_dialogue": "圆圆的小饼干上",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH014",
+      "source_start_seconds": 11.867,
+      "source_end_seconds": 12.667,
+      "source_edit_duration_seconds": 0.8,
+      "analysis_frame_time_seconds": 12.267,
+      "source_dialogue": "上裹满了蔬菜",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH015",
+      "source_start_seconds": 12.667,
+      "source_end_seconds": 13.467,
+      "source_edit_duration_seconds": 0.8,
+      "analysis_frame_time_seconds": 13.067,
+      "source_dialogue": "菜粒,吃起来咸",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH016",
+      "source_start_seconds": 13.467,
+      "source_end_seconds": 14.2,
+      "source_edit_duration_seconds": 0.733,
+      "analysis_frame_time_seconds": 13.834,
+      "source_dialogue": "咸香酥脆的。",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH017",
+      "source_start_seconds": 14.2,
+      "source_end_seconds": 14.9,
+      "source_edit_duration_seconds": 0.7,
+      "analysis_frame_time_seconds": 14.55,
+      "source_dialogue": "饿的时候来一",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH018",
+      "source_start_seconds": 14.9,
+      "source_end_seconds": 15.567,
+      "source_edit_duration_seconds": 0.667,
+      "analysis_frame_time_seconds": 15.234,
+      "source_dialogue": "一包真的太过",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH019",
+      "source_start_seconds": 15.567,
+      "source_end_seconds": 16.7,
+      "source_edit_duration_seconds": 1.133,
+      "analysis_frame_time_seconds": 16.134,
+      "source_dialogue": "过瘾了,拿来泡牛",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH020",
+      "source_start_seconds": 16.7,
+      "source_end_seconds": 17.467,
+      "source_edit_duration_seconds": 0.767,
+      "analysis_frame_time_seconds": 17.084,
+      "source_dialogue": "牛奶吃也很不错。",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH021",
+      "source_start_seconds": 17.467,
+      "source_end_seconds": 19.033,
+      "source_edit_duration_seconds": 1.566,
+      "analysis_frame_time_seconds": 18.25,
+      "source_dialogue": "错。",
+      "cut_in": "hard_cut",
+      "cut_out": "end"
+    }
+  ]
+}

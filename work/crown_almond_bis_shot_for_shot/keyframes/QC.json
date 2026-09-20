@@ -1,0 +1,125 @@
+{
+  "schema": "keyframe-qc/v1",
+  "job": "crown_almond_bis_shot_for_shot",
+  "pipeline_job_id": "crown_almond_bis_sfs_en",
+  "variant_id": "v001",
+  "source_analysis": "references/crown_almond_bis/ANALYSIS.md",
+  "result": "pass",
+  "pending_segments": [],
+  "segments": {
+    "1a": {
+      "file": "seg1a.png",
+      "width": 940,
+      "height": 1672,
+      "sha256": "cfe728df59a2ec92af36e66fc3194f5c9b82414b536e8db5995937afdb47393b",
+      "attempt": 2,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "one clearly torn-open white Crown packet sits above a plate of separate rectangular biscuits",
+        "exactly one anatomically plausible reaching hand and forearm appear with no face",
+        "the biscuit shape, wrapper family and visible branding follow the supplied product reference",
+        "no source-video frame, source product, green package, round biscuit, caption or watermark appears"
+      ],
+      "note": "Attempt 1 was rejected because the packet did not read as clearly opened and the hand had already lifted a biscuit; attempt 2 was regenerated from the original product photo."
+    },
+    "1b": {
+      "file": "seg1b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "2a530f88b8d7b6a26c9d770e73f49480e1a778d61a4b558bb5b0382a9e83f309",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "direct overhead box-opening composition with white packets visible inside",
+        "exactly two anatomically plausible hands hold opposite flaps and no face appears",
+        "cream-white box, dark teal edge, Crown branding and packet family remain recognisable",
+        "no shipping carton, source-video frame, caption, watermark or invented quantity appears"
+      ]
+    },
+    "2a": {
+      "file": "seg2a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "c6004d43bc211d98671b45c9c7c8cfab5db6cd4714fef9cfb841c6263f1564f8",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "one sealed white Crown packet is centred above one empty cream plate",
+        "exactly two anatomically plausible hands hold the packet corners and no face appears",
+        "matching packets and the retail box repeat the target product family in the background",
+        "no source-video frame, green package, round biscuit, caption or watermark appears"
+      ]
+    },
+    "2b": {
+      "file": "seg2b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "56089d89fa067910de4732dc41f5e53b676ae29d872a6073d6096849b3ffe545",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "the complete Crown box front and one whole rectangular biscuit are both clearly visible",
+        "exactly two anatomically plausible hands appear without covering the main package artwork",
+        "box proportions, dark teal edge, lime corner label and biscuit shape follow the product reference",
+        "no source-video frame, unrelated brand, caption, watermark or round biscuit appears"
+      ]
+    },
+    "3a": {
+      "file": "seg3a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "67ae69c35e68efe05309680d38018e24aa2fe2a4aca5d21c04cddb6df59e6b05",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "two separate three-biscuit stacks show distinct thin rectangular edges in macro view",
+        "exactly two anatomically plausible hands hold one stack each and no face appears",
+        "all biscuits remain separate, golden, rectangular and consistent with the product reference",
+        "no fused biscuit, source-video frame, round biscuit, caption or watermark appears"
+      ]
+    },
+    "3b": {
+      "file": "seg3b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "ca039e2325cf999a072a7144e8c4d3e9471b9932a0816019501fd4cbeeb080e9",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "one complete intact rectangular biscuit is held horizontally before the break",
+        "exactly two anatomically plausible hands place their thumbs near the centre and no face appears",
+        "the full biscuit outline, golden colour and baked surface remain recognisable",
+        "no crack, deformation, source-video frame, caption or watermark appears"
+      ]
+    },
+    "4a": {
+      "file": "seg4a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "462d6289c03876e8287b1ac5617f3847ebc70b5e2b8463b80d83ae705ceb3a56",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "one palm holds exactly four separate rectangular biscuits above the sharing plate",
+        "a second anatomically plausible hand reaches toward the top biscuit without touching it",
+        "the box, packets and biscuit geometry follow the supplied product reference",
+        "no extra hand, source-video frame, round biscuit, caption or watermark appears"
+      ]
+    },
+    "4b": {
+      "file": "seg4b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "b7941d8c7c347b9538a56a8bad22c9980d7fed7112c49e862764a97c2b2e2015",
+      "attempt": 1,
+      "checks": [
+        "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
+        "exactly one intact rectangular biscuit rests on one metal spoon above one bowl of plain milk",
+        "only one natural hand controls the spoon at the lower crop and no face appears",
+        "the background box and packet remain recognisable as the target product family",
+        "no biscuit deformation, second bowl, source-video frame, caption or watermark appears"
+      ]
+    }
+  },
+  "reviewed_by": "codex"
+}

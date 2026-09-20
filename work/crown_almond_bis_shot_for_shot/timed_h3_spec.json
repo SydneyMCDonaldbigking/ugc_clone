@@ -1,0 +1,195 @@
+{
+  "schema": "timed-h3-spec/v1",
+  "job": "crown_almond_bis_shot_for_shot",
+  "pipeline_job_id": "crown_almond_bis_sfs_en",
+  "shot_map": "work/crown_almond_bis_shot_for_shot/shot_map.json",
+  "output_dir": "work/crown_almond_bis_shot_for_shot/keyframes",
+  "prompt_template": "templates/keyframe_prompt.hands-only.en.txt",
+  "clips": [
+    {
+      "segment": 1,
+      "render_duration_seconds": 6,
+      "shot_type": "abundance_hook_to_box_open",
+      "subject": "Hands rapidly present Crown Almond Biscuits through plate, handful and retail-box views on one bright home tabletop.",
+      "action": "Build the opening as six brisk product shots: a flash of abundance, an open packet over a plate, a hand gathering biscuits, two changing handful views, then a direct overhead box-opening reveal.",
+      "performance": "Fast, slightly imperfect first-person snack-review gestures with believable grip pressure and no visible face.",
+      "intention": "Match the source's immediate abundance hook and its sharp switch into package proof while making the target product recognisable within the first second.",
+      "preserve": ["six source microshots", "five exact hard cuts", "hands-only energy", "tight product scale"],
+      "exclude": ["visible face", "source product", "round vegetable biscuits", "source captions", "watermark"],
+      "reference_frames": [
+        {
+          "keyframe_id": "1a",
+          "role": "plate-and-handful abundance anchor",
+          "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+          "first_frame": "First-person vertical snack-review frame on a bright tabletop: a shallow cream plate crowded with separate golden rectangular Crown almond biscuits fills the lower frame, one opened white Crown packet sits above it, and one natural hand reaches toward the biscuits.",
+          "camera": "extreme product close-up | first-person high angle about 45 degrees | handheld micro-sway | plate, packet and reaching hand fill about eighty-five percent of frame",
+          "performance": "One natural hand enters with active fingers and casual asymmetry, ready for quick unscripted gathering and presentation gestures.",
+          "checks": [
+            "The plate contains separate golden rectangular target biscuits.",
+            "One opened white Crown packet is identifiable and its orientation follows the supplied image.",
+            "One anatomically plausible hand appears; no face, source product, caption or watermark appears."
+          ]
+        },
+        {
+          "keyframe_id": "1b",
+          "role": "overhead retail-box opening anchor",
+          "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+          "first_frame": "Directly overhead hands-only view of one complete Crown Almond Biscuits retail box centred on the same bright tabletop, with both hands resting naturally on the top flaps and white individual packets visible as the box begins to open.",
+          "camera": "box close-up | first-person directly overhead about 90 degrees | locked smartphone with slight hand vibration | retail box centred and filling about seventy percent of frame",
+          "performance": "Both hands begin a brisk practical opening movement with slightly uneven natural finger positions.",
+          "checks": [
+            "One target retail box is centred and opened by exactly two valid hands.",
+            "White target packets are visible without presenting a fixed quantity.",
+            "No face, source carton, captions, watermark or invented package copy appears."
+          ]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH001", "picture_keyframe_id": "1a", "shot_type": "two-plate product flash", "direction": "show a near-instant close flash of two overlapping biscuit plates and a white packet"},
+        {"source_shot_id": "SH002", "picture_keyframe_id": "1a", "shot_type": "open packet above plate", "direction": "hold one opened white packet above the full plate and tilt it slightly toward the biscuits"},
+        {"source_shot_id": "SH003", "picture_keyframe_id": "1a", "shot_type": "gather from plate", "direction": "one hand gathers several separate rectangular biscuits from the plate and lifts them"},
+        {"source_shot_id": "SH004", "picture_keyframe_id": "1a", "shot_type": "two-hand biscuit fan", "direction": "jump to two hands presenting four biscuits in a loose fan close to the lens"},
+        {"source_shot_id": "SH005", "picture_keyframe_id": "1a", "shot_type": "single-palm handful", "direction": "jump to one palm holding an overlapping handful and make one quick angle change"},
+        {"source_shot_id": "SH006", "picture_keyframe_id": "1b", "shot_type": "overhead box opening", "direction": "hard cut overhead as two hands open the retail box and reveal white packets"}
+      ]
+    },
+    {
+      "segment": 2,
+      "render_duration_seconds": 5,
+      "shot_type": "packet_open_to_package_identity",
+      "subject": "White Crown packets, rectangular biscuits and the complete retail box cycle through five rapid hands-only proof shots.",
+      "action": "Move through packet spread, tear-open, packet-to-plate, biscuit handful and box-front evidence views with the exact source cut density.",
+      "performance": "Brisk practical hands make quick resets between hard cuts; every pose looks candid rather than staged.",
+      "intention": "Preserve the source progression from package opening to a clear brand-and-product identity check without unsupported quantity or ingredient claims.",
+      "preserve": ["five source microshots", "four exact hard cuts", "packet-to-biscuit-to-box progression"],
+      "exclude": ["visible face", "source brand", "green packets", "round biscuits", "captions", "watermark"],
+      "reference_frames": [
+        {
+          "keyframe_id": "2a",
+          "role": "packet opening and plate anchor",
+          "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+          "first_frame": "First-person high-angle close-up on the same bright table: both hands hold one white Crown individual packet at its sealed top seam above a shallow plate, with several matching packets scattered naturally behind.",
+          "camera": "packaging close-up | first-person high angle about 45 degrees | handheld micro-follow | sealed packet centred above the plate with repeated packets behind",
+          "performance": "Two hands use a believable foil grip with small wrinkles, natural finger pressure and a quick ready-to-tear posture.",
+          "checks": [
+            "One white target packet is held above one plate by two valid hands.",
+            "Visible background packets remain in the same Crown wrapper family.",
+            "No face, invented quantity, green source bag, caption or watermark appears."
+          ]
+        },
+        {
+          "keyframe_id": "2b",
+          "role": "box-front and biscuit identity anchor",
+          "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+          "first_frame": "One hand holds the complete Crown Almond Biscuits retail box square and close to the camera while the other hand presents one whole golden rectangular biscuit beside the visible front artwork on the same bright tabletop.",
+          "camera": "extreme packaging close-up | first-person slight high angle about 15 degrees | nearly locked handheld | box front and one biscuit occupy about eighty percent of frame",
+          "performance": "The hands hold a calm factual comparison pose with relaxed fingers and the package front unobstructed.",
+          "checks": [
+            "The complete target box front and one rectangular biscuit are both recognisable.",
+            "Hands do not cover the main package artwork.",
+            "No invented English copy, source package, caption, watermark or face appears."
+          ]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH007", "picture_keyframe_id": "2a", "shot_type": "packet spread reveal", "direction": "lift one packet from a loose spread of matching packets toward the lens"},
+        {"source_shot_id": "SH008", "picture_keyframe_id": "2a", "shot_type": "tear-open macro", "direction": "hard cut closer as both hands tear one packet seam and reveal one whole biscuit"},
+        {"source_shot_id": "SH009", "picture_keyframe_id": "2a", "shot_type": "packet to plate", "direction": "hard cut wider and tip the opened packet so one biscuit settles onto the plate"},
+        {"source_shot_id": "SH010", "picture_keyframe_id": "2b", "shot_type": "biscuit handful", "direction": "jump to one palm holding a generous overlapping stack of rectangular biscuits near the lens"},
+        {"source_shot_id": "SH011", "picture_keyframe_id": "2b", "shot_type": "box-front proof", "direction": "hard cut to the complete box front while the other hand holds one matching biscuit beside it"}
+      ]
+    },
+    {
+      "segment": 3,
+      "render_duration_seconds": 6,
+      "shot_type": "biscuit_macro_to_clean_break",
+      "subject": "Rectangular Crown almond biscuits fill a sequence of edge, surface, plate and break-open macro views.",
+      "action": "Run seven tight tactile shots from stacked biscuit edges through surface and plate views into one clean centre break and a final two-halves macro.",
+      "performance": "Hands remain close to the lens with believable pressure, fast reframing and a relaxed release after the break.",
+      "intention": "Keep the source's dense visual proof rhythm while selling only visible shape, serving and break-open actions.",
+      "preserve": ["seven source microshots", "six exact hard cuts", "macro scale changes", "one clean break"],
+      "exclude": ["visible face", "source packaging", "round biscuits", "ingredient claims", "captions", "watermark"],
+      "reference_frames": [
+        {
+          "keyframe_id": "3a",
+          "role": "stacked biscuit macro anchor",
+          "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+          "first_frame": "Two hands hold two short stacks of golden rectangular Crown almond biscuits side by side near the lens, exposing the thin edges and baked surfaces, with a shallow plate of matching biscuits below.",
+          "camera": "macro close-up | first-person high angle about 25 degrees | tiny focus settle | two biscuit stacks fill the central eighty percent",
+          "performance": "Careful fingertips maintain natural pressure on two stable stacks and can quickly reset into surface and plate views.",
+          "checks": [
+            "Two distinct stacks contain only rectangular target biscuits.",
+            "Exactly two plausible hands hold the stacks with separate fingers.",
+            "No face, round source biscuits, captions or watermark appears."
+          ]
+        },
+        {
+          "keyframe_id": "3b",
+          "role": "intact biscuit break anchor",
+          "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+          "first_frame": "Two hands hold one complete intact rectangular Crown almond biscuit horizontally close to the lens, thumbs meeting near the centre and fingers supporting both ends, with the matching plate softly blurred below.",
+          "camera": "extreme macro | first-person near eye level about 15 degrees above | handheld focus breathing | intact biscuit and fingertips fill the centre",
+          "performance": "Thumbs show believable tension immediately before one decisive snap while the other fingers remain asymmetric and relaxed.",
+          "checks": [
+            "Exactly one intact rectangular target biscuit is held by exactly two valid hands.",
+            "The biscuit is still whole in the keyframe and both ends remain visible.",
+            "No face, round biscuit, source package, caption or watermark appears."
+          ]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH012", "picture_keyframe_id": "3a", "shot_type": "two edge stacks", "direction": "hold two short biscuit stacks side by side and align their thin edges"},
+        {"source_shot_id": "SH013", "picture_keyframe_id": "3a", "shot_type": "single palm profile", "direction": "jump to one palm supporting an overlapping row in side profile"},
+        {"source_shot_id": "SH014", "picture_keyframe_id": "3a", "shot_type": "surface fan macro", "direction": "hard cut to fingertips fanning three biscuit fronts close to the lens"},
+        {"source_shot_id": "SH015", "picture_keyframe_id": "3a", "shot_type": "full plate overhead", "direction": "jump directly overhead to a plate filled edge to edge with separate rectangular biscuits"},
+        {"source_shot_id": "SH016", "picture_keyframe_id": "3a", "shot_type": "angled plate texture pass", "direction": "hard cut oblique as one hand lightly shifts two top biscuits across the pile"},
+        {"source_shot_id": "SH017", "picture_keyframe_id": "3b", "shot_type": "break setup and snap", "direction": "hard cut to one intact biscuit between two hands and complete one decisive centre break"},
+        {"source_shot_id": "SH018", "picture_keyframe_id": "3b", "shot_type": "two-halves interior macro", "direction": "jump to the two clean halves separated a few centimetres with broken edges toward the light"}
+      ]
+    },
+    {
+      "segment": 4,
+      "render_duration_seconds": 5,
+      "shot_type": "share_to_milk_finish",
+      "subject": "A friendly sharing gesture cuts to one biscuit meeting milk and a spoon lifting the milk-paired result.",
+      "action": "Finish with three clear actions in source order: pass one biscuit from a handful, lower one whole biscuit into a single milk bowl, then lift the result on one spoon.",
+      "performance": "Friendly hands-only close with quick decisive actions and a steady final spoon lift.",
+      "intention": "Preserve the source's practical milk-pairing ending and leave a short clean hold for the English call to action.",
+      "preserve": ["three source microshots", "two exact hard cuts", "milk pairing", "target package repetition"],
+      "exclude": ["visible face", "source product", "round biscuits", "multiple milk bowls", "caption", "watermark"],
+      "reference_frames": [
+        {
+          "keyframe_id": "4a",
+          "role": "sharing handful anchor",
+          "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+          "first_frame": "One palm holds several golden rectangular Crown almond biscuits above the full sharing plate while a second open hand enters from the side ready to take one, with white target packets behind.",
+          "camera": "product close-up | first-person high angle about 45 degrees | handheld follows the taking hand | biscuit palm centred over the plate",
+          "performance": "Two natural hands form different friendly poses, one steady and one reaching for a single biscuit.",
+          "checks": [
+            "Two plausible hands perform one clear sharing setup.",
+            "All biscuits remain rectangular target products.",
+            "No face, source packaging, round biscuits, caption or watermark appears."
+          ]
+        },
+        {
+          "keyframe_id": "4b",
+          "role": "milk bowl and spoon anchor",
+          "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
+          "first_frame": "High-angle close-up of one shallow white bowl of plain milk on the same tabletop: one metal spoon rests in the bowl and supports one whole rectangular Crown almond biscuit near the milk surface, with the target box and packet visible behind.",
+          "camera": "extreme food close-up | first-person high angle about 50 degrees | handheld prepared to follow the spoon | spoon and rectangular biscuit centred over one milk bowl",
+          "performance": "One steady off-frame hand controls the spoon with a careful natural lift while the bowl remains still.",
+          "checks": [
+            "Exactly one rectangular target biscuit rests on one spoon in one milk bowl.",
+            "The biscuit, spoon and milk remain separate and physically plausible.",
+            "No face, source product, second bowl, caption or watermark appears."
+          ]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH019", "picture_keyframe_id": "4a", "shot_type": "sharing handful", "direction": "the second hand takes the top biscuit from a steady palm above the plate"},
+        {"source_shot_id": "SH020", "picture_keyframe_id": "4b", "shot_type": "milk dip", "direction": "hard cut to one whole biscuit lowered edge-first into the milk without splashing"},
+        {"source_shot_id": "SH021", "picture_keyframe_id": "4b", "shot_type": "spoon result lift", "direction": "hard cut to one spoon lifting the milk-paired rectangular biscuit slowly toward the lens"}
+      ]
+    }
+  ]
+}

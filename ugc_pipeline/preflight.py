@@ -6,6 +6,8 @@ from pathlib import Path
 from typing import Any
 
 from .integrity import build_integrity_snapshot, compare_sealed_snapshot
+from .h3_plan import load_h3_clip_plan
+from .h3_segments import load_h3_segments
 from .io import load_json, repo_relative, resolve_repo_path, write_json_atomic
 from .state import append_event, has_reached, initial_state, invalidate_to, transition, utc_now, write_state
 from .validation import (
@@ -113,36 +115,93 @@ def validate_render_preflight(
 
     request_segments = request.get("segments") if isinstance(request.get("segments"), dict) else {}
     keyframe_count = len(request_segments)
-    max_per_batch = int(job.get("max_segments_per_render", 4))
-    expected_batches = math.ceil(keyframe_count / max_per_batch) if keyframe_count else 0
-    durations = [
-        segment.get("duration_seconds") for segment in request_segments.values()
-        if isinstance(segment, dict)
-    ]
-    if len(durations) != keyframe_count or not all(isinstance(value, (int, float)) for value in durations):
-        result.error("preflight.duration", "request.segments", "Every keyframe request needs a numeric duration_seconds.")
+    shot_for_shot = job.get("visual_mode", "structure_remix") == "shot_for_shot"
+    h3_clip_plan = None
+    try:
+        h3_clip_plan = load_h3_clip_plan(repo_root, job, request)
+    except (FileNotFoundError, KeyError, TypeError, ValueError) as exc:
+        result.error("preflight.h3_clip_plan", "job.h3_clip_plan", str(exc))
+    if shot_for_shot and h3_clip_plan is None:
+        result.error(
+            "preflight.h3_clip_plan",
+            "job.h3_clip_plan",
+            "shot_for_shot rendering requires a validated h3_clip_plan.",
+        )
+
+    h3_segments = None
+    if h3_clip_plan is not None and (
+        shot_for_shot or isinstance(job.get("h3_segments"), str)
+    ):
+        try:
+            h3_segments = load_h3_segments(
+                repo_root,
+                job,
+                bundle["shot_plan"],
+                request,
+                request_path,
+                ready,
+                h3_clip_plan,
+            )
+        except (FileNotFoundError, KeyError, TypeError, ValueError) as exc:
+            result.error("preflight.h3_segments", "job.h3_segments", str(exc))
+        if shot_for_shot and h3_segments is None:
+            result.error(
+                "preflight.h3_segments",
+                "job.h3_segments",
+                "shot_for_shot rendering requires deterministic, validated h3_segments.",
+            )
+    if h3_clip_plan is not None:
+        render_segments = [
+            clip for clip in h3_clip_plan.get("clips", [])
+            if isinstance(clip, dict)
+        ]
+        h3_clip_count = len(render_segments)
+    elif shot_for_shot:
+        render_segments = [
+            segment for segment in bundle["shot_plan"].get("segments", [])
+            if isinstance(segment, dict)
+        ]
+        h3_clip_count = len(render_segments)
     else:
-        for segment_id, segment in request_segments.items():
+        render_segments = [
+            segment for segment in request_segments.values()
+            if isinstance(segment, dict)
+        ]
+        h3_clip_count = keyframe_count
+    max_per_batch = int(job.get("max_segments_per_render", 4))
+    expected_batches = math.ceil(h3_clip_count / max_per_batch) if h3_clip_count else 0
+    durations = [segment.get("duration_seconds") for segment in render_segments]
+    duration_path = (
+        "h3_clip_plan.clips"
+        if h3_clip_plan is not None
+        else "shot_plan.segments" if shot_for_shot else "request.segments"
+    )
+    if len(durations) != h3_clip_count or not all(isinstance(value, (int, float)) for value in durations):
+        result.error("preflight.duration", duration_path, "Every H3 clip needs a numeric duration_seconds.")
+    else:
+        for segment_id, segment in enumerate(render_segments, start=1):
             duration = segment.get("duration_seconds")
-            if not 2 <= float(duration) <= 10:
+            max_duration = 15
+            if not 2 <= float(duration) <= max_duration:
                 result.error(
                     "preflight.h3_duration",
-                    f"request.segments.{segment_id}.duration_seconds",
-                    "Each independently rendered H3 clip must be 2-10 seconds.",
+                    f"{duration_path}[{segment_id - 1}].duration_seconds",
+                    f"Each independently rendered H3 clip must be 2-{max_duration} seconds.",
                 )
 
-    source_durations = [
-        segment.get("source_edit_duration_seconds") for segment in request_segments.values()
-        if isinstance(segment, dict)
-    ]
-    exact_edit_duration = None
-    if source_durations and all(isinstance(value, (int, float)) for value in source_durations):
-        exact_edit_duration = round(sum(float(value) for value in source_durations), 3)
+    if h3_clip_plan is not None:
+        exact_edit_duration = h3_clip_plan.get("total_edit_duration_seconds")
+    elif shot_for_shot:
+        exact_edit_duration = bundle.get("shot_map", {}).get("source_duration_seconds")
+    else:
+        exact_edit_duration = round(sum(float(value) for value in durations), 3) if durations else None
 
     render_plan = job.get("render_plan")
     if isinstance(render_plan, dict):
         if render_plan.get("keyframe_count") != keyframe_count:
             result.error("preflight.render_count", "job.render_plan.keyframe_count", "Render plan keyframe_count is stale.")
+        if render_plan.get("h3_clip_count", h3_clip_count) != h3_clip_count:
+            result.error("preflight.render_count", "job.render_plan.h3_clip_count", "Render plan h3_clip_count is stale.")
         if render_plan.get("expected_h3_batches") != expected_batches:
             result.error("preflight.batch_count", "job.render_plan.expected_h3_batches", "Render plan batch count is stale.")
         planned_duration = render_plan.get("edit_to_source_duration_seconds")
@@ -170,6 +229,8 @@ def validate_render_preflight(
         "variant_id": request.get("variant_id"),
         "audio_mode": job.get("audio_mode", "dialogue"),
         "keyframe_count": keyframe_count,
+        "h3_clip_count": h3_clip_count,
+        "h3_segments_validated": h3_segments is not None,
         "max_segments_per_h3_batch": max_per_batch,
         "expected_h3_batches": expected_batches,
         "exact_edit_duration_seconds": exact_edit_duration,

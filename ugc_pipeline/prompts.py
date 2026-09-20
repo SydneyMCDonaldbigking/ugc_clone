@@ -31,6 +31,9 @@ def _find_shot(shot_plan: dict[str, Any], keyframe_id: str) -> tuple[dict[str, A
         for subshot in segment.get("subshots", []):
             if str(subshot.get("keyframe_id")) == keyframe_id:
                 return segment, subshot
+        for frame in segment.get("reference_frames", []):
+            if str(frame.get("keyframe_id")) == keyframe_id:
+                return segment, frame
         return segment, None
     raise KeyError(f"No shot-plan segment covers keyframe {keyframe_id!r}.")
 

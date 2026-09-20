@@ -1,0 +1,205 @@
+{
+  "schema": "keyframe-request/v1",
+  "job": "crown_almond_bis_shot_for_shot",
+  "pipeline_job_id": "crown_almond_bis_sfs_en",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "output_aspect_ratio": "9:16",
+  "prompt_template": "templates/keyframe_prompt.hands-only.en.txt",
+  "visual_mode": "shot_for_shot",
+  "shot_map": "work/crown_almond_bis_shot_for_shot/shot_map.json",
+  "segments": {
+    "1a": {
+      "script_segment": 1,
+      "role": "plate-and-handful abundance anchor",
+      "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg1a_prompt.txt",
+      "references": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "reference_roles": {
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      },
+      "output": "seg1a.png",
+      "checks": [
+        "The plate contains separate golden rectangular target biscuits.",
+        "One opened white Crown packet is identifiable and its orientation follows the supplied image.",
+        "One anatomically plausible hand appears; no face, source product, caption or watermark appears."
+      ]
+    },
+    "1b": {
+      "script_segment": 1,
+      "role": "overhead retail-box opening anchor",
+      "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg1b_prompt.txt",
+      "references": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "reference_roles": {
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      },
+      "output": "seg1b.png",
+      "checks": [
+        "One target retail box is centred and opened by exactly two valid hands.",
+        "White target packets are visible without presenting a fixed quantity.",
+        "No face, source carton, captions, watermark or invented package copy appears."
+      ]
+    },
+    "2a": {
+      "script_segment": 2,
+      "role": "packet opening and plate anchor",
+      "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg2a_prompt.txt",
+      "references": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "reference_roles": {
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      },
+      "output": "seg2a.png",
+      "checks": [
+        "One white target packet is held above one plate by two valid hands.",
+        "Visible background packets remain in the same Crown wrapper family.",
+        "No face, invented quantity, green source bag, caption or watermark appears."
+      ]
+    },
+    "2b": {
+      "script_segment": 2,
+      "role": "box-front and biscuit identity anchor",
+      "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg2b_prompt.txt",
+      "references": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "reference_roles": {
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      },
+      "output": "seg2b.png",
+      "checks": [
+        "The complete target box front and one rectangular biscuit are both recognisable.",
+        "Hands do not cover the main package artwork.",
+        "No invented English copy, source package, caption, watermark or face appears."
+      ]
+    },
+    "3a": {
+      "script_segment": 3,
+      "role": "stacked biscuit macro anchor",
+      "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg3a_prompt.txt",
+      "references": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "reference_roles": {
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      },
+      "output": "seg3a.png",
+      "checks": [
+        "Two distinct stacks contain only rectangular target biscuits.",
+        "Exactly two plausible hands hold the stacks with separate fingers.",
+        "No face, round source biscuits, captions or watermark appears."
+      ]
+    },
+    "3b": {
+      "script_segment": 3,
+      "role": "intact biscuit break anchor",
+      "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg3b_prompt.txt",
+      "references": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "reference_roles": {
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      },
+      "output": "seg3b.png",
+      "checks": [
+        "Exactly one intact rectangular target biscuit is held by exactly two valid hands.",
+        "The biscuit is still whole in the keyframe and both ends remain visible.",
+        "No face, round biscuit, source package, caption or watermark appears."
+      ]
+    },
+    "4a": {
+      "script_segment": 4,
+      "role": "sharing handful anchor",
+      "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg4a_prompt.txt",
+      "references": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "reference_roles": {
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      },
+      "output": "seg4a.png",
+      "checks": [
+        "Two plausible hands perform one clear sharing setup.",
+        "All biscuits remain rectangular target products.",
+        "No face, source packaging, round biscuits, caption or watermark appears."
+      ]
+    },
+    "4b": {
+      "script_segment": 4,
+      "role": "milk bowl and spoon anchor",
+      "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg4b_prompt.txt",
+      "references": [
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg"
+      ],
+      "reference_roles": {
+        "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "product_identity"
+      },
+      "product_fidelity_mode": "reference_lock",
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      },
+      "output": "seg4b.png",
+      "checks": [
+        "Exactly one rectangular target biscuit rests on one spoon in one milk bowl.",
+        "The biscuit, spoon and milk remain separate and physically plausible.",
+        "No face, source product, second bowl, caption or watermark appears."
+      ]
+    }
+  }
+}

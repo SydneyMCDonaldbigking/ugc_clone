@@ -1,0 +1,27 @@
+subject_definitions:
+<Picture 1> is a generated target-product composition keyframe for the timed montage.
+<Picture 2> is a generated target-product composition keyframe for the timed montage.
+<Picture 3> is the original product identity authority for package, shape, colour and branding.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
+<Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
+<Picture 3>: attribute_transfer. Preserve the original product identity throughout every cut.
+
+detailed_description:
+Move through packet spread, tear-open, packet-to-plate, biscuit handful and box-front evidence views with the exact source cut density. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-0.9 seconds — start on <Picture 1>; scheduled microshot: packet spread reveal: lift one packet from a loose spread of matching packets toward the lens
+0.9-1.6 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: tear-open macro: hard cut closer as both hands tear one packet seam and reveal one whole biscuit
+1.6-2.5 seconds — hard cut to a new shot based on <Picture 1>; scheduled microshot: packet to plate: hard cut wider and tip the opened packet so one biscuit settles onto the plate
+2.5-3.533 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: biscuit handful: jump to one palm holding a generous overlapping stack of rectangular biscuits near the lens
+3.533-4.633 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: box-front proof: hard cut to the complete box front while the other hand holds one matching biscuit beside it
+4.633-5 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+Brisk practical hands make quick resets between hard cuts; every pose looks candid rather than staged. Preserve the source progression from package opening to a clear brand-and-product identity check without unsupported quantity or ingredient claims.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. Keep the original target product identity stable across every hard cut. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.
