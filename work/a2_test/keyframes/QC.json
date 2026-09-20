@@ -3,7 +3,7 @@
   "job": "a2_test",
   "pipeline_job_id": "a2_test_en",
   "variant_id": "v001",
-  "source_analysis": "work/a2_test/video_analysis/analysis.json",
+  "source_analysis": "references/theland_milk_unbox/ANALYSIS.md",
   "result": "pass",
   "pending_segments": [],
   "segments": {

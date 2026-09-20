@@ -108,13 +108,11 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 姿态、场景写进分镜的 `performance` 和 `first_frame`(例如"眉毛上扬、嘴张开说到一半、身体前倾靠近镜头";
 "明亮的开放式客厅、大理石桌面、背景绿植")。截图本身不能交给 ImageGen:会把原博主的脸和原片产品一起带进来。
 
-**当前任务(a2_test_en,2026-09-19 审查后)**:先做 6a 定妆照,再做 6b 参考帧,做完直接往下,全程不用停。状态见 `work/a2_test/keyframes/QC.json`。
+**当前交接状态(2026-09-20)**:
 
-1. **seg01 重出**:之前那版参考了原片帧(`video_analysis/anchor_s01.jpg`),已作废。只用 `presenter.jpg` + `target_A2_1.png` 和分镜文字
-2. **seg02、seg02b 重出**:同样的原因作废;它们用 seg01 当人物参考,所以要等新的 seg01 出好再做
-3. **seg03 保留**:当时只用了出镜人图和背标图,不受影响
-4. **seg04 继续**:包装还在被重画;如果还是做不到,就在 QC 里写明,交给 Claude 用 H3 `fully_preserved` 或慢推保底
-5. 提示词用 `python scripts/build_keyframe_prompts.py inputs/a2_test/job.en.json` 重新生成(已经更新过一次)
+- `a2_test_en`:定妆照、5 张参考帧、`QC.json` 和 `READY.json` 均已完成;不要重复出图。下一步由 Claude 执行第 7 步英文 H3 渲染
+- `a2_milk_clone_en`:`hands_only` 模式的 6 张参考帧、`QC.json` 和 `READY.json` 均已完成;不要补定妆照或人物脸。下一步同样是第 7 步
+- 只有用户或 Claude 明确退回某段、删除/作废对应 READY 信号时,Codex 才重新进入第 6 步
 
 出好的参考帧交给 H3 前要注意:
 
@@ -139,7 +137,7 @@ work/<job>/keyframes/
 ```json
 {
   "job": "a2_test",
-  "source_job_id": "a2-replica-004",
+  "source_job_id": null,
   "segments": {
     "3": {
       "keyframe": "seg03.png",
@@ -152,10 +150,10 @@ work/<job>/keyframes/
 }
 ```
 
-- `source_job_id`:在哪一轮成片的基础上重跑。**英文版 a2_test_en 是整条新片,填 `null`**,并列出全部参考帧
+- `source_job_id`:在哪一轮成片的基础上重跑。全新的英文片填 `null` 并列出全部参考帧;只有明确基于已有 H3 任务做局部重跑时才填任务 ID
   (中文版 `a2-replica-004` 的片段不能沿用到英文版)
 - `keyframe` 会作为该段的 `<Picture 1>`,`extra_refs` 按顺序排在后面(路径相对仓库根目录)
-- 只列有新参考帧的段,其余段沿用原片
+- `READY.json` 必须与同目录 `REQUEST.json` 的分镜集合完全一致。局部重跑可以沿用上一轮 H3 的其他已生成片段,但绝不能沿用参考原片画面
 - 画面需要调整时,可以在该段加 `"prompt_hint": "..."`,Claude 会据此改写该段的 H3 提示词
 
 ## 红线(任何模式都一样)

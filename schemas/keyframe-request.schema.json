@@ -8,7 +8,12 @@
     "schema": {"const": "keyframe-request/v1"},
     "job": {"type": "string", "minLength": 1},
     "variant_id": {"type": "string", "minLength": 1},
-    "source_job_id": {"type": "string", "minLength": 1},
+    "source_job_id": {
+      "oneOf": [
+        {"type": "string", "minLength": 1},
+        {"type": "null"}
+      ]
+    },
     "output_aspect_ratio": {"const": "9:16"},
     "prompt_template": {"type": "string", "minLength": 1},
     "segments": {
@@ -29,7 +34,7 @@
             "type": "object",
             "minProperties": 1,
             "additionalProperties": {
-              "enum": ["product_identity", "presenter_identity", "presenter_and_scene_identity", "scene_identity", "composition_only"]
+              "enum": ["product_identity", "presenter_identity", "presenter_and_scene_identity", "scene_identity"]
             }
           },
           "product_fidelity_mode": {"enum": ["reference_lock", "pixel_preserve"]},

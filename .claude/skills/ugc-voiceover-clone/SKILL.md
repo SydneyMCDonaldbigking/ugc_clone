@@ -42,15 +42,13 @@ description: 拿一条别人跑通的带货口播视频,拆出节拍表,换成�
 
 ```
 /opt/ugc_clone/
-  scripts/              prep.sh、transcribe.py(从本地 scripts/ 同步过去,记得去掉 \r)
-  asr_venv/             转写环境
-  jobs/<job>/inputs     参考视频、商品图
-  jobs/<job>/work       audio.wav、frames、cuts.json、words.json
-  jobs/<job>/assets     presenter.jpg
-  jobs/<job>/prompts    segments.json
+  jobs/<job>/inputs     已通过门禁的商品图和逐段参考帧
+  jobs/<job>/prompts    英文 H3 segments.json
+  jobs/<job>/output     H3 分段结果和合片
 ```
 
-本地:`inputs/<job>/product.json`、`work/<job>/{labels,beats,script,segments}.json`、`out/<job>/`。
+本地:`references/<ref_id>/`、`inputs/<job>/{job,product}.en.json`、`work/<job>/{beats,state}.json`、
+`work/<job>/variants/`、`work/<job>/keyframes/` 和 `out/<job>/`。
 
 ## S1 取素材 + S2 转写(本地)
 
@@ -61,23 +59,8 @@ python scripts/reference_archive.py init <video> <ref_id> --transcribe [--vad]
 D:/anaconda/envs/ugc_asr/python.exe scripts/transcribe.py <audio.wav> <words.json> [--vad]
 ```
 
-`transcribe.py` 是 faster-whisper large-v3 加逐词时间戳。服务器上的旧转写环境(下面这段)留作备用。
-
-**转写环境为什么长这样。** 本来要用 WhisperX,但装不上:3.7.4 以后锁死 torch 2.8,更早的版本依赖 pyannote 3,
-和 `h3director` 的 torchaudio 2.9 冲突。单独装 cu124 torch 要从阿里源下 908MB,只有 0.3MB/s。
-最后的做法是:
-
-```bash
-/home/node/anaconda3/envs/h3director/bin/python -m venv --system-site-packages /opt/ugc_clone/asr_venv
-/opt/ugc_clone/asr_venv/bin/python -m pip install faster-whisper yt-dlp -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
-
-这样复用 `h3director` 的 torch 和 nvidia 库,又不改动它。脚本自己预加载 cuBLAS/cuDNN。
-
-**两个环境变量缺一不可**(脚本里已设置):
-
-- `HF_ENDPOINT=https://hf-mirror.com`:huggingface.co 直连不通,镜像约 14MB/s
-- `HF_HUB_DISABLE_XET=1`:新版 huggingface_hub 默认走 Xet 直连 hf.co,会绕过镜像报 401
+`transcribe.py` 是 faster-whisper large-v3 加逐词时间戳。当前唯一受支持的执行环境是本地 conda `ugc_asr`;
+旧的服务器 ASR 环境和 WhisperX 安装尝试只属于历史排障记录,不再作为工作流步骤。
 
 另外 `initial_prompt` 要给一句简体中文,不然 large-v3 常出繁体。
 
@@ -153,7 +136,7 @@ references/<ref_id>/
 
 1. 建档,一条命令出全部事实、证据宫格和三份文档骨架:
    ```bash
-   python scripts/reference_archive.py init <video> <ref_id> --transcribe [--vad]   # 服务器上,带转写
+   D:/anaconda/envs/ugc_asr/python.exe scripts/reference_archive.py init <video> <ref_id> --transcribe [--vad]
    python scripts/reference_archive.py init <video> <ref_id> --transcript words.json # 已有转写时
    ```
    骨架里台词时间、证据路径、切点、低置信度的字都已填好;需要判断的地方是 `<!-- TODO -->`
@@ -216,33 +199,21 @@ umall_test 里原稿到我们商品的对照(同类商品可以直接参考):
 | 要选 0 蔗糖 0 代糖 0 乳糖的 | 他们的卖点 | 配料表里真有的:芒果果泥、西柚果肉 |
 | 就很接近于希腊酸奶 | 他们的对比宣称 | 就是杨枝甘露的味道 |
 
-## S6 分段和 H3 提示词
+## S6 参考帧 + S7 H3 提示词
 
 每段 5 秒一个连续动作,段内不切镜。**单任务不超过 20 秒 / 4 段**(25 秒会爆内存,见 HANDOFF)。
 
 **原片的插入镜头放不进一段里。** 要么单独占一段,要么舍弃。
 umall_test 把杯盖特写单独做成第 3 段(旁白是画外音,手指逐项点标签);0.8 秒的俯拍整箱并进了第 2 段的中景。
 
-**出镜人参考图。** 服务器上没有文生图模型,只有 H3 的 ref2va / fl2va。先用文生视频出 5 秒,再截一帧:
+**出镜人和分镜参考图。** 当前默认由 Codex 会话内置 ImageGen 在本地完成,不再用 H3 文生视频截帧做定妆照。
+`generated_fictional` 先出 3 张不带商品的候选定妆照并登记唯一的 `presenter_master.png`;
+`hands_only` 和 `none` 不生成定妆照。每个分镜都从已登记定妆照(如需要)和商品原图重新生成,
+验收后写 `QC.json`,最后一步才写 `READY.json`。
 
-```bash
-cc_submit.py --job-id <job>-presenter-001 --prompt-file presenter_prompt.txt \
-    --profile fl2va_8step --duration 5 --orientation portrait --direct-720p --seed <n>
-ffmpeg -ss 4.2 -i review_ready/<id>/<id>.mp4 -frames:v 1 -q:v 2 assets/presenter.jpg
-```
-
-提示词里让人物最后两秒正对镜头不动,桌面保持空着。约 4 分钟出 768x1344,截帧可以直接用。
-**4 段都绑这同一张图**,人物才能一致。这是自己要用的输入图,截出来后看一眼再用。
-
-**参考图编号。** 实际顺序是"顶层共享图 → 上一段尾帧 → 本段图",编号从 1 连续往下排(见 `src/workflow.py`)。
-开了 `first_frame_mode: previous_tail`,尾帧就变成 `<Picture 1>`,本段的图全部往后顺延。
-原片是硬切的地方不要接尾帧,编号也就不会乱。
-
-每段绑两张图,迁移范围分开写:
-
-- `<Picture 1>` 出镜人:`identity_preserved`。特写段只写 `attribute_transfer`,只迁移手和袖子
-- `<Picture 2>` 商品图:`attribute_transfer`。杯子材质、标签、奶皮质地、木勺迁移过去;
-  布景布和水果**不**迁移。标签特写段改成 `fully_preserved`,并写明字不许糊、不许改写
+**参考图编号。** 交接给 H3 时,每段 `<Picture 1>` 是该段已经验收的 keyframe;
+`READY.json` 的 `extra_refs` 按顺序成为后续图片,通常 `<Picture 2>` 是商品原图。每张图的迁移范围要分开写。
+原片截图、anchor、storyboard、cuts 和上一段生成的 keyframe 都不能作为新的生成参考。
 
 **提示词里写了什么,画面里就会出现什么**(a2_test 第一版有两处穿帮,都出在我自己的写法上):
 
@@ -266,8 +237,7 @@ ffmpeg -ss 4.2 -i review_ready/<id>/<id>.mp4 -frames:v 1 -q:v 2 assets/presenter
 - **密集小字的特写,ref2va 画不出来。** 背标特写同时绑了出镜人中景图和白底棚拍背标,四项全错:
   字糊成乱码、瓶型变了、构图没拍成特写、多出一只手。原因有两个:
   出镜人图会把构图拉回中景;ref2va 本质是"参考着重画",营养成分表这种小字必然糊。
-  流水线目前**不支持自定义首帧**(`src/workflow.py` 里 `first_frame` 写死为空,只有 `previous_tail`)。
-  不改代码的前提下有两条路:
+  当前用逐段 keyframe 固定首屏构图;密集标签仍有两条保底路:
   1. 这一段只绑商品图一张,设 `fully_preserved`,画面里只写"一只手握住把手、全程不动"。
      **a2_test 实测有效**(`a2-replica-004`,人工确认通过),保底方案没用上
   2. 保底:`scripts/packshot_clip.sh <图> <out.mp4>` 用原图做 5.2 秒慢推,1440x2560,字 100% 清楚,
@@ -288,7 +258,8 @@ ffmpeg -ss 4.2 -i review_ready/<id>/<id>.mp4 -frames:v 1 -q:v 2 assets/presenter
 - **不要让手指比数字**,数量交给台词和后期字幕
 - **台词里说到的东西不等于画面要出现的东西**:"six bottles" 是她说的话,不是让模型在画面上写 6
 
-台词只能用 `(S1) <d>[Chinese] …</d>`。旁白也一样,描述里写明"画外音"就行。
+新任务台词只能用 `(S1) <d>[English] …</d>`。旁白也一样,描述里写明"画外音"就行。
+`[Chinese]` 只存在于历史 `replica` 测试产物,不得复制到新成片。
 写好后本地用占位符(`__PRESENTER__`),提交前替换成服务器路径,另存为 `segments.server.json`。
 
 ```bash
@@ -318,7 +289,6 @@ umall_test 实测:4 段二采加超分,出 1440x2560、20.67 秒,耗时约 25 �
 - `cc_status.py` 等脚本必须在 `/opt/MINIMAXH3_2PASS_Autoworkflow` 目录下跑,否则会去找 `/root/config/…`
 - 本地脚本传上去后要 `sed -i 's/\r$//'`,不然换行符不对
 - 本地的 `scp` 是 Windows OpenSSH 版,`host:/path/{a,b}` 这种大括号不会展开,要把文件逐个列出来
-- 服务器上的中文字体只有 Noto Serif CJK 和 AR PL UMing,`media.py` 会自动找到(本地 Windows 用微软雅黑)
-- 转写和 H3 可以同时跑:H3 常驻约 16.5GB 显存,faster-whisper large-v3 再占约 4GB,24GB 放得下
-- 耗时参考(a2_test):公钥装好后 6 分钟内完成拉起服务、转写、宫格、出镜人、节拍表、写稿、提示词并提交正片
+- 历史中文字幕所需字体只与旧 `replica` 产物有关;新的目标口播、字幕和 CTA 全部使用英文
+- 耗时参考(a2_test 历史测试):公钥装好后约 32 分钟得到首条完整成片;不能把这个数字当成当前英文流程 SLA
 - 不要去改 `h3director` 环境

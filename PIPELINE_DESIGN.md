@@ -779,6 +779,8 @@ Batch acceptance test:
 
 ### Phase A — Contracts and English gates
 
+Status: implemented for the local planning bundle.
+
 - add JSON schemas;
 - add `job.json` and `state.json`;
 - update script validation for English words and CJK rejection;
@@ -787,12 +789,16 @@ Batch acceptance test:
 
 ### Phase B — Planning and resumability
 
+Status: implemented through `awaiting_keyframes`; render-stage orchestration is still external.
+
 - implement the state machine and event log;
 - generate English scripts and shot plans;
 - add hashes, cache checks, and retry bookkeeping;
 - write `REQUEST.json`.
 
 ### Phase C — Codex ImageGen handoff
+
+Status: local generation, QC and atomic READY handoff are implemented and completed for both `a2_test_en` and `a2_milk_clone_en`. Automatic Claude watcher pickup has not yet produced an English H3 output in this repository.
 
 - validate the existing Claude watcher contract;
 - run the first A2 segment through built-in ImageGen;
@@ -802,6 +808,8 @@ Batch acceptance test:
 
 ### Phase D — H3 execution and targeted recovery
 
+Status: proven only by the historical Chinese `replica` jobs; the English structure path is pending.
+
 - compile keyframes and product references into H3 prompts;
 - enforce English dialogue tags;
 - record render manifests;
@@ -809,6 +817,8 @@ Batch acceptance test:
 - assemble accepted segments.
 
 ### Phase E — QA and batching
+
+Status: historical technical QA exists, but English output ASR, unified review and batching remain pending.
 
 - add output ASR comparison and English captions;
 - unify technical and human review reports;
@@ -845,4 +855,4 @@ Use `a2_test` as the migration case because it already has:
 - successful single-segment rerun history;
 - an active Codex-to-Claude `READY.json` handoff convention.
 
-The first milestone ends at an English A2 dry-run in `awaiting_keyframes`. The first live milestone ends after Codex generates the requested reference frame, writes `READY.json`, and Claude returns one rerendered English segment for human review.
+The first local milestone is complete: both English jobs reached validated `READY.json` handoffs. The next live milestone is for Claude to consume one of those handoffs, return an English H3 segment, and pass transcript plus human visual review. The first batch milestone remains one accepted three-variant English structure run.

@@ -96,8 +96,8 @@ C:\Users\uryuu\Desktop\comfyui_workflow\.claude\skills\product-replication\SKILL
 (保持跟现有家规一致):
 
 1. **拆解阶段**
-   输入参考视频 → `yt-dlp` 下载 → WhisperX 词级对齐 → 输出节拍表
-   (每拍:时间窗、词数、功能标签、对应画面类型)
+   用户提供参考视频 → 本地 `reference_archive.py` 建档并调用 faster-whisper 词级转写 → 完成 `ANALYSIS.md` / `TIMELINE.md` → 输出节拍表
+   (每拍:时间窗、词数、功能标签、对应镜头与话画同步)
 
 2. **节拍表 schema**
    定义清楚每一拍要记录什么字段。这是这个项目最核心的可复用资产,值得单独定版本。
@@ -218,15 +218,15 @@ cd /opt/MINIMAXH3_2PASS_Autoworkflow && nohup /home/node/anaconda3/bin/conda run
    要更长就拆成多个任务(20s + 15s 这种),各自独立渲染,最后自己拼。
 
 2. **台词必须用精确标签,否则后端会强制注入"禁止任何人声"的最高优先级契约。**
-   唯一有效写法(已查 `studio_node.py` 源码确认):
+   核心标签写法已查 `studio_node.py` 源码确认;新任务必须标为英文:
 
    ```
-   (S1) <d>[Chinese] 台词内容</d>
+   (S1) <d>[English] English dialogue</d>
    ```
 
    正则只认 `<d>[Language]...</d>` 这个核心结构。`(S1)`/`(S2)` 是多说话人时的
    绑定标记。纯旁白/广告配音也用同样的标签(画面里没有嘴也能出声),在描述里
-   写明是画外播音腔即可。
+   写明是画外播音腔即可。历史 `[Chinese]` 测试证明了标签机制,但英文 H3 发音仍需先做短段实测。
 
 3. **`cc_rerun.py` 的限制**:
    - 不能超出源任务原有的分镜总数(想加段只能重新提交完整任务)
@@ -246,13 +246,11 @@ cd /opt/MINIMAXH3_2PASS_Autoworkflow && nohup /home/node/anaconda3/bin/conda run
 
 ---
 
-## 六、建议的下一步
+## 六、当前下一步(2026-09-20)
 
-1. 先跟老板对齐"一模一样"的口径(用第 2.5 节的说法),拿到做**结构复用**的确认
-2. 找 2-3 条真实参考视频,手工拆一遍节拍表,验证这个 schema 到底该记哪些字段
-3. schema 定版后再写 skill,别反过来
-4. 词级对齐先单独跑通(WhisperX),这是整条链路的地基
-5. 最后才接回 H3 生成
+结构复用口径、本地 faster-whisper 转写、参考档案、schema、英文规划门禁和 Codex ImageGen 交接均已落地。
+当前最小下一步是由 Claude 消费现有 `READY.json`,先渲染一个英文 H3 短段并做转写与人工画面验收;
+通过后再跑英文整片和三变体批量验收。服务器渲染、输出 QA 和批处理还未进入统一 CLI。
 
 ---
 

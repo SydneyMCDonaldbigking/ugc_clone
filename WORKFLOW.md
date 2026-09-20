@@ -1,7 +1,7 @@
-# 带货口播复刻 — 工作流设计 v0.1
+# 带货口播结构复用 — 工作流
 
-日期:2026-09-17 起草,2026-09-19 更新
-状态:已按本文跑通两条测试(实测记录在第 3 节末尾)。前提与红线见 `HANDOFF.md`,本文只讲"怎么做"。
+日期:2026-09-17 起草,2026-09-20 更新
+状态:本地规划、ImageGen 参考帧和历史中文 H3 测试已跑通;新的英文任务已到 `keyframes_ready`,尚未完成英文 H3 成片。职责冲突时以 `AGENTS.md` 为准。第 4 节以后保留 v0.1 数据和测试记录,只作历史证据。
 
 原则:**抽结构,不抽文案**。一张节拍表 + 一张商品参数表 → N 条不重样的口播。
 
@@ -11,8 +11,8 @@
 
 | 在哪跑 | 做什么 |
 |---|---|
-| 本地(Windows) | 编排、写脚本、ffmpeg 轻量检查(抽帧/探测)、人工/agent 标注节拍表、写口播稿、边跑边蒸馏 skill。**不装 Python 环境** |
-| 服务器 `doubleflow` | WhisperX 转写对齐、yt-dlp 下载、H3 渲染。**模型和包只能走镜像源** |
+| 本地(Windows) | 建档、faster-whisper 转写、证据宫格、节拍表、商品事实、英文稿、分镜、ImageGen 参考帧、验收。统一使用 `D:/anaconda/envs/ugc_asr/python.exe` |
+| 服务器 `doubleflow` | 只接收已通过门禁的英文稿和参考图,执行 H3 渲染、局部重跑与交付。**模型和包只能走镜像源** |
 
 镜像源约定(服务器):
 
@@ -21,7 +21,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple <pkg>
 ```
 
-WhisperX 跟 ComfyUI 共用 4090,**错开 H3 渲染时段跑**。
+服务器状态不影响本地第 1–6 步;只有第 7 步依赖服务器。
 
 ---
 
@@ -31,18 +31,18 @@ WhisperX 跟 ComfyUI 共用 4090,**错开 H3 渲染时段跑**。
 ugc_clone_pipeline/
   HANDOFF.md / WORKFLOW.md
   inputs/<job>/
-    ref_video.mp4          参考视频(或 ref_url.txt)
-    product.json           商品参数表(人填,带证据)
-    product_*.jpg          商品图
-    presenter.jpg          我们自己的出镜人参考图(不是原达人)
+    job.en.json            英文任务入口与路径契约
+    product.en.json        商品参数表(人填/agent 校验,带证据)
+    product_*.jpg/png      商品原图
+    presenter_master.png   仅 generated_fictional 模式需要
+  references/<ref_id>/
+    FACTS.json / ANALYSIS.md / TIMELINE.md / evidence/
   work/<job>/
-    audio.wav              16k 单声道
-    frames/                1fps 抽帧 + contact.jpg
-    cuts.json              镜头切点
-    words.json             WhisperX 词级时间戳
     beats.json             节拍表(核心产物)
-    script.json            新口播稿
-    segments.json          H3 分段提示词
+    variants/vNNN/script.en.json
+    variants/vNNN/shot_plan.json
+    keyframes/REQUEST.json / QC.json / READY.json
+    state.en.json / events.en.jsonl
   out/<job>/               成片
   scripts/                 各阶段脚本
   skill/SKILL.md           蒸馏出的 skill
@@ -53,9 +53,9 @@ ugc_clone_pipeline/
 ## 2. 流程总览
 
 ```
-S1 取素材 ─▶ S2 转写对齐 ─▶ S3 节拍表 ─┐
-                                        ├─▶ S5 写口播稿 ─▶ S6 分段+提示词 ─▶ S7 渲染取回 ─▶ S8 验收
-                     S4 商品参数表 ─────┘
+S1 建档+转写 ─▶ S2 原片档案 ─▶ S3 节拍表 ─┐
+                                            ├─▶ S5 英文稿+分镜 ─▶ S6 ImageGen 参考帧 ─▶ S7 H3 渲染 ─▶ S8 验收
+                         S4 商品参数表 ─────┘
 ```
 
 每个阶段有明确的输入、输出、通过条件。没过条件不进下一阶段。
@@ -64,16 +64,13 @@ S1 取素材 ─▶ S2 转写对齐 ─▶ S3 节拍表 ─┐
 
 ## 3. 各阶段
 
-### S1 取素材(本地)
+### S1 建档 + 转写(本地)
 
-- 输入:参考视频文件或链接
+- 输入:用户提供的参考视频文件
 - 做:
-  - 有链接走服务器 `yt-dlp`。抖音/TikTok 常要 cookies,下不了就让人直接给文件
-  - `ffprobe` 记时长、分辨率、帧率
-  - 抽 `audio.wav`(16k 单声道)
-  - 1fps 抽帧,拼一张 `contact.jpg`
-  - `ffmpeg select='gt(scene,0.3)'` 测镜头切点 → `cuts.json`
-- 通过条件:音频能听清,切点数跟肉眼看的基本一致
+  - `D:/anaconda/envs/ugc_asr/python.exe scripts/reference_archive.py init <video> <ref_id> --transcribe [--vad]`
+  - 自动探测媒体、抽音频、生成逐词时间戳、证据宫格和档案骨架
+- 通过条件:命令完成,音频能听清,证据文件齐全
 
 抽帧密度不固定,按问题调(借鉴 hypit `media tile/frames/boundaries`):
 
@@ -84,44 +81,32 @@ S1 取素材 ─▶ S2 转写对齐 ─▶ S3 节拍表 ─┐
 | 读细节 | `--at` 指定时刻,原分辨率单帧 |
 | 切点 | 每秒采 12 帧、阈值 0.1 的结果只算候选,要人看确认;本流程默认阈值 0.3 |
 
-### S2 转写对齐(服务器)
+### S2 写原片档案(本地)
 
-- 输入:`audio.wav`
-- 做:faster-whisper `large-v3`,`word_timestamps=True` → `words.json`
-  (`scripts/transcribe.py`,服务器上 `/opt/ugc_clone/asr_venv/bin/python` 跑)
-  - 环境:`asr_venv` = 基于 `h3director` 的 `--system-site-packages` venv,复用它的
-    torch 2.9.1 和 nvidia 运行库,只加装 faster-whisper / yt-dlp,不改 `h3director`
-  - **WhisperX 装不上**:3.7.4+ 锁 torch 2.8;更早版本依赖 pyannote 3,和 torchaudio 2.9 不兼容。
-    单独建 cu124 环境要重下 908MB torch,阿里源只有 0.3MB/s,放弃
-  - 模型走 `HF_ENDPOINT=https://hf-mirror.com`(约 14MB/s),**必须 `HF_HUB_DISABLE_XET=1`**,
-    否则新版 huggingface_hub 走 Xet 直连 hf.co,报 401
-  - `initial_prompt` 给一句简体中文,否则 large-v3 常出繁体
-  - 画面烧录的字幕用来人工校对 ASR,别当主数据源
-  - 实测(umall_test):16.5s 音频 92 个词,错字集中在数字和同音词
-    ("0蔗糖"→"淋着糖"、"希腊酸奶"→"西纳酸"),用 `labels.json` 的 `ref_text_corrected` 修正
-  - ASR 能补上抽帧漏掉的台词:"一定要看好配料表"只在 8.3–9.2s 出现,1 秒 1 帧没抓到
-- 输出:`[{word, start, end, score}]`
-- 通过条件:对照烧录字幕,错字 ≤ 5%,每个词都有时间戳
+- 先看 `references/<ref_id>/evidence/overview/`,再完成 `ANALYSIS.md` 和 `TIMELINE.md`
+- `TIMELINE.md` 每段必须写镜头、动作、表情、话画同步和改编意图;事实与解读分开
+- 看不清时用 `reference_archive.py tile`,但原片截图只能用于分析,不能交给 ImageGen 或 H3
+- 通过条件:`reference_archive.py check <ref_id>` 输出 `READY`
 
 ### S3 节拍表(本地,agent 标注)
 
-- 输入:`words.json` + `cuts.json` + `contact.jpg`
+- 输入:参考档案中的逐词时间戳、切点和 `labels.json`
 - 做:
   1. 脚本按"停顿 > 250ms"和"镜头切点"两种边界,切出骨架
   2. agent 看帧、读文本,给每一拍填功能标签
   3. **原文只存在 `ref_text` 字段做对照,下游生成禁止读取**
-- 输出:`beats.json`,schema 见第 4 节
+- 输出:`beats.json`;第 4 节是历史 v0.1 示例,当前契约同时受 `schemas/` 和 `ugc_pipeline.validation` 约束
 - 通过条件:每拍都有 `function`;时间窗首尾相接,覆盖整条视频
 
 ### S4 商品参数表(人填,agent 校验)
 
 - 输入:商品图、包装、详情页、运营给的价格
-- 输出:`product.json`,schema 见第 5 节
+- 输出:`product.en.json`,schema 见 `schemas/product.schema.json`
 - 硬规则:**每条卖点和宣称必须挂 `evidence`**,即证据出处(包装配料表、检测报告、详情页截图)。没证据的不能进口播
 
 ### S5 写口播稿(本地,agent)
 
-- 输入:`beats.json`(不含 `ref_text`)+ `product.json`
+- 输入:`beats.json`(生成阶段不得读取 `ref_text`)+ `product.en.json`
 - 做:逐拍生成新台词,一次出 N 个变体
 - 硬约束(脚本自动检查,不过就重写):
 
@@ -142,25 +127,14 @@ S1 取素材 ─▶ S2 转写对齐 ─▶ S3 节拍表 ─┐
     这个模式的稿子不能批量发布
   - umall_test 先跑 `replica`(2026-09-17 老板要求先按原稿做、看测试结果);结构版备份在 `script_structure_v1.json`
 
-### S6 分段 + H3 提示词(本地)
+### S6 分镜 + ImageGen 参考帧(本地)
 
-- 输入:`beats.json` + `script.json` + 参考图
-- 做:
-  1. 按 5 秒一段装箱,拍的边界尽量对齐段边界
-  2. 超过 20 秒就拆成多个任务,**单任务 ≤ 20s / 4 段**
-  3. 每段写四段式提示词,末尾加禁止项:`subject_definitions` / `retention_analysis` / `detailed_description` / `soundscape`
-  4. 台词只能写成 `(S1) <d>[Chinese] 台词</d>`
-  5. 参考图绑定写清楚迁移范围:哪些特征带过去、哪些不带(沿用 product-replication 规范)
-  6. **出镜人用我们自己的 `presenter.jpg`,不用原视频里达人的任何帧**
-- 输出:`segments.json`
-- 坑:
-  - 参考图的实际编号是"顶层共享图 → 上一段尾帧 → 本段图"连续排(`src/workflow.py`)。
-    **开了 `previous_tail`,尾帧就是 `<Picture 1>`,本段图全部往后顺延**,提示词里的编号要跟着改。
-    原片是硬切的位置就别接尾帧
-  - 服务器上没有文生图模型,只有 H3 的 ref2va / fl2va。出镜人参考图用 `fl2va_8step --direct-720p`
-    文生 5 秒,再截一帧(`umall-presenter-001`)
-  - 原片段内的插入镜头(俯拍整箱、杯盖特写)跟"5 秒一段、段内不切"冲突:
-    要么单独占一段,要么舍弃。umall_test 把杯盖特写单独占一段,俯拍整箱并进中景
+- Claude 根据 `ANALYSIS.md` / `TIMELINE.md` 写英文稿、`shot_plan.json` 和 `REQUEST.json`,再用 `build_keyframe_prompts.py` 编译只含正面描述的提示词
+- Codex 只使用商品原图和已登记定妆照生成 9:16 参考帧;不得使用原片帧或上一张生成图
+- 密集小字用 `pixel_preserve` 贴回原商品像素,或交给 H3 `fully_preserved` / 静态慢推保底
+- QC 全通过后最后写 `READY.json`;这是 Claude 可以进入 S7 的唯一交接信号
+- H3 台词使用 `(S1) <d>[English] ...</d>`。历史 `[Chinese]` 提示词只作为测试记录,不得用于新任务
+- H3 仍遵守**单任务 ≤ 20s / 4 段**;需要插入镜头时在分镜里拆成 subshot 或独立段
   - 服务器重启后 ComfyUI 和 worker 都要手动拉起;`cc_status.py` 必须在仓库目录下跑,否则找不到 config
 
 ### S7 渲染取回(服务器)
@@ -170,7 +144,7 @@ S1 取素材 ─▶ S2 转写对齐 ─▶ S3 节拍表 ─┐
 
 ### S8 验收(本地)
 
-- 对成片跑一遍 WhisperX,确认说出来的就是 `script.json`(防模型乱改台词)
+- 对成片在本地用同一个 faster-whisper 流程转写,确认说出来的就是获批英文稿(防模型乱改台词)
 - 抽帧看:商品标签可读、没有原品牌元素、出镜人不是原达人
 - 文件 > 30MB 的要注明只能在桌面端看
 
@@ -277,7 +251,7 @@ S1 取素材 ─▶ S2 转写对齐 ─▶ S3 节拍表 ─┐
 本次已确认(2026-09-17):220ml/杯,6.89 澳元/杯,一箱 12 杯。
 - 没有原价,**不能做"原价划掉"式锚定**
 - 没给整箱价,口播只说"一杯 6.89",不说"一箱只要 82.68"这类折算后像优惠的话
-- 澳元定价,目标观众是澳洲华人,台词用中文,价格读作"六块八毛九澳币"一类口语
+- 该条只描述 2026-09-17 的历史中文 `replica` 测试;新生成任务必须使用英文
 
 ---
 

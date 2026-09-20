@@ -7,32 +7,32 @@
     "1": {
       "keyframe": "seg01.png",
       "extra_refs": ["target_A2_1.png"],
-      "notes": "Hands-only chilled front-label product hero; no face or source frame."
+      "notes": "Updated first-person 45-degree chilled front-label hero with the laptop blurred below."
     },
     "1b": {
       "keyframe": "seg01b.png",
       "extra_refs": ["target_A2_1.png"],
-      "notes": "Hands-only capped pre-pour setup with one empty clear glass."
+      "notes": "Updated first-person 60-degree pre-pour frame: uncapped upright bottle above an empty hand-held glass."
     },
     "2": {
       "keyframe": "seg02.png",
       "extra_refs": ["target_A2_1.png"],
-      "notes": "Overhead quantity reveal with exactly six bottles in two rows of three."
+      "notes": "Updated directly overhead quantity view with exactly six bottles in two rows of three."
     },
     "2b": {
       "keyframe": "seg02b.png",
       "extra_refs": ["target_A2_2.png"],
-      "notes": "Locked back-label close-up; bind target_A2_2.png as fully_preserved if dense text drifts during H3 motion."
+      "notes": "Updated two-hand back-label close-up; use target_A2_2.png as fully_preserved if dense text drifts."
     },
     "3": {
       "keyframe": "seg03.png",
       "extra_refs": ["target_A2_1.png"],
-      "notes": "Hands-only capped pre-pour setup for the protein fact."
+      "notes": "Updated first-person high-angle bottle-and-empty-glass setup for the protein line."
     },
     "4": {
       "keyframe": "seg04.png",
       "extra_refs": ["target_A2_1.png"],
-      "notes": "Final upright front-label hero beside one filled glass of plain milk."
+      "notes": "Updated 60-degree final composition with bottle left, filled glass centred, plain box behind and laptop edge at right."
     }
   },
   "generator": "codex-imagegen",

@@ -3,10 +3,10 @@
   "job": "a2_test",
   "pipeline_job_id": "a2_test_en",
   "variant_id": "v001",
-  "source_job_id": "a2-replica-004",
+  "source_job_id": null,
   "output_aspect_ratio": "9:16",
   "prompt_template": "templates/keyframe_prompt.en.txt",
-  "source_analysis": "work/a2_test/video_analysis/analysis.json",
+  "source_analysis": "references/theland_milk_unbox/ANALYSIS.md",
   "segments": {
     "1": {
       "prompt_file": "work/a2_test/keyframes/seg01_prompt.txt",

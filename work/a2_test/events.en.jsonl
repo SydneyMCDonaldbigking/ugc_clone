@@ -5,3 +5,4 @@
 {"at": "2026-09-19T08:28:32.626876Z", "event": "state_advanced", "state": "shots_ready", "artifact": "work/a2_test/variants/v001/shot_plan.json"}
 {"at": "2026-09-19T08:28:32.627888Z", "event": "state_advanced", "state": "awaiting_keyframes", "artifact": "work/a2_test/variants/v001/keyframes/REQUEST.json"}
 {"at": "2026-09-19T08:32:58.907748Z", "event": "artifact_updated", "state": "awaiting_keyframes", "artifact": "work/a2_test/keyframes/REQUEST.json"}
+{"at": "2026-09-20T01:24:51.154034Z", "event": "keyframes_ready", "state": "keyframes_ready"}

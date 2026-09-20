@@ -11,91 +11,92 @@
       "file": "seg01.png",
       "width": 941,
       "height": 1672,
-      "sha256": "0f82fc46523cbd3fbdba49b8fbed434e5f94c5044419fdfc4aa816d4d9303229",
-      "attempt": 1,
+      "sha256": "5f2496942e0f7e5efc0255f8a68e2595e86709b1494148327bd06914dce46156",
+      "attempt": 2,
       "checks": [
-        "generated fresh from target_A2_1.png only",
-        "hands-only tabletop framing with no face or body",
-        "one complete upright front-facing bottle in a tight product close-up",
-        "handleless flat-front silhouette, blue cap, green front label and 2L mark match the product reference",
-        "one anatomically plausible hand touches only the outer lower edge",
-        "no source-video frame, source product, watermark, subtitle or generated overlay used as a reference"
-      ]
+        "regenerated after the shot-plan update from target_A2_1.png only",
+        "first-person close-up looking down about 45 degrees over a dim warm desk",
+        "one chilled front-facing bottle fills most of the frame with a blurred laptop behind it",
+        "one complete natural hand and forearm appear; face, torso and legs remain outside the crop",
+        "blue cap, handleless flat-front geometry, complete green label, Full cream line and 2L mark match the product reference",
+        "no source-video frame, source product, subtitle, generated overlay or watermark"
+      ],
+      "note": "Attempt 1 was rejected because the creator's lap and clothing entered the lower frame."
     },
     "1b": {
       "file": "seg01b.png",
       "width": 941,
       "height": 1672,
-      "sha256": "f9aa581222a8488e8196bc8c271705fc9e5edf788eaa077270ac6b0e31293971",
+      "sha256": "51eeb32e0692d71cf55548aa65e54db11df8975ffa1b40c15b300b502c153775",
       "attempt": 1,
       "checks": [
-        "generated fresh from target_A2_1.png only",
-        "hands-only pre-pour setup with no visible face",
-        "exactly one capped upright bottle and one empty clear glass",
-        "front label remains unobstructed and the bottle has no handle opening or jug silhouette",
-        "two complete natural hands prepare the cap and glass",
-        "no milk stream, loose cap, spill, source frame, caption or watermark in the first frame"
+        "regenerated after the shot-plan update from target_A2_1.png only",
+        "first-person downward pre-pour view over a dim warm surface",
+        "one hand holds an uncapped upright bottle above one empty glass held by the other hand",
+        "exactly two anatomically plausible hands and two forearms appear with no face",
+        "front label is unobstructed and the bottle keeps the correct solid handleless silhouette",
+        "no milk stream, spill, extra product, loose blue cap, source frame, caption or watermark"
       ]
     },
     "2": {
       "file": "seg02.png",
       "width": 941,
       "height": 1672,
-      "sha256": "4553c3c12bbd818a2c374c472382fdf523f7cfc74d0d337e567a5d218ede80ef",
+      "sha256": "241e8c689ceeeb20850406500c314d1d0b5349d11ee9f5522649f418beb11d06",
       "attempt": 1,
       "checks": [
-        "generated fresh from target_A2_1.png only",
-        "overhead hands-only quantity composition",
-        "exactly six separate upright bottles in two rows of three",
-        "exactly six blue caps and six solid handleless bottle bodies",
-        "exactly two anatomically complete hands brace one plain cardboard case",
-        "no seventh bottle, gift packaging, seasonal decoration, source frame, caption or watermark"
+        "regenerated after the shot-plan update from target_A2_1.png only",
+        "directly overhead view into one plain open cardboard box",
+        "exactly six separate bottles appear in two rows of three with exactly six blue caps",
+        "all bottles remain solid and handleless with no merge, collapse or seventh bottle",
+        "exactly two complete hands brace the box edges",
+        "no gift packaging, seasonal graphics, source frame, caption or watermark"
       ]
     },
     "2b": {
       "file": "seg02b.png",
       "width": 941,
       "height": 1672,
-      "sha256": "a9dda92027d25f37cae675403aa402377b54dfcfaf1ebedd3e37b04a05e12446",
+      "sha256": "39d973ef5a2012b72d46f1e3b38897d4ea2aea87dea51467c013458cb05528e6",
       "attempt": 1,
       "checks": [
-        "generated fresh from target_A2_2.png only",
-        "hands-only locked back-label close-up with no face",
-        "one complete upright handleless bottle with the back label square to camera",
-        "visible headline, A1 protein statement, additive statement, nutrition layout, barcode and 2L FULL CREAM footer match the supplied back-label reference",
-        "exactly one supporting hand remains behind the product",
-        "no second product, invented front label, source frame, caption or watermark"
+        "regenerated after the shot-plan update from target_A2_2.png only",
+        "first-person close-up with the back label centred and filling most of the frame",
+        "exactly two hands support the bottle at its outer side edges with no face visible",
+        "the handleless silhouette, blue cap, headline, A1 statement, nutrition layout, barcode and 2L FULL CREAM footer match the supplied back-label reference",
+        "no second product, front label, source frame, caption or watermark"
       ],
-      "note": "The H3 stage must use target_A2_2.png as fully_preserved if any dense-label character drifts during motion."
+      "note": "H3 must bind target_A2_2.png as fully_preserved if any dense-label character drifts during motion."
     },
     "3": {
       "file": "seg03.png",
-      "width": 941,
+      "width": 940,
       "height": 1672,
-      "sha256": "2e8da88a7a9ec0115a431c9091c2f436a26495edfeb1c6cab660a30d27f61fe3",
+      "sha256": "66ed27a79892ff76f2ac2b73f5a6ab99cd4d9b1db8c9ef0ce8501c12208a74dd",
       "attempt": 1,
       "checks": [
-        "generated fresh from target_A2_1.png only",
-        "hands-only nutrition-proof setup with no face",
-        "one capped upright bottle and one empty clear glass",
-        "front label, blue cap and solid handleless bottle geometry match the supplied product reference",
-        "one complete hand grips the cap area naturally without covering the label",
-        "no milk stream, spill, extra product, source frame, caption or watermark in the first frame"
+        "regenerated after the shot-plan update from target_A2_1.png only",
+        "first-person high-angle view with the bottle upper-centre and glass lower in frame",
+        "one hand holds a capped upright bottle while the other holds one empty clear glass",
+        "exactly two anatomically plausible hands and forearms appear with no face",
+        "front label, blue cap and handleless flat-front geometry match the product reference",
+        "no milk stream, spill, filled glass, extra product, source frame, caption or watermark"
       ]
     },
     "4": {
       "file": "seg04.png",
       "width": 941,
       "height": 1672,
-      "sha256": "73feda9b0a87d03c2b7bb305239e14f46f9b75b07561357f2c775c9ba0cbdcc3",
+      "sha256": "7743dc593c6027ee26a05125f0d550191aa8db8c4db117bba84e16f2468c916f",
       "attempt": 1,
       "checks": [
-        "generated fresh from target_A2_1.png only",
-        "hands-only final product-and-result framing with no face",
-        "exactly one upright front-facing bottle and one filled clear glass",
-        "front label, 2L mark, blue cap and handleless flat-front silhouette match the product reference",
-        "one relaxed anatomically valid hand touches only the glass",
-        "plain white milk contains no solids and no gift box, sale badge, source frame, caption or watermark appears"
+        "regenerated after the shot-plan update from target_A2_1.png only",
+        "high-angle final tabletop composition over the dim warm desk",
+        "one upright front-facing bottle sits left of one filled clear glass",
+        "a plain cardboard box is behind the product and a laptop edge appears at the right corner",
+        "exactly two complete hands touch only the bottle edge and glass; no face appears",
+        "front label, blue cap, 2L mark and solid handleless geometry match the product reference",
+        "plain white milk contains no solids and no gift graphics, source frame, caption or watermark appears"
       ]
     }
   },

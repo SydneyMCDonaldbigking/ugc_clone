@@ -19,7 +19,7 @@
   "presenter": {
     "mode": "generated_fictional",
     "master_image": "inputs/a2_test/presenter_master.png",
-    "note": "Interim master: the H3 text-to-video frame used in a2-replica-004. Codex replaces it automatically with a more realistic ImageGen master (same presenter type, source-style scene described in text, no product) via scripts/set_presenter_master.py.",
+    "note": "Approved fictional ImageGen presenter master selected from three candidates; no product appears in the master image.",
     "approval": {
       "sha256": "d5c7ade5c529f60c84e4c605403057f4ce370197d420dc41231c2756a432e44f",
       "approved_by": "codex",
