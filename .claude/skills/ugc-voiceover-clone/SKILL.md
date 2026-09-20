@@ -265,6 +265,35 @@ cc_submit.py --job-id voice-master-01   --segments-file .../segments.json   --pr
 - 检测切点别用 `select=gt(scene,t)`,这套素材上它一个都测不出来。改成自己算逐帧灰度差
   (96×170、阈值取 `max(mean*4, p97)`、相邻 0.15 秒内合并),先拿一条已知接缝数的片子验方法再用
 
+### 2026-09-20 三次失败的复盘
+
+一天里三次失败,**根因是同一个**:改了某样东西的调用方式,却没核对这一改放弃了什么。
+
+| 任务 | 现象 | 根因 | 代价 |
+|---|---|---|---|
+| `crown-sfs-en` | 4 条全渲完,合并那步 `FileNotFoundError: 'ffmpeg'` | worker 用 `env/bin/python -m src.worker` 起的,继承了干净 PATH,看不见装在 env 里的 ffmpeg | 约 20 分钟生成全废 |
+| `voice-master-01` | 预审 `疑似卡帧: 1.792s` 打回;输出还是 1440×2560 | 漏了 `--direct-720p`(它和 `--width/--height` 互斥,我选了后者就丢了它),二采和超分照跑 | 十几分钟机时,做的是一条要丢掉的画面 |
+| `voice-master-19s` | ComfyUI 拒收 `Value 19.033 bigger than max of 15.0: 时长秒` | 看到节点注释"时长秒仅作新建段默认值"就推断控件上限不拦,**推错了**:ComfyUI 会按 INPUT_TYPES 校验控件值,而 `src/workflow.py:266` 把第一段时长直接填了进去 | 0(进 GPU 前就被拒) |
+
+三条教训:
+
+- **换启动方式要核对环境**。`conda run` 和直接调 env 里的 python 不等价,后者不带 env 的 PATH
+- **互斥参数要想清楚放弃了哪个**。提交前把最终命令和"我想要什么"逐项对一遍
+- **一道闸放开不等于没有闸**。改时长上限时我只找了自己代码里的两处 `2 <= duration <= 15`,
+  漏了 ComfyUI 图校验这一层。**失败要看完整报错**:`node_errors` 里写明了是哪个节点的哪个输入
+
+**失败也能捞回来**:`crown-sfs-en` 死在合并,但 `work/<job>/merged-before-upscale.mp4` 已经落盘了,
+里面是全部 clip 的合并结果(只是没超分)。拉下来就能免费验证画面和切点,不必等重跑。
+
+### 单段超过 15 秒要过两道闸
+
+1. `src/workflow.py` 和 `src/rerun.py` 各一处 `2 <= duration <= 15`(我们自己的校验)
+2. **ComfyUI 对 `H3DirectorStudio` 的 `时长秒` 控件校验**,schema 写死 `max: 15.0`,
+   而 `src/workflow.py:266` 把 `segments[0]["duration"]` 填给它
+
+第二道的绕法是把控件钳到 `min(duration, 15.0)`,段级 duration 照常传(节点注释说每段都显式带 duration)。
+脚本见 `scripts/server_clamp_widget_duration.sh`。**但 15 很可能就是模型的实际能力边界,绕过校验不等于能出片** —— 截至 2026-09-20 尚未验证。
+
 ### 服务器重启后的两个坑
 
 - **worker 必须用 `conda run --no-capture-output -n h3director python -m src.worker` 起**。
