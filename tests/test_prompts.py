@@ -62,6 +62,34 @@ class PromptCompilerTests(unittest.TestCase):
         self.assertIn("amber glass dropper vial", prompt)
         self.assertNotIn("pump dispenser", prompt)  # forbidden features stay in QC, not in the prompt
 
+    def test_scene_pack_view_and_structured_lock_are_injected(self) -> None:
+        request = copy.deepcopy(self.request)
+        segment = request["segments"]["4"]
+        scene_path = "inputs/a2_test/presenter.jpg"
+        segment["references"].append(scene_path)
+        segment["reference_roles"][scene_path] = "scene_identity"
+        segment["scene_lock"] = {
+            "setting": "A bright compact home kitchen.",
+            "surface": "Pale matte natural wood.",
+            "backdrop": "Warm-white cabinetry with restrained decor.",
+            "lighting": "Soft daylight from camera left.",
+            "palette": "Warm ivory, pale wood and white.",
+            "fixed_props": "One warm-ivory ceramic plate.",
+        }
+
+        prompt = render_keyframe_prompt(
+            product=self.product,
+            shot_plan=self.shot_plan,
+            request=request,
+            keyframe_id="4",
+            template_text=self.template,
+        )
+
+        self.assertIn("approved empty scene master", prompt)
+        self.assertIn("surface: Pale matte natural wood", prompt)
+        self.assertIn("lighting: Soft daylight from camera left", prompt)
+        self.assertIn("background bokeh", prompt)
+
 
 if __name__ == "__main__":
     unittest.main()

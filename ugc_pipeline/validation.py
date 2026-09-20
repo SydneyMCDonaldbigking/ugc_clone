@@ -430,6 +430,23 @@ PRESENTER_TEMPLATES = {
 # A generated keyframe already carries the image model's version of the product. Feeding it back as a
 # reference compounds that drift, so every keyframe is generated fresh from the original photos.
 GENERATED_MARKERS = ("/keyframes/",)
+SCENE_LOCK_FIELDS = (
+    "setting",
+    "surface",
+    "backdrop",
+    "lighting",
+    "palette",
+    "fixed_props",
+)
+SCENE_HARD_LOCK_FIELDS = ("surface",)
+SCENE_SOFT_GUIDE_FIELDS = ("setting", "backdrop", "lighting", "palette", "fixed_props")
+
+
+def _valid_scene_lock(value: Any) -> bool:
+    return isinstance(value, dict) and all(
+        isinstance(value.get(field), str) and value[field].strip()
+        for field in SCENE_LOCK_FIELDS
+    )
 
 
 def _check_reference_origin(references: Any, roles: Any, result: ValidationResult, path: str) -> None:
@@ -626,6 +643,15 @@ def validate_keyframe_request(
     if not isinstance(segments, dict) or not segments:
         result.error("request.segments", "request.segments", "At least one requested segment is required.")
         return result
+    scene_master_policy = request.get("background_lock_policy") == "scene_pack_v1"
+    scene_pack_requirements = request.get("scene_pack_requirements")
+    if scene_master_policy and (not isinstance(scene_pack_requirements, dict) or not scene_pack_requirements):
+        result.error(
+            "request.scene_pack_requirements",
+            "request.scene_pack_requirements",
+            "scene_pack_v1 requires one three-view generation request per scene_id.",
+        )
+    scene_locks: dict[str, dict[str, Any]] = {}
     for segment_id, segment in segments.items():
         path = f"request.segments.{segment_id}"
         if not isinstance(segment, dict):
@@ -663,6 +689,71 @@ def validate_keyframe_request(
                     "request.product_reference",
                     f"{path}.reference_roles",
                     "The product_identity reference must come from product.visual_assets.",
+                )
+            if scene_master_policy:
+                scene_refs = [raw_path for raw_path, role in reference_roles.items() if role == "scene_identity"]
+                if len(scene_refs) > 1:
+                    result.error(
+                        "request.scene_master",
+                        f"{path}.reference_roles",
+                        "scene_pack_v1 allows only one camera-matched scene_identity view per keyframe.",
+                    )
+                elif not scene_refs:
+                    result.warning(
+                        "request.scene_pack_pending",
+                        f"{path}.reference_roles",
+                        "Scene pack is planned but not registered yet; keyframe QC and READY remain blocked.",
+                    )
+                if len(references) > 3:
+                    result.error(
+                        "request.reference_limit",
+                        f"{path}.references",
+                        "A keyframe may bind at most presenter master + scene master + product original.",
+                    )
+        if scene_master_policy:
+            scene_id = segment.get("scene_id")
+            scene_lock = segment.get("scene_lock")
+            if not isinstance(scene_id, str) or not scene_id.strip():
+                result.error("request.scene_id", f"{path}.scene_id", "scene_pack_v1 requires scene_id.")
+            if segment.get("scene_view") not in {"eye_level", "oblique_45", "overhead_90"}:
+                result.error(
+                    "request.scene_view",
+                    f"{path}.scene_view",
+                    "scene_pack_v1 requires eye_level, oblique_45 or overhead_90.",
+                )
+            elif not _valid_scene_lock(scene_lock):
+                result.error(
+                    "request.scene_lock",
+                    f"{path}.scene_lock",
+                    f"scene_lock requires non-empty fields {list(SCENE_LOCK_FIELDS)}.",
+                )
+            elif scene_id in scene_locks and scene_locks[scene_id] != scene_lock:
+                result.error(
+                    "request.scene_lock_mismatch",
+                    f"{path}.scene_lock",
+                    "Every keyframe sharing a scene_id must use the identical structured scene_lock.",
+                )
+            else:
+                scene_locks[scene_id] = scene_lock
+            requirement = scene_pack_requirements.get(scene_id) if isinstance(scene_pack_requirements, dict) else None
+            views = requirement.get("views") if isinstance(requirement, dict) else None
+            if (
+                not isinstance(requirement, dict)
+                or requirement.get("scene_lock") != scene_lock
+                or requirement.get("base_view") != "eye_level"
+                or not isinstance(views, dict)
+                or set(views) != {"eye_level", "oblique_45", "overhead_90"}
+                or any(
+                    not isinstance(view_request, dict)
+                    or not isinstance(view_request.get("prompt_file"), str)
+                    or not isinstance(view_request.get("output"), str)
+                    for view_request in (views.values() if isinstance(views, dict) else [])
+                )
+            ):
+                result.error(
+                    "request.scene_pack_requirements",
+                    f"request.scene_pack_requirements.{scene_id}",
+                    "Scene-pack requirement must carry the same lock and all three canonical views.",
                 )
         fidelity_mode = segment.get("product_fidelity_mode")
         if fidelity_mode not in {"reference_lock", "pixel_preserve"}:
@@ -746,11 +837,11 @@ def validate_keyframe_coverage(
         if mode != "generated_fictional":
             for segment_id, segment in (request_segments.items() if isinstance(request_segments, dict) else []):
                 roles = segment.get("reference_roles") if isinstance(segment, dict) else None
-                if any(role != "product_identity" for role in (roles.values() if isinstance(roles, dict) else [])):
+                if any(role not in {"product_identity", "scene_identity"} for role in (roles.values() if isinstance(roles, dict) else [])):
                     result.error(
                         "request.presenter_forbidden",
                         f"request.segments.{segment_id}.reference_roles",
-                        f"presenter.mode={mode}: the source has no on-camera presenter, so only product references are allowed.",
+                        f"presenter.mode={mode}: the source has no on-camera presenter, so only product and registered scene-pack references are allowed.",
                     )
             if presenter.get("master_image"):
                 result.error("presenter.master_forbidden", "job.presenter.master_image",
@@ -784,6 +875,96 @@ def validate_keyframe_coverage(
                     "job.presenter.approval.sha256",
                     "The presenter master changed after registration; re-register it with scripts/set_presenter_master.py and regenerate keyframes.",
                 )
+
+    # Background continuity uses three generated views made from one written setting contract.
+    # Source-video frames remain forbidden. Registered hashes prevent silent swaps.
+    if request.get("background_lock_policy") == "scene_pack_v1" and isinstance(request_segments, dict):
+        registered = job.get("scene_packs")
+        registered = registered if isinstance(registered, dict) else {}
+        shot_segments = {
+            str(segment.get("id")): segment
+            for segment in shot_plan.get("segments", [])
+            if isinstance(segment, dict)
+        }
+        for segment_id, segment in request_segments.items():
+            if not isinstance(segment, dict):
+                continue
+            scene_id = segment.get("scene_id")
+            entry = registered.get(scene_id) if isinstance(scene_id, str) else None
+            roles = segment.get("reference_roles")
+            scene_refs = [
+                raw_path for raw_path, role in (roles.items() if isinstance(roles, dict) else [])
+                if role == "scene_identity"
+            ]
+            if not isinstance(entry, dict):
+                if scene_refs:
+                    result.error(
+                        "scene_pack.unregistered",
+                        f"job.scene_packs.{scene_id}",
+                        "A scene_identity reference is present but its three-view pack is not registered.",
+                    )
+                else:
+                    result.warning(
+                        "scene_pack.pending",
+                        f"job.scene_packs.{scene_id}",
+                        "Generate and register the three empty scene-pack views before keyframe generation.",
+                    )
+                continue
+            view = segment.get("scene_view")
+            views = entry.get("views")
+            view_entry = views.get(view) if isinstance(views, dict) else None
+            registered_path = view_entry.get("master_image") if isinstance(view_entry, dict) else None
+            if scene_refs != [registered_path]:
+                result.error(
+                    "request.scene_master",
+                    f"request.segments.{segment_id}.reference_roles",
+                    f"scene_identity must be the registered {view!r} scene-pack view {registered_path!r}.",
+                )
+            if segment.get("scene_lock") != entry.get("scene_lock"):
+                result.error(
+                    "request.scene_lock_mismatch",
+                    f"request.segments.{segment_id}.scene_lock",
+                    "Keyframe scene_lock must match the registered scene-pack contract.",
+                )
+            matching_plan = next(
+                (
+                    item for item in shot_segments.values()
+                    if segment_id in [str(value) for value in item.get("keyframe_ids", [])]
+                ),
+                None,
+            )
+            matching_frame = next(
+                (
+                    frame for frame in matching_plan.get("reference_frames", [])
+                    if isinstance(frame, dict) and str(frame.get("keyframe_id")) == str(segment_id)
+                ),
+                None,
+            ) if isinstance(matching_plan, dict) else None
+            if isinstance(matching_plan, dict) and (
+                matching_plan.get("scene_id") != scene_id
+                or matching_plan.get("scene_lock") != segment.get("scene_lock")
+                or matching_plan.get("scene_pack_id") != scene_id
+                or not isinstance(matching_frame, dict)
+                or matching_frame.get("scene_view") != view
+                or matching_frame.get("scene_master") != registered_path
+            ):
+                result.error(
+                    "shots.scene_master",
+                    f"shot_plan.segments.{matching_plan.get('id')}",
+                    "Shot plan, request and registered scene-pack view must use one identical background contract.",
+                )
+            if repo_root is not None and isinstance(registered_path, str) and isinstance(view_entry, dict):
+                try:
+                    scene_master_path = resolve_repo_path(repo_root, registered_path)
+                except (ValueError, FileNotFoundError) as exc:
+                    result.error("scene_pack.file", f"job.scene_packs.{scene_id}", str(exc))
+                else:
+                    if sha256_file(scene_master_path) != str(view_entry.get("sha256", "")).lower():
+                        result.error(
+                            "scene_pack.approval",
+                            f"job.scene_packs.{scene_id}.views.{view}.sha256",
+                            "A scene-pack view changed after registration; re-register the pack and regenerate keyframes.",
+                        )
 
     if request.get("pipeline_job_id") != job.get("job_id"):
         result.error(
@@ -1115,6 +1296,65 @@ def validate_keyframe_qc(
         )
     if not isinstance(qc_segments, dict):
         return result
+
+    if request.get("background_lock_policy") == "scene_pack_v1":
+        expected_scenes: dict[str, list[str]] = {}
+        for segment_id, requested_segment in (requested.items() if isinstance(requested, dict) else []):
+            if not isinstance(requested_segment, dict):
+                continue
+            expected_scenes.setdefault(str(requested_segment.get("scene_id")), []).append(str(segment_id))
+        reviews = qc.get("scene_consistency")
+        if not isinstance(reviews, dict) or set(reviews) != set(expected_scenes):
+            result.error(
+                "qc.scene_consistency",
+                "qc.scene_consistency",
+                "QC must contain one cross-keyframe scene consistency review per scene_id.",
+            )
+        else:
+            for scene_id, keyframes in expected_scenes.items():
+                review = reviews.get(scene_id)
+                path = f"qc.scene_consistency.{scene_id}"
+                if not isinstance(review, dict) or review.get("result") != "pass":
+                    result.error("qc.scene_consistency", path, "Scene consistency review must pass.")
+                    continue
+                if review.get("keyframes") != keyframes:
+                    result.error("qc.scene_coverage", f"{path}.keyframes", "Scene review must list every keyframe in request order.")
+                if review.get("scene_views") != ["eye_level", "oblique_45", "overhead_90"]:
+                    result.error(
+                        "qc.scene_views",
+                        f"{path}.scene_views",
+                        "QC must inspect all three registered scene-pack views before comparing keyframes.",
+                    )
+                if review.get("variation_policy") != "closeup_flexible":
+                    result.error(
+                        "qc.scene_variation",
+                        f"{path}.variation_policy",
+                        "Scene review must allow natural close-up and background-bokeh variation while locking one physical table.",
+                    )
+                if review.get("hard_match_fields") != list(SCENE_HARD_LOCK_FIELDS):
+                    result.error(
+                        "qc.scene_hard_lock",
+                        f"{path}.hard_match_fields",
+                        "QC must hard-match the physical tabletop identity across every keyframe.",
+                    )
+                if review.get("soft_guide_fields") != list(SCENE_SOFT_GUIDE_FIELDS):
+                    result.error(
+                        "qc.scene_soft_guides",
+                        f"{path}.soft_guide_fields",
+                        "QC must review setting, backdrop, lighting, palette and fixed props as flexible continuity guides.",
+                    )
+        for segment_id, requested_segment in (requested.items() if isinstance(requested, dict) else []):
+            roles = requested_segment.get("reference_roles") if isinstance(requested_segment, dict) else None
+            scene_refs = [
+                path for path, role in (roles.items() if isinstance(roles, dict) else [])
+                if role == "scene_identity"
+            ]
+            if len(scene_refs) != 1:
+                result.error(
+                    "qc.scene_reference",
+                    f"request.segments.{segment_id}.reference_roles",
+                    "QC cannot pass until the keyframe binds exactly one registered scene-pack view.",
+                )
 
     for segment_id, segment in qc_segments.items():
         path = f"qc.segments.{segment_id}"

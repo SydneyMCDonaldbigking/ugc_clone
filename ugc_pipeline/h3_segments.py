@@ -10,6 +10,26 @@ def _time(value: float) -> str:
     return f"{float(value):.3f}".rstrip("0").rstrip(".")
 
 
+def _scene_lock_text(value: Any) -> tuple[str, str] | None:
+    if not isinstance(value, dict):
+        return None
+    labels = (
+        ("setting", "setting"),
+        ("surface", "surface"),
+        ("backdrop", "backdrop"),
+        ("lighting", "lighting"),
+        ("palette", "palette"),
+        ("fixed_props", "fixed props"),
+    )
+    if not all(isinstance(value.get(key), str) and value[key].strip() for key, _ in labels):
+        return None
+    hard = f"surface: {value['surface'].strip()}"
+    soft = "; ".join(
+        f"{label}: {value[key].strip()}" for key, label in labels if key != "surface"
+    )
+    return hard, soft
+
+
 def _product_reference(request: dict[str, Any], keyframe_ids: list[str]) -> str:
     paths: list[str] = []
     for keyframe_id in keyframe_ids:
@@ -52,6 +72,7 @@ def render_prompt(
     scene_id = segment.get("scene_id")
     if not isinstance(scene_id, str) or not scene_id.strip():
         raise ValueError(f"{segment.get('id', 'H3 segment')} needs a scene_id")
+    scene_lock = _scene_lock_text(segment.get("scene_lock"))
     picture_by_keyframe = {
         keyframe_id: index for index, keyframe_id in enumerate(keyframe_ids, start=1)
     }
@@ -101,7 +122,12 @@ def render_prompt(
         + "\n\nretention_analysis:\n"
         + "\n".join(retention_lines)
         + "\n\nscene_continuity:\n"
-        + f"All generated Pictures share scene_id {scene_id}. Preserve one compatible tabletop material, principal setting and lighting period across every cut."
+        + (
+            f"All generated Pictures share scene_id {scene_id}. Hard-lock the same physical tabletop across every cut ({scene_lock[0]}). "
+            f"Treat the remaining scene description as a soft guide ({scene_lock[1]}). Close-ups keep the product sharp while crop, lens distance, parallax, visible props, slight local exposure and shallow-depth background bokeh may vary."
+            if scene_lock
+            else f"All generated Pictures share scene_id {scene_id}. Preserve one compatible tabletop material, principal setting and lighting period across every cut."
+        )
         + "\n\ndetailed_description:\n"
         + str(segment["action"])
         + " Preserve the exact listed order and timing. Hard cuts occur only at the listed times. "
@@ -254,6 +280,7 @@ def compile_h3_segments(
         normalized_segments.append({
             **base,
             "scene_id": clip["scene_id"],
+            "scene_lock": clip.get("scene_lock", base.get("scene_lock")),
             "duration_seconds": clip["duration_seconds"],
             "source_edit_duration_seconds": clip["trim_duration_seconds"],
             "keyframe_ids": clip["keyframe_ids"],

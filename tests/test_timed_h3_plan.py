@@ -35,6 +35,16 @@ class TimedH3PlanTests(unittest.TestCase):
             "shot_map": "work/demo/shot_map.json",
             "output_dir": "work/demo/keyframes",
             "prompt_template": "templates/keyframe_prompt.hands-only.en.txt",
+            "scene_locks": {
+                "pale-tabletop-daylight": {
+                    "setting": "A bright home snack table.",
+                    "surface": "Pale matte natural wood with fine straight grain.",
+                    "backdrop": "A softly blurred warm-white home background.",
+                    "lighting": "Soft daylight from camera left.",
+                    "palette": "Pale wood, warm ivory and clean white.",
+                    "fixed_props": "One shallow warm-ivory plate when tableware is visible.",
+                }
+            },
             "clips": [{
                 "segment": 1,
                 "scene_id": "pale-tabletop-daylight",
@@ -59,6 +69,17 @@ class TimedH3PlanTests(unittest.TestCase):
         self.assertEqual(list(request["segments"]), ["1a"])
         self.assertEqual(plan["segments"][0]["source_edit_duration_seconds"], 1.5)
         self.assertEqual(plan["segments"][0]["timed_shots"][1]["clip_start_seconds"], 0.5)
+        self.assertEqual(request["background_lock_policy"], "scene_pack_v1")
+        self.assertEqual(request["segments"]["1a"]["scene_view"], "oblique_45")
+        self.assertEqual(
+            set(request["scene_pack_requirements"]["pale-tabletop-daylight"]["views"]),
+            {"eye_level", "oblique_45", "overhead_90"},
+        )
+
+    def test_rejects_incomplete_background_contract(self) -> None:
+        del self.spec["scene_locks"]["pale-tabletop-daylight"]["lighting"]
+        with self.assertRaisesRegex(ValueError, "lighting"):
+            materialize(self.shot_map, self.script, self.spec)
 
     def test_rejects_missing_source_microshot(self) -> None:
         self.spec["clips"][0]["timed_shots"] = self.spec["clips"][0]["timed_shots"][:1]
@@ -71,6 +92,11 @@ class TimedH3PlanTests(unittest.TestCase):
 
         self.assertEqual(len(h3_plan["clips"]), 1)
         self.assertEqual(h3_plan["clips"][0]["scene_id"], "pale-tabletop-daylight")
+        self.assertEqual(h3_plan["background_lock_policy"], "scene_pack_v1")
+        self.assertEqual(
+            h3_plan["clips"][0]["scene_lock"],
+            self.spec["scene_locks"]["pale-tabletop-daylight"],
+        )
         self.assertTrue(
             all(
                 cue["scene_id"] == "pale-tabletop-daylight"
@@ -100,6 +126,7 @@ class TimedH3PlanTests(unittest.TestCase):
     def test_three_generated_pictures_need_no_fourth_product_picture(self) -> None:
         segment = {
             "scene_id": "pale-tabletop-daylight",
+            "scene_lock": self.spec["scene_locks"]["pale-tabletop-daylight"],
             "action": "Show three deliberate compositions in one clip.",
             "performance": "Natural hands-only motion.",
             "intention": "Preserve the source rhythm.",
@@ -134,6 +161,8 @@ class TimedH3PlanTests(unittest.TestCase):
 
         self.assertIn("<Picture 3>", prompt)
         self.assertIn("scene_id pale-tabletop-daylight", prompt)
+        self.assertIn("surface: Pale matte natural wood", prompt)
+        self.assertIn("background bokeh may vary", prompt)
         self.assertNotIn("<Picture 4>", prompt)
         self.assertNotIn("original product identity authority", prompt)
 

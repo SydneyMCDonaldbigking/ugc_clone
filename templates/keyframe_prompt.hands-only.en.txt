@@ -4,8 +4,9 @@ Photorealistic vertical 9:16 smartphone photo, the first frame of a hands-only h
 
 Camera: {{CAMERA}}
 Scene: {{FIRST_FRAME}}
+{{SCENE_LOCK_BLOCK}}
 Human presence: {{PERFORMANCE}} Only hands and forearms appear; the creator's face stays outside the crop.
 
 Product: {{PRODUCT_NAME}}, copied exactly from {{PRODUCT_IMAGE}} - {{PRODUCT_DESCRIPTION}}. {{PRODUCT_FIDELITY_INSTRUCTION}}
 
-Warm household evening light, real skin texture, slight handheld imperfection and candid UGC energy. No added text or watermarks.
+Real skin texture, slight handheld imperfection and candid UGC energy. No added text or watermarks.

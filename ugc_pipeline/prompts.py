@@ -42,6 +42,7 @@ ROLE_LABELS = {
     "product_identity": "the product",
     "presenter_identity": "the presenter: face, hair, outfit and room",
     "presenter_and_scene_identity": "the presenter: face, hair, outfit and room",
+    "scene_identity": "the approved empty scene master: background, surface, props, palette and light",
 }
 
 
@@ -59,6 +60,31 @@ def _describe_product(product: dict[str, Any]) -> str:
     identity = product.get("visual_identity", {})
     parts = [str(identity[key]) for key in PROMPT_IDENTITY_FIELDS if identity.get(key)]
     return ", ".join(parts) or "as shown"
+
+
+def _scene_lock_block(segment_request: dict[str, Any]) -> str:
+    scene_image = _image_label(segment_request, {"scene_identity"}, "")
+    if not scene_image:
+        if segment_request.get("scene_id") and segment_request.get("scene_lock"):
+            raise ValueError("Register the three-view scene pack before compiling keyframe prompts.")
+        return ""
+    scene_lock = segment_request["scene_lock"]
+    soft = "; ".join(
+        f"{label}: {scene_lock[key]}"
+        for key, label in (
+            ("setting", "setting"),
+            ("backdrop", "backdrop"),
+            ("lighting", "lighting"),
+            ("palette", "palette"),
+            ("fixed_props", "prop family"),
+        )
+    )
+    return (
+        f"Background master: use {scene_image} for this camera angle. Hard invariant: this is the same physical "
+        f"tabletop in every keyframe — surface: {scene_lock['surface']}. Soft continuity guide: {soft}. "
+        "For close-ups, keep the product and active hands crisp while natural changes in crop, parallax, visible props, "
+        "slight local exposure and shallow-depth background bokeh are welcome."
+    )
 
 
 def _image_label(segment_request: dict[str, Any], wanted_roles: set[str], fallback: str) -> str:
@@ -94,6 +120,7 @@ def render_keyframe_prompt(
         "PERFORMANCE": str(shot.get("performance") or segment.get("performance", "")),
         "PRODUCT_NAME": str(product.get("name", "the product")),
         "PRODUCT_IMAGE": _image_label(segment_request, {"product_identity"}, "the product reference"),
+        "SCENE_LOCK_BLOCK": _scene_lock_block(segment_request),
         "PRESENTER_IMAGE": _image_label(
             segment_request, {"presenter_identity", "presenter_and_scene_identity"}, "the presenter master"
         ),

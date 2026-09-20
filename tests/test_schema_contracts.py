@@ -23,6 +23,24 @@ class SchemaContractTests(unittest.TestCase):
         ]["additionalProperties"]["enum"]
         self.assertNotIn("composition_only", roles)
 
+    def test_scene_pack_contract_declares_three_canonical_views(self):
+        schema = json.loads(
+            (REPO_ROOT / "schemas" / "keyframe-request.schema.json").read_text(encoding="utf-8")
+        )
+        requirement = schema["properties"]["scene_pack_requirements"]["additionalProperties"]
+        self.assertEqual(
+            set(requirement["properties"]["views"]["required"]),
+            {"eye_level", "oblique_45", "overhead_90"},
+        )
+
+    def test_scene_qc_hard_locks_only_the_table_surface(self):
+        schema = json.loads(
+            (REPO_ROOT / "schemas" / "keyframe-qc.schema.json").read_text(encoding="utf-8")
+        )
+        review = schema["properties"]["scene_consistency"]["additionalProperties"]["properties"]
+        self.assertEqual(review["hard_match_fields"]["const"], ["surface"])
+        self.assertEqual(review["variation_policy"]["const"], "closeup_flexible")
+
     def test_integrity_snapshot_schema_pins_sha256_values(self):
         schema = json.loads(
             (REPO_ROOT / "schemas" / "artifact-integrity.schema.json").read_text(

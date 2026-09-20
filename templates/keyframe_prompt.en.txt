@@ -4,9 +4,10 @@ Photorealistic vertical 9:16 smartphone photo, the first frame of a home product
 
 Camera: {{CAMERA}}
 Scene: {{FIRST_FRAME}}
+{{SCENE_LOCK_BLOCK}}
 Same person, same outfit, same room and light as {{PRESENTER_IMAGE}}.
 Expression: {{PERFORMANCE}}
 
 Product: {{PRODUCT_NAME}}, copied exactly from {{PRODUCT_IMAGE}} - {{PRODUCT_DESCRIPTION}}. {{PRODUCT_FIDELITY_INSTRUCTION}}
 
-Soft household daylight, real skin texture, a candid moment caught mid-sentence. No added text or watermarks.
+Real skin texture and a candid moment caught mid-sentence. No added text or watermarks.

@@ -6,6 +6,16 @@ from typing import Any
 from .io import load_json, resolve_repo_path
 
 
+SCENE_LOCK_FIELDS = ("setting", "surface", "backdrop", "lighting", "palette", "fixed_props")
+
+
+def _valid_scene_lock(value: Any) -> bool:
+    return isinstance(value, dict) and all(
+        isinstance(value.get(field), str) and value[field].strip()
+        for field in SCENE_LOCK_FIELDS
+    )
+
+
 def load_h3_clip_plan(
     repo_root: Path,
     job: dict[str, Any],
@@ -37,6 +47,12 @@ def validate_h3_clip_plan(
     require_scene_lock = plan.get("require_scene_lock", False)
     if not isinstance(require_scene_lock, bool):
         raise ValueError("h3_clip_plan.require_scene_lock must be boolean")
+    background_lock_policy = plan.get("background_lock_policy")
+    require_scene_master = background_lock_policy == "scene_pack_v1"
+    if background_lock_policy not in {None, "scene_pack_v1"}:
+        raise ValueError("h3_clip_plan.background_lock_policy is unsupported")
+    if background_lock_policy != request.get("background_lock_policy"):
+        raise ValueError("h3_clip_plan.background_lock_policy must match the keyframe request")
 
     request_segments = request.get("segments")
     if not isinstance(request_segments, dict):
@@ -75,6 +91,7 @@ def validate_h3_clip_plan(
     trim_total = 0.0
     seen_clip_ids: set[str] = set()
     actual_clip_ids: list[str] = []
+    scene_locks: dict[str, dict[str, Any]] = {}
     for index, clip in enumerate(clips, start=1):
         if not isinstance(clip, dict):
             raise ValueError(f"h3 clip {index} must be an object")
@@ -83,8 +100,15 @@ def validate_h3_clip_plan(
             raise ValueError(f"h3 clip {index} needs a unique id")
         seen_clip_ids.add(clip_id)
         scene_id = clip.get("scene_id")
-        if require_scene_lock and (not isinstance(scene_id, str) or not scene_id.strip()):
+        if (require_scene_lock or require_scene_master) and (not isinstance(scene_id, str) or not scene_id.strip()):
             raise ValueError(f"{clip_id} needs a scene_id")
+        scene_lock = clip.get("scene_lock")
+        if require_scene_master:
+            if not _valid_scene_lock(scene_lock):
+                raise ValueError(f"{clip_id} needs a complete structured scene_lock")
+            if scene_id in scene_locks and scene_locks[scene_id] != scene_lock:
+                raise ValueError(f"{clip_id} conflicts with the canonical scene_lock for {scene_id}")
+            scene_locks[str(scene_id)] = scene_lock
         actual_clip_ids.append(clip_id)
 
         duration = clip.get("duration_seconds")
@@ -115,6 +139,8 @@ def validate_h3_clip_plan(
         if approved is not None:
             if approved.get("scene_id") != scene_id:
                 raise ValueError(f"{clip_id} scene_id differs from the approved shot plan")
+            if require_scene_master and approved.get("scene_lock") != scene_lock:
+                raise ValueError(f"{clip_id} scene_lock differs from the approved shot plan")
             approved_frames = [
                 frame for frame in approved.get("reference_frames", []) if isinstance(frame, dict)
             ]
@@ -133,6 +159,8 @@ def validate_h3_clip_plan(
                 request_segment = request_segments.get(keyframe_id)
                 if not isinstance(request_segment, dict) or request_segment.get("scene_id") != scene_id:
                     raise ValueError(f"{clip_id} keyframe {keyframe_id} does not share the approved scene_id")
+                if require_scene_master and request_segment.get("scene_lock") != scene_lock:
+                    raise ValueError(f"{clip_id} keyframe {keyframe_id} does not share the approved scene_lock")
 
         product_reference = clip.get("product_reference")
         reference_count = len(keyframe_ids) + (1 if isinstance(product_reference, str) else 0)

@@ -15,6 +15,16 @@ from pathlib import Path
 from typing import Any
 
 
+SCENE_LOCK_FIELDS = (
+    "setting",
+    "surface",
+    "backdrop",
+    "lighting",
+    "palette",
+    "fixed_props",
+)
+
+
 def _load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -26,6 +36,31 @@ def _write(path: Path, value: Any) -> None:
 
 def _round(value: float) -> float:
     return round(float(value), 3)
+
+
+def _scene_lock(spec: dict[str, Any], scene_id: str) -> dict[str, str]:
+    scene_locks = spec.get("scene_locks")
+    if not isinstance(scene_locks, dict):
+        raise ValueError("timed H3 spec needs a scene_locks object")
+    raw = scene_locks.get(scene_id)
+    if not isinstance(raw, dict):
+        raise ValueError(f"scene_id {scene_id!r} needs one canonical scene_lock")
+    missing = [field for field in SCENE_LOCK_FIELDS if not isinstance(raw.get(field), str) or not raw[field].strip()]
+    if missing:
+        raise ValueError(f"scene_lock {scene_id!r} needs non-empty fields {missing}")
+    return {field: raw[field].strip() for field in SCENE_LOCK_FIELDS}
+
+
+def _scene_view(frame: dict[str, Any]) -> str:
+    declared = frame.get("scene_view")
+    if declared in {"eye_level", "oblique_45", "overhead_90"}:
+        return str(declared)
+    camera = str(frame.get("camera", "")).lower()
+    if "overhead" in camera or "90 degree" in camera or "90 degrees" in camera:
+        return "overhead_90"
+    if "high angle" in camera or any(token in camera for token in ("25 degree", "45 degree", "50 degree")):
+        return "oblique_45"
+    return "eye_level"
 
 
 def materialize(
@@ -45,6 +80,7 @@ def materialize(
     output_dir = str(spec["output_dir"]).rstrip("/")
     plan_segments: list[dict[str, Any]] = []
     request_segments: OrderedDict[str, dict[str, Any]] = OrderedDict()
+    scene_pack_requirements: OrderedDict[str, dict[str, Any]] = OrderedDict()
     used_source_ids: list[str] = []
 
     for clip_index, clip in enumerate(spec.get("clips", []), start=1):
@@ -52,6 +88,20 @@ def materialize(
         scene_id = clip.get("scene_id")
         if not isinstance(scene_id, str) or not scene_id.strip():
             raise ValueError(f"clip {clip_index} needs a non-empty scene_id")
+        scene_lock = _scene_lock(spec, scene_id)
+        if scene_id not in scene_pack_requirements:
+            scene_pack_dir = (Path(output_dir).parent / "scene_pack" / scene_id).as_posix()
+            scene_pack_requirements[scene_id] = {
+                "scene_lock": scene_lock,
+                "base_view": "eye_level",
+                "views": {
+                    view: {
+                        "prompt_file": f"{scene_pack_dir}/{view}_prompt.txt",
+                        "output": f"{scene_pack_dir}/{view}.png",
+                    }
+                    for view in ("eye_level", "oblique_45", "overhead_90")
+                },
+            }
         line = lines_by_segment.get(segment_number)
         if line is None:
             raise ValueError(f"clip {clip_index} references missing script segment {segment_number}")
@@ -109,9 +159,12 @@ def materialize(
         plan_frames: list[dict[str, Any]] = []
         for frame in frames:
             keyframe_id = str(frame["keyframe_id"])
+            scene_view = _scene_view(frame)
             plan_frame = {
                 "keyframe_id": keyframe_id,
                 "scene_id": scene_id,
+                "scene_lock": scene_lock,
+                "scene_view": scene_view,
                 "role": frame["role"],
                 "first_frame": frame["first_frame"],
                 "camera": frame["camera"],
@@ -124,6 +177,8 @@ def materialize(
             request_segments[keyframe_id] = {
                 "script_segment": segment_number,
                 "scene_id": scene_id,
+                "scene_lock": scene_lock,
+                "scene_view": scene_view,
                 "role": frame["role"],
                 "prompt_file": f"{output_dir}/seg{keyframe_id}_prompt.txt",
                 "references": [product_reference],
@@ -142,6 +197,7 @@ def materialize(
         plan_segments.append({
             "id": f"S{segment_number:02d}",
             "scene_id": scene_id,
+            "scene_lock": scene_lock,
             "segment": segment_number,
             "duration_seconds": render_duration,
             "source_start_seconds": source_start,
@@ -192,6 +248,8 @@ def materialize(
         "source_job_id": None,
         "output_aspect_ratio": "9:16",
         "prompt_template": spec["prompt_template"],
+        "background_lock_policy": "scene_pack_v1",
+        "scene_pack_requirements": scene_pack_requirements,
         "visual_mode": "shot_for_shot",
         "shot_map": spec["shot_map"],
         "segments": request_segments,
@@ -209,6 +267,9 @@ def build_h3_clip_plan(plan: dict[str, Any], spec: dict[str, Any]) -> dict[str, 
         scene_id = segment.get("scene_id")
         if not isinstance(scene_id, str) or not scene_id.strip():
             raise ValueError(f"{segment.get('id')} needs a non-empty scene_id")
+        scene_lock = segment.get("scene_lock")
+        if not isinstance(scene_lock, dict):
+            raise ValueError(f"{segment.get('id')} needs a structured scene_lock")
         picture_by_keyframe = {
             keyframe_id: index for index, keyframe_id in enumerate(keyframe_ids, start=1)
         }
@@ -250,6 +311,7 @@ def build_h3_clip_plan(plan: dict[str, Any], spec: dict[str, Any]) -> dict[str, 
         clips.append({
             "id": segment["id"],
             "scene_id": scene_id,
+            "scene_lock": scene_lock,
             "duration_seconds": segment["duration_seconds"],
             "trim_duration_seconds": segment["source_edit_duration_seconds"],
             "keyframe_ids": keyframe_ids,
@@ -262,6 +324,7 @@ def build_h3_clip_plan(plan: dict[str, Any], spec: dict[str, Any]) -> dict[str, 
         "job_id": spec["pipeline_job_id"],
         "variant_id": plan["variant_id"],
         "max_reference_images": 3,
+        "background_lock_policy": "scene_pack_v1",
         "total_edit_duration_seconds": _round(total_edit_duration),
         "clips": clips,
     }

@@ -5,6 +5,16 @@
   "shot_map": "work/crown_almond_bis_shot_for_shot/shot_map.json",
   "output_dir": "work/crown_almond_bis_shot_for_shot/keyframes",
   "prompt_template": "templates/keyframe_prompt.hands-only.en.txt",
+  "scene_locks": {
+    "pale-wood-cream-tableware-warm-daylight": {
+      "setting": "A compact bright home snack table photographed in a candid first-person UGC style.",
+      "surface": "One continuous pale natural-wood tabletop with a matte finish and fine straight grain.",
+      "backdrop": "A softly blurred warm-white home background kept visually quiet behind the tabletop action.",
+      "lighting": "Soft warm daylight enters from camera left with gentle short shadows and a neutral white balance.",
+      "palette": "Pale wood, warm ivory and clean white, with restrained dark-teal accents only from the target packaging.",
+      "fixed_props": "When tableware is visible, use the same shallow matte warm-ivory ceramic plate and matching bowl, plus one plain silver spoon where required."
+    }
+  },
   "clips": [
     {
       "segment": 1,

@@ -15,6 +15,54 @@
       ]
     },
     "output_aspect_ratio": {"const": "9:16"},
+    "background_lock_policy": {"enum": ["scene_pack_v1"]},
+    "scene_pack_requirements": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["scene_lock", "base_view", "views"],
+        "properties": {
+          "scene_lock": {"type": "object"},
+          "base_view": {"const": "eye_level"},
+          "views": {
+            "type": "object",
+            "required": ["eye_level", "oblique_45", "overhead_90"],
+            "properties": {
+              "eye_level": {
+                "type": "object",
+                "required": ["prompt_file", "output"],
+                "properties": {
+                  "prompt_file": {"type": "string", "minLength": 1},
+                  "output": {"type": "string", "pattern": "\\.png$"}
+                },
+                "additionalProperties": false
+              },
+              "oblique_45": {
+                "type": "object",
+                "required": ["prompt_file", "output"],
+                "properties": {
+                  "prompt_file": {"type": "string", "minLength": 1},
+                  "output": {"type": "string", "pattern": "\\.png$"}
+                },
+                "additionalProperties": false
+              },
+              "overhead_90": {
+                "type": "object",
+                "required": ["prompt_file", "output"],
+                "properties": {
+                  "prompt_file": {"type": "string", "minLength": 1},
+                  "output": {"type": "string", "pattern": "\\.png$"}
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
     "prompt_template": {"type": "string", "minLength": 1},
     "segments": {
       "type": "object",
@@ -23,6 +71,21 @@
         "type": "object",
         "required": ["prompt_file", "references", "reference_roles", "product_fidelity_mode", "output", "checks"],
         "properties": {
+          "scene_id": {"type": "string", "minLength": 1},
+          "scene_view": {"enum": ["eye_level", "oblique_45", "overhead_90"]},
+          "scene_lock": {
+            "type": "object",
+            "required": ["setting", "surface", "backdrop", "lighting", "palette", "fixed_props"],
+            "properties": {
+              "setting": {"type": "string", "minLength": 1},
+              "surface": {"type": "string", "minLength": 1},
+              "backdrop": {"type": "string", "minLength": 1},
+              "lighting": {"type": "string", "minLength": 1},
+              "palette": {"type": "string", "minLength": 1},
+              "fixed_props": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false
+          },
           "prompt_file": {"type": "string", "minLength": 1},
           "references": {
             "type": "array",

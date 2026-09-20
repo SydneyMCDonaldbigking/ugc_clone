@@ -132,6 +132,7 @@ inputs/<job>/
   product_front.png
   product_back.png
   product_detail_*.png
+  scene_pack/                       registered empty eye-level / oblique / overhead scene anchors
   presenter_master.png              optional existing identity anchor
 
 work/<job>/
@@ -520,7 +521,7 @@ Codex workflow:
 4. Reject the request if it does not cover every ImageGen segment in the shot plan or if reference roles are ambiguous.
 5. Reuse one fictional presenter identity across every segment.
 6. Select the declared fidelity path: `reference_lock` for interaction-heavy lifestyle shots, or `pixel_preserve` for identity-critical product planes.
-7. Use ImageGen to generate a fresh 9:16 scene for each requested segment from the registered presenter master and original product photo. In `pixel_preserve`, treat the model output as the scene layer, then run `scripts/composite_product_packshot.py` so the displayed package and dense label come from the original packshot pixels. Record the packshot hash and placement in QC; if clean extraction is not possible, use H3 `fully_preserved` or the static packshot fallback instead of accepting redrawn copy.
+7. Before keyframes, generate and register one empty three-view scene pack (`eye_level`, `oblique_45`, `overhead_90`) from the written source-setting description. Then generate each fresh 9:16 keyframe from the camera-matched scene view, the registered presenter master when applicable, and the original product photo. In `pixel_preserve`, treat the model output as the scene layer, then run `scripts/composite_product_packshot.py` so the displayed package and dense label come from the original packshot pixels. Record the packshot hash and placement in QC; if clean extraction is not possible, use H3 `fully_preserved` or the static packshot fallback instead of accepting redrawn copy.
 8. Inspect each result for identity, hands, product shape/count, composition, original-brand leakage, and unwanted text.
 9. Iterate only the failed image.
 10. Save final images as `segNN.png`.
@@ -544,8 +545,9 @@ Keyframe rules:
 - if a requested pose has no matching product view, simplify the pose, request another source view, or fall back to a static packshot—never hallucinate unseen product geometry;
 - product geometry comes from a product-specific visual identity contract before any keyframe prompt is written;
 - every keyframe is inspected against that contract; an invented handle, opening, closure, package type, or silhouette is an automatic rejection;
-- a failed image's filename and concrete defect are retained in `ATTEMPTS.json`, while the failed binary is deleted after review; the next attempt is a **fresh generation from the original presenter and product photos** with an adjusted shot description — never an edit of the failed image, and never with a generated image as a reference (edits and re-fed images compound drift);
-- **person and scene continuity come from one presenter master**: a single approved image of the fictional presenter in the job's scene with no product in it. Every keyframe binds exactly that file as its presenter reference (`request.presenter_master`), plus the original product photo. It is the only generated image allowed as a reference. Codex generates candidates, picks the best against QC, and registers it with `scripts/set_presenter_master.py` without stopping for the operator; registration pins its sha256 and `validate` fails if the file changes afterwards. H3 binds the same master for identity;
+- a failed image's filename and concrete defect are retained in `ATTEMPTS.json`, while the failed binary is deleted after review; the next attempt is a **fresh generation from the registered scene-pack view, original presenter master and product photo** with an adjusted shot description — never an edit of the failed keyframe, and never with another keyframe as a reference;
+- **scene continuity comes from one registered three-view scene pack**: Codex describes the reference setting in text, generates an empty `eye_level` base, then derives `oblique_45` and `overhead_90` views around the same physical table. `surface` is the hard identity lock; setting, backdrop, lighting, palette and props are soft guides. Close-ups may keep the product crisp while crop, parallax, visible props, slight local exposure and shallow-depth background bokeh vary. Each keyframe binds the view matching its camera; `scripts/set_scene_pack.py` pins all three hashes and `QC.json.scene_consistency` rejects only a changed table identity;
+- **person continuity comes from one presenter master**: a single approved image of the fictional presenter in the job's scene with no product in it. Every applicable keyframe binds that file, its camera-matched scene-pack view and the original product photo. The scene pack and presenter master are the only generated images allowed as references; registration pins their hashes and `validate` fails if any file changes afterwards;
 - **the source video's expressions and setting are copied as text**: the agent reads the storyboards and writes each shot's expression, posture and scene type into `performance` and `first_frame`. The frames themselves never go to the image model;
 - keyframe prompts stay short and positive (about 150 words): only the still first-frame scene, the expression, and "copy the product from Image N". Forbidden features and the QC checklist stay in `REQUEST.json` for inspection and are not sent to the model, because naming a feature ("no handle") primes it;
 - the product keeps the orientation of its reference photo (front or back square to the camera); whether it is held or set down, and the camera angle, follow the source shot recorded in TIMELINE (`镜头:` line) and the shot plan's required `camera` field (`shot size | height and angle | movement | framing`). Lifting, tilting and pouring happen in H3, not in the keyframe;
@@ -564,7 +566,7 @@ Claude Code actions:
 - confirm 9:16 orientation, readable file, and expected segment set;
 - confirm the sealed `h3_clip_plan.json` groups composition assets rather than treating one keyframe as one video;
 - confirm every sealed clip binds 2–3 total Pictures and that `segments.json` exactly matches the deterministic compiler output;
-- confirm every generated Picture in a clip shares the same sealed `scene_id` (surface material, principal setting and lighting period); timing instructions do not make conflicting scene references compatible;
+- confirm every generated Picture in a clip shares the same sealed physical tabletop identity; close-up framing and background details may vary, but timing instructions do not make conflicting table surfaces compatible;
 - do not hand-edit Picture order, prompt text, cut seconds or image paths after preflight. Requested changes go back to the approved shot plan, are recompiled by Codex, and are sealed again;
 - for ordinary non-shot-for-shot talking-head work, English H3 dialogue remains `(S1) <d>[English] ...</d>` and requires the documented short live test. Exact-timing `shot_for_shot` H3 clips remain silent and receive the approved continuous English master voice-over after trimming;
 - after fetch, require `scripts/check_shot_rhythm.py` to compare actual hard cuts with the Hypit timing master before assembly;

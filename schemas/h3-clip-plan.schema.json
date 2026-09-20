@@ -10,6 +10,7 @@
     "variant_id": {"type": "string", "minLength": 1},
     "max_reference_images": {"const": 3},
     "require_scene_lock": {"type": "boolean"},
+    "background_lock_policy": {"enum": ["scene_pack_v1"]},
     "total_edit_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
     "clips": {
       "type": "array",
@@ -20,6 +21,19 @@
         "properties": {
           "id": {"type": "string", "minLength": 1},
           "scene_id": {"type": "string", "minLength": 1},
+          "scene_lock": {
+            "type": "object",
+            "required": ["setting", "surface", "backdrop", "lighting", "palette", "fixed_props"],
+            "properties": {
+              "setting": {"type": "string", "minLength": 1},
+              "surface": {"type": "string", "minLength": 1},
+              "backdrop": {"type": "string", "minLength": 1},
+              "lighting": {"type": "string", "minLength": 1},
+              "palette": {"type": "string", "minLength": 1},
+              "fixed_props": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false
+          },
           "duration_seconds": {"type": "number", "minimum": 2, "maximum": 15},
           "trim_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
           "keyframe_ids": {

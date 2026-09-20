@@ -265,6 +265,42 @@ class EnglishValidationTests(unittest.TestCase):
         codes = {issue.code for issue in validate_shot_plan(plan, self.script).errors}
         self.assertIn("shots.camera", codes)
 
+    def test_scene_pack_policy_requires_a_canonical_camera_view(self) -> None:
+        request = copy.deepcopy(self.request)
+        scene_lock = {
+            "setting": "A bright compact home kitchen.",
+            "surface": "Pale matte natural wood.",
+            "backdrop": "Warm-white cabinetry.",
+            "lighting": "Soft daylight from camera left.",
+            "palette": "Warm ivory, pale wood and white.",
+            "fixed_props": "One warm-ivory ceramic plate.",
+        }
+        request["background_lock_policy"] = "scene_pack_v1"
+        request["scene_pack_requirements"] = {
+            "demo-scene": {
+                "scene_lock": scene_lock,
+                "base_view": "eye_level",
+                "views": {
+                    view: {
+                        "prompt_file": f"work/demo/scene_pack/{view}_prompt.txt",
+                        "output": f"work/demo/scene_pack/{view}.png",
+                    }
+                    for view in ("eye_level", "oblique_45", "overhead_90")
+                },
+            }
+        }
+        for segment in request["segments"].values():
+            scene_path = "inputs/a2_test/presenter.jpg"
+            segment["references"].append(scene_path)
+            segment["reference_roles"][scene_path] = "scene_identity"
+            segment["scene_id"] = "demo-scene"
+            segment["scene_lock"] = scene_lock
+            segment["scene_view"] = "oblique_45"
+        request["segments"]["1"].pop("scene_view")
+
+        codes = {issue.code for issue in validate_keyframe_request(request, ROOT, self.product).errors}
+        self.assertIn("request.scene_view", codes)
+
 
 if __name__ == "__main__":
     unittest.main()

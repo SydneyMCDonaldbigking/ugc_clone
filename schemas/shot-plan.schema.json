@@ -32,6 +32,21 @@
           "label_policy"
         ],
         "properties": {
+          "scene_id": {"type": "string", "minLength": 1},
+          "scene_pack_id": {"type": "string", "minLength": 1},
+          "scene_lock": {
+            "type": "object",
+            "required": ["setting", "surface", "backdrop", "lighting", "palette", "fixed_props"],
+            "properties": {
+              "setting": {"type": "string", "minLength": 1},
+              "surface": {"type": "string", "minLength": 1},
+              "backdrop": {"type": "string", "minLength": 1},
+              "lighting": {"type": "string", "minLength": 1},
+              "palette": {"type": "string", "minLength": 1},
+              "fixed_props": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false
+          },
           "performance": {"type": "string", "minLength": 1},
           "keyframe_ids": {
             "type": "array",

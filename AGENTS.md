@@ -12,8 +12,8 @@
 | 2 | 写原片档案 | **Codex** | 本地 | 看宫格写 `ANALYSIS.md`、`TIMELINE.md`,补看用 `reference_archive.py tile`;**事实表里判断出镜方式** | 两份档案 | `reference_archive.py check <ref_id>` 显示 READY |
 | 3 | 商品参数表 | **Codex**(事实只能来自用户和包装图) | 本地 | 每条事实挂证据,拿不到的填 null | `inputs/<job>/product.en.json` | `validate` 通过 |
 | 4 | 节拍表 + 稿子 | **Codex** | 本地 | `build_beats.py`,英文稿按节拍表写 | `beats.json`、`variants/vNNN/script.en.json` | `validate` 通过 |
-| 5 | 分镜 + 出图请求 | **Codex** | 本地 | `job.presenter.mode` 照档案的出镜方式填,选对应模板;`camera` 照 TIMELINE 的镜头行,`first_frame` / `intention` / `accents` 照 TIMELINE 写,`build_keyframe_prompts.py` 生成提示词;`shot_for_shot` 同时生成 `h3_clip_plan.json` | `shot_plan.json`、`keyframes/REQUEST.json`、`h3_clip_plan.json`、`segNN_prompt.txt` | `validate` 通过后直接进入第 6 步 |
-| 6 | 定妆照 + 参考帧 + H3 提交包 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩";READY 后用确定性编译器生成 `segments.json` | `presenter_master.png`、`keyframes/segNN.png`、`QC.json`、`READY.json`、`segments.json` | `keyframe-status` 和 `preflight` 均通过 |
+| 5 | 分镜 + 出图请求 | **Codex** | 本地 | `job.presenter.mode` 照档案的出镜方式填;`camera` 照 TIMELINE;先生成 `scene_lock` 和三视角场景包请求;`shot_for_shot` 同时生成 `h3_clip_plan.json` | `shot_plan.json`、`keyframes/REQUEST.json`、`h3_clip_plan.json`、三视角背景提示词 | `validate` 通过(允许 scene pack pending 警告)后直接进入第 6 步 |
+| 6 | 三视角场景包 + 定妆照 + 参考帧 + H3 提交包 | **Codex** | 本地(Codex 自带 ImageGen) | 见下方"Codex 的出图规矩";READY 后用确定性编译器生成 `segments.json` | `scene_pack/`、`presenter_master.png`、`keyframes/segNN.png`、`QC.json`、`READY.json`、`segments.json` | `keyframe-status` 和 `preflight` 均通过 |
 | 7 | H3 渲染 | **Claude** | 服务器 | 先跑 `preflight --actor claude`,只上传已封存的 `segments.json` 和引用资产,再执行 `cc_submit`、单段 `cc_rerun` | 成片 | `cc_status` 出片 |
 | 8 | 验收 | **Claude**(技术 + 台词)、**用户**(画面) | 本地 | 成片再转写对台词;画面交给用户看 | 验收结论 | 用户说"通过" |
 
@@ -78,8 +78,8 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 2. 使用 Codex 当前会话自带的 ImageGen 生成或编辑真实感更强的虚构出镜人与分镜参考帧
 3. 检查人物一致性、构图、手的数量、商品形态和原品牌残留。不合格时**重新生成,不要在失败的图上继续改**
 4. 出图的四条规矩(`validate` 会拦后三条):
-   - 每次都从原图出发:参考图只用已确认的定妆照和商品原图,每次尝试都是一次全新生成
-   - 除定妆照外,生成过的图(`keyframes/` 下的任何图)不能再当参考,包括上一段的参考帧
+   - 每次都从已登记的身份图出发:参考图只用三视角场景包、已确认的定妆照(如需)和商品原图,每次尝试都是一次全新生成
+   - 除场景包和定妆照外,生成过的图(`keyframes/` 下的任何图)不能再当参考,包括上一段的参考帧
    - 商品的**朝向**和原图一致:正面或背面对着镜头,不转到原图没有的侧面。拿在手里还是放在桌上、
      镜头角度,都照分镜的 `camera` 和原片(例如原片是第一人称高位俯拍、手握瓶子,就照这样出);
      倾斜、倒奶这些动作交给 H3
@@ -95,15 +95,21 @@ a2_test 的第 3 段(背标特写)因此四项全错:字糊成乱码、瓶型变
 
 Claude Code 只在看到 `READY.json` 且重新运行 `preflight --actor claude` 通过后接手第 7–8 步。
 
-**6a 定妆照(只在 `presenter.mode = generated_fictional` 时做;自动,不用等用户)**
+**6a 三视角场景包(所有新任务都做;自动,不用等用户)**
+
+1. 从原片宫格中只观察场景,写一份结构化 `scene_lock`:其中 `surface` 是硬锁,必须写清同一张桌子的材质、颜色、纹理方向和可辨识边缘;`setting / backdrop / lighting / palette / fixed_props` 只是软引导;原片截图仍然不能交给 ImageGen
+2. 先按文字生成无人物、无商品的 `eye_level` 基础场景,验收后以它作为场景身份参考,再生成同一张桌子的 `oblique_45` 和 `overhead_90`;三张允许透视、裁切、景深、背景道具露出和局部曝光自然变化
+3. 运行 `build_scene_pack_prompts.py` 编译三张背景提示词,选定三张后运行 `set_scene_pack.py` 登记路径和 SHA256;登记完成后才运行 `build_keyframe_prompts.py`,每张关键帧根据 `camera` 自动绑定对应视角的 `scene_identity` 图
+4. `QC.json.scene_consistency` 必须把三张场景母版和整组关键帧并排检查;只有“不是同一张桌子”是硬失败。近景商品清晰、背景自然虚化或散景是合格表现;裁切、景深、视差、背景道具露出和轻微局部光感变化都允许
+
+**6b 定妆照(只在 `presenter.mode = generated_fictional` 时做;自动,不用等用户)**
 
 1. 出 3 张候选定妆照:虚构出镜人在和原视频同类型的场景里(看 `video_analysis/` 的宫格,用文字描述场景),
    **画面里没有任何商品**,中景、自然光,人要比现在的 `presenter.jpg` 更真实
 2. 自己按验收标准挑最好的一张,运行
    `python scripts/set_presenter_master.py inputs/a2_test/job.en.json <选中的图> --note "best of 3"`,
    然后直接继续。它会记下文件指纹,并把分镜和出图请求里的人物参考都换成这张
-3. 之后每一段都只用"定妆照 + 商品原图"两张当参考。定妆照是唯一允许当参考的生成图;
-   登记后文件被改动过,`validate` 会报错
+3. 之后每一段使用"对应角度的场景母版 + 定妆照 + 商品原图"作为身份参考。场景包和定妆照是仅有的两类允许回用的生成图;登记后文件被改动过,`validate` 会报错
 
 **先读任务关联的原片档案 `references/<ref_id>/ANALYSIS.md` 和 `TIMELINE.md`**:原片为什么有效、每一段的表情和动作跟哪个词对齐。分镜的 `intention` / `accents` / `performance` 照这两份写。
 
@@ -123,8 +129,8 @@ Claude Code 只在看到 `READY.json` 且重新运行 `preflight --actor claude`
   prompt 必须逐行写清 `<Picture N>` 在 `x–y seconds` 内负责的构图、动作和切点,不能把每张参考帧都单独渲染后再二次拼接
 - 每条 H3 视频的**总参考图数**是 2–3 张。使用 1–2 张生成参考帧时可把商品原图放在最后一张补身份;
   已经使用 3 张生成参考帧时不再额外绑定商品图
-- 同一条 H3 视频里的生成参考帧必须共享一个 `scene_id`:台面材质、主场景和光线时段不能互相冲突。
-  精确秒点可以指挥切镜,但不能消除白色大理石、深色木桌、亚麻桌旗之间的参考图争夺;场景锚点不同就拆条
+- 同一条 H3 视频里的生成参考帧必须共享同一张物理桌子。精确秒点不能消除白色大理石、深色木桌、亚麻桌旗之间的参考图争夺;桌子身份不同就拆条
+- 新任务的 `scene_id` 必须绑定已登记的三视角 `scene_pack`:各关键帧按自身 `camera` 选 `eye_level`、`oblique_45` 或 `overhead_90`;近景允许自然微调,只硬锁桌面身份
 - 只有一条视频塞不下时长、动作冲突明显或需要隔离重试时才拆成下一条 H3 视频;拆分依据写入 `h3_clip_plan` / `timed_shots`,不按关键帧数量机械拆分
 - **参考帧里不能有原博主的脸或原片里的产品**
 - 出镜人必须是虚构人物,每段都用同一个人
