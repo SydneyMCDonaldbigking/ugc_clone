@@ -49,6 +49,9 @@ def materialize(
 
     for clip_index, clip in enumerate(spec.get("clips", []), start=1):
         segment_number = int(clip["segment"])
+        scene_id = clip.get("scene_id")
+        if not isinstance(scene_id, str) or not scene_id.strip():
+            raise ValueError(f"clip {clip_index} needs a non-empty scene_id")
         line = lines_by_segment.get(segment_number)
         if line is None:
             raise ValueError(f"clip {clip_index} references missing script segment {segment_number}")
@@ -108,6 +111,7 @@ def materialize(
             keyframe_id = str(frame["keyframe_id"])
             plan_frame = {
                 "keyframe_id": keyframe_id,
+                "scene_id": scene_id,
                 "role": frame["role"],
                 "first_frame": frame["first_frame"],
                 "camera": frame["camera"],
@@ -119,6 +123,7 @@ def materialize(
             pose_source = "product_identity_reference" if fidelity == "pixel_preserve" else "shot_plan"
             request_segments[keyframe_id] = {
                 "script_segment": segment_number,
+                "scene_id": scene_id,
                 "role": frame["role"],
                 "prompt_file": f"{output_dir}/seg{keyframe_id}_prompt.txt",
                 "references": [product_reference],
@@ -136,6 +141,7 @@ def materialize(
 
         plan_segments.append({
             "id": f"S{segment_number:02d}",
+            "scene_id": scene_id,
             "segment": segment_number,
             "duration_seconds": render_duration,
             "source_start_seconds": source_start,
@@ -200,6 +206,9 @@ def build_h3_clip_plan(plan: dict[str, Any], spec: dict[str, Any]) -> dict[str, 
     total_edit_duration = 0.0
     for segment in plan.get("segments", []):
         keyframe_ids = [str(value) for value in segment["keyframe_ids"]]
+        scene_id = segment.get("scene_id")
+        if not isinstance(scene_id, str) or not scene_id.strip():
+            raise ValueError(f"{segment.get('id')} needs a non-empty scene_id")
         picture_by_keyframe = {
             keyframe_id: index for index, keyframe_id in enumerate(keyframe_ids, start=1)
         }
@@ -219,6 +228,7 @@ def build_h3_clip_plan(plan: dict[str, Any], spec: dict[str, Any]) -> dict[str, 
             cues.append({
                 "keyframe_id": keyframe_id,
                 "picture": picture,
+                "scene_id": scene_id,
                 "start_seconds": owned[0]["clip_start_seconds"],
                 "end_seconds": owned[-1]["clip_end_seconds"],
                 "transition": "start" if picture == 1 else "hard_cut",
@@ -239,6 +249,7 @@ def build_h3_clip_plan(plan: dict[str, Any], spec: dict[str, Any]) -> dict[str, 
         total_edit_duration += float(segment["source_edit_duration_seconds"])
         clips.append({
             "id": segment["id"],
+            "scene_id": scene_id,
             "duration_seconds": segment["duration_seconds"],
             "trim_duration_seconds": segment["source_edit_duration_seconds"],
             "keyframe_ids": keyframe_ids,

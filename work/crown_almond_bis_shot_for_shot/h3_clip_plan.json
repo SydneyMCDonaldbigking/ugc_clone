@@ -7,6 +7,7 @@
   "clips": [
     {
       "id": "S01",
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "duration_seconds": 6.0,
       "trim_duration_seconds": 5.8,
       "keyframe_ids": [
@@ -18,6 +19,7 @@
         {
           "keyframe_id": "1a",
           "picture": 1,
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "start_seconds": 0.0,
           "end_seconds": 3.867,
           "transition": "start",
@@ -26,6 +28,7 @@
         {
           "keyframe_id": "1b",
           "picture": 2,
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "start_seconds": 3.867,
           "end_seconds": 5.8,
           "transition": "hard_cut",
@@ -85,6 +88,7 @@
     },
     {
       "id": "S02",
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "duration_seconds": 5.0,
       "trim_duration_seconds": 4.633,
       "keyframe_ids": [
@@ -96,6 +100,7 @@
         {
           "keyframe_id": "2a",
           "picture": 1,
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "start_seconds": 0.0,
           "end_seconds": 2.5,
           "transition": "start",
@@ -104,6 +109,7 @@
         {
           "keyframe_id": "2b",
           "picture": 2,
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "start_seconds": 2.5,
           "end_seconds": 4.633,
           "transition": "hard_cut",
@@ -155,6 +161,7 @@
     },
     {
       "id": "S03",
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "duration_seconds": 6.0,
       "trim_duration_seconds": 5.134,
       "keyframe_ids": [
@@ -166,6 +173,7 @@
         {
           "keyframe_id": "3a",
           "picture": 1,
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "start_seconds": 0.0,
           "end_seconds": 3.767,
           "transition": "start",
@@ -174,6 +182,7 @@
         {
           "keyframe_id": "3b",
           "picture": 2,
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "start_seconds": 3.767,
           "end_seconds": 5.134,
           "transition": "hard_cut",
@@ -241,6 +250,7 @@
     },
     {
       "id": "S04",
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "duration_seconds": 5.0,
       "trim_duration_seconds": 3.466,
       "keyframe_ids": [
@@ -252,6 +262,7 @@
         {
           "keyframe_id": "4a",
           "picture": 1,
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "start_seconds": 0.0,
           "end_seconds": 1.133,
           "transition": "start",
@@ -260,6 +271,7 @@
         {
           "keyframe_id": "4b",
           "picture": 2,
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "start_seconds": 1.133,
           "end_seconds": 3.466,
           "transition": "hard_cut",

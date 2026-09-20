@@ -9,6 +9,7 @@
     "job_id": {"type": "string", "minLength": 1},
     "variant_id": {"type": "string", "minLength": 1},
     "max_reference_images": {"const": 3},
+    "require_scene_lock": {"type": "boolean"},
     "total_edit_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
     "clips": {
       "type": "array",
@@ -18,6 +19,7 @@
         "required": ["id", "duration_seconds", "trim_duration_seconds", "keyframe_ids", "product_reference", "cues"],
         "properties": {
           "id": {"type": "string", "minLength": 1},
+          "scene_id": {"type": "string", "minLength": 1},
           "duration_seconds": {"type": "number", "minimum": 2, "maximum": 15},
           "trim_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
           "keyframe_ids": {
@@ -43,6 +45,7 @@
               "properties": {
                 "keyframe_id": {"type": "string", "minLength": 1},
                 "picture": {"type": "integer", "minimum": 1, "maximum": 3},
+                "scene_id": {"type": "string", "minLength": 1},
                 "start_seconds": {"type": "number", "minimum": 0},
                 "end_seconds": {"type": "number", "exclusiveMinimum": 0},
                 "transition": {"enum": ["start", "hard_cut", "foreground_wipe_cut"]},

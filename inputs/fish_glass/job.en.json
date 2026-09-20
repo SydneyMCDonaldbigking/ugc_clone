@@ -16,6 +16,7 @@
   "shot_plan": "work/fish_glass/variants/v001/shot_plan.json",
   "keyframe_request": "work/fish_glass/keyframes/REQUEST.json",
   "h3_clip_plan": "work/fish_glass/h3_clip_plan.json",
+  "h3_segments": "work/fish_glass/segments.json",
   "state_file": "work/fish_glass/state.en.json",
   "events_file": "work/fish_glass/events.en.jsonl",
   "presentation": {
@@ -31,11 +32,11 @@
   },
   "render_plan": {
     "keyframe_count": 13,
-    "h3_clip_count": 6,
+    "h3_clip_count": 10,
     "max_segments_per_h3_job": 20,
     "expected_h3_batches": 1,
     "edit_to_source_duration_seconds": 26.533,
-    "note": "Compile the 13 approved keyframes into six timed multi-reference H3 clips. Each clip uses no more than three pictures and names the exact Picture/time window in its prompt."
+    "note": "Compile the 13 approved keyframes into ten scene-compatible timed H3 clips. Each clip uses two or three pictures, names the exact Picture/time window, and never mixes conflicting tabletop or scene anchors."
   },
   "image_provider": "codex-imagegen",
   "video_provider": "h3",

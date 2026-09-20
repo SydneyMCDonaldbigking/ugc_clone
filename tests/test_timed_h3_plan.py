@@ -37,6 +37,7 @@ class TimedH3PlanTests(unittest.TestCase):
             "prompt_template": "templates/keyframe_prompt.hands-only.en.txt",
             "clips": [{
                 "segment": 1,
+                "scene_id": "pale-tabletop-daylight",
                 "render_duration_seconds": 2,
                 "subject": "The target product.",
                 "action": "Show two fast views.",
@@ -69,6 +70,13 @@ class TimedH3PlanTests(unittest.TestCase):
         h3_plan = build_h3_clip_plan(plan, self.spec)
 
         self.assertEqual(len(h3_plan["clips"]), 1)
+        self.assertEqual(h3_plan["clips"][0]["scene_id"], "pale-tabletop-daylight")
+        self.assertTrue(
+            all(
+                cue["scene_id"] == "pale-tabletop-daylight"
+                for cue in h3_plan["clips"][0]["cues"]
+            )
+        )
         self.assertEqual(len(h3_plan["clips"][0]["keyframe_ids"]), 1)
         self.assertEqual(len(h3_plan["clips"][0]["timed_shots"]), 2)
         self.assertEqual(h3_plan["clips"][0]["timed_shots"][1]["start_seconds"], 0.5)
@@ -91,6 +99,7 @@ class TimedH3PlanTests(unittest.TestCase):
 
     def test_three_generated_pictures_need_no_fourth_product_picture(self) -> None:
         segment = {
+            "scene_id": "pale-tabletop-daylight",
             "action": "Show three deliberate compositions in one clip.",
             "performance": "Natural hands-only motion.",
             "intention": "Preserve the source rhythm.",
@@ -124,6 +133,7 @@ class TimedH3PlanTests(unittest.TestCase):
         prompt = render_prompt(segment, ["a", "b", "c"], None)
 
         self.assertIn("<Picture 3>", prompt)
+        self.assertIn("scene_id pale-tabletop-daylight", prompt)
         self.assertNotIn("<Picture 4>", prompt)
         self.assertNotIn("original product identity authority", prompt)
 

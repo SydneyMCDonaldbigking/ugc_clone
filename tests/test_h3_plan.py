@@ -17,11 +17,11 @@ class H3ClipPlanTests(unittest.TestCase):
         self.request = load_json(ROOT / self.job["keyframe_request"])
         self.plan = load_json(ROOT / self.job["h3_clip_plan"])
 
-    def test_fish_keyframes_compile_to_six_multi_picture_clips(self) -> None:
+    def test_fish_keyframes_compile_to_scene_compatible_clips(self) -> None:
         validate_h3_clip_plan(self.plan, self.job, self.request, ROOT)
 
         self.assertEqual(len(self.request["segments"]), 13)
-        self.assertEqual(len(self.plan["clips"]), 6)
+        self.assertEqual(len(self.plan["clips"]), 10)
         self.assertEqual(
             [keyframe for clip in self.plan["clips"] for keyframe in clip["keyframe_ids"]],
             list(self.request["segments"]),
@@ -29,19 +29,32 @@ class H3ClipPlanTests(unittest.TestCase):
         for clip in self.plan["clips"]:
             total_pictures = len(clip["keyframe_ids"]) + int(clip["product_reference"] is not None)
             self.assertIn(total_pictures, (2, 3))
+            self.assertTrue(all(cue["scene_id"] == clip["scene_id"] for cue in clip["cues"]))
 
     def test_picture_cues_must_be_contiguous(self) -> None:
         plan = copy.deepcopy(self.plan)
-        plan["clips"][0]["cues"][1]["start_seconds"] += 0.1
+        clip = next(item for item in plan["clips"] if len(item["cues"]) > 1)
+        clip["cues"][1]["start_seconds"] += 0.1
 
         with self.assertRaisesRegex(ValueError, "contiguous"):
             validate_h3_clip_plan(plan, self.job, self.request, ROOT)
 
-    def test_three_generated_keyframes_do_not_add_product_reference(self) -> None:
-        three_frame_clips = [clip for clip in self.plan["clips"] if len(clip["keyframe_ids"]) == 3]
+    def test_mixed_scene_anchor_is_rejected(self) -> None:
+        plan = copy.deepcopy(self.plan)
+        plan["clips"][0]["cues"][0]["scene_id"] = "different-tabletop"
 
-        self.assertTrue(three_frame_clips)
-        self.assertTrue(all(clip["product_reference"] is None for clip in three_frame_clips))
+        with self.assertRaisesRegex(ValueError, "cannot mix"):
+            validate_h3_clip_plan(plan, self.job, self.request, ROOT)
+
+    def test_known_conflicting_fish_surfaces_are_split(self) -> None:
+        clip_by_keyframe = {
+            keyframe: clip["id"]
+            for clip in self.plan["clips"]
+            for keyframe in clip["keyframe_ids"]
+        }
+
+        self.assertNotEqual(clip_by_keyframe["4"], clip_by_keyframe["5"])
+        self.assertNotEqual(clip_by_keyframe["7a"], clip_by_keyframe["7b"])
 
 
 class ShotForShotH3ClipPlanTests(unittest.TestCase):

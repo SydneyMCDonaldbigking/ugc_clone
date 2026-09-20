@@ -8,6 +8,7 @@
   "segments": [
     {
       "id": "S01",
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "segment": 1,
       "duration_seconds": 6.0,
       "source_start_seconds": 0.0,
@@ -27,6 +28,7 @@
       "reference_frames": [
         {
           "keyframe_id": "1a",
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "role": "plate-and-handful abundance anchor",
           "first_frame": "First-person vertical snack-review frame on a bright tabletop: a shallow cream plate crowded with separate golden rectangular Crown almond biscuits fills the lower frame, one opened white Crown packet sits above it, and one natural hand reaches toward the biscuits.",
           "camera": "extreme product close-up | first-person high angle about 45 degrees | handheld micro-sway | plate, packet and reaching hand fill about eighty-five percent of frame",
@@ -34,6 +36,7 @@
         },
         {
           "keyframe_id": "1b",
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "role": "overhead retail-box opening anchor",
           "first_frame": "Directly overhead hands-only view of one complete Crown Almond Biscuits retail box centred on the same bright tabletop, with both hands resting naturally on the top flaps and white individual packets visible as the box begins to open.",
           "camera": "box close-up | first-person directly overhead about 90 degrees | locked smartphone with slight hand vibration | retail box centred and filling about seventy percent of frame",
@@ -125,6 +128,7 @@
     },
     {
       "id": "S02",
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "segment": 2,
       "duration_seconds": 5.0,
       "source_start_seconds": 5.8,
@@ -144,6 +148,7 @@
       "reference_frames": [
         {
           "keyframe_id": "2a",
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "role": "packet opening and plate anchor",
           "first_frame": "First-person high-angle close-up on the same bright table: both hands hold one white Crown individual packet at its sealed top seam above a shallow plate, with several matching packets scattered naturally behind.",
           "camera": "packaging close-up | first-person high angle about 45 degrees | handheld micro-follow | sealed packet centred above the plate with repeated packets behind",
@@ -151,6 +156,7 @@
         },
         {
           "keyframe_id": "2b",
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "role": "box-front and biscuit identity anchor",
           "first_frame": "One hand holds the complete Crown Almond Biscuits retail box square and close to the camera while the other hand presents one whole golden rectangular biscuit beside the visible front artwork on the same bright tabletop.",
           "camera": "extreme packaging close-up | first-person slight high angle about 15 degrees | nearly locked handheld | box front and one biscuit occupy about eighty percent of frame",
@@ -232,6 +238,7 @@
     },
     {
       "id": "S03",
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "segment": 3,
       "duration_seconds": 6.0,
       "source_start_seconds": 10.433,
@@ -251,13 +258,15 @@
       "reference_frames": [
         {
           "keyframe_id": "3a",
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "role": "stacked biscuit macro anchor",
-          "first_frame": "Two hands hold two short stacks of golden rectangular Crown almond biscuits side by side near the lens, exposing the thin edges and baked surfaces, with a shallow plate of matching biscuits below.",
+          "first_frame": "Two hands hold two short stacks of golden rectangular Crown almond biscuits side by side near the lens, exposing the thin edges and baked surfaces, with a shallow matte warm-ivory ceramic plate of matching biscuits below.",
           "camera": "macro close-up | first-person high angle about 25 degrees | tiny focus settle | two biscuit stacks fill the central eighty percent",
           "performance": "Careful fingertips maintain natural pressure on two stable stacks and can quickly reset into surface and plate views."
         },
         {
           "keyframe_id": "3b",
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "role": "intact biscuit break anchor",
           "first_frame": "Two hands hold one complete intact rectangular Crown almond biscuit horizontally close to the lens, thumbs meeting near the centre and fingers supporting both ends, with the matching plate softly blurred below.",
           "camera": "extreme macro | first-person near eye level about 15 degrees above | handheld focus breathing | intact biscuit and fingertips fill the centre",
@@ -360,6 +369,7 @@
     },
     {
       "id": "S04",
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "segment": 4,
       "duration_seconds": 5.0,
       "source_start_seconds": 15.567,
@@ -379,6 +389,7 @@
       "reference_frames": [
         {
           "keyframe_id": "4a",
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "role": "sharing handful anchor",
           "first_frame": "One palm holds several golden rectangular Crown almond biscuits above the full sharing plate while a second open hand enters from the side ready to take one, with white target packets behind.",
           "camera": "product close-up | first-person high angle about 45 degrees | handheld follows the taking hand | biscuit palm centred over the plate",
@@ -386,6 +397,7 @@
         },
         {
           "keyframe_id": "4b",
+          "scene_id": "pale-wood-cream-tableware-warm-daylight",
           "role": "milk bowl and spoon anchor",
           "first_frame": "High-angle close-up of one shallow white bowl of plain milk on the same tabletop: one metal spoon rests in the bowl and supports one whole rectangular Crown almond biscuit near the milk surface, with the target box and packet visible behind.",
           "camera": "extreme food close-up | first-person high angle about 50 degrees | handheld prepared to follow the spoon | spoon and rectangular biscuit centred over one milk bowl",

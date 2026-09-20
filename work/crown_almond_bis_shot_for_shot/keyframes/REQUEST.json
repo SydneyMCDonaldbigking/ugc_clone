@@ -11,6 +11,7 @@
   "segments": {
     "1a": {
       "script_segment": 1,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "role": "plate-and-handful abundance anchor",
       "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg1a_prompt.txt",
       "references": [
@@ -35,6 +36,7 @@
     },
     "1b": {
       "script_segment": 1,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "role": "overhead retail-box opening anchor",
       "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg1b_prompt.txt",
       "references": [
@@ -59,6 +61,7 @@
     },
     "2a": {
       "script_segment": 2,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "role": "packet opening and plate anchor",
       "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg2a_prompt.txt",
       "references": [
@@ -83,6 +86,7 @@
     },
     "2b": {
       "script_segment": 2,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "role": "box-front and biscuit identity anchor",
       "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg2b_prompt.txt",
       "references": [
@@ -107,6 +111,7 @@
     },
     "3a": {
       "script_segment": 3,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "role": "stacked biscuit macro anchor",
       "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg3a_prompt.txt",
       "references": [
@@ -126,11 +131,13 @@
       "checks": [
         "Two distinct stacks contain only rectangular target biscuits.",
         "Exactly two plausible hands hold the stacks with separate fingers.",
+        "The plate is matte warm-ivory ceramic, matching the pale tableware continuity of seg3b.",
         "No face, round source biscuits, captions or watermark appears."
       ]
     },
     "3b": {
       "script_segment": 3,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "role": "intact biscuit break anchor",
       "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg3b_prompt.txt",
       "references": [
@@ -155,6 +162,7 @@
     },
     "4a": {
       "script_segment": 4,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "role": "sharing handful anchor",
       "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg4a_prompt.txt",
       "references": [
@@ -179,6 +187,7 @@
     },
     "4b": {
       "script_segment": 4,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "role": "milk bowl and spoon anchor",
       "prompt_file": "work/crown_almond_bis_shot_for_shot/keyframes/seg4b_prompt.txt",
       "references": [

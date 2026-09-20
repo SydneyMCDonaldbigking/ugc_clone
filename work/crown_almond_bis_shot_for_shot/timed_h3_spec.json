@@ -8,6 +8,7 @@
   "clips": [
     {
       "segment": 1,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "render_duration_seconds": 6,
       "shot_type": "abundance_hook_to_box_open",
       "subject": "Hands rapidly present Crown Almond Biscuits through plate, handful and retail-box views on one bright home tabletop.",
@@ -55,6 +56,7 @@
     },
     {
       "segment": 2,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "render_duration_seconds": 5,
       "shot_type": "packet_open_to_package_identity",
       "subject": "White Crown packets, rectangular biscuits and the complete retail box cycle through five rapid hands-only proof shots.",
@@ -101,6 +103,7 @@
     },
     {
       "segment": 3,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "render_duration_seconds": 6,
       "shot_type": "biscuit_macro_to_clean_break",
       "subject": "Rectangular Crown almond biscuits fill a sequence of edge, surface, plate and break-open macro views.",
@@ -114,12 +117,13 @@
           "keyframe_id": "3a",
           "role": "stacked biscuit macro anchor",
           "product_reference": "codex_clone_refs/crown_almond_bis/ref_pic1.jpg",
-          "first_frame": "Two hands hold two short stacks of golden rectangular Crown almond biscuits side by side near the lens, exposing the thin edges and baked surfaces, with a shallow plate of matching biscuits below.",
+          "first_frame": "Two hands hold two short stacks of golden rectangular Crown almond biscuits side by side near the lens, exposing the thin edges and baked surfaces, with a shallow matte warm-ivory ceramic plate of matching biscuits below.",
           "camera": "macro close-up | first-person high angle about 25 degrees | tiny focus settle | two biscuit stacks fill the central eighty percent",
           "performance": "Careful fingertips maintain natural pressure on two stable stacks and can quickly reset into surface and plate views.",
           "checks": [
             "Two distinct stacks contain only rectangular target biscuits.",
             "Exactly two plausible hands hold the stacks with separate fingers.",
+            "The plate is matte warm-ivory ceramic, matching the pale tableware continuity of seg3b.",
             "No face, round source biscuits, captions or watermark appears."
           ]
         },
@@ -149,6 +153,7 @@
     },
     {
       "segment": 4,
+      "scene_id": "pale-wood-cream-tableware-warm-daylight",
       "render_duration_seconds": 5,
       "shot_type": "share_to_milk_finish",
       "subject": "A friendly sharing gesture cuts to one biscuit meeting milk and a spoon lifting the milk-paired result.",

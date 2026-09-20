@@ -146,6 +146,7 @@ H3 生成保持静音,不得为了满足口播字段而编造台词或字幕。
 - 普通真人口播可使用 `(S1) <d>[English] ...</d>`。`shot_for_shot` 的 H3 层一律静音,精确裁切后再叠加一条连续英文母带;`audio_mode: dialogue` 表示最终成片有英文声音,`render_plan.h3_audio_mode: silent` 表示 H3 本身不发声。历史 `[Chinese]` 提示词不得用于新任务
 - H3 当前单任务最多 20 条视频、每条 2–15 秒。关键帧只是构图资产,不是 H3 视频数量:优先让一条约 5 秒的视频绑定
   2–3 张 Picture,在 prompt 中明确 `<Picture N>` 对应的秒段、动作与硬切时刻;只有时长、动作冲突或重试隔离确有需要时才拆成下一条视频
+- 多张 Picture 只有在台面材质、主场景和光线时段属于同一个 `scene_id` 时才允许合并;白色大理石、深色木桌、亚麻桌旗等冲突场景必须分成不同 H3 视频
 - `shot_for_shot` 模式把 Hypit/`cuts.json` 识别的每个原片切点当硬约束:先由 `build_shot_map.py` 建完整镜头表,再用
   `build_timed_h3_plan.py` 把这些小镜头编进少量 H3 视频。英文台词只能在原时间窗内微调字数,不得为了台词改动镜头节奏
   - 服务器重启后 ComfyUI 和 worker 都要手动拉起;`cc_status.py` 必须在仓库目录下跑,否则找不到 config

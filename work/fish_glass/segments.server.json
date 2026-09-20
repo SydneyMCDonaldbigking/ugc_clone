@@ -1,135 +1,85 @@
 [
   {
-    "id": "H01",
-    "scene_id": "sunlit-window-dark-wood-tray",
-    "duration": 2,
-    "source_start_seconds": 0.0,
-    "source_end_seconds": 1.467,
-    "trim_to_seconds": 1.467,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: sunlit window dark wood tray.\n<Picture 1> is the composition authority for 0-1.467 seconds: Begin on the two finished drinks and snap from slightly soft focus to crisp focus while both glasses remain still.\n<Picture 2> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 2-second video. Follow this Picture timeline literally. The 0 scheduled internal cuts happen only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the sunlit window dark wood tray scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-1.467 seconds - start on <Picture 1>; Begin on the two finished drinks and snap from slightly soft focus to crisp focus while both glasses remain still.\n1.467-2 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg01.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 2,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg01.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H02",
-    "scene_id": "warm-living-room-light-wood-table",
-    "duration": 2,
-    "source_start_seconds": 1.467,
-    "source_end_seconds": 2.967,
-    "trim_to_seconds": 1.5,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm living room light wood table.\n<Picture 1> is the composition authority for 0-1.5 seconds: Tilt the empty glass diagonally and make one controlled quarter-turn so the double wall, fish motif, rim and thick base read clearly.\n<Picture 2> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 2-second video. Follow this Picture timeline literally. The 0 scheduled internal cuts happen only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm living room light wood table scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-1.5 seconds - start on <Picture 1>; Tilt the empty glass diagonally and make one controlled quarter-turn so the double wall, fish motif, rim and thick base read clearly.\n1.5-2 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg02.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 2,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg02.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H03",
-    "scene_id": "warm-kitchen-dark-wood-tray",
-    "duration": 6,
-    "source_start_seconds": 2.967,
-    "source_end_seconds": 8.033,
-    "trim_to_seconds": 5.066,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm kitchen dark wood tray.\n<Picture 1> is the composition authority for 0-5.066 seconds: Use slim tongs to place three large clear ice cubes into the upright glass one by one, then place one small lemon slice against the inner wall.\n<Picture 2> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 6-second video. Follow this Picture timeline literally. The 0 scheduled internal cuts happen only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm kitchen dark wood tray scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-5.066 seconds - start on <Picture 1>; Use slim tongs to place three large clear ice cubes into the upright glass one by one, then place one small lemon slice against the inner wall.\n5.066-6 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg03.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 6,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg03.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H04",
-    "scene_id": "warm-kitchen-white-marble",
-    "duration": 3,
-    "source_start_seconds": 8.033,
-    "source_end_seconds": 10.067,
-    "trim_to_seconds": 2.034,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm kitchen white marble.\n<Picture 1> is the composition authority for 0-2.034 seconds: The full-size 1.5-litre glass pitcher pours one steady sparkling-water stream over the ice; keep the target glass upright and centred on the white marble surface.\n<Picture 2> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 3-second video. Follow this Picture timeline literally. The 0 scheduled internal cuts happen only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm kitchen white marble scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-2.034 seconds - start on <Picture 1>; The full-size 1.5-litre glass pitcher pours one steady sparkling-water stream over the ice; keep the target glass upright and centred on the white marble surface.\n2.034-3 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg04.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 3,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg04.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H05",
-    "scene_id": "warm-macro-dark-wood-table",
-    "duration": 2,
-    "source_start_seconds": 10.067,
-    "source_end_seconds": 11.467,
-    "trim_to_seconds": 1.4,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm macro dark wood table.\n<Picture 1> is the composition authority for 0-1.4 seconds: Hold the extreme close-up on the dark wooden table; fine bubbles climb around the ice and lemon while the complete rim, fish pattern and thick base stay readable.\n<Picture 2> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 2-second video. Follow this Picture timeline literally. The 0 scheduled internal cuts happen only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm macro dark wood table scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-1.4 seconds - start on <Picture 1>; Hold the extreme close-up on the dark wooden table; fine bubbles climb around the ice and lemon while the complete rim, fish pattern and thick base stay readable.\n1.4-2 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg05.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 2,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg05.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H06",
-    "scene_id": "warm-interior-dark-wood-tray",
-    "duration": 4,
-    "source_start_seconds": 11.467,
-    "source_end_seconds": 15.367,
-    "trim_to_seconds": 3.9,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm interior dark wood tray.\n<Picture 1> is the composition authority for 0-1.633 seconds: One right hand closes around the completed clear drink and lifts it vertically out of frame.\n<Picture 2> is the composition authority for 1.633-3.9 seconds: Cut to the second empty matching glass on the same dark wooden tray; drop the held ice cube into it, then add two more cubes with the same tongs.\n<Picture 3> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 3>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 4-second video. Follow this Picture timeline literally. The 1 scheduled internal cut happens only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm interior dark wood tray scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-1.633 seconds - start on <Picture 1>; One right hand closes around the completed clear drink and lifts it vertically out of frame.\n1.633-3.9 seconds - hard cut to <Picture 2>; Cut to the second empty matching glass on the same dark wooden tray; drop the held ice cube into it, then add two more cubes with the same tongs.\n3.9-4 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg06a.png",
-      "work/fish_glass/keyframes/seg06b.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 4,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg06a.png",
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg06b.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H07",
-    "scene_id": "warm-kitchen-white-marble",
-    "duration": 2,
-    "source_start_seconds": 15.367,
-    "source_end_seconds": 17.267,
-    "trim_to_seconds": 1.9,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm kitchen white marble.\n<Picture 1> is the composition authority for 0-1.9 seconds: On the white marble surface, begin a smooth milk stream from the white ceramic pitcher over the three cubes; only one hand and a short forearm remain visible.\n<Picture 2> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 2-second video. Follow this Picture timeline literally. The 0 scheduled internal cuts happen only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm kitchen white marble scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-1.9 seconds - start on <Picture 1>; On the white marble surface, begin a smooth milk stream from the white ceramic pitcher over the three cubes; only one hand and a short forearm remain visible.\n1.9-2 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg06c.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 2,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg06c.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H08",
-    "scene_id": "warm-interior-striped-linen-runner",
-    "duration": 3,
-    "source_start_seconds": 17.267,
-    "source_end_seconds": 20.0,
-    "trim_to_seconds": 2.733,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm interior striped linen runner.\n<Picture 1> is the composition authority for 0-2.733 seconds: Keep the glass on the striped linen runner and pour dark coffee into the iced milk, preserving the natural brown-white colour bloom without stirring.\n<Picture 2> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 3-second video. Follow this Picture timeline literally. The 0 scheduled internal cuts happen only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm interior striped linen runner scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-2.733 seconds - start on <Picture 1>; Keep the glass on the striped linen runner and pour dark coffee into the iced milk, preserving the natural brown-white colour bloom without stirring.\n2.733-3 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg07a.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 3,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg07a.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H09",
-    "scene_id": "warm-interior-dark-wood-tray",
-    "duration": 4,
-    "source_start_seconds": 20.0,
-    "source_end_seconds": 23.067,
-    "trim_to_seconds": 3.067,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm interior dark wood tray.\n<Picture 1> is the composition authority for 0-1.633 seconds: Begin on both completed drinks side by side on the dark wooden tray and settle into a restrained pull-back while both glasses remain still.\n<Picture 2> is the composition authority for 1.633-3.067 seconds: Cut to the tighter paired-drink view on the same dark wooden tray and make one small controlled circular stir in the clear citrus drink while the milk coffee remains still.\n<Picture 3> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 3>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 4-second video. Follow this Picture timeline literally. The 1 scheduled internal cut happens only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm interior dark wood tray scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-1.633 seconds - start on <Picture 1>; Begin on both completed drinks side by side on the dark wooden tray and settle into a restrained pull-back while both glasses remain still.\n1.633-3.067 seconds - hard cut to <Picture 2>; Cut to the tighter paired-drink view on the same dark wooden tray and make one small controlled circular stir in the clear citrus drink while the milk coffee remains still.\n3.067-4 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg07b.png",
-      "work/fish_glass/keyframes/seg08.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 4,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg07b.png",
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg08.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   },
   {
-    "id": "H10",
-    "scene_id": "warm-interior-dark-wood-tray",
-    "duration": 4,
-    "source_start_seconds": 23.067,
-    "source_end_seconds": 26.533,
-    "trim_to_seconds": 3.466,
     "prompt": "subject_definitions:\nThe complete clip uses one locked scene anchor: warm interior dark wood tray.\n<Picture 1> is the composition authority for 0-1.6 seconds: Grip the clear drink on the dark wooden tray and lift it straight toward the lens until it becomes a soft foreground wipe.\n<Picture 2> is the composition authority for 1.6-3.466 seconds: Use the glass wipe as the cut into the final clean two-drink hero on the dark wooden tray; make a subtle settling pull-back and finish on a calm locked hold.\n<Picture 3> is the product identity authority for the target glass throughout the clip.\n\nretention_analysis:\n<Picture 1>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 2>: fully_preserved only during its assigned time window; preserve its camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light.\n<Picture 3>: attribute_transfer throughout; preserve the double-wall silhouette, open rim, thick clear base and repeated frosted fish motifs, but ignore its original background.\n\ndetailed_description:\nGenerate one vertical 4-second video. Follow this Picture timeline literally. The 1 scheduled internal cut happens only at the named times; every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. Keep the warm interior dark wood tray scene anchor unchanged for the complete clip.\n\ntimed_picture_timeline:\n0-1.6 seconds - start on <Picture 1>; Grip the clear drink on the dark wooden tray and lift it straight toward the lens until it becomes a soft foreground wipe.\n1.6-3.466 seconds - use the foreground glass wipe to cut to <Picture 2>; Use the glass wipe as the cut into the final clean two-drink hero on the dark wooden tray; make a subtle settling pull-back and finish on a calm locked hold.\n3.466-4 seconds - hold the final composition steady as disposable trim padding; introduce no new action or cut.\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. No speech, singing, voice-over or music.\n\nOnly the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another.",
-    "images": [
-      "work/fish_glass/keyframes/seg09a.png",
-      "work/fish_glass/keyframes/seg09b.png",
-      "codex_clone_refs/fish_glass/pic_1.jpg"
+    "duration_seconds": 4,
+    "references": [
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg09a.png",
+      "/opt/ugc_clone/jobs/fish_glass/keyframes/seg09b.png",
+      "/opt/ugc_clone/jobs/fish_glass/inputs/pic_1.jpg"
     ]
   }
 ]

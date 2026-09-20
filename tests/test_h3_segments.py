@@ -54,6 +54,29 @@ class H3SegmentsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, r"segments\[0\]\.images\[0\]"):
             self.validate(segments)
 
+    def test_fish_grouped_segments_match_scene_locked_compiler(self) -> None:
+        job = load_json(ROOT / "inputs/fish_glass/job.en.json")
+        shot_plan = load_json(ROOT / job["shot_plan"])
+        request_path = resolve_repo_path(ROOT, job["keyframe_request"])
+        request = load_json(request_path)
+        ready = load_json(request_path.parent / "READY.json")
+        h3_plan = load_h3_clip_plan(ROOT, job, request)
+        segments = load_json(ROOT / job["h3_segments"])
+
+        validate_h3_segments(
+            segments,
+            ROOT,
+            job,
+            shot_plan,
+            request,
+            request_path,
+            ready,
+            h3_plan,
+        )
+        self.assertEqual(len(segments), 10)
+        self.assertNotEqual(segments[3]["id"], segments[4]["id"])
+        self.assertNotEqual(segments[7]["id"], segments[8]["id"])
+
 
 if __name__ == "__main__":
     unittest.main()

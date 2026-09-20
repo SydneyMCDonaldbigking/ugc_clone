@@ -68,13 +68,14 @@
       "file": "seg3a.png",
       "width": 941,
       "height": 1672,
-      "sha256": "67ae69c35e68efe05309680d38018e24aa2fe2a4aca5d21c04cddb6df59e6b05",
-      "attempt": 1,
+      "sha256": "db6476228e975c49f2d09fe625ebc4389f542d11941b4cea8570adad8eb4b028",
+      "attempt": 2,
       "checks": [
         "generated fresh from codex_clone_refs/crown_almond_bis/ref_pic1.jpg only",
-        "two separate three-biscuit stacks show distinct thin rectangular edges in macro view",
+        "two separate short biscuit stacks show distinct thin rectangular edges in macro view",
         "exactly two anatomically plausible hands hold one stack each and no face appears",
         "all biscuits remain separate, golden, rectangular and consistent with the product reference",
+        "the shallow matte warm-ivory ceramic plate matches seg3b tableware continuity",
         "no fused biscuit, source-video frame, round biscuit, caption or watermark appears"
       ]
     },

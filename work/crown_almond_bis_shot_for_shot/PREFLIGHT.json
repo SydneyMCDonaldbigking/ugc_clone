@@ -2,8 +2,8 @@
   "schema": "render-preflight/v1",
   "job": "crown_almond_bis_sfs_en",
   "status": "pass",
-  "actor": "codex",
-  "checked_at": "2026-09-20T09:56:50.483488Z",
+  "actor": "claude",
+  "checked_at": "2026-09-20T10:27:02.190044Z",
   "changed_artifacts": [],
   "issues": [],
   "pipeline_job_id": "crown_almond_bis_sfs_en",
@@ -22,27 +22,27 @@
   },
   "integrity": {
     "schema": "artifact-integrity/v1",
-    "digest": "4b5cc7e2538924c35e4abe4d5c5bc92bf9a097c829ff553423f83d21edfceeb8",
+    "digest": "0454ab4bf0ba274424349508fdc9a50239a2fa14eb8d7785e81fbdabb0194dc5",
     "files": {
       "codex_clone_refs/crown_almond_bis/ref_pic1.jpg": "144e56bdcee507cf46c73a38950b32ed99350751e38c355b996fd12a373e24c3",
       "inputs/crown_almond_bis/job.shot-for-shot.en.json": "748c8df09e63a71f825dc4d4792f45cb4b1c5020113a1186b3e0f5b7baba7afb",
       "inputs/crown_almond_bis/product.en.json": "06126a71c471637c3e5bc85c0471db5499436aeb45a7bfb68e3a15d118821015",
       "work/crown_almond_bis/beats.json": "5043b2d370d164dfa113039485b974df15ecf8ae94702b0fb8b0f2819d8a77ef",
-      "work/crown_almond_bis_shot_for_shot/h3_clip_plan.json": "c0ffaa4b133b06218ee241a9e69b060d53ada216ed64efab61ca79e937d036c7",
-      "work/crown_almond_bis_shot_for_shot/keyframes/QC.json": "b0f8a198ce5e9cb4db2ad1ec526c6e992e442ba789d544f652fdd0a50db0833f",
+      "work/crown_almond_bis_shot_for_shot/h3_clip_plan.json": "39880b9b328fda322da5804b1a2ab3a91c8579b3a1bc729a33fcb367d2049ed9",
+      "work/crown_almond_bis_shot_for_shot/keyframes/QC.json": "8ae40bd1d0b2a91aa7297a03f0830ee8117bdcd1162e9d9a2d55aa90728d0920",
       "work/crown_almond_bis_shot_for_shot/keyframes/READY.json": "5bd8c09d2dfc64c8277f66e4a91f1253b7af45c5d49e6299b8b0a6d2be2ef791",
-      "work/crown_almond_bis_shot_for_shot/keyframes/REQUEST.json": "7b796faca2b962dd7281cd38e5d0b6ef575c0e8f269ddb72d57a2b04bf5c31e8",
+      "work/crown_almond_bis_shot_for_shot/keyframes/REQUEST.json": "060ae9446b351fcc67c9b8664d5ecc5cdffb68fa60b51faafbe3a683da64bc15",
       "work/crown_almond_bis_shot_for_shot/keyframes/seg1a.png": "cfe728df59a2ec92af36e66fc3194f5c9b82414b536e8db5995937afdb47393b",
       "work/crown_almond_bis_shot_for_shot/keyframes/seg1b.png": "2a530f88b8d7b6a26c9d770e73f49480e1a778d61a4b558bb5b0382a9e83f309",
       "work/crown_almond_bis_shot_for_shot/keyframes/seg2a.png": "c6004d43bc211d98671b45c9c7c8cfab5db6cd4714fef9cfb841c6263f1564f8",
       "work/crown_almond_bis_shot_for_shot/keyframes/seg2b.png": "56089d89fa067910de4732dc41f5e53b676ae29d872a6073d6096849b3ffe545",
-      "work/crown_almond_bis_shot_for_shot/keyframes/seg3a.png": "67ae69c35e68efe05309680d38018e24aa2fe2a4aca5d21c04cddb6df59e6b05",
+      "work/crown_almond_bis_shot_for_shot/keyframes/seg3a.png": "db6476228e975c49f2d09fe625ebc4389f542d11941b4cea8570adad8eb4b028",
       "work/crown_almond_bis_shot_for_shot/keyframes/seg3b.png": "ca039e2325cf999a072a7144e8c4d3e9471b9932a0816019501fd4cbeeb080e9",
       "work/crown_almond_bis_shot_for_shot/keyframes/seg4a.png": "462d6289c03876e8287b1ac5617f3847ebc70b5e2b8463b80d83ae705ceb3a56",
       "work/crown_almond_bis_shot_for_shot/keyframes/seg4b.png": "b7941d8c7c347b9538a56a8bad22c9980d7fed7112c49e862764a97c2b2e2015",
-      "work/crown_almond_bis_shot_for_shot/segments.json": "00f9b920c65a7fa891258bf9451348a4db789d70d3b30da7c0aa275e592b5605",
+      "work/crown_almond_bis_shot_for_shot/segments.json": "f800b986611b5f14891d1b0cc12d969f6de30e55183c7d6d18ed3b117298ae67",
       "work/crown_almond_bis_shot_for_shot/variants/v001/script.en.json": "25c8844bb18bffe637d0627cd3ca9ac68ff6c10277259d7ac278ca0fe7d9e8dc",
-      "work/crown_almond_bis_shot_for_shot/variants/v001/shot_plan.json": "358bcaae018ca9a7e89ea327693b47862c769629ba66663270f2930ac9502e84"
+      "work/crown_almond_bis_shot_for_shot/variants/v001/shot_plan.json": "8d5a555d6bb44dd9d1dea11679cec4b8e742ecf691a8ed393fd49599f23af8bd"
     }
   }
 }

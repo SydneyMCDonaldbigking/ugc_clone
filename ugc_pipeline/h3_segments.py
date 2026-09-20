@@ -49,6 +49,9 @@ def render_prompt(
     keyframe_ids: list[str],
     product_picture_number: int | None,
 ) -> str:
+    scene_id = segment.get("scene_id")
+    if not isinstance(scene_id, str) or not scene_id.strip():
+        raise ValueError(f"{segment.get('id', 'H3 segment')} needs a scene_id")
     picture_by_keyframe = {
         keyframe_id: index for index, keyframe_id in enumerate(keyframe_ids, start=1)
     }
@@ -97,6 +100,8 @@ def render_prompt(
         + "\n".join(subject_lines)
         + "\n\nretention_analysis:\n"
         + "\n".join(retention_lines)
+        + "\n\nscene_continuity:\n"
+        + f"All generated Pictures share scene_id {scene_id}. Preserve one compatible tabletop material, principal setting and lighting period across every cut."
         + "\n\ndetailed_description:\n"
         + str(segment["action"])
         + " Preserve the exact listed order and timing. Hard cuts occur only at the listed times. "
@@ -113,6 +118,114 @@ def render_prompt(
     )
 
 
+def render_grouped_prompt(
+    clip: dict[str, Any],
+    product_picture_number: int | None,
+) -> str:
+    """Compile an explicit Picture/time plan while keeping one scene anchor."""
+    scene = str(clip["scene_id"]).replace("-", " ")
+    subject_lines = [f"The complete clip uses one locked scene anchor: {scene}."]
+    retention_lines: list[str] = []
+    for cue in clip["cues"]:
+        picture = int(cue["picture"])
+        subject_lines.append(
+            f"<Picture {picture}> is the composition authority for "
+            f"{_time(cue['start_seconds'])}-{_time(cue['end_seconds'])} seconds: {cue['action']}"
+        )
+        retention_lines.append(
+            f"<Picture {picture}>: fully_preserved only during its assigned time window; preserve its "
+            "camera angle, framing, glass proportions, fish pattern, hands, props, scene surface and light."
+        )
+    if product_picture_number is not None:
+        subject_lines.append(
+            f"<Picture {product_picture_number}> is the product identity authority for the target glass throughout the clip."
+        )
+        retention_lines.append(
+            f"<Picture {product_picture_number}>: attribute_transfer throughout; preserve the double-wall silhouette, "
+            "open rim, thick clear base and repeated frosted fish motifs, but ignore its original background."
+        )
+
+    timeline: list[str] = []
+    for cue in clip["cues"]:
+        transition = cue["transition"]
+        transition_text = "start on" if transition == "start" else (
+            "use the foreground glass wipe to cut to"
+            if transition == "foreground_wipe_cut"
+            else "hard cut to"
+        )
+        timeline.append(
+            f"{_time(cue['start_seconds'])}-{_time(cue['end_seconds'])} seconds - "
+            f"{transition_text} <Picture {cue['picture']}>; {cue['action']}"
+        )
+    trim_duration = float(clip["trim_duration_seconds"])
+    render_duration = float(clip["duration_seconds"])
+    if render_duration - trim_duration > 0.001:
+        timeline.append(
+            f"{_time(trim_duration)}-{_time(render_duration)} seconds - hold the final composition steady as "
+            "disposable trim padding; introduce no new action or cut."
+        )
+    cut_count = max(0, len(clip["cues"]) - 1)
+    cut_verb = "happens" if cut_count == 1 else "happen"
+    duration_text = int(render_duration) if render_duration.is_integer() else render_duration
+    return (
+        "subject_definitions:\n"
+        + "\n".join(subject_lines)
+        + "\n\nretention_analysis:\n"
+        + "\n".join(retention_lines)
+        + "\n\ndetailed_description:\n"
+        + f"Generate one vertical {duration_text}-second video. Follow this Picture timeline literally. "
+          f"The {cut_count} scheduled internal cut{'s' if cut_count != 1 else ''} {cut_verb} only at the named times; "
+          "every cut is a clean edit into the next Picture composition, never a morph or an invented camera move. "
+          f"Keep the {scene} scene anchor unchanged for the complete clip.\n\n"
+        + "timed_picture_timeline:\n"
+        + "\n".join(timeline)
+        + "\n\nsoundscape: quiet room tone with the natural sounds of ice, liquid, glass and handling only. "
+          "No speech, singing, voice-over or music.\n\n"
+        + "Only the scheduled hands and short forearms appear; no face, head or torso. No subtitles, captions, "
+          "watermarks, price labels or extra brands. Preserve the target glass shape and fish pattern across every "
+          "scheduled cut. Use exactly the listed cuts and no others. Do not morph one Picture into another."
+    )
+
+
+def _compile_grouped_h3_segments(
+    repo_root: Path,
+    job: dict[str, Any],
+    request: dict[str, Any],
+    request_path: Path,
+    ready: dict[str, Any] | None,
+    h3_clip_plan: dict[str, Any],
+) -> list[dict[str, Any]]:
+    if job.get("audio_mode") != "silent":
+        raise ValueError("explicit grouped H3 compilation currently requires audio_mode=silent")
+    compiled: list[dict[str, Any]] = []
+    source_start = 0.0
+    for clip in h3_clip_plan.get("clips", []):
+        keyframe_ids = [str(value) for value in clip["keyframe_ids"]]
+        images = _keyframe_paths(repo_root, request, request_path, keyframe_ids, ready)
+        product_reference = clip.get("product_reference")
+        if isinstance(product_reference, str):
+            images.append(product_reference)
+        if not 2 <= len(images) <= 3:
+            raise ValueError(f"H3 clip {clip['id']} must have 2-3 total references")
+        trim_duration = float(clip["trim_duration_seconds"])
+        source_end = round(source_start + trim_duration, 3)
+        compiled.append({
+            "id": clip["id"],
+            "scene_id": clip["scene_id"],
+            "duration": clip["duration_seconds"],
+            "source_start_seconds": source_start,
+            "source_end_seconds": source_end,
+            "trim_to_seconds": clip["trim_duration_seconds"],
+            "prompt": render_grouped_prompt(
+                clip,
+                len(images) if isinstance(product_reference, str) else None,
+            ),
+            "images": images,
+        })
+        source_start = source_end
+    return compiled
+
+
 def compile_h3_segments(
     repo_root: Path,
     job: dict[str, Any],
@@ -122,12 +235,14 @@ def compile_h3_segments(
     ready: dict[str, Any] | None,
     h3_clip_plan: dict[str, Any] | None,
 ) -> list[dict[str, Any]]:
+    if h3_clip_plan is None:
+        raise ValueError("timed H3 compilation requires a validated h3_clip_plan")
     if job.get("visual_mode") != "shot_for_shot":
-        raise ValueError("timed H3 compilation requires visual_mode=shot_for_shot")
+        return _compile_grouped_h3_segments(
+            repo_root, job, request, request_path, ready, h3_clip_plan
+        )
     if job.get("render_plan", {}).get("h3_audio_mode") != "silent":
         raise ValueError("exact-timing H3 clips must render silent; add the approved master voice-over after trimming")
-    if h3_clip_plan is None:
-        raise ValueError("shot_for_shot compilation requires a validated h3_clip_plan")
 
     plan_segments = [segment for segment in shot_plan.get("segments", []) if isinstance(segment, dict)]
     segment_by_id = {str(segment["id"]): segment for segment in plan_segments}
@@ -138,6 +253,7 @@ def compile_h3_segments(
             raise ValueError(f"H3 clip {clip.get('id')} has no matching shot-plan segment")
         normalized_segments.append({
             **base,
+            "scene_id": clip["scene_id"],
             "duration_seconds": clip["duration_seconds"],
             "source_edit_duration_seconds": clip["trim_duration_seconds"],
             "keyframe_ids": clip["keyframe_ids"],

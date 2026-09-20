@@ -564,6 +564,7 @@ Claude Code actions:
 - confirm 9:16 orientation, readable file, and expected segment set;
 - confirm the sealed `h3_clip_plan.json` groups composition assets rather than treating one keyframe as one video;
 - confirm every sealed clip binds 2–3 total Pictures and that `segments.json` exactly matches the deterministic compiler output;
+- confirm every generated Picture in a clip shares the same sealed `scene_id` (surface material, principal setting and lighting period); timing instructions do not make conflicting scene references compatible;
 - do not hand-edit Picture order, prompt text, cut seconds or image paths after preflight. Requested changes go back to the approved shot plan, are recompiled by Codex, and are sealed again;
 - for ordinary non-shot-for-shot talking-head work, English H3 dialogue remains `(S1) <d>[English] ...</d>` and requires the documented short live test. Exact-timing `shot_for_shot` H3 clips remain silent and receive the approved continuous English master voice-over after trimming;
 - after fetch, require `scripts/check_shot_rhythm.py` to compare actual hard cuts with the Hypit timing master before assembly;

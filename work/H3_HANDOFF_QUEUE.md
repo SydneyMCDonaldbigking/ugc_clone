@@ -51,9 +51,9 @@ Stage 7 instruction:
 - Job ID: `fish_glass_silent_en`
 - Status: `keyframes_ready`
 - Format: silent hands-only shot clone
-- Structure: 9 story beats represented by 13 approved keyframes, grouped into 6 timed multi-reference H3 clips
+- Structure: 9 story beats represented by 13 approved keyframes, grouped into 10 scene-compatible timed H3 clips
 - Final source-matched duration: `26.533` seconds
-- Expected H3 jobs: 1 job containing 6 clips; each clip binds 2–3 Pictures
+- Expected H3 jobs: 1 job containing 10 clips; each clip binds 2–3 Pictures and keeps one tabletop/scene anchor
 - Audio rule: no dialogue, voiceover, vocal performance, subtitles or caption overlays; music or natural ambience only
 - Edit rule: preserve the reference shot order and each `source_edit_duration_seconds`
 - Corrected shot: `seg04` uses a realistic full-size 1.5-litre household glass water pitcher, about 1.7–2 times the target glass width; do not use an earlier miniature-pitcher version
@@ -74,7 +74,7 @@ Claude inputs:
 
 Stage 7 instruction:
 
-> Use the already compiled `work/fish_glass/segments.json`: render 6 silent H3 clips in one job, not 13 separate videos. Each prompt maps its 2–3 Pictures to explicit second ranges and scheduled internal cuts. Preserve the corrected full-size water pitcher in H03/seg04, trim each result to `trim_to_seconds`, and assemble in order to exactly 26.533 seconds. Do not create speech, captions or text overlays.
+> Use the already compiled `work/fish_glass/segments.json`: render 10 silent H3 clips in one job, not 13 separate videos. Each prompt maps its 2–3 Pictures to explicit second ranges and never mixes conflicting tabletop or scene anchors. Preserve the corrected full-size water pitcher in H04/seg04, trim each result to `trim_to_seconds`, and assemble in order to exactly 26.533 seconds. Do not create speech, captions or text overlays.
 
 ## Completion rules
 

@@ -34,6 +34,9 @@ def validate_h3_clip_plan(
         raise ValueError("h3_clip_plan.variant_id must match the keyframe request")
     if plan.get("max_reference_images") != 3:
         raise ValueError("h3_clip_plan.max_reference_images must be 3")
+    require_scene_lock = plan.get("require_scene_lock", False)
+    if not isinstance(require_scene_lock, bool):
+        raise ValueError("h3_clip_plan.require_scene_lock must be boolean")
 
     request_segments = request.get("segments")
     if not isinstance(request_segments, dict):
@@ -79,6 +82,9 @@ def validate_h3_clip_plan(
         if not isinstance(clip_id, str) or not clip_id or clip_id in seen_clip_ids:
             raise ValueError(f"h3 clip {index} needs a unique id")
         seen_clip_ids.add(clip_id)
+        scene_id = clip.get("scene_id")
+        if require_scene_lock and (not isinstance(scene_id, str) or not scene_id.strip()):
+            raise ValueError(f"{clip_id} needs a scene_id")
         actual_clip_ids.append(clip_id)
 
         duration = clip.get("duration_seconds")
@@ -107,6 +113,13 @@ def validate_h3_clip_plan(
         if shot_for_shot and approved is None:
             raise ValueError(f"{clip_id} has no matching approved shot-plan clip")
         if approved is not None:
+            if approved.get("scene_id") != scene_id:
+                raise ValueError(f"{clip_id} scene_id differs from the approved shot plan")
+            approved_frames = [
+                frame for frame in approved.get("reference_frames", []) if isinstance(frame, dict)
+            ]
+            if any(frame.get("scene_id") != scene_id for frame in approved_frames):
+                raise ValueError(f"{clip_id} approved reference frames do not share one scene_id")
             approved_duration = approved.get("duration_seconds")
             approved_trim = approved.get("source_edit_duration_seconds")
             if not isinstance(approved_duration, (int, float)) or abs(float(duration) - float(approved_duration)) > 0.001:
@@ -116,6 +129,10 @@ def validate_h3_clip_plan(
             approved_keyframes = [str(value) for value in approved.get("keyframe_ids", [])]
             if keyframe_ids != approved_keyframes:
                 raise ValueError(f"{clip_id} keyframe_ids differ from the approved shot plan")
+            for keyframe_id in keyframe_ids:
+                request_segment = request_segments.get(keyframe_id)
+                if not isinstance(request_segment, dict) or request_segment.get("scene_id") != scene_id:
+                    raise ValueError(f"{clip_id} keyframe {keyframe_id} does not share the approved scene_id")
 
         product_reference = clip.get("product_reference")
         reference_count = len(keyframe_ids) + (1 if isinstance(product_reference, str) else 0)
@@ -141,6 +158,8 @@ def validate_h3_clip_plan(
                 raise ValueError(f"{clip_id} cue {cue_index} must be an object")
             cue_id = str(cue.get("keyframe_id", ""))
             cue_ids.append(cue_id)
+            if require_scene_lock and cue.get("scene_id") != scene_id:
+                raise ValueError(f"{clip_id} cannot mix different tabletop or scene anchors")
             if cue.get("picture") != cue_index:
                 raise ValueError(f"{clip_id} cue {cue_index} must address Picture {cue_index}")
             start = cue.get("start_seconds")

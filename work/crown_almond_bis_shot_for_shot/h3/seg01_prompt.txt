@@ -8,6 +8,9 @@ retention_analysis:
 <Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it.
 <Picture 3>: attribute_transfer. Preserve the original product identity throughout every cut.
 
+scene_continuity:
+All generated Pictures share scene_id pale-wood-cream-tableware-warm-daylight. Preserve one compatible tabletop material, principal setting and lighting period across every cut.
+
 detailed_description:
 Build the opening as six brisk product shots: a flash of abundance, an open packet over a plate, a hand gathering biscuits, two changing handful views, then a direct overhead box-opening reveal. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
 
