@@ -1,0 +1,77 @@
+{
+  "schema": "ugc-job/v1",
+  "job_id": "chill_noodle_sfs_en",
+  "reference_video": "codex_clone_refs/chill_noodle/ref_video.mp4",
+  "reference_archive": "references/chill_noodle_reference",
+  "source_language": "zh-CN",
+  "target_language": "en-AU",
+  "mode": "structure",
+  "visual_mode": "shot_for_shot",
+  "variants": 1,
+  "segment_duration_seconds": 5,
+  "max_segments_per_render": 5,
+  "product": "inputs/chill_noodle_shot_for_shot/product.en.json",
+  "beats": "work/chill_noodle_shot_for_shot/beats.json",
+  "shot_map": "work/chill_noodle_shot_for_shot/shot_map.json",
+  "script": "work/chill_noodle_shot_for_shot/variants/v001/script.en.json",
+  "shot_plan": "work/chill_noodle_shot_for_shot/variants/v001/shot_plan.json",
+  "keyframe_request": "work/chill_noodle_shot_for_shot/keyframes/REQUEST.json",
+  "h3_clip_plan": "work/chill_noodle_shot_for_shot/h3_clip_plan.json",
+  "h3_segments": "work/chill_noodle_shot_for_shot/segments.json",
+  "state_file": "work/chill_noodle_shot_for_shot/state.en.json",
+  "events_file": "work/chill_noodle_shot_for_shot/events.en.jsonl",
+  "presentation": {
+    "mode": "hands_only",
+    "face_visible": false,
+    "scene": "warm desktop noodle-demo setup with one consistent light-brown wood surface, a dark laptop at the back and a small green plant in a silver pot"
+  },
+  "presenter": {
+    "mode": "hands_only",
+    "note": "The source contains only hands, food, condiment sachets and packaging; no face appears."
+  },
+  "render_plan": {
+    "keyframe_count": 14,
+    "h3_clip_count": 5,
+    "max_segments_per_h3_job": 5,
+    "expected_h3_batches": 1,
+    "edit_to_source_duration_seconds": 23.933,
+    "h3_audio_mode": "silent",
+    "voiceover_strategy": "continuous_english_master_track",
+    "note": "Generate five timed H3 clips carrying all twenty-one reviewed source shots. Trim each clip to its exact source window, join without retiming, then lay one continuous English voice-over over the 23.933-second edit."
+  },
+  "image_provider": "codex-imagegen",
+  "video_provider": "h3",
+  "human_review_required": true,
+  "scene_packs": {
+    "warm-desktop-noodle-demo": {
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "views": {
+        "eye_level": {
+          "master_image": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/eye_level.png",
+          "sha256": "fa0055f40c00cb646980278f131a40d61f83d84f5ca070ad26c1b0a83552fe57"
+        },
+        "oblique_45": {
+          "master_image": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png",
+          "sha256": "0ed9495c244edaaced9fc079e802edbc5110345f38f405c8ea879f372ffdb6d6"
+        },
+        "overhead_90": {
+          "master_image": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/overhead_90.png",
+          "sha256": "3e0e1541d420cbfc35936a3aa423c85d2873d22b393a794ae6b8ea3cf47f5974"
+        }
+      },
+      "approval": {
+        "approved_by": "codex",
+        "approved_at": "2026-09-20T23:42:50Z",
+        "note": "approved three-view scene pack; same physical light wood desktop",
+        "content": "empty_background_only"
+      }
+    }
+  }
+}

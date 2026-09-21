@@ -1,0 +1,12 @@
+Photorealistic vertical 9:16 smartphone photo, the first frame of a hands-only home product video.
+
+Image 1: the approved empty scene master: background, surface, props, palette and light.
+
+Camera: food close-up | first-person high angle about 45 degrees | slight handheld drift | bowl fills about eighty percent of frame with its short handle pointing right
+Scene: First-person high-angle close-up of a large warm-white handled bowl filled with deep red rice-noodle soup on the light warm-brown wood desk; one natural right hand tilts a small plain yellow condiment sachet above the bowl and loose peanuts are poised to fall into the centre.
+Background master: use Image 1 for this camera angle. Hard invariant: this is the same physical tabletop in every keyframe — surface: One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.. Soft continuity guide: setting: A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.; backdrop: A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.; lighting: Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.; palette: Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.; prop family: One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots.. For close-ups, keep the product and active hands crisp while natural changes in crop, parallax, visible props, slight local exposure and shallow-depth background bokeh are welcome.
+Human presence: The thumb and forefinger pinch the yellow sachet asymmetrically while a few peanuts begin falling at different speeds. Only hands and forearms appear; the creator's face stays outside the crop.
+
+Frame content: show only the described rice, cookware, hands and locked scene for this source shot; the retail package is outside this shot.
+
+Real skin texture, slight handheld imperfection and candid UGC energy. No added text or watermarks.

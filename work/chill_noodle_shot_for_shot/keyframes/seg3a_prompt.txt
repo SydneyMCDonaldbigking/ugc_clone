@@ -1,0 +1,12 @@
+Photorealistic vertical 9:16 smartphone photo, the first frame of a hands-only home product video.
+
+Image 1: the approved empty scene master: background, surface, props, palette and light.
+
+Camera: food close-up | first-person high angle about 50 degrees | handheld micro-drift | sachet and falling seasoning sit above bowl centre
+Scene: High-angle close-up of the same handled white bowl as one natural hand tips a small plain red condiment sachet above the centre, with dark red chilli seasoning beginning to fall onto the noodles and greens.
+Background master: use Image 1 for this camera angle. Hard invariant: this is the same physical tabletop in every keyframe — surface: One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.. Soft continuity guide: setting: A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.; backdrop: A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.; lighting: Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.; palette: Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.; prop family: One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots.. For close-ups, keep the product and active hands crisp while natural changes in crop, parallax, visible props, slight local exposure and shallow-depth background bokeh are welcome.
+Human presence: The red sachet creases under uneven finger pressure and the seasoning falls in a slightly scattered stream. Only hands and forearms appear; the creator's face stays outside the crop.
+
+Frame content: show only the described rice, cookware, hands and locked scene for this source shot; the retail package is outside this shot.
+
+Real skin texture, slight handheld imperfection and candid UGC energy. No added text or watermarks.

@@ -1,0 +1,69 @@
+{
+  "source": "codex_clone_refs/chill_noodle/ref_video.mp4",
+  "audio_mode": "dialogue",
+  "structure_notes": [
+    "The source is hands-only; no face or talking-head presenter appears.",
+    "The adaptation preserves all twenty-one reviewed shot windows and exact hard-cut rhythm.",
+    "The main retail pouch appears only in the original pouch windows; food-only shots stay free of the main pouch.",
+    "One light warm-brown wood desk is the hard scene identity; food close-ups may use natural crop and focus changes.",
+    "No source-derived frame may be used as an ImageGen or H3 reference."
+  ],
+  "beats": [
+    {
+      "id": "B1",
+      "t": [0.0, 5.3],
+      "function": "finished_bowl_pack_reveal_and_noodle_lift",
+      "hook_type": "food_action_hook",
+      "intensity": "fast and appetising",
+      "shot": {"type": "topping_to_pack_to_noodle", "cut_in": false},
+      "visual_action": "Peanuts fall into the finished bowl, the pouch appears briefly, then two noodle-lift shots follow.",
+      "visual_sync": "The product appears at 1.333 seconds exactly, then leaves for the food demonstration.",
+      "proof_category": "product_and_food_visual",
+      "ref_text_corrected": "要是你爱吃辣，那你一定要来挑战一下满小宝的这个麻辣红油米线，一口下去真的"
+    },
+    {
+      "id": "B2",
+      "t": [5.3, 10.567],
+      "function": "noodle_lift_pack_contents_and_ingredients",
+      "intensity": "dense and demonstrative",
+      "shot": {"type": "noodle_to_pack_to_toppings", "cut_in": "hard_cut@5.3"},
+      "visual_action": "A noodle fan hard-cuts to the pouch with condiment sachets, then to tofu puff and seaweed actions.",
+      "visual_sync": "Each visible component gets its own short proof shot.",
+      "proof_category": "visible_components",
+      "ref_text_corrected": "又麻又辣，料包给的也很足，里面还有我最爱的豆腐泡和海带丝，浇上"
+    },
+    {
+      "id": "B3",
+      "t": [10.567, 15.267],
+      "function": "chilli_pour_pack_detail_and_noodle_colour",
+      "intensity": "punchy and close",
+      "shot": {"type": "chilli_to_pack_to_noodle", "cut_in": "hard_cut@10.567"},
+      "visual_action": "A red sachet pours seasoning, the package fills the frame, then two noodle lifts show the bowl again.",
+      "visual_sync": "The short pack proof sits between the seasoning action and food result.",
+      "proof_category": "package_identity",
+      "ref_text_corrected": "蜜汁爆香陕西油泼辣子，你瞅瞅这小色泽，每一口都裹满鲜香的麻辣，米"
+    },
+    {
+      "id": "B4",
+      "t": [15.267, 20.4],
+      "function": "continuous_noodle_texture_and_single_pack_transition",
+      "intensity": "tactile then conclusive",
+      "shot": {"type": "three_noodle_actions_to_topping_and_pack", "cut_in": "hard_cut@15.267"},
+      "visual_action": "Three different noodle motions lead to another peanut pour and a fast single-pouch transition.",
+      "visual_sync": "The retail pouch enters only at 19.767 seconds.",
+      "proof_category": "food_visual_to_product",
+      "ref_text_corrected": "米线Q弹劲的，一口下去简直香迷糊了，真的不要太爽，趁商家做活动"
+    },
+    {
+      "id": "B5",
+      "t": [20.4, 23.933],
+      "function": "multi_pack_endboard",
+      "intensity": "fast retail finish",
+      "shot": {"type": "three_to_four_to_five_pouches", "cut_in": "hard_cut@20.4"},
+      "visual_action": "The layout hard-cuts from three pouches to four and then five before one hand presents the final array.",
+      "visual_sync": "The close lands on a clear product quantity progression without making a price claim.",
+      "proof_category": "product_identity",
+      "ref_text_corrected": "推广新品，你看下现在到手五大包才啥价。"
+    }
+  ]
+}

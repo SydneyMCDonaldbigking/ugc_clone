@@ -1,0 +1,83 @@
+{
+  "schema": "product/v1",
+  "language": "en-AU",
+  "name": "Man Xiao Bao Spicy Red Oil Rice Noodles",
+  "brand": "MAN XIAO BAO",
+  "spec": {
+    "unit": "retail pouch",
+    "pack_qty": null,
+    "net_weight": null
+  },
+  "visual_identity": {
+    "packaging_type": "large flexible laminated food pouch with a cream upper field and vivid red lower field",
+    "silhouette": "wide upright rectangular pillow pouch with softly rounded upper corners, a straight sealed top and a filled flat lower edge",
+    "closure": "factory heat-sealed top and bottom seams",
+    "grip_geometry": "flexible pouch held along its outer side edges or supported from the lower corners",
+    "handle": "none",
+    "front_label": "cream-and-red front with a small oval Man Xiao Bao brand mark near the top, large black Chinese title characters, the small English words RICE NOODLES, and a large prepared red-soup noodle bowl photograph across the lower half",
+    "back_label": "not supplied as a clean product asset; keep the supplied front facing the camera and do not invent readable back-panel text",
+    "forbidden_features": [
+      "bottle",
+      "jar",
+      "box",
+      "handle",
+      "resealable zipper",
+      "transparent rice bag",
+      "different noodle brand",
+      "invented readable back label",
+      "English-only redesign"
+    ],
+    "geometry_evidence": "Read from codex_clone_refs/chill_noodle/ref_pic.jpg. The user confirmed this is the same product shown in the reference video."
+  },
+  "price": null,
+  "facts": [
+    {
+      "id": "F1",
+      "text": "The advertised product is Man Xiao Bao Spicy Red Oil Rice Noodles.",
+      "evidence": "The supplied front image at codex_clone_refs/chill_noodle/ref_pic.jpg shows the Man Xiao Bao mark, the printed product title and the English words RICE NOODLES.",
+      "evidence_type": "product_image"
+    },
+    {
+      "id": "F2",
+      "text": "The supplied pouch front uses a cream upper field, red lower field and a prepared red-soup noodle bowl image.",
+      "evidence": "Visible packaging design in codex_clone_refs/chill_noodle/ref_pic.jpg.",
+      "evidence_type": "product_image"
+    },
+    {
+      "id": "F3",
+      "text": "The front image depicts rice noodles served in red broth with peanuts, tofu puffs and dark green vegetable strips.",
+      "evidence": "The prepared-bowl photograph is visible on codex_clone_refs/chill_noodle/ref_pic.jpg.",
+      "evidence_type": "product_image"
+    },
+    {
+      "id": "F4",
+      "text": "The target product is the same product used in the supplied reference video.",
+      "evidence": "User statement in the current task: the product is the same as the source video product.",
+      "evidence_type": "user_provided"
+    },
+    {
+      "id": "F5",
+      "text": "The product presentation includes one yellow tofu-puff packet, one red chilli-oil packet and one green vegetable packet.",
+      "evidence": "The user explicitly selected the supplied pouch-and-condiment keyframe and confirmed that the condiment-packet version is required.",
+      "evidence_type": "user_provided"
+    }
+  ],
+  "forbidden_claims": [
+    "discount",
+    "sale price",
+    "limited time",
+    "five-pack deal",
+    "best",
+    "extra spicy",
+    "numbing",
+    "addictive",
+    "chewy",
+    "restaurant quality",
+    "healthy",
+    "low calorie",
+    "authentic regional recipe"
+  ],
+  "visual_assets": [
+    "codex_clone_refs/chill_noodle/ref_pic.jpg"
+  ]
+}

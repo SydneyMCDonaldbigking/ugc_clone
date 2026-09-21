@@ -1,0 +1,60 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "rice_shot_for_shot",
+  "pipeline_job_id": "rice_sfs_en",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "segments": {
+    "1a": {
+      "keyframe": "seg1a.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "Overhead raw-rice tray anchor on the locked warm wood table; package label uses original product pixels."
+    },
+    "1b": {
+      "keyframe": "seg1b.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "Two-hand raw-grain lift anchor on the matching oblique scene view.",
+      "prompt_hint": "Use this as Picture 2 in H3 clip S01; hard cut to this cupped-grain setup at 3.567 seconds. Keep the original product photo as Picture 3 identity authority."
+    },
+    "2a": {
+      "keyframe": "seg2a.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "Cooked-rice chopstick macro and bowl anchor with flexible close-up bokeh."
+    },
+    "2b": {
+      "keyframe": "seg2b.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "First complete front-pack reveal using the original supplied package pixels.",
+      "prompt_hint": "Use this as Picture 2 in H3 clip S02; hard cut to the complete upright pack at 3.633 seconds."
+    },
+    "3a": {
+      "keyframe": "seg3a.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "Overhead front-up pack and loose-grain packaging anchor."
+    },
+    "3b": {
+      "keyframe": "seg3b.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "Oblique upright front-label presentation anchor with hands outside the label.",
+      "prompt_hint": "Use this as Picture 2 in H3 clip S03; hard cut to the two-hand upright front-label presentation at 2.467 seconds."
+    },
+    "4a": {
+      "keyframe": "seg4a.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "Continuous raw-rice fall, settle and two-hand scoop anchor on the matching tray scene."
+    },
+    "5a": {
+      "keyframe": "seg5a.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "Final cooked-rice chopstick macro anchor with the same table and flexible green bokeh."
+    },
+    "5b": {
+      "keyframe": "seg5b.png",
+      "extra_refs": ["codex_clone_refs/rice/rice.jpg"],
+      "notes": "Final complete front-pack endboard using original product pixels.",
+      "prompt_hint": "Use this as Picture 2 in H3 clip S05; hard cut to the complete upright pack at 1.6 seconds, then make one slow push-in."
+    }
+  },
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}

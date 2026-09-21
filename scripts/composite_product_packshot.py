@@ -41,6 +41,7 @@ def packshot_alpha(image: Image.Image, threshold: int = 12, feather: float = 1.0
     rgb = np.asarray(image.convert("RGB"), dtype=np.int16)
     distance_from_white = np.max(255 - rgb, axis=2)
     edge_pixels = distance_from_white >= threshold
+
     mask = np.zeros(edge_pixels.shape, dtype=np.uint8)
     occupied_rows: list[int] = []
     left_edges: list[int] = []

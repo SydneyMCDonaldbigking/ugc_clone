@@ -152,9 +152,13 @@ def materialize(
                 "direction": row["direction"],
             })
 
-        product_references = list(dict.fromkeys(str(frame["product_reference"]) for frame in frames))
-        if len(product_references) != 1:
-            raise ValueError(f"clip {clip_index} must use one shared original product reference")
+        product_references = list(dict.fromkeys(
+            str(frame["product_reference"])
+            for frame in frames
+            if isinstance(frame.get("product_reference"), str)
+        ))
+        if len(product_references) > 1:
+            raise ValueError(f"clip {clip_index} may use only one shared original product reference")
 
         plan_frames: list[dict[str, Any]] = []
         for frame in frames:
@@ -169,11 +173,26 @@ def materialize(
                 "first_frame": frame["first_frame"],
                 "camera": frame["camera"],
                 "performance": frame["performance"],
+                "product_presence": frame.get("product_presence", "present"),
             }
+            plan_frame["scene_master"] = scene_pack_requirements[scene_id]["views"][scene_view]["output"]
             plan_frames.append(plan_frame)
-            product_reference = str(frame["product_reference"])
-            fidelity = frame.get("product_fidelity_mode", "reference_lock")
-            pose_source = "product_identity_reference" if fidelity == "pixel_preserve" else "shot_plan"
+            product_presence = frame.get("product_presence", "present")
+            if product_presence not in {"present", "absent"}:
+                raise ValueError(f"keyframe {keyframe_id} product_presence must be present or absent")
+            references: list[str] = []
+            reference_roles: dict[str, str] = {}
+            if product_presence == "present":
+                if not isinstance(frame.get("product_reference"), str):
+                    raise ValueError(f"keyframe {keyframe_id} needs product_reference when product is present")
+                product_reference = str(frame["product_reference"])
+                references.append(product_reference)
+                reference_roles[product_reference] = "product_identity"
+                fidelity = frame.get("product_fidelity_mode", "reference_lock")
+                pose_source = "product_identity_reference" if fidelity == "pixel_preserve" else "shot_plan"
+            else:
+                fidelity = "not_applicable"
+                pose_source = None
             request_segments[keyframe_id] = {
                 "script_segment": segment_number,
                 "scene_id": scene_id,
@@ -181,18 +200,20 @@ def materialize(
                 "scene_view": scene_view,
                 "role": frame["role"],
                 "prompt_file": f"{output_dir}/seg{keyframe_id}_prompt.txt",
-                "references": [product_reference],
-                "reference_roles": {product_reference: "product_identity"},
+                "references": references,
+                "reference_roles": reference_roles,
+                "product_presence": product_presence,
                 "product_fidelity_mode": fidelity,
-                "product_placement": {
+                "output": f"seg{keyframe_id}.png",
+                "checks": frame["checks"],
+            }
+            if product_presence == "present":
+                request_segments[keyframe_id]["product_placement"] = {
                     "pose_source": pose_source,
                     "orientation": "unchanged_from_reference",
                     "occlusion": frame.get("occlusion", "hands_keep_product_identity_visible"),
                     "fallback": frame.get("fallback", "static_product_shot"),
-                },
-                "output": f"seg{keyframe_id}.png",
-                "checks": frame["checks"],
-            }
+                }
 
         plan_segments.append({
             "id": f"S{segment_number:02d}",
@@ -306,7 +327,17 @@ def build_h3_clip_plan(plan: dict[str, Any], spec: dict[str, Any]) -> dict[str, 
                 "action": f"{shot['shot_type']}: {shot['direction']}",
             })
         product_refs = segment.get("references", [])
-        product_reference = product_refs[0] if product_refs and len(keyframe_ids) < 3 else None
+        product_is_visible = any(
+            frame.get("product_presence", "present") == "present"
+            for frame in segment.get("reference_frames", [])
+            if isinstance(frame, dict)
+        )
+        product_reference = product_refs[0] if product_is_visible and product_refs and len(keyframe_ids) < 3 else None
+        scene_reference = None
+        if product_reference is None and len(keyframe_ids) == 1:
+            frames = [frame for frame in segment.get("reference_frames", []) if isinstance(frame, dict)]
+            if frames and isinstance(frames[0].get("scene_master"), str):
+                scene_reference = frames[0]["scene_master"]
         total_edit_duration += float(segment["source_edit_duration_seconds"])
         clips.append({
             "id": segment["id"],
@@ -316,6 +347,7 @@ def build_h3_clip_plan(plan: dict[str, Any], spec: dict[str, Any]) -> dict[str, 
             "trim_duration_seconds": segment["source_edit_duration_seconds"],
             "keyframe_ids": keyframe_ids,
             "product_reference": product_reference,
+            "scene_reference": scene_reference,
             "cues": cues,
             "timed_shots": canonical_timed_shots,
         })

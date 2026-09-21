@@ -1,0 +1,14 @@
+Use case: photorealistic-natural
+Asset type: empty three-angle scene identity pack for vertical UGC product keyframes
+Scene ID: warm-desktop-noodle-demo
+Camera view: First-person 45-degree high-angle smartphone view of the same space and the same working surface, with view-dependent parallax, a naturally different crop and shifted prop visibility.
+View relationship: Use the accepted eye-level scene image as Image 1. Keep the identical physical table while reconstructing a natural new camera angle; close-up framing and background details may shift.
+Scene contract:
+table identity, hard invariant: One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.
+setting, soft guide: A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.
+backdrop, soft guide: A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.
+lighting, soft guide: Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.
+palette, soft guide: Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.
+fixed_props, soft guide: One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots.
+Composition: vertical 9:16 smartphone photograph, unoccupied filming set, clean usable foreground, believable home texture and slight candid imperfection. Angle-dependent crop, parallax, focus depth, visible props and small local exposure differences should feel natural.
+Content: an empty background plate prepared for later product and hand compositing, with all named fixed props resting naturally in the environment.

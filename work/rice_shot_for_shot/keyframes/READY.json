@@ -1,0 +1,23 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "rice_shot_for_shot",
+  "pipeline_job_id": "rice_sfs_en",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "segments": {
+    "1a": {"keyframe": "seg1a.png", "extra_refs": [], "notes": "0.000-0.967s direct-overhead raw-rice tray; package absent."},
+    "1b": {"keyframe": "seg1b.png", "extra_refs": [], "notes": "0.967-3.567s one-hand cooker-lid reveal and cooked-rice close-up; package absent."},
+    "1c": {"keyframe": "seg1c.png", "extra_refs": [], "notes": "3.567-5.567s two-hand raw-grain lift; package absent."},
+    "2a": {"keyframe": "seg2a.png", "extra_refs": [], "notes": "5.567-7.200s cooked-rice chopstick macro; package absent."},
+    "2b": {"keyframe": "seg2b.png", "extra_refs": [], "notes": "7.200-9.200s hand-held clear glass rice bowl; package absent."},
+    "2c": {"keyframe": "seg2c.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "9.200-10.400s first complete target-pack reveal."},
+    "3a": {"keyframe": "seg3a.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "10.400-11.633s dense spread of matching full-size target bags."},
+    "3b": {"keyframe": "seg3b.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "11.633-12.867s transparent-bag rice-grain extreme close-up."},
+    "3c": {"keyframe": "seg3c.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "12.867-14.600s front-label hand presentation."},
+    "4a": {"keyframe": "seg4a.png", "extra_refs": [], "notes": "14.600-18.967s continuous raw-rice fall and scoop; package absent."},
+    "5a": {"keyframe": "seg5a.png", "extra_refs": [], "notes": "18.967-20.567s cooked-rice chopstick macro; package absent."},
+    "5b": {"keyframe": "seg5b.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "20.567-22.567s final complete target-pack endboard."}
+  },
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}

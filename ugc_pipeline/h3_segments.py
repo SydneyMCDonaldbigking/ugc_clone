@@ -30,16 +30,16 @@ def _scene_lock_text(value: Any) -> tuple[str, str] | None:
     return hard, soft
 
 
-def _product_reference(request: dict[str, Any], keyframe_ids: list[str]) -> str:
+def _product_reference(request: dict[str, Any], keyframe_ids: list[str]) -> str | None:
     paths: list[str] = []
     for keyframe_id in keyframe_ids:
         segment = request["segments"][keyframe_id]
         roles = segment.get("reference_roles", {})
         paths.extend(path for path, role in roles.items() if role == "product_identity")
     unique = list(dict.fromkeys(paths))
-    if len(unique) != 1:
+    if len(unique) > 1:
         raise ValueError(f"H3 clip keyframes must share one product identity reference, got {unique}")
-    return unique[0]
+    return unique[0] if unique else None
 
 
 def _keyframe_paths(
@@ -68,6 +68,8 @@ def render_prompt(
     segment: dict[str, Any],
     keyframe_ids: list[str],
     product_picture_number: int | None,
+    scene_picture_number: int | None,
+    product_presence_by_keyframe: dict[str, str],
 ) -> str:
     scene_id = segment.get("scene_id")
     if not isinstance(scene_id, str) or not scene_id.strip():
@@ -76,22 +78,45 @@ def render_prompt(
     picture_by_keyframe = {
         keyframe_id: index for index, keyframe_id in enumerate(keyframe_ids, start=1)
     }
-    subject_lines = [
-        f"<Picture {index}> is a generated target-product composition keyframe for the timed montage."
-        for index in range(1, len(keyframe_ids) + 1)
-    ]
+    has_product_absent_keyframe = any(
+        product_presence_by_keyframe.get(keyframe_id, "present") != "present"
+        for keyframe_id in keyframe_ids
+    )
+    subject_lines = []
+    for index, keyframe_id in enumerate(keyframe_ids, start=1):
+        if not has_product_absent_keyframe:
+            subject_lines.append(
+                f"<Picture {index}> is a generated target-product composition keyframe for the timed montage."
+            )
+        elif product_presence_by_keyframe.get(keyframe_id, "present") == "present":
+            subject_lines.append(
+                f"<Picture {index}> is a generated product-present composition keyframe for its assigned source shots."
+            )
+        else:
+            subject_lines.append(
+                f"<Picture {index}> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots."
+            )
     if product_picture_number is not None:
         subject_lines.append(
             f"<Picture {product_picture_number}> is the original product identity authority for package, shape, colour and branding."
         )
+    if scene_picture_number is not None:
+        subject_lines.append(
+            f"<Picture {scene_picture_number}> is the approved empty scene identity authority for the same physical table, light and prop family; it is not a scheduled shot."
+        )
 
+    placement_term = "subject placement" if has_product_absent_keyframe else "product placement"
     retention_lines = [
-        f"<Picture {index}>: composition_reference. Use its hands-only framing, scale, camera angle, setting and product placement for the microshots assigned to it."
+        f"<Picture {index}>: composition_reference. Use its hands-only framing, scale, camera angle, setting and {placement_term} for the microshots assigned to it."
         for index in range(1, len(keyframe_ids) + 1)
     ]
     if product_picture_number is not None:
         retention_lines.append(
             f"<Picture {product_picture_number}>: attribute_transfer. Preserve the original product identity throughout every cut."
+        )
+    if scene_picture_number is not None:
+        retention_lines.append(
+            f"<Picture {scene_picture_number}>: scene_identity only. Preserve its table and atmosphere without turning the empty master into an extra shot."
         )
 
     timeline: list[str] = []
@@ -116,6 +141,36 @@ def render_prompt(
             f"{_time(source_edit_duration)}-{_time(render_duration)} seconds — hold the final composition steady as disposable trim padding."
         )
 
+    product_windows = [
+        timed for timed in segment["timed_shots"]
+        if product_presence_by_keyframe.get(
+            str(timed.get("picture_keyframe_id", keyframe_ids[int(timed.get("picture", 1)) - 1])),
+            "present",
+        ) == "present"
+    ]
+    if product_windows:
+        windows = ", ".join(
+            f"{_time(timed.get('start_seconds', timed.get('clip_start_seconds')))}-{_time(timed.get('end_seconds', timed.get('clip_end_seconds')))} seconds"
+            for timed in product_windows
+        )
+        product_timing = (
+            f"The retail package appears only in the scheduled product window(s): {windows}. "
+            "All other windows contain only their assigned food, hands, cookware and scene."
+        )
+    else:
+        product_timing = "The complete clip contains only the scheduled food, hands, cookware and scene; no retail package appears."
+
+    product_timing_block = (
+        "\n\nproduct_timing:\n" + product_timing
+        if has_product_absent_keyframe
+        else ""
+    )
+    final_identity_rule = (
+        "When the package is scheduled, keep the original target product identity stable."
+        if has_product_absent_keyframe
+        else "Keep the original target product identity stable across every hard cut."
+    )
+
     return (
         "subject_definitions:\n"
         + "\n".join(subject_lines)
@@ -138,8 +193,11 @@ def render_prompt(
         + str(segment["performance"])
         + " "
         + str(segment["intention"])
+        + product_timing_block
         + "\n\nsoundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming."
-        + "\n\nOnly hands and forearms appear. Keep the original target product identity stable across every hard cut. "
+        + "\n\nOnly hands and forearms appear. "
+        + final_identity_rule
+        + " "
           "Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference."
     )
 
@@ -291,11 +349,32 @@ def compile_h3_segments(
     for segment in normalized_segments:
         keyframe_ids = [str(value) for value in segment["keyframe_ids"]]
         keyframe_paths = _keyframe_paths(repo_root, request, request_path, keyframe_ids, ready)
-        product_reference = _product_reference(request, keyframe_ids) if len(keyframe_ids) < 3 else None
-        images = [*keyframe_paths, *([product_reference] if product_reference else [])]
+        matching_clip = next(
+            (clip for clip in h3_clip_plan.get("clips", []) if str(clip.get("id")) == str(segment["id"])),
+            None,
+        )
+        if not isinstance(matching_clip, dict):
+            raise ValueError(f"segment {segment['segment']} has no matching H3 clip")
+        product_reference = matching_clip.get("product_reference")
+        scene_reference = matching_clip.get("scene_reference")
+        images = [
+            *keyframe_paths,
+            *([product_reference] if isinstance(product_reference, str) else []),
+            *([scene_reference] if isinstance(scene_reference, str) else []),
+        ]
         if not 2 <= len(images) <= 3:
             raise ValueError(f"segment {segment['segment']} must have 2-3 total H3 references")
-        prompt = render_prompt(segment, keyframe_ids, len(images) if product_reference else None)
+        product_presence_by_keyframe = {
+            keyframe_id: str(request["segments"][keyframe_id].get("product_presence", "present"))
+            for keyframe_id in keyframe_ids
+        }
+        prompt = render_prompt(
+            segment,
+            keyframe_ids,
+            len(keyframe_paths) + 1 if isinstance(product_reference, str) else None,
+            len(keyframe_paths) + 1 if isinstance(scene_reference, str) else None,
+            product_presence_by_keyframe,
+        )
         compiled.append({
             "id": segment["id"],
             "duration": segment["duration_seconds"],

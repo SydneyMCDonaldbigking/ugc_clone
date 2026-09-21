@@ -1,0 +1,30 @@
+subject_definitions:
+<Picture 1> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+<Picture 2> is a generated product-present composition keyframe for its assigned source shots.
+<Picture 3> is the original product identity authority for package, shape, colour and branding.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 3>: attribute_transfer. Preserve the original product identity throughout every cut.
+
+scene_continuity:
+All generated Pictures share scene_id warm-wood-greenery-rice-table. Hard-lock the same physical tabletop across every cut (surface: One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.). Treat the remaining scene description as a soft guide (setting: A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.; backdrop: Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.; lighting: Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.; palette: Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.; fixed props: A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them.). Close-ups keep the product sharp while crop, lens distance, parallax, visible props, slight local exposure and shallow-depth background bokeh may vary.
+
+detailed_description:
+Lift one cooked-rice bite, then hard-cut at the exact source time to an upright front-pack endboard with a subtle push-in. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-1.6 seconds — start on <Picture 1>; scheduled microshot: cooked rice chopstick echo: lift the cooked-rice bite slightly and hold it against deep green bokeh
+1.6-3.6 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: complete pack endboard: hard cut at 1.6 seconds to the complete upright bag and make one very slow push-in for the remaining two seconds
+3.6-4 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+The chopsticks carry a faint human tremor; the final product shot is steadier but not sterile. Echo the earlier food macro and finish with enough time to recognise the exact product front.
+
+product_timing:
+The retail package appears only in the scheduled product window(s): 1.6-3.6 seconds. All other windows contain only their assigned food, hands, cookware and scene.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. When the package is scheduled, keep the original target product identity stable. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.

@@ -1,0 +1,73 @@
+{
+  "schema": "job-state/v1",
+  "job_id": "rice_sfs_en",
+  "state": "keyframes_ready",
+  "revision": 12,
+  "updated_at": "2026-09-20T16:17:03.304842Z",
+  "stages": {
+    "beats": {
+      "status": "passed",
+      "updated_at": "2026-09-20T14:13:56.041523Z",
+      "artifact": "work/rice_shot_for_shot/beats.json"
+    },
+    "facts": {
+      "status": "passed",
+      "updated_at": "2026-09-20T14:13:56.043028Z",
+      "artifact": "inputs/rice_shot_for_shot/product.en.json"
+    },
+    "scripts": {
+      "status": "passed",
+      "updated_at": "2026-09-20T14:13:56.043028Z",
+      "artifact": "work/rice_shot_for_shot/variants/v001/script.en.json"
+    },
+    "shots": {
+      "status": "passed",
+      "updated_at": "2026-09-20T14:13:56.044035Z",
+      "artifact": "work/rice_shot_for_shot/variants/v001/shot_plan.json"
+    },
+    "keyframe_request": {
+      "status": "passed",
+      "updated_at": "2026-09-20T14:13:56.045035Z",
+      "artifact": "work/rice_shot_for_shot/keyframes/REQUEST.json"
+    },
+    "keyframes": {
+      "status": "passed",
+      "updated_at": "2026-09-20T16:17:03.304842Z",
+      "artifact": "work/rice_shot_for_shot/keyframes/READY.json",
+      "integrity": {
+        "schema": "artifact-integrity/v1",
+        "digest": "b6deaca3760e5289ab5e4bd65d932dbe5627c0650607997f98b5f25f4562d359",
+        "files": {
+          "codex_clone_refs/rice/rice.jpg": "82ad4f2962eda6d9faddf5ed0f6d69fe00b093e117e5f93febd6c404d54d3dbd",
+          "inputs/rice_shot_for_shot/job.en.json": "6d9b99c65a3cefdc60da6c4f6a1ad908a70f75818b218cf5b021b1dfc6747912",
+          "inputs/rice_shot_for_shot/product.en.json": "55c7a077eae4002e6eae3f9912b48264459dc8be75cf27a07fd665d2a96427fb",
+          "work/rice_shot_for_shot/beats.json": "4bdd318657384b3d7d846a2267bc86069887c4dec4bcc2d5887f8d17ca71b392",
+          "work/rice_shot_for_shot/h3_clip_plan.json": "513386f7ae43648d6e3c057b44171f3c4b0f4fdee4bfdb108e46a9b189db0c86",
+          "work/rice_shot_for_shot/keyframes/QC.json": "37d081544645330d78a2bf20b55e0ba2ceb74b9bfb4ff55c362bd3aa12d330da",
+          "work/rice_shot_for_shot/keyframes/READY.json": "a4d3d656854344f6c0c63cc42af6d3667dd353bbc71ff6351392761740322596",
+          "work/rice_shot_for_shot/keyframes/REQUEST.json": "f882ede3e57d4fec77ebe1080002d3a7893a5714c96193e27143e74974fe6db4",
+          "work/rice_shot_for_shot/keyframes/seg1a.png": "82bf967739658f16d9d7e097d92422ff0a74abf558ec4a921c1d4a47bff786b3",
+          "work/rice_shot_for_shot/keyframes/seg1b.png": "a896bde3dd9d0a7c48f777b36b4a1d36163605be9424c38a059f7176e2e4fd49",
+          "work/rice_shot_for_shot/keyframes/seg1c.png": "37381376b9a8f3365c2934e4cf9b8c7de226e3d83c77c8e72b17690306842724",
+          "work/rice_shot_for_shot/keyframes/seg2a.png": "3fd8c8e1a8a6351f9db0bc10e3adb0ca284f6771b386b52d2d57d7584bf20ac5",
+          "work/rice_shot_for_shot/keyframes/seg2b.png": "04e9c61944da75eeb18732a476a6f05607e84c8024a98daee3bac838e2e9ed63",
+          "work/rice_shot_for_shot/keyframes/seg2c.png": "3c73b4ffb6da2648c17b960aa44be4c10c0ad662c8dd9dcc45648f56cf6fedce",
+          "work/rice_shot_for_shot/keyframes/seg3a.png": "0ee984a07e9d5c146c6440ebee1472bc3648efc2a2e143f6c776ce38c4edcc12",
+          "work/rice_shot_for_shot/keyframes/seg3b.png": "4593ba283097d0944abc92547eeec07fd81f7955322a00cbdfca4ecea17374c4",
+          "work/rice_shot_for_shot/keyframes/seg3c.png": "7d9b16de5f2b73862faef210f6db3acdf1a31279af46888f41e5230a975a5872",
+          "work/rice_shot_for_shot/keyframes/seg4a.png": "09717fa0548fe357050c6469ba424f85bc24b7bce617daaf72ff84c40deb8d35",
+          "work/rice_shot_for_shot/keyframes/seg5a.png": "fa1da9e51b428568770d3460596e301f6bec0f2f4155697bfe50701de498cf02",
+          "work/rice_shot_for_shot/keyframes/seg5b.png": "3c73b4ffb6da2648c17b960aa44be4c10c0ad662c8dd9dcc45648f56cf6fedce",
+          "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png": "57ed7bcee731eb5b4e3d51914a69e074ef5c86c62851081884171fece49f1fe1",
+          "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png": "6c0750d4726fcf714616ae2d2bd0b6ed5a01c09cc70139382c847b3f5f3ee25c",
+          "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/overhead_90.png": "4c429ae03d6937613bdd8794b65c32a8a55b885fb57941bffa4ba2ad320f59d6",
+          "work/rice_shot_for_shot/segments.json": "53018589042063bd35cc271be29211013043d2c609072b3897972408dda770e2",
+          "work/rice_shot_for_shot/variants/v001/script.en.json": "a382e9043e915db6e8fb6f0b416b25e0b3a206c3c0009a68f123d5d7b588feae",
+          "work/rice_shot_for_shot/variants/v001/shot_plan.json": "ff9fe1d40ae1796c57fb0bb2324489762726a1a1f770fc0443b0bfb80736cd66"
+        }
+      },
+      "reviewed_by": "codex",
+      "attempts": {}
+    }
+  }
+}

@@ -1,0 +1,753 @@
+{
+  "schema": "shot-plan/v1",
+  "language": "en-AU",
+  "variant_id": "v001",
+  "audio_mode": "dialogue",
+  "visual_mode": "shot_for_shot",
+  "shot_map": "work/chill_noodle_shot_for_shot/shot_map.json",
+  "segments": [
+    {
+      "id": "S01",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "segment": 1,
+      "duration_seconds": 6.0,
+      "source_start_seconds": 0.0,
+      "source_end_seconds": 5.3,
+      "source_edit_duration_seconds": 5.3,
+      "dialogue": "Start with the red-oil bowl, meet the Man Xiao Bao pouch, then lift those rice noodles.",
+      "shot_type": "bowl_pack_and_noodle_hook",
+      "subject": "The finished red-oil rice-noodle bowl, the exact Man Xiao Bao pouch and two fast noodle actions open the video.",
+      "action": "Follow four exact hard-cut shots: pour peanuts from a yellow condiment sachet, show the front pouch, lift a broad noodle bundle, then lower and stir the noodles.",
+      "performance": "Hands use uneven natural timing and realistic finger pressure; chopsticks carry a tiny human tremor and the phone drifts slightly without losing the bowl.",
+      "intention": "Copy the source's immediate food action and early product identification, with the main pouch visible only in its original window.",
+      "accents": [],
+      "keyframe_ids": [
+        "1a",
+        "1b",
+        "1c"
+      ],
+      "reference_frames": [
+        {
+          "keyframe_id": "1a",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "finished bowl peanut-pour anchor",
+          "first_frame": "First-person high-angle close-up of a large warm-white handled bowl filled with deep red rice-noodle soup on the light warm-brown wood desk; one natural right hand tilts a small plain yellow condiment sachet above the bowl and loose peanuts are poised to fall into the centre.",
+          "camera": "food close-up | first-person high angle about 45 degrees | slight handheld drift | bowl fills about eighty percent of frame with its short handle pointing right",
+          "performance": "The thumb and forefinger pinch the yellow sachet asymmetrically while a few peanuts begin falling at different speeds.",
+          "product_presence": "absent",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        },
+        {
+          "keyframe_id": "1b",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "first complete front-pouch reveal anchor",
+          "first_frame": "First-person product close-up on the same desk: exactly two natural hands support one complete Man Xiao Bao Spicy Red Oil Rice Noodles pouch from its outer lower corners, with the cream-and-red front square to camera and unobstructed.",
+          "camera": "product close-up | slight high angle about 25 degrees | handheld micro-sway | complete pouch fills about seventy-eight percent of frame",
+          "performance": "The two hands apply slightly different grip pressure and keep all fingers outside the central title and bowl image.",
+          "product_presence": "present",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        },
+        {
+          "keyframe_id": "1c",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "first broad noodle-lift anchor",
+          "first_frame": "Close high-angle food view of dark red-brown chopsticks lifting a dense fan of many thin round pale rice-vermicelli strands, each about two millimetres thick, from the same deep red broth bowl; tofu puffs and dark green vegetable strips remain visible around the noodles.",
+          "camera": "extreme food close-up | first-person high angle about 40 degrees | small handheld follow upward | the dense curtain of thin round strands occupies the centre and upper-right",
+          "performance": "One unseen hand lifts with a faint tremor, creating irregular spacing between the many fine strands and one or two loose strands.",
+          "product_presence": "absent",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH001",
+          "source_start_seconds": 0.0,
+          "source_end_seconds": 1.333,
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 1.333,
+          "picture_keyframe_id": "1a",
+          "shot_type": "peanut topping pour",
+          "direction": "tilt the yellow sachet and let a short uneven stream of peanuts fall into the bowl"
+        },
+        {
+          "source_shot_id": "SH002",
+          "source_start_seconds": 1.333,
+          "source_end_seconds": 2.733,
+          "clip_start_seconds": 1.333,
+          "clip_end_seconds": 2.733,
+          "picture_keyframe_id": "1b",
+          "shot_type": "front pouch reveal",
+          "direction": "hard cut to two hands presenting the complete front pouch with one small natural sway"
+        },
+        {
+          "source_shot_id": "SH003",
+          "source_start_seconds": 2.733,
+          "source_end_seconds": 4.3,
+          "clip_start_seconds": 2.733,
+          "clip_end_seconds": 4.3,
+          "picture_keyframe_id": "1c",
+          "shot_type": "broad noodle lift",
+          "direction": "hard cut to chopsticks lifting a broad noodle fan from the broth toward the upper-right"
+        },
+        {
+          "source_shot_id": "SH004",
+          "source_start_seconds": 4.3,
+          "source_end_seconds": 5.3,
+          "clip_start_seconds": 4.3,
+          "clip_end_seconds": 5.3,
+          "picture_keyframe_id": "1c",
+          "shot_type": "lower and stir noodles",
+          "direction": "hard cut to a slightly higher view as the noodle bundle lowers and the chopsticks loosen it through the broth"
+        }
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "codex_clone_refs/chill_noodle/ref_pic.jpg"
+      ],
+      "preserve": [
+        "four source microshots",
+        "three exact hard cuts",
+        "food-pack-food sequence",
+        "hands-only smartphone energy"
+      ],
+      "exclude": [
+        "visible face",
+        "source frame",
+        "caption",
+        "watermark",
+        "main pouch in food-only windows"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "h3_prompt_file": "work/chill_noodle_shot_for_shot/h3/seg01_prompt.txt",
+      "scene_pack_id": "warm-desktop-noodle-demo"
+    },
+    {
+      "id": "S02",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "segment": 2,
+      "duration_seconds": 6.0,
+      "source_start_seconds": 5.3,
+      "source_end_seconds": 10.567,
+      "source_edit_duration_seconds": 5.267,
+      "dialogue": "The bowl shows tofu puffs, dark greens and rice noodles in red broth.",
+      "shot_type": "noodle_pack_components_sequence",
+      "subject": "A noodle fan leads to a pouch-and-condiment display, tofu-puff close-up and green-sachet seaweed pour.",
+      "action": "Use four exact shots: lift noodles, display the front pouch with separate colour-coded sachets, lift one tofu puff with greens, then pour dark green strips from a green sachet.",
+      "performance": "Hands point, pinch and pour with believable grip changes; all actions remain first-person and no face appears.",
+      "intention": "Keep the source's dense component-proof rhythm and exact product appearance window.",
+      "accents": [],
+      "keyframe_ids": [
+        "2a",
+        "2b",
+        "2c"
+      ],
+      "reference_frames": [
+        {
+          "keyframe_id": "2a",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "eye_level",
+          "role": "tight noodle-fan anchor",
+          "first_frame": "Near-bowl-level macro of a dense curtain of many thin round rice-vermicelli strands, each about two millimetres thick, held high by dark red-brown chopsticks over the same handled white bowl of red broth, with a stainless spoon softly reflecting at frame-left.",
+          "camera": "extreme food close-up | near bowl-rim height with slight downward angle | handheld follow | fine vermicelli curtain fills the middle two-thirds",
+          "performance": "The chopsticks sit slightly off level and the many thin strands hang with natural uneven spacing.",
+          "product_presence": "absent",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/eye_level.png"
+        },
+        {
+          "keyframe_id": "2b",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "front pouch and condiment-sachet display anchor",
+          "first_frame": "High-angle package close-up on the same desk with one complete Man Xiao Bao front pouch in the centre; its front artwork contains exactly one printed red-soup noodle bowl image. Three confirmed condiment packets lie around the lower edge: one yellow tofu-puff packet with visible tofu puffs, one red chilli-oil packet and one green vegetable packet with visible dried greens; one natural index finger points to the red packet without covering the pouch.",
+          "camera": "package close-up | first-person high angle about 55 degrees | small handheld sway | pouch and sachets fill about eighty percent",
+          "performance": "The pointing finger bends naturally and hovers just above one sachet while the other hand steadies the pouch edge.",
+          "product_presence": "present",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        },
+        {
+          "keyframe_id": "2c",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "tofu-puff and green-sachet action anchor",
+          "first_frame": "First-person high-angle food close-up of the same red-broth noodle bowl: dark chopsticks lift one orange-gold tofu puff with a few dark green strips and several thin round rice-vermicelli strands, while a small blank green condiment sachet waits near the upper edge for the next cut.",
+          "camera": "food close-up | high angle about 45 degrees | slight handheld follow | tofu puff sits near centre above the bowl",
+          "performance": "The chopsticks pinch the tofu puff imperfectly, with a few wet green strips hanging at different lengths.",
+          "product_presence": "absent",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH005",
+          "source_start_seconds": 5.3,
+          "source_end_seconds": 6.567,
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 1.267,
+          "picture_keyframe_id": "2a",
+          "shot_type": "tight noodle fan",
+          "direction": "lift one broad noodle curtain a few centimetres and let two loose strands slip"
+        },
+        {
+          "source_shot_id": "SH006",
+          "source_start_seconds": 6.567,
+          "source_end_seconds": 8.4,
+          "clip_start_seconds": 1.267,
+          "clip_end_seconds": 3.1,
+          "picture_keyframe_id": "2b",
+          "shot_type": "pouch and sachet display",
+          "direction": "hard cut to the complete front pouch with colour-coded sachets and one finger pointing between them"
+        },
+        {
+          "source_shot_id": "SH007",
+          "source_start_seconds": 8.4,
+          "source_end_seconds": 9.7,
+          "clip_start_seconds": 3.1,
+          "clip_end_seconds": 4.4,
+          "picture_keyframe_id": "2c",
+          "shot_type": "tofu puff and greens lift",
+          "direction": "hard cut to chopsticks lifting one tofu puff with green strips from the bowl"
+        },
+        {
+          "source_shot_id": "SH008",
+          "source_start_seconds": 9.7,
+          "source_end_seconds": 10.567,
+          "clip_start_seconds": 4.4,
+          "clip_end_seconds": 5.267,
+          "picture_keyframe_id": "2c",
+          "shot_type": "green sachet pour",
+          "direction": "hard cut to one hand tipping the plain green sachet so dark green strips fall into the centre of the bowl"
+        }
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "codex_clone_refs/chill_noodle/ref_pic.jpg"
+      ],
+      "preserve": [
+        "four source microshots",
+        "three exact hard cuts",
+        "package-to-component proof"
+      ],
+      "exclude": [
+        "visible face",
+        "source frame",
+        "extra condiment packet",
+        "different condiment label",
+        "caption",
+        "watermark"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "h3_prompt_file": "work/chill_noodle_shot_for_shot/h3/seg02_prompt.txt",
+      "scene_pack_id": "warm-desktop-noodle-demo"
+    },
+    {
+      "id": "S03",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "segment": 3,
+      "duration_seconds": 5.0,
+      "source_start_seconds": 10.567,
+      "source_end_seconds": 15.267,
+      "source_edit_duration_seconds": 4.7,
+      "dialogue": "Add the red seasoning, check the cream-and-red front, then bring the noodles back into view.",
+      "shot_type": "red_seasoning_pack_detail_and_noodles",
+      "subject": "A red seasoning pour hard-cuts to a tight front-pouch proof and then two rice-noodle lifts.",
+      "action": "Pour red seasoning, show the target front pouch close to camera, then perform one tightly wound lift and one broader lift.",
+      "performance": "The pouring hand squeezes the sachet naturally; product-holding fingers stay off the title; noodle lifts carry slight tremor.",
+      "intention": "Preserve the source's seasoning-pack-food sandwich without fabricating a back label.",
+      "accents": [],
+      "keyframe_ids": [
+        "3a",
+        "3b",
+        "3c"
+      ],
+      "reference_frames": [
+        {
+          "keyframe_id": "3a",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "red-seasoning pour anchor",
+          "first_frame": "High-angle close-up of the same handled white bowl as one natural hand tips a small plain red condiment sachet above the centre, with dark red chilli seasoning beginning to fall onto the noodles and greens.",
+          "camera": "food close-up | first-person high angle about 50 degrees | handheld micro-drift | sachet and falling seasoning sit above bowl centre",
+          "performance": "The red sachet creases under uneven finger pressure and the seasoning falls in a slightly scattered stream.",
+          "product_presence": "absent",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        },
+        {
+          "keyframe_id": "3b",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "tight target front-pouch proof anchor",
+          "first_frame": "Extreme product close-up of the complete Man Xiao Bao pouch front held by exactly two natural hands at the outer lower corners, cream upper field and red lower field square to the lens, filling most of the vertical frame without crop through the title.",
+          "camera": "extreme package close-up | slight high angle about 30 degrees | almost locked handheld | front pouch fills about eighty-five percent",
+          "performance": "The two hands hold with subtle asymmetry and keep fingertips outside the central artwork.",
+          "product_presence": "present",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        },
+        {
+          "keyframe_id": "3c",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "eye_level",
+          "role": "tight wound-noodle lift anchor",
+          "first_frame": "Near-bowl-level macro of dark red-brown chopsticks holding a tightly gathered rectangular bundle made from many thin round pale rice-vermicelli strands, each about two millimetres thick, above the same deep red broth; a stainless spoon catches warm light at frame-right.",
+          "camera": "extreme food close-up | near bowl-rim height | slight handheld follow | compact bundle of fine strands fills the centre",
+          "performance": "The gathered bundle is not perfectly geometric; several fine strands sit loose and the chopsticks angle slightly upward.",
+          "product_presence": "absent",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/eye_level.png"
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH009",
+          "source_start_seconds": 10.567,
+          "source_end_seconds": 11.467,
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 0.9,
+          "picture_keyframe_id": "3a",
+          "shot_type": "red seasoning pour",
+          "direction": "squeeze and tip the red sachet so a short stream of chilli seasoning falls into the bowl centre"
+        },
+        {
+          "source_shot_id": "SH010",
+          "source_start_seconds": 11.467,
+          "source_end_seconds": 12.167,
+          "clip_start_seconds": 0.9,
+          "clip_end_seconds": 1.6,
+          "picture_keyframe_id": "3b",
+          "shot_type": "tight front pouch proof",
+          "direction": "hard cut to two hands holding the complete target front close to the lens with a tiny sway"
+        },
+        {
+          "source_shot_id": "SH011",
+          "source_start_seconds": 12.167,
+          "source_end_seconds": 13.533,
+          "clip_start_seconds": 1.6,
+          "clip_end_seconds": 2.966,
+          "picture_keyframe_id": "3c",
+          "shot_type": "compact noodle-bundle lift",
+          "direction": "hard cut to chopsticks lifting one tightly wound noodle bundle above the red broth"
+        },
+        {
+          "source_shot_id": "SH012",
+          "source_start_seconds": 13.533,
+          "source_end_seconds": 15.267,
+          "clip_start_seconds": 2.966,
+          "clip_end_seconds": 4.7,
+          "picture_keyframe_id": "3c",
+          "shot_type": "broad noodle lift",
+          "direction": "hard cut to a slightly wider angle as the chopsticks lift a broader looser bundle from the bowl"
+        }
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "codex_clone_refs/chill_noodle/ref_pic.jpg"
+      ],
+      "preserve": [
+        "four source microshots",
+        "three exact hard cuts",
+        "seasoning-pack-food order"
+      ],
+      "exclude": [
+        "visible face",
+        "invented back label",
+        "source frame",
+        "caption",
+        "watermark"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "h3_prompt_file": "work/chill_noodle_shot_for_shot/h3/seg03_prompt.txt",
+      "scene_pack_id": "warm-desktop-noodle-demo"
+    },
+    {
+      "id": "S04",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "segment": 4,
+      "duration_seconds": 6.0,
+      "source_start_seconds": 15.267,
+      "source_end_seconds": 20.4,
+      "source_edit_duration_seconds": 5.133,
+      "dialogue": "Pull, lift and turn the noodles through the bowl before the pouch returns for the finish.",
+      "shot_type": "noodle_actions_to_single_pouch",
+      "subject": "Three distinct noodle actions and a repeated peanut pour lead into a single-pouch tray shot.",
+      "action": "Pull noodles sideways through broth, lift a neat noodle curtain, lift noodles with greens, pour peanuts, then hard-cut to one pouch being pushed onto a white perforated tray.",
+      "performance": "Chopstick movements are slightly imperfect and hands enter at unequal speeds; the final pouch push is casual rather than mechanically centred.",
+      "intention": "Match the source's rapid food-action run and exact late product return.",
+      "accents": [],
+      "keyframe_ids": [
+        "4a",
+        "4b",
+        "4c"
+      ],
+      "reference_frames": [
+        {
+          "keyframe_id": "4a",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "sideways noodle-pull and curtain anchor",
+          "first_frame": "High-angle close-up of the same handled white bowl as dark chopsticks pull a dense group of many thin round pale rice-vermicelli strands sideways across the surface of deep red broth, with orange tofu puffs around the perimeter.",
+          "camera": "food close-up | first-person high angle about 60 degrees | slight handheld follow | grouped fine vermicelli strands cross the centre horizontally",
+          "performance": "The chopsticks separate the many fine strands unevenly so red broth begins coating their lower portions.",
+          "product_presence": "absent",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        },
+        {
+          "keyframe_id": "4b",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "noodle-and-green lift plus peanut-pour anchor",
+          "first_frame": "First-person 45-degree food close-up of chopsticks lifting many thin round rice-vermicelli strands tangled with dark green vegetable strips from the same red-broth bowl; a small blank yellow condiment sachet rests just outside the bowl at the upper-right ready for the following topping cut.",
+          "camera": "food close-up | high angle about 45 degrees | handheld micro-follow | noodles and green strips fill the centre",
+          "performance": "The wet green strips hang at irregular lengths and the chopsticks pause with a faint tremor.",
+          "product_presence": "absent",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        },
+        {
+          "keyframe_id": "4c",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "single pouch on perforated tray transition anchor",
+          "first_frame": "High-angle retail frame on the same wood desk with one complete Man Xiao Bao front pouch lying flat on a white perforated serving tray; one natural hand enters from frame-right and touches only the outer pouch edge as if pushing it into place.",
+          "camera": "product close-up | first-person high angle about 65 degrees | short handheld push | flat pouch and white perforated tray fill about eighty percent",
+          "performance": "The hand pushes from the edge with relaxed fingers and stops slightly off-perfect centre.",
+          "product_presence": "present",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH013",
+          "source_start_seconds": 15.267,
+          "source_end_seconds": 16.533,
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 1.266,
+          "picture_keyframe_id": "4a",
+          "shot_type": "sideways noodle pull",
+          "direction": "pull a pale noodle sheet sideways so the lower strands pass through the red broth"
+        },
+        {
+          "source_shot_id": "SH014",
+          "source_start_seconds": 16.533,
+          "source_end_seconds": 17.333,
+          "clip_start_seconds": 1.266,
+          "clip_end_seconds": 2.066,
+          "picture_keyframe_id": "4a",
+          "shot_type": "neat noodle curtain lift",
+          "direction": "hard cut to chopsticks raising a compact noodle curtain almost vertically"
+        },
+        {
+          "source_shot_id": "SH015",
+          "source_start_seconds": 17.333,
+          "source_end_seconds": 18.867,
+          "clip_start_seconds": 2.066,
+          "clip_end_seconds": 3.6,
+          "picture_keyframe_id": "4b",
+          "shot_type": "noodle and greens lift",
+          "direction": "hard cut to chopsticks lifting noodles with dark green strips and holding briefly"
+        },
+        {
+          "source_shot_id": "SH016",
+          "source_start_seconds": 18.867,
+          "source_end_seconds": 19.767,
+          "clip_start_seconds": 3.6,
+          "clip_end_seconds": 4.5,
+          "picture_keyframe_id": "4b",
+          "shot_type": "repeat peanut pour",
+          "direction": "hard cut to one hand tipping the plain yellow sachet so peanuts scatter into the bowl"
+        },
+        {
+          "source_shot_id": "SH017",
+          "source_start_seconds": 19.767,
+          "source_end_seconds": 20.4,
+          "clip_start_seconds": 4.5,
+          "clip_end_seconds": 5.133,
+          "picture_keyframe_id": "4c",
+          "shot_type": "single pouch tray transition",
+          "direction": "hard cut to one complete pouch sliding a short distance onto the white perforated tray"
+        }
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "codex_clone_refs/chill_noodle/ref_pic.jpg"
+      ],
+      "preserve": [
+        "five source microshots",
+        "four exact hard cuts",
+        "late product return"
+      ],
+      "exclude": [
+        "visible face",
+        "main pouch before the last microshot",
+        "source frame",
+        "caption",
+        "watermark"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "h3_prompt_file": "work/chill_noodle_shot_for_shot/h3/seg04_prompt.txt",
+      "scene_pack_id": "warm-desktop-noodle-demo"
+    },
+    {
+      "id": "S05",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "segment": 5,
+      "duration_seconds": 4.0,
+      "source_start_seconds": 20.4,
+      "source_end_seconds": 23.933,
+      "source_edit_duration_seconds": 3.533,
+      "dialogue": "Three, four, then five pouches—finish on the complete front.",
+      "shot_type": "three_to_five_pouch_endboard",
+      "subject": "The exact Man Xiao Bao front pouch multiplies from three to four and then five units on one white perforated tray.",
+      "action": "Hard-cut from three pouches to four pouches, then five pouches, and finish with one open hand sweeping in from the upper-right beside the five-pouch layout.",
+      "performance": "Layouts remain casually hand-arranged with small rotations and overlaps; the final hand gesture is relaxed and stops outside the labels.",
+      "intention": "Reproduce the original rapid quantity-build ending without adding a price or discount claim.",
+      "accents": [],
+      "keyframe_ids": [
+        "5a",
+        "5b"
+      ],
+      "reference_frames": [
+        {
+          "keyframe_id": "5a",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "three-and-four pouch array anchor",
+          "first_frame": "High-angle retail close-up of exactly three complete Man Xiao Bao pouches lying front-up in a loose overlapping fan on the white perforated tray over the same wood desk; all three cream-and-red fronts remain recognisable.",
+          "camera": "multi-product close-up | first-person high angle about 70 degrees | almost locked smartphone | three pouches fill the frame",
+          "performance": "The three pouches have slight natural rotation differences and imperfect overlap like a quick hand arrangement.",
+          "product_presence": "present",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        },
+        {
+          "keyframe_id": "5b",
+          "scene_id": "warm-desktop-noodle-demo",
+          "scene_lock": {
+            "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+            "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+            "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+            "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+            "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+            "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+          },
+          "scene_view": "oblique_45",
+          "role": "five pouch final array anchor",
+          "first_frame": "High-angle final retail frame of exactly five complete Man Xiao Bao pouches lying front-up across the same white perforated tray in a loose fan; one natural open hand hovers at the upper-right outside every central label.",
+          "camera": "multi-product close-up | first-person high angle about 70 degrees | steady smartphone | five cream-and-red fronts fill nearly the entire frame",
+          "performance": "The open hand finishes a small presenting sweep with relaxed uneven fingers while the five pouches stay still.",
+          "product_presence": "present",
+          "scene_master": "work/chill_noodle_shot_for_shot/scene_pack/warm-desktop-noodle-demo/oblique_45.png"
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH018",
+          "source_start_seconds": 20.4,
+          "source_end_seconds": 21.133,
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 0.733,
+          "picture_keyframe_id": "5a",
+          "shot_type": "three pouch array",
+          "direction": "hold exactly three front-up pouches in a loose overlapping row"
+        },
+        {
+          "source_shot_id": "SH019",
+          "source_start_seconds": 21.133,
+          "source_end_seconds": 21.733,
+          "clip_start_seconds": 0.733,
+          "clip_end_seconds": 1.333,
+          "picture_keyframe_id": "5a",
+          "shot_type": "four pouch array",
+          "direction": "hard cut to exactly four pouches in a slightly wider fan"
+        },
+        {
+          "source_shot_id": "SH020",
+          "source_start_seconds": 21.733,
+          "source_end_seconds": 22.667,
+          "clip_start_seconds": 1.333,
+          "clip_end_seconds": 2.267,
+          "picture_keyframe_id": "5b",
+          "shot_type": "five pouch array",
+          "direction": "hard cut to exactly five front-up pouches filling the tray"
+        },
+        {
+          "source_shot_id": "SH021",
+          "source_start_seconds": 22.667,
+          "source_end_seconds": 23.933,
+          "clip_start_seconds": 2.267,
+          "clip_end_seconds": 3.533,
+          "picture_keyframe_id": "5b",
+          "shot_type": "five pouch presenting hand",
+          "direction": "hard cut while keeping five pouches; one open hand sweeps in from upper-right and stops beside the array"
+        }
+      ],
+      "continuity": "hard_cut",
+      "keyframe_strategy": "codex-imagegen-edit",
+      "references": [
+        "codex_clone_refs/chill_noodle/ref_pic.jpg"
+      ],
+      "preserve": [
+        "four source microshots",
+        "three exact hard cuts",
+        "three-four-five count progression",
+        "final presenting hand"
+      ],
+      "exclude": [
+        "visible face",
+        "different products",
+        "price graphic",
+        "caption",
+        "watermark"
+      ],
+      "label_policy": "original_pixels_or_fully_preserved",
+      "h3_prompt_file": "work/chill_noodle_shot_for_shot/h3/seg05_prompt.txt",
+      "scene_pack_id": "warm-desktop-noodle-demo"
+    }
+  ]
+}

@@ -32,12 +32,50 @@ class PromptCompilerTests(unittest.TestCase):
             template_text=self.template,
         )
         self.assertIn("a2 Milk Full Cream 2L", prompt)
-        self.assertIn("whole product visible in a clear unobstructed placement", prompt)
+        self.assertIn("supplied product photo as the package identity authority", prompt)
+        self.assertNotIn("added there after generation", prompt)
         self.assertLess(len(prompt.split()), 200)
-        for noise in ("handle", "forbidden", "composited", "Acceptance"):
+        for noise in ("handle", "forbidden", "Acceptance", "composite area"):
             self.assertNotIn(noise.lower(), prompt.lower())
-        self.assertNotIn("composited", prompt)
-        self.assertIn("Image 2: the product.", prompt)
+
+    def test_reference_lock_still_requests_the_product_itself(self) -> None:
+        request = copy.deepcopy(self.request)
+        request["segments"]["4"]["product_fidelity_mode"] = "reference_lock"
+        prompt = render_keyframe_prompt(
+            product=self.product,
+            shot_plan=self.shot_plan,
+            request=request,
+            keyframe_id="4",
+            template_text=self.template,
+        )
+        self.assertIn("Product: a2 Milk Full Cream 2L, copied exactly", prompt)
+        self.assertNotIn("Product composite area", prompt)
+
+    def test_product_absent_keyframe_omits_product_reference_and_instruction(self) -> None:
+        request = copy.deepcopy(self.request)
+        segment = request["segments"]["4"]
+        segment["product_presence"] = "absent"
+        segment["product_fidelity_mode"] = "not_applicable"
+        segment.pop("product_placement", None)
+        product_paths = [
+            path for path, role in segment["reference_roles"].items() if role == "product_identity"
+        ]
+        segment["references"] = [path for path in segment["references"] if path not in product_paths]
+        segment["reference_roles"] = {
+            path: role for path, role in segment["reference_roles"].items() if path not in product_paths
+        }
+
+        prompt = render_keyframe_prompt(
+            product=self.product,
+            shot_plan=self.shot_plan,
+            request=request,
+            keyframe_id="4",
+            template_text=self.template,
+        )
+
+        self.assertIn("retail package is outside this shot", prompt)
+        self.assertNotIn("copied exactly", prompt)
+        self.assertNotIn("the product.", prompt)
 
     def test_same_template_accepts_another_package_type(self) -> None:
         product = copy.deepcopy(self.product)

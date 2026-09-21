@@ -30,10 +30,10 @@
     "note": "The source contains only hands, rice, cookware and packaging; no face appears."
   },
   "render_plan": {
-    "keyframe_count": 9,
+    "keyframe_count": 12,
     "h3_clip_count": 5,
-    "max_segments_per_h3_job": 4,
-    "expected_h3_batches": 2,
+    "max_segments_per_h3_job": 5,
+    "expected_h3_batches": 1,
     "edit_to_source_duration_seconds": 22.567,
     "h3_audio_mode": "silent",
     "voiceover_strategy": "continuous_english_master_track",
@@ -41,6 +41,37 @@
   },
   "image_provider": "codex-imagegen",
   "video_provider": "h3",
-  "human_review_required": true
+  "human_review_required": true,
+  "scene_packs": {
+    "warm-wood-greenery-rice-table": {
+      "scene_lock": {
+        "setting": "A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.",
+        "surface": "One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.",
+        "backdrop": "Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.",
+        "lighting": "Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.",
+        "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
+        "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
+      },
+      "views": {
+        "eye_level": {
+          "master_image": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png",
+          "sha256": "57ed7bcee731eb5b4e3d51914a69e074ef5c86c62851081884171fece49f1fe1"
+        },
+        "oblique_45": {
+          "master_image": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png",
+          "sha256": "6c0750d4726fcf714616ae2d2bd0b6ed5a01c09cc70139382c847b3f5f3ee25c"
+        },
+        "overhead_90": {
+          "master_image": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/overhead_90.png",
+          "sha256": "4c429ae03d6937613bdd8794b65c32a8a55b885fb57941bffa4ba2ad320f59d6"
+        }
+      },
+      "approval": {
+        "approved_by": "codex",
+        "approved_at": "2026-09-20T16:00:02Z",
+        "note": "approved three-view scene pack; same physical warm wood table",
+        "content": "empty_background_only"
+      }
+    }
+  }
 }
-

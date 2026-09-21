@@ -1,0 +1,240 @@
+{
+  "schema": "shot-map/v1",
+  "visual_mode": "shot_for_shot",
+  "reference_video": "codex_clone_refs/chill_noodle/ref_video.mp4",
+  "source_duration_seconds": 23.933,
+  "cut_times_seconds": [
+    1.333,
+    2.733,
+    4.3,
+    5.3,
+    6.567,
+    8.4,
+    9.7,
+    10.567,
+    11.467,
+    12.167,
+    13.533,
+    15.267,
+    16.533,
+    17.333,
+    18.867,
+    19.767,
+    20.4,
+    21.133,
+    21.733,
+    22.667
+  ],
+  "shots": [
+    {
+      "id": "SH001",
+      "source_start_seconds": 0.0,
+      "source_end_seconds": 1.333,
+      "source_edit_duration_seconds": 1.333,
+      "analysis_frame_time_seconds": 0.666,
+      "source_dialogue": "要是你爱吃辣,那",
+      "cut_in": "start",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH002",
+      "source_start_seconds": 1.333,
+      "source_end_seconds": 2.733,
+      "source_edit_duration_seconds": 1.4,
+      "analysis_frame_time_seconds": 2.033,
+      "source_dialogue": "那你一定要来挑战一下满小宝",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH003",
+      "source_start_seconds": 2.733,
+      "source_end_seconds": 4.3,
+      "source_edit_duration_seconds": 1.567,
+      "analysis_frame_time_seconds": 3.517,
+      "source_dialogue": "宝的这个麻辣红油米线,一",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH004",
+      "source_start_seconds": 4.3,
+      "source_end_seconds": 5.3,
+      "source_edit_duration_seconds": 1.0,
+      "analysis_frame_time_seconds": 4.8,
+      "source_dialogue": "一口下去真的又",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH005",
+      "source_start_seconds": 5.3,
+      "source_end_seconds": 6.567,
+      "source_edit_duration_seconds": 1.267,
+      "analysis_frame_time_seconds": 5.933,
+      "source_dialogue": "麻又辣,料包给的",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH006",
+      "source_start_seconds": 6.567,
+      "source_end_seconds": 8.4,
+      "source_edit_duration_seconds": 1.833,
+      "analysis_frame_time_seconds": 7.484,
+      "source_dialogue": "的也很足,里面还有我最爱的豆",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH007",
+      "source_start_seconds": 8.4,
+      "source_end_seconds": 9.7,
+      "source_edit_duration_seconds": 1.3,
+      "analysis_frame_time_seconds": 9.05,
+      "source_dialogue": "豆腐泡和海带丝,浇",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH008",
+      "source_start_seconds": 9.7,
+      "source_end_seconds": 10.567,
+      "source_edit_duration_seconds": 0.867,
+      "analysis_frame_time_seconds": 10.133,
+      "source_dialogue": "浇上蜜汁爆香",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH009",
+      "source_start_seconds": 10.567,
+      "source_end_seconds": 11.467,
+      "source_edit_duration_seconds": 0.9,
+      "analysis_frame_time_seconds": 11.017,
+      "source_dialogue": "香闪西油泼辣",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH010",
+      "source_start_seconds": 11.467,
+      "source_end_seconds": 12.167,
+      "source_edit_duration_seconds": 0.7,
+      "analysis_frame_time_seconds": 11.817,
+      "source_dialogue": "辣子,你瞅",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH011",
+      "source_start_seconds": 12.167,
+      "source_end_seconds": 13.533,
+      "source_edit_duration_seconds": 1.366,
+      "analysis_frame_time_seconds": 12.85,
+      "source_dialogue": "瞅瞅这小色泽,每一",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH012",
+      "source_start_seconds": 13.533,
+      "source_end_seconds": 15.267,
+      "source_edit_duration_seconds": 1.734,
+      "analysis_frame_time_seconds": 14.4,
+      "source_dialogue": "一口都裹满鲜香的麻辣,米",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH013",
+      "source_start_seconds": 15.267,
+      "source_end_seconds": 16.533,
+      "source_edit_duration_seconds": 1.266,
+      "analysis_frame_time_seconds": 15.9,
+      "source_dialogue": "米线Q弹劲的,一",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH014",
+      "source_start_seconds": 16.533,
+      "source_end_seconds": 17.333,
+      "source_edit_duration_seconds": 0.8,
+      "analysis_frame_time_seconds": 16.933,
+      "source_dialogue": "一口下去简直香",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH015",
+      "source_start_seconds": 17.333,
+      "source_end_seconds": 18.867,
+      "source_edit_duration_seconds": 1.534,
+      "analysis_frame_time_seconds": 18.1,
+      "source_dialogue": "香迷糊了,真的不要太",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH016",
+      "source_start_seconds": 18.867,
+      "source_end_seconds": 19.767,
+      "source_edit_duration_seconds": 0.9,
+      "analysis_frame_time_seconds": 19.317,
+      "source_dialogue": "太爽,趁商",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH017",
+      "source_start_seconds": 19.767,
+      "source_end_seconds": 20.4,
+      "source_edit_duration_seconds": 0.633,
+      "analysis_frame_time_seconds": 20.084,
+      "source_dialogue": "商家做活动",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH018",
+      "source_start_seconds": 20.4,
+      "source_end_seconds": 21.133,
+      "source_edit_duration_seconds": 0.733,
+      "analysis_frame_time_seconds": 20.766,
+      "source_dialogue": "推广新品,",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH019",
+      "source_start_seconds": 21.133,
+      "source_end_seconds": 21.733,
+      "source_edit_duration_seconds": 0.6,
+      "analysis_frame_time_seconds": 21.433,
+      "source_dialogue": "你看下",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH020",
+      "source_start_seconds": 21.733,
+      "source_end_seconds": 22.667,
+      "source_edit_duration_seconds": 0.934,
+      "analysis_frame_time_seconds": 22.2,
+      "source_dialogue": "下现代到手五大",
+      "cut_in": "hard_cut",
+      "cut_out": "hard_cut"
+    },
+    {
+      "id": "SH021",
+      "source_start_seconds": 22.667,
+      "source_end_seconds": 23.933,
+      "source_edit_duration_seconds": 1.266,
+      "analysis_frame_time_seconds": 23.3,
+      "source_dialogue": "大包才啥价。",
+      "cut_in": "hard_cut",
+      "cut_out": "end"
+    }
+  ]
+}

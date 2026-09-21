@@ -21,22 +21,33 @@
       "trim_duration_seconds": 5.567,
       "keyframe_ids": [
         "1a",
-        "1b"
+        "1b",
+        "1c"
       ],
-      "product_reference": "codex_clone_refs/rice/rice.jpg",
+      "product_reference": null,
+      "scene_reference": null,
       "cues": [
         {
           "keyframe_id": "1a",
           "picture": 1,
           "scene_id": "warm-wood-greenery-rice-table",
           "start_seconds": 0.0,
-          "end_seconds": 3.567,
+          "end_seconds": 0.967,
           "transition": "start",
-          "action": "loose white grains fall into the centred rattan tray during the first second Then hard cut at 0.967 seconds to one hand lifting a warm-white cooker lid and revealing cooked rice Then hard cut at 2.533 seconds to a tighter steady view of cooked rice filling the cooker."
+          "action": "loose white grains fall into the centred rattan tray during the first second."
         },
         {
           "keyframe_id": "1b",
           "picture": 2,
+          "scene_id": "warm-wood-greenery-rice-table",
+          "start_seconds": 0.967,
+          "end_seconds": 3.567,
+          "transition": "hard_cut",
+          "action": "hard cut at 0.967 seconds to one hand lifting a warm-white cooker lid and revealing cooked rice Then hard cut at 2.533 seconds to a tighter steady view of cooked rice filling the same open cooker."
+        },
+        {
+          "keyframe_id": "1c",
+          "picture": 3,
           "scene_id": "warm-wood-greenery-rice-table",
           "start_seconds": 3.567,
           "end_seconds": 5.567,
@@ -55,7 +66,7 @@
         },
         {
           "source_shot_id": "SH002",
-          "picture": 1,
+          "picture": 2,
           "start_seconds": 0.967,
           "end_seconds": 2.533,
           "transition": "hard_cut",
@@ -63,15 +74,15 @@
         },
         {
           "source_shot_id": "SH003",
-          "picture": 1,
+          "picture": 2,
           "start_seconds": 2.533,
           "end_seconds": 3.567,
           "transition": "hard_cut",
-          "action": "cooked rice cooker close-up: hard cut at 2.533 seconds to a tighter steady view of cooked rice filling the cooker"
+          "action": "cooked rice cooker close-up: hard cut at 2.533 seconds to a tighter steady view of cooked rice filling the same open cooker"
         },
         {
           "source_shot_id": "SH004",
-          "picture": 2,
+          "picture": 3,
           "start_seconds": 3.567,
           "end_seconds": 5.567,
           "transition": "hard_cut",
@@ -94,22 +105,33 @@
       "trim_duration_seconds": 4.833,
       "keyframe_ids": [
         "2a",
-        "2b"
+        "2b",
+        "2c"
       ],
-      "product_reference": "codex_clone_refs/rice/rice.jpg",
+      "product_reference": null,
+      "scene_reference": null,
       "cues": [
         {
           "keyframe_id": "2a",
           "picture": 1,
           "scene_id": "warm-wood-greenery-rice-table",
           "start_seconds": 0.0,
-          "end_seconds": 3.633,
+          "end_seconds": 1.633,
           "transition": "start",
-          "action": "hold a cooked-rice bite against deep green bokeh and raise it a few centimetres Then hard cut at 1.633 seconds to one hand supporting the warm-ivory bowl while chopsticks hover above it."
+          "action": "hold a cooked-rice bite against deep green bokeh and raise it a few centimetres."
         },
         {
           "keyframe_id": "2b",
           "picture": 2,
+          "scene_id": "warm-wood-greenery-rice-table",
+          "start_seconds": 1.633,
+          "end_seconds": 3.633,
+          "transition": "hard_cut",
+          "action": "hard cut at 1.633 seconds to one hand supporting the clear scalloped glass bowl while chopsticks hover above it."
+        },
+        {
+          "keyframe_id": "2c",
+          "picture": 3,
           "scene_id": "warm-wood-greenery-rice-table",
           "start_seconds": 3.633,
           "end_seconds": 4.833,
@@ -128,15 +150,15 @@
         },
         {
           "source_shot_id": "SH006",
-          "picture": 1,
+          "picture": 2,
           "start_seconds": 1.633,
           "end_seconds": 3.633,
           "transition": "hard_cut",
-          "action": "hand-held rice bowl: hard cut at 1.633 seconds to one hand supporting the warm-ivory bowl while chopsticks hover above it"
+          "action": "hand-held rice bowl: hard cut at 1.633 seconds to one hand supporting the clear scalloped glass bowl while chopsticks hover above it"
         },
         {
           "source_shot_id": "SH007",
-          "picture": 2,
+          "picture": 3,
           "start_seconds": 3.633,
           "end_seconds": 4.833,
           "transition": "hard_cut",
@@ -159,22 +181,33 @@
       "trim_duration_seconds": 4.2,
       "keyframe_ids": [
         "3a",
-        "3b"
+        "3b",
+        "3c"
       ],
-      "product_reference": "codex_clone_refs/rice/rice.jpg",
+      "product_reference": null,
+      "scene_reference": null,
       "cues": [
         {
           "keyframe_id": "3a",
           "picture": 1,
           "scene_id": "warm-wood-greenery-rice-table",
           "start_seconds": 0.0,
-          "end_seconds": 2.467,
+          "end_seconds": 1.233,
           "transition": "start",
-          "action": "show one front-up bag with a crescent of loose grains rather than inventing multiple small packs Then hard cut at 1.233 seconds to a tighter crop where rice grains remain visible through the clear plastic around the front label."
+          "action": "show three matching full-size target bags in a dense diagonal overlap, with one complete front-up bag anchoring the foreground."
         },
         {
           "keyframe_id": "3b",
           "picture": 2,
+          "scene_id": "warm-wood-greenery-rice-table",
+          "start_seconds": 1.233,
+          "end_seconds": 2.467,
+          "transition": "hard_cut",
+          "action": "hard cut at 1.233 seconds to a true extreme close-up where individual rice grains remain visible through the clear plastic around the front label."
+        },
+        {
+          "keyframe_id": "3c",
+          "picture": 3,
           "scene_id": "warm-wood-greenery-rice-table",
           "start_seconds": 2.467,
           "end_seconds": 4.2,
@@ -189,19 +222,19 @@
           "start_seconds": 0.0,
           "end_seconds": 1.233,
           "transition": "start",
-          "action": "overhead pack and grains: show one front-up bag with a crescent of loose grains rather than inventing multiple small packs"
+          "action": "dense target-pack spread: show three matching full-size target bags in a dense diagonal overlap, with one complete front-up bag anchoring the foreground"
         },
         {
           "source_shot_id": "SH009",
-          "picture": 1,
+          "picture": 2,
           "start_seconds": 1.233,
           "end_seconds": 2.467,
           "transition": "hard_cut",
-          "action": "transparent bag grain detail: hard cut at 1.233 seconds to a tighter crop where rice grains remain visible through the clear plastic around the front label"
+          "action": "transparent bag grain detail: hard cut at 1.233 seconds to a true extreme close-up where individual rice grains remain visible through the clear plastic around the front label"
         },
         {
           "source_shot_id": "SH010",
-          "picture": 2,
+          "picture": 3,
           "start_seconds": 2.467,
           "end_seconds": 4.2,
           "transition": "hard_cut",
@@ -225,7 +258,8 @@
       "keyframe_ids": [
         "4a"
       ],
-      "product_reference": "codex_clone_refs/rice/rice.jpg",
+      "product_reference": null,
+      "scene_reference": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png",
       "cues": [
         {
           "keyframe_id": "4a",
@@ -266,6 +300,7 @@
         "5b"
       ],
       "product_reference": "codex_clone_refs/rice/rice.jpg",
+      "scene_reference": null,
       "cues": [
         {
           "keyframe_id": "5a",

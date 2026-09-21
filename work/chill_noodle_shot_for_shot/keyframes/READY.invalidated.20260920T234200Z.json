@@ -1,0 +1,25 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "chill_noodle_shot_for_shot",
+  "pipeline_job_id": "chill_noodle_sfs_en",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "segments": {
+    "1a": {"keyframe": "seg1a.png", "extra_refs": [], "notes": "SH001 peanut pour into finished noodle bowl; main pouch absent."},
+    "1b": {"keyframe": "seg1b.png", "extra_refs": ["codex_clone_refs/chill_noodle/ref_pic.jpg"], "notes": "SH002 first complete front-pouch reveal."},
+    "1c": {"keyframe": "seg1c.png", "extra_refs": [], "notes": "SH003-SH004 broad thin-rice-noodle lift and lower; main pouch absent."},
+    "2a": {"keyframe": "seg2a.png", "extra_refs": [], "notes": "SH005 tight thin-vermicelli fan; main pouch absent."},
+    "2b": {"keyframe": "seg2b.png", "extra_refs": ["codex_clone_refs/chill_noodle/ref_pic.jpg"], "notes": "SH006 front pouch with exactly three blank colour-coded sachets."},
+    "2c": {"keyframe": "seg2c.png", "extra_refs": [], "notes": "SH007-SH008 tofu puff, greens and green-sachet action; main pouch absent."},
+    "3a": {"keyframe": "seg3a.png", "extra_refs": [], "notes": "SH009 blank red seasoning-sachet pour; main pouch absent."},
+    "3b": {"keyframe": "seg3b.png", "extra_refs": ["codex_clone_refs/chill_noodle/ref_pic.jpg"], "notes": "SH010 complete front-pouch extreme close-up."},
+    "3c": {"keyframe": "seg3c.png", "extra_refs": [], "notes": "SH011-SH012 compact and broad thin-vermicelli lifts; main pouch absent."},
+    "4a": {"keyframe": "seg4a.png", "extra_refs": [], "notes": "SH013-SH014 sideways noodle pull and curtain lift; main pouch absent."},
+    "4b": {"keyframe": "seg4b.png", "extra_refs": [], "notes": "SH015-SH016 greens lift and yellow-sachet peanut action; main pouch absent."},
+    "4c": {"keyframe": "seg4c.png", "extra_refs": ["codex_clone_refs/chill_noodle/ref_pic.jpg"], "notes": "SH017 single target pouch pushed onto white perforated tray."},
+    "5a": {"keyframe": "seg5a.png", "extra_refs": ["codex_clone_refs/chill_noodle/ref_pic.jpg"], "notes": "SH018-SH019 three-to-four pouch quantity build anchor."},
+    "5b": {"keyframe": "seg5b.png", "extra_refs": ["codex_clone_refs/chill_noodle/ref_pic.jpg"], "notes": "SH020-SH021 exactly five pouches with final presenting hand."}
+  },
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}

@@ -1,0 +1,13 @@
+Photorealistic vertical 9:16 smartphone photo, the first frame of a hands-only home product video.
+
+Image 1: the approved empty scene master: background, surface, props, palette and light.
+Image 2: the product.
+
+Camera: package close-up | first-person high angle about 55 degrees | small handheld sway | pouch and sachets fill about eighty percent
+Scene: High-angle package close-up on the same desk with one complete Man Xiao Bao front pouch in the centre; its front artwork contains exactly one printed red-soup noodle bowl image. Three confirmed condiment packets lie around the lower edge: one yellow tofu-puff packet with visible tofu puffs, one red chilli-oil packet and one green vegetable packet with visible dried greens; one natural index finger points to the red packet without covering the pouch.
+Background master: use Image 1 for this camera angle. Hard invariant: this is the same physical tabletop in every keyframe — surface: One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.. Soft continuity guide: setting: A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.; backdrop: A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.; lighting: Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.; palette: Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.; prop family: One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots.. For close-ups, keep the product and active hands crisp while natural changes in crop, parallax, visible props, slight local exposure and shallow-depth background bokeh are welcome.
+Human presence: The pointing finger bends naturally and hovers just above one sachet while the other hand steadies the pouch edge. Only hands and forearms appear; the creator's face stays outside the crop.
+
+Product: Man Xiao Bao Spicy Red Oil Rice Noodles, copied exactly from Image 2 - large flexible laminated food pouch with a cream upper field and vivid red lower field, factory heat-sealed top and bottom seams. Keep it identical to the reference photo; simplify the pose rather than change the product.
+
+Real skin texture, slight handheld imperfection and candid UGC energy. No added text or watermarks.

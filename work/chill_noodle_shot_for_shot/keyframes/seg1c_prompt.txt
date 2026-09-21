@@ -1,0 +1,12 @@
+Photorealistic vertical 9:16 smartphone photo, the first frame of a hands-only home product video.
+
+Image 1: the approved empty scene master: background, surface, props, palette and light.
+
+Camera: extreme food close-up | first-person high angle about 40 degrees | small handheld follow upward | the dense curtain of thin round strands occupies the centre and upper-right
+Scene: Close high-angle food view of dark red-brown chopsticks lifting a dense fan of many thin round pale rice-vermicelli strands, each about two millimetres thick, from the same deep red broth bowl; tofu puffs and dark green vegetable strips remain visible around the noodles.
+Background master: use Image 1 for this camera angle. Hard invariant: this is the same physical tabletop in every keyframe — surface: One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.. Soft continuity guide: setting: A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.; backdrop: A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.; lighting: Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.; palette: Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.; prop family: One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots.. For close-ups, keep the product and active hands crisp while natural changes in crop, parallax, visible props, slight local exposure and shallow-depth background bokeh are welcome.
+Human presence: One unseen hand lifts with a faint tremor, creating irregular spacing between the many fine strands and one or two loose strands. Only hands and forearms appear; the creator's face stays outside the crop.
+
+Frame content: show only the described rice, cookware, hands and locked scene for this source shot; the retail package is outside this shot.
+
+Real skin texture, slight handheld imperfection and candid UGC energy. No added text or watermarks.

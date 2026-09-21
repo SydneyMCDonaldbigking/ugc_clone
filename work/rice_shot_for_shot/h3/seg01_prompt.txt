@@ -1,0 +1,32 @@
+subject_definitions:
+<Picture 1> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+<Picture 2> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+<Picture 3> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 3>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+
+scene_continuity:
+All generated Pictures share scene_id warm-wood-greenery-rice-table. Hard-lock the same physical tabletop across every cut (surface: One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.). Treat the remaining scene description as a soft guide (setting: A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.; backdrop: Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.; lighting: Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.; palette: Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.; fixed props: A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them.). Close-ups keep the product sharp while crop, lens distance, parallax, visible props, slight local exposure and shallow-depth background bokeh may vary.
+
+detailed_description:
+Follow four exact hard-cut shots: falling raw grains, a lid reveal, cooked rice in the cooker, then both hands lifting uncooked grains. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-0.967 seconds — start on <Picture 1>; scheduled microshot: falling raw rice overhead: loose white grains fall into the centred rattan tray during the first second
+0.967-2.533 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: rice cooker lid reveal: hard cut at 0.967 seconds to one hand lifting a warm-white cooker lid and revealing cooked rice
+2.533-3.567 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: cooked rice cooker close-up: hard cut at 2.533 seconds to a tighter steady view of cooked rice filling the same open cooker
+3.567-5.567 seconds — hard cut to a new shot based on <Picture 3>; scheduled microshot: two-hand raw grain lift: hard cut at 3.567 seconds to two cupped hands lifting uncooked grains above the tray with a few grains slipping
+5.567-6 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+Hands move with casual uneven timing, realistic finger pressure and slight smartphone micro-sway; no face appears. Create an immediate raw-to-cooked contrast and tactile hook while keeping the target pack secondary until later.
+
+product_timing:
+The complete clip contains only the scheduled food, hands, cookware and scene; no retail package appears.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. When the package is scheduled, keep the original target product identity stable. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.

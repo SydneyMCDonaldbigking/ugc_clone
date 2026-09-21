@@ -1,0 +1,168 @@
+{
+  "schema": "keyframe-qc/v1",
+  "job": "rice_shot_for_shot",
+  "pipeline_job_id": "rice_sfs_en",
+  "variant_id": "v001",
+  "source_analysis": "references/rice_reference/ANALYSIS.md",
+  "result": "pass",
+  "pending_segments": [],
+  "product_timing_review": {
+    "result": "pass",
+    "policy": "The target package appears only in source-matched product windows; non-product food shots contain no retail package.",
+    "absent_keyframes": ["1a", "1b", "1c", "2a", "2b", "4a", "5a"],
+    "present_keyframes": ["2c", "3a", "3b", "3c", "5b"],
+    "source_windows": ["9.200-14.600 seconds", "20.567-22.567 seconds"],
+    "method": "Every accepted frame is an ImageGen generation from a registered scene master, plus the original product photo only when the source product is visible. No code compositing or previous keyframe reference was used."
+  },
+  "shot_method_review": {
+    "result": "pass",
+    "policy": "Camera height, angle, framing, subject transition and package timing follow the 13-shot source map; H3 prompts carry the exact cut timing and motion."
+  },
+  "scene_consistency": {
+    "warm-wood-greenery-rice-table": {
+      "result": "pass",
+      "keyframes": ["1a", "1b", "1c", "2a", "2b", "2c", "3a", "3b", "3c", "4a", "5a", "5b"],
+      "scene_views": ["eye_level", "oblique_45", "overhead_90"],
+      "variation_policy": "closeup_flexible",
+      "hard_match_fields": ["surface"],
+      "soft_guide_fields": ["setting", "backdrop", "lighting", "palette", "fixed_props"],
+      "note": "All three masters and all twelve keyframes use the same warm natural-wood tabletop. Crop, bokeh, cooker, glass bowl and package arrangement vary only with the source camera method."
+    }
+  },
+  "segments": {
+    "1a": {
+      "file": "seg1a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "82bf967739658f16d9d7e097d92422ff0a74abf558ec4a921c1d4a47bff786b3",
+      "checks": [
+        "The pale rattan tray and uncooked rice dominate the overhead frame.",
+        "The camera matches the source's direct overhead food close-up.",
+        "No retail package, face, source package, caption or watermark appears."
+      ]
+    },
+    "1b": {
+      "file": "seg1b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "a896bde3dd9d0a7c48f777b36b4a1d36163605be9424c38a059f7176e2e4fd49",
+      "checks": [
+        "One natural hand lifts the warm-white cooker lid and reveals cooked rice.",
+        "The open inner pot and cooked-rice surface dominate the source-matched 45-degree view.",
+        "No retail package, face, source frame, caption or watermark appears."
+      ]
+    },
+    "1c": {
+      "file": "seg1c.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "37381376b9a8f3365c2934e4cf9b8c7de226e3d83c77c8e72b17690306842724",
+      "checks": [
+        "Exactly two plausible hands cup uncooked rice.",
+        "The same rattan tray and wood surface remain visible.",
+        "No retail package, face, source product, caption or watermark appears."
+      ]
+    },
+    "2a": {
+      "file": "seg2a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "3fd8c8e1a8a6351f9db0bc10e3adb0ca284f6771b386b52d2d57d7584bf20ac5",
+      "checks": [
+        "One plausible bite of cooked rice is held by one pair of dark chopsticks.",
+        "The warm-ivory bowl belongs to the same prop family.",
+        "No retail package, face, source product, caption or watermark appears."
+      ]
+    },
+    "2b": {
+      "file": "seg2b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "04e9c61944da75eeb18732a476a6f05607e84c8024a98daee3bac838e2e9ed63",
+      "checks": [
+        "One plausible hand supports one cooked-rice bowl while one pair of chopsticks hovers above it.",
+        "The clear scalloped glass bowl is visibly hand-held in the source-matched high-angle composition.",
+        "No retail package, face, source frame, caption or watermark appears."
+      ]
+    },
+    "2c": {
+      "file": "seg2c.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "3c73b4ffb6da2648c17b960aa44be4c10c0ad662c8dd9dcc45648f56cf6fedce",
+      "checks": [
+        "The complete target bag is upright, square and unobstructed.",
+        "The same warm wood tabletop is clearly identifiable.",
+        "No source box, side view, caption, watermark or face appears."
+      ]
+    },
+    "3a": {
+      "file": "seg3a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "0ee984a07e9d5c146c6440ebee1472bc3648efc2a2e143f6c776ce38c4edcc12",
+      "checks": [
+        "Three matching full-size target bags form a dense overlapping high-angle spread like the source package-abundance shot.",
+        "The complete foreground bag keeps the supplied front orientation and the background bags remain recognisably the same product.",
+        "No invented mini-pack format, invented panel, source brand, face, caption or watermark appears."
+      ]
+    },
+    "3b": {
+      "file": "seg3b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "4593ba283097d0944abc92547eeec07fd81f7955322a00cbdfca4ecea17374c4",
+      "checks": [
+        "Rice grains are clearly visible through the transparent target bag.",
+        "Exactly two plausible hands hold only the outer edges in a true extreme close-up.",
+        "No invented back or side panel, source product, caption, watermark or face appears."
+      ]
+    },
+    "3c": {
+      "file": "seg3c.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "7d9b16de5f2b73862faef210f6db3acdf1a31279af46888f41e5230a975a5872",
+      "checks": [
+        "The target bag stays on the supplied front orientation.",
+        "One plausible hand steadies the lower-left edge without covering the label.",
+        "No invented back or side panel, source product, caption, watermark or face appears."
+      ]
+    },
+    "4a": {
+      "file": "seg4a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "09717fa0548fe357050c6469ba424f85bc24b7bce617daaf72ff84c40deb8d35",
+      "checks": [
+        "Exactly two anatomically plausible hands enter the rice tray.",
+        "The same rattan tray and wood surface remain identifiable.",
+        "No retail package, face, source package, caption or watermark appears."
+      ]
+    },
+    "5a": {
+      "file": "seg5a.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "fa1da9e51b428568770d3460596e301f6bec0f2f4155697bfe50701de498cf02",
+      "checks": [
+        "One coherent cooked-rice bite sits between one pair of chopsticks.",
+        "Food and chopsticks stay crisp while the same background is strongly blurred.",
+        "No retail package, face, source product, caption or watermark appears."
+      ]
+    },
+    "5b": {
+      "file": "seg5b.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "3c73b4ffb6da2648c17b960aa44be4c10c0ad662c8dd9dcc45648f56cf6fedce",
+      "checks": [
+        "The complete target bag is upright, centred and unobstructed.",
+        "The same wood surface and green backdrop are recognisable.",
+        "No source package, invented view, caption, watermark or face appears."
+      ]
+    }
+  },
+  "reviewed_by": "codex",
+  "note": "The earlier nine-frame compression was invalidated. This twelve-frame set gives the cooker reveal, hand-held bowl, package-abundance shot and transparent-grain macro their own source-matched anchors."
+}

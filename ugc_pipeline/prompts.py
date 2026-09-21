@@ -11,12 +11,9 @@ from typing import Any
 # angle, follow the source's shot. Motion (lifting, tilting, pouring) is left to H3.
 FIDELITY_INSTRUCTIONS = {
     "reference_lock": "Keep it identical to the reference photo; simplify the pose rather than change the product.",
-    # The original packshot is composited after ImageGen for this mode.  The
-    # prompt therefore asks for a clean placement instead of asking a model to
-    # retype dense packaging copy.
     "pixel_preserve": (
-        "Show the same side as the reference photo, upright and square to the camera, with the whole product "
-        "visible in a clear unobstructed placement."
+        "Use the supplied product photo as the package identity authority and keep its visible face unchanged; "
+        "reject the result if the package, label layout or dense copy drifts."
     ),
 }
 
@@ -46,11 +43,14 @@ ROLE_LABELS = {
 }
 
 
-def _format_reference_roles(segment_request: dict[str, Any]) -> str:
+def _format_reference_roles(
+    segment_request: dict[str, Any], *, exclude_roles: set[str] | None = None
+) -> str:
     references = segment_request.get("references", [])
     roles = segment_request.get("reference_roles", {})
     lines = []
-    for index, path in enumerate(references, start=1):
+    included = [path for path in references if roles.get(path) not in (exclude_roles or set())]
+    for index, path in enumerate(included, start=1):
         role = roles.get(path, "unspecified")
         lines.append(f"Image {index}: {ROLE_LABELS.get(role, role)}.")
     return "\n".join(lines)
@@ -105,14 +105,31 @@ def render_keyframe_prompt(
 ) -> str:
     segment_request = request["segments"][keyframe_id]
     segment, subshot = _find_shot(shot_plan, keyframe_id)
-    mode = segment_request["product_fidelity_mode"]
-    if mode not in FIDELITY_INSTRUCTIONS:
+    product_presence = segment_request.get("product_presence", "present")
+    mode = segment_request.get("product_fidelity_mode", "reference_lock")
+    if product_presence not in {"present", "absent"}:
+        raise ValueError(f"Unsupported product presence: {product_presence}")
+    if product_presence == "present" and mode not in FIDELITY_INSTRUCTIONS:
         raise ValueError(f"Unsupported product fidelity mode: {mode}")
+    if product_presence == "absent" and mode != "not_applicable":
+        raise ValueError("Product-absent keyframes must use product_fidelity_mode=not_applicable")
 
     shot = subshot if subshot else segment
     first_frame = shot.get("first_frame") or segment.get("first_frame")
     if not first_frame:
         raise ValueError(f"Keyframe {keyframe_id!r} needs a first_frame description in the shot plan.")
+    product_image = _image_label(segment_request, {"product_identity"}, "the product reference")
+    description = _describe_product(product)
+    if product_presence == "present":
+        product_instruction = (
+            f"Product: {product.get('name', 'the product')}, copied exactly from {product_image} - "
+            f"{description}. {FIDELITY_INSTRUCTIONS[mode]}"
+        )
+    else:
+        product_instruction = (
+            "Frame content: show only the described rice, cookware, hands and locked scene for this source shot; "
+            "the retail package is outside this shot."
+        )
     values = {
         "REFERENCE_ROLE_MAP": _format_reference_roles(segment_request),
         "FIRST_FRAME": str(first_frame),
@@ -125,7 +142,8 @@ def render_keyframe_prompt(
             segment_request, {"presenter_identity", "presenter_and_scene_identity"}, "the presenter master"
         ),
         "PRODUCT_DESCRIPTION": _describe_product(product),
-        "PRODUCT_FIDELITY_INSTRUCTION": FIDELITY_INSTRUCTIONS[mode],
+        "PRODUCT_FIDELITY_INSTRUCTION": FIDELITY_INSTRUCTIONS.get(mode, ""),
+        "PRODUCT_INSTRUCTION": product_instruction,
     }
     rendered = template_text
     for key, value in values.items():

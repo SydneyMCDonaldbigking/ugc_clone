@@ -1,0 +1,20 @@
+{
+  "schema": "keyframe-ready/v1",
+  "job": "rice_shot_for_shot",
+  "pipeline_job_id": "rice_sfs_en",
+  "variant_id": "v001",
+  "source_job_id": null,
+  "segments": {
+    "1a": {"keyframe": "seg1a.png", "extra_refs": [], "notes": "Source-matched overhead raw-rice opening; no retail package before the source reveal."},
+    "1b": {"keyframe": "seg1b.png", "extra_refs": [], "notes": "Source-matched two-hand raw-grain close-up; no retail package."},
+    "2a": {"keyframe": "seg2a.png", "extra_refs": [], "notes": "Source-matched cooked-rice chopstick close-up; no retail package."},
+    "2b": {"keyframe": "seg2b.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "First complete front-pack reveal at the original source reveal time; ImageGen only, no code paste."},
+    "3a": {"keyframe": "seg3a.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "Continuous product-detail window using the supplied packshot as identity reference."},
+    "3b": {"keyframe": "seg3b.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "Tighter hand-held front-package presentation matching the source progression."},
+    "4a": {"keyframe": "seg4a.png", "extra_refs": [], "notes": "Long raw-rice tactile shot; target retail package intentionally absent."},
+    "5a": {"keyframe": "seg5a.png", "extra_refs": [], "notes": "Final cooked-rice macro before the endboard; no retail package."},
+    "5b": {"keyframe": "seg5b.png", "extra_refs": ["codex_clone_refs/rice/rice.jpg"], "notes": "Final complete front-pack endboard at the source-matched time."}
+  },
+  "generator": "codex-imagegen",
+  "created_by": "codex"
+}

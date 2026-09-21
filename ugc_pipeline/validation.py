@@ -657,9 +657,12 @@ def validate_keyframe_request(
         if not isinstance(segment, dict):
             result.error("type.object", path, "Expected a request object.")
             continue
+        product_presence = segment.get("product_presence", "present")
+        if product_presence not in {"present", "absent"}:
+            result.error("request.product_presence", f"{path}.product_presence", "Expected present or absent.")
         references = segment.get("references")
-        if not isinstance(references, list) or not references:
-            result.error("request.references", f"{path}.references", "At least one reference is required.")
+        if not isinstance(references, list):
+            result.error("request.references", f"{path}.references", "References must be a list.")
         else:
             for index, raw_path in enumerate(references):
                 try:
@@ -668,7 +671,7 @@ def validate_keyframe_request(
                     result.error("path.invalid", f"{path}.references[{index}]", str(exc))
         reference_roles = segment.get("reference_roles")
         _check_reference_origin(references, reference_roles, result, path)
-        if not isinstance(reference_roles, dict) or not reference_roles:
+        if not isinstance(reference_roles, dict):
             result.error("request.reference_roles", f"{path}.reference_roles", "Reference roles are required.")
         elif isinstance(references, list):
             if set(reference_roles) != set(str(value) for value in references):
@@ -678,13 +681,14 @@ def validate_keyframe_request(
                     "Reference-role paths must exactly match the references list.",
                 )
             product_refs = [raw_path for raw_path, role in reference_roles.items() if role == "product_identity"]
-            if len(product_refs) != 1:
+            expected_product_refs = 1 if product_presence == "present" else 0
+            if len(product_refs) != expected_product_refs:
                 result.error(
                     "request.product_reference",
                     f"{path}.reference_roles",
-                    "Exactly one product_identity reference is required per keyframe.",
+                    f"product_presence={product_presence} requires exactly {expected_product_refs} product_identity reference(s).",
                 )
-            elif product is not None and product_refs[0] not in product.get("visual_assets", []):
+            elif product_refs and product is not None and product_refs[0] not in product.get("visual_assets", []):
                 result.error(
                     "request.product_reference",
                     f"{path}.reference_roles",
@@ -756,18 +760,27 @@ def validate_keyframe_request(
                     "Scene-pack requirement must carry the same lock and all three canonical views.",
                 )
         fidelity_mode = segment.get("product_fidelity_mode")
-        if fidelity_mode not in {"reference_lock", "pixel_preserve"}:
+        allowed_fidelity = {"reference_lock", "pixel_preserve"} if product_presence == "present" else {"not_applicable"}
+        if fidelity_mode not in allowed_fidelity:
             result.error(
                 "request.fidelity_mode",
                 f"{path}.product_fidelity_mode",
-                "Expected reference_lock or pixel_preserve.",
+                f"product_presence={product_presence} requires one of {sorted(allowed_fidelity)}.",
             )
         placement = segment.get("product_placement")
-        if not isinstance(placement, dict) or placement.get("orientation") != "unchanged_from_reference":
+        if product_presence == "present" and (
+            not isinstance(placement, dict) or placement.get("orientation") != "unchanged_from_reference"
+        ):
             result.error(
                 "request.product_orientation",
                 f"{path}.product_placement.orientation",
                 "The product must face the camera as in its reference photo (unchanged_from_reference); held or set down follows the source shot.",
+            )
+        if product_presence == "absent" and placement is not None:
+            result.error(
+                "request.product_placement",
+                f"{path}.product_placement",
+                "Product-absent keyframes must not reserve or composite a product placement.",
             )
         if fidelity_mode == "pixel_preserve":
             placement = segment.get("product_placement")

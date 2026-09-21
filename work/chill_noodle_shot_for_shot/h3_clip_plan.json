@@ -1,0 +1,428 @@
+{
+  "schema": "h3-clip-plan/v1",
+  "job_id": "chill_noodle_sfs_en",
+  "variant_id": "v001",
+  "max_reference_images": 3,
+  "background_lock_policy": "scene_pack_v1",
+  "total_edit_duration_seconds": 23.933,
+  "clips": [
+    {
+      "id": "S01",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "duration_seconds": 6.0,
+      "trim_duration_seconds": 5.3,
+      "keyframe_ids": [
+        "1a",
+        "1b",
+        "1c"
+      ],
+      "product_reference": null,
+      "scene_reference": null,
+      "cues": [
+        {
+          "keyframe_id": "1a",
+          "picture": 1,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 0.0,
+          "end_seconds": 1.333,
+          "transition": "start",
+          "action": "tilt the yellow sachet and let a short uneven stream of peanuts fall into the bowl."
+        },
+        {
+          "keyframe_id": "1b",
+          "picture": 2,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 1.333,
+          "end_seconds": 2.733,
+          "transition": "hard_cut",
+          "action": "hard cut to two hands presenting the complete front pouch with one small natural sway."
+        },
+        {
+          "keyframe_id": "1c",
+          "picture": 3,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 2.733,
+          "end_seconds": 5.3,
+          "transition": "hard_cut",
+          "action": "hard cut to chopsticks lifting a broad noodle fan from the broth toward the upper-right Then hard cut to a slightly higher view as the noodle bundle lowers and the chopsticks loosen it through the broth."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH001",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 1.333,
+          "transition": "start",
+          "action": "peanut topping pour: tilt the yellow sachet and let a short uneven stream of peanuts fall into the bowl"
+        },
+        {
+          "source_shot_id": "SH002",
+          "picture": 2,
+          "start_seconds": 1.333,
+          "end_seconds": 2.733,
+          "transition": "hard_cut",
+          "action": "front pouch reveal: hard cut to two hands presenting the complete front pouch with one small natural sway"
+        },
+        {
+          "source_shot_id": "SH003",
+          "picture": 3,
+          "start_seconds": 2.733,
+          "end_seconds": 4.3,
+          "transition": "hard_cut",
+          "action": "broad noodle lift: hard cut to chopsticks lifting a broad noodle fan from the broth toward the upper-right"
+        },
+        {
+          "source_shot_id": "SH004",
+          "picture": 3,
+          "start_seconds": 4.3,
+          "end_seconds": 5.3,
+          "transition": "hard_cut",
+          "action": "lower and stir noodles: hard cut to a slightly higher view as the noodle bundle lowers and the chopsticks loosen it through the broth"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "duration_seconds": 6.0,
+      "trim_duration_seconds": 5.267,
+      "keyframe_ids": [
+        "2a",
+        "2b",
+        "2c"
+      ],
+      "product_reference": null,
+      "scene_reference": null,
+      "cues": [
+        {
+          "keyframe_id": "2a",
+          "picture": 1,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 0.0,
+          "end_seconds": 1.267,
+          "transition": "start",
+          "action": "lift one broad noodle curtain a few centimetres and let two loose strands slip."
+        },
+        {
+          "keyframe_id": "2b",
+          "picture": 2,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 1.267,
+          "end_seconds": 3.1,
+          "transition": "hard_cut",
+          "action": "hard cut to the complete front pouch with colour-coded sachets and one finger pointing between them."
+        },
+        {
+          "keyframe_id": "2c",
+          "picture": 3,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 3.1,
+          "end_seconds": 5.267,
+          "transition": "hard_cut",
+          "action": "hard cut to chopsticks lifting one tofu puff with green strips from the bowl Then hard cut to one hand tipping the plain green sachet so dark green strips fall into the centre of the bowl."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH005",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 1.267,
+          "transition": "start",
+          "action": "tight noodle fan: lift one broad noodle curtain a few centimetres and let two loose strands slip"
+        },
+        {
+          "source_shot_id": "SH006",
+          "picture": 2,
+          "start_seconds": 1.267,
+          "end_seconds": 3.1,
+          "transition": "hard_cut",
+          "action": "pouch and sachet display: hard cut to the complete front pouch with colour-coded sachets and one finger pointing between them"
+        },
+        {
+          "source_shot_id": "SH007",
+          "picture": 3,
+          "start_seconds": 3.1,
+          "end_seconds": 4.4,
+          "transition": "hard_cut",
+          "action": "tofu puff and greens lift: hard cut to chopsticks lifting one tofu puff with green strips from the bowl"
+        },
+        {
+          "source_shot_id": "SH008",
+          "picture": 3,
+          "start_seconds": 4.4,
+          "end_seconds": 5.267,
+          "transition": "hard_cut",
+          "action": "green sachet pour: hard cut to one hand tipping the plain green sachet so dark green strips fall into the centre of the bowl"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "duration_seconds": 5.0,
+      "trim_duration_seconds": 4.7,
+      "keyframe_ids": [
+        "3a",
+        "3b",
+        "3c"
+      ],
+      "product_reference": null,
+      "scene_reference": null,
+      "cues": [
+        {
+          "keyframe_id": "3a",
+          "picture": 1,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 0.0,
+          "end_seconds": 0.9,
+          "transition": "start",
+          "action": "squeeze and tip the red sachet so a short stream of chilli seasoning falls into the bowl centre."
+        },
+        {
+          "keyframe_id": "3b",
+          "picture": 2,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 0.9,
+          "end_seconds": 1.6,
+          "transition": "hard_cut",
+          "action": "hard cut to two hands holding the complete target front close to the lens with a tiny sway."
+        },
+        {
+          "keyframe_id": "3c",
+          "picture": 3,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 1.6,
+          "end_seconds": 4.7,
+          "transition": "hard_cut",
+          "action": "hard cut to chopsticks lifting one tightly wound noodle bundle above the red broth Then hard cut to a slightly wider angle as the chopsticks lift a broader looser bundle from the bowl."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH009",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 0.9,
+          "transition": "start",
+          "action": "red seasoning pour: squeeze and tip the red sachet so a short stream of chilli seasoning falls into the bowl centre"
+        },
+        {
+          "source_shot_id": "SH010",
+          "picture": 2,
+          "start_seconds": 0.9,
+          "end_seconds": 1.6,
+          "transition": "hard_cut",
+          "action": "tight front pouch proof: hard cut to two hands holding the complete target front close to the lens with a tiny sway"
+        },
+        {
+          "source_shot_id": "SH011",
+          "picture": 3,
+          "start_seconds": 1.6,
+          "end_seconds": 2.966,
+          "transition": "hard_cut",
+          "action": "compact noodle-bundle lift: hard cut to chopsticks lifting one tightly wound noodle bundle above the red broth"
+        },
+        {
+          "source_shot_id": "SH012",
+          "picture": 3,
+          "start_seconds": 2.966,
+          "end_seconds": 4.7,
+          "transition": "hard_cut",
+          "action": "broad noodle lift: hard cut to a slightly wider angle as the chopsticks lift a broader looser bundle from the bowl"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "duration_seconds": 6.0,
+      "trim_duration_seconds": 5.133,
+      "keyframe_ids": [
+        "4a",
+        "4b",
+        "4c"
+      ],
+      "product_reference": null,
+      "scene_reference": null,
+      "cues": [
+        {
+          "keyframe_id": "4a",
+          "picture": 1,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 0.0,
+          "end_seconds": 2.066,
+          "transition": "start",
+          "action": "pull a pale noodle sheet sideways so the lower strands pass through the red broth Then hard cut to chopsticks raising a compact noodle curtain almost vertically."
+        },
+        {
+          "keyframe_id": "4b",
+          "picture": 2,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 2.066,
+          "end_seconds": 4.5,
+          "transition": "hard_cut",
+          "action": "hard cut to chopsticks lifting noodles with dark green strips and holding briefly Then hard cut to one hand tipping the plain yellow sachet so peanuts scatter into the bowl."
+        },
+        {
+          "keyframe_id": "4c",
+          "picture": 3,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 4.5,
+          "end_seconds": 5.133,
+          "transition": "hard_cut",
+          "action": "hard cut to one complete pouch sliding a short distance onto the white perforated tray."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH013",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 1.266,
+          "transition": "start",
+          "action": "sideways noodle pull: pull a pale noodle sheet sideways so the lower strands pass through the red broth"
+        },
+        {
+          "source_shot_id": "SH014",
+          "picture": 1,
+          "start_seconds": 1.266,
+          "end_seconds": 2.066,
+          "transition": "hard_cut",
+          "action": "neat noodle curtain lift: hard cut to chopsticks raising a compact noodle curtain almost vertically"
+        },
+        {
+          "source_shot_id": "SH015",
+          "picture": 2,
+          "start_seconds": 2.066,
+          "end_seconds": 3.6,
+          "transition": "hard_cut",
+          "action": "noodle and greens lift: hard cut to chopsticks lifting noodles with dark green strips and holding briefly"
+        },
+        {
+          "source_shot_id": "SH016",
+          "picture": 2,
+          "start_seconds": 3.6,
+          "end_seconds": 4.5,
+          "transition": "hard_cut",
+          "action": "repeat peanut pour: hard cut to one hand tipping the plain yellow sachet so peanuts scatter into the bowl"
+        },
+        {
+          "source_shot_id": "SH017",
+          "picture": 3,
+          "start_seconds": 4.5,
+          "end_seconds": 5.133,
+          "transition": "hard_cut",
+          "action": "single pouch tray transition: hard cut to one complete pouch sliding a short distance onto the white perforated tray"
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "scene_id": "warm-desktop-noodle-demo",
+      "scene_lock": {
+        "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+        "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+        "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+        "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+        "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+        "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+      },
+      "duration_seconds": 4.0,
+      "trim_duration_seconds": 3.533,
+      "keyframe_ids": [
+        "5a",
+        "5b"
+      ],
+      "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+      "scene_reference": null,
+      "cues": [
+        {
+          "keyframe_id": "5a",
+          "picture": 1,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 0.0,
+          "end_seconds": 1.333,
+          "transition": "start",
+          "action": "hold exactly three front-up pouches in a loose overlapping row Then hard cut to exactly four pouches in a slightly wider fan."
+        },
+        {
+          "keyframe_id": "5b",
+          "picture": 2,
+          "scene_id": "warm-desktop-noodle-demo",
+          "start_seconds": 1.333,
+          "end_seconds": 3.533,
+          "transition": "hard_cut",
+          "action": "hard cut to exactly five front-up pouches filling the tray Then hard cut while keeping five pouches; one open hand sweeps in from upper-right and stops beside the array."
+        }
+      ],
+      "timed_shots": [
+        {
+          "source_shot_id": "SH018",
+          "picture": 1,
+          "start_seconds": 0.0,
+          "end_seconds": 0.733,
+          "transition": "start",
+          "action": "three pouch array: hold exactly three front-up pouches in a loose overlapping row"
+        },
+        {
+          "source_shot_id": "SH019",
+          "picture": 1,
+          "start_seconds": 0.733,
+          "end_seconds": 1.333,
+          "transition": "hard_cut",
+          "action": "four pouch array: hard cut to exactly four pouches in a slightly wider fan"
+        },
+        {
+          "source_shot_id": "SH020",
+          "picture": 2,
+          "start_seconds": 1.333,
+          "end_seconds": 2.267,
+          "transition": "hard_cut",
+          "action": "five pouch array: hard cut to exactly five front-up pouches filling the tray"
+        },
+        {
+          "source_shot_id": "SH021",
+          "picture": 2,
+          "start_seconds": 2.267,
+          "end_seconds": 3.533,
+          "transition": "hard_cut",
+          "action": "five pouch presenting hand: hard cut while keeping five pouches; one open hand sweeps in from upper-right and stops beside the array"
+        }
+      ]
+    }
+  ]
+}

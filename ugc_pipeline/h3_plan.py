@@ -82,6 +82,13 @@ def validate_h3_clip_plan(
         )
         if role == "product_identity"
     }
+    planned_scene_refs = {
+        str(view.get("output"))
+        for requirement in request.get("scene_pack_requirements", {}).values()
+        if isinstance(requirement, dict)
+        for view in requirement.get("views", {}).values()
+        if isinstance(view, dict) and isinstance(view.get("output"), str)
+    }
 
     clips = plan.get("clips")
     if not isinstance(clips, list) or not clips:
@@ -163,18 +170,39 @@ def validate_h3_clip_plan(
                     raise ValueError(f"{clip_id} keyframe {keyframe_id} does not share the approved scene_lock")
 
         product_reference = clip.get("product_reference")
-        reference_count = len(keyframe_ids) + (1 if isinstance(product_reference, str) else 0)
+        scene_reference = clip.get("scene_reference")
+        supplemental_count = sum(isinstance(value, str) for value in (product_reference, scene_reference))
+        if supplemental_count > 1:
+            raise ValueError(f"{clip_id} may use only one supplemental identity reference")
+        reference_count = len(keyframe_ids) + supplemental_count
         if not 2 <= reference_count <= 3:
             raise ValueError(f"{clip_id} must bind two or three total Picture references")
         if product_reference is not None:
             if not isinstance(product_reference, str) or product_reference not in allowed_product_refs:
                 raise ValueError(f"{clip_id} product_reference is not an approved product_identity reference")
             resolve_repo_path(repo_root, product_reference)
+        if scene_reference is not None:
+            if not isinstance(scene_reference, str) or scene_reference not in planned_scene_refs:
+                raise ValueError(f"{clip_id} scene_reference is not an approved scene-pack output")
+            if resolve_repo_path(repo_root, scene_reference, must_exist=False).exists():
+                resolve_repo_path(repo_root, scene_reference)
         if approved is not None:
             approved_refs = [str(value) for value in approved.get("references", [])]
-            expected_product_reference = approved_refs[0] if approved_refs and len(keyframe_ids) < 3 else None
+            product_is_visible = any(
+                frame.get("product_presence", "present") == "present"
+                for frame in approved.get("reference_frames", [])
+                if isinstance(frame, dict)
+            )
+            expected_product_reference = approved_refs[0] if product_is_visible and approved_refs and len(keyframe_ids) < 3 else None
             if product_reference != expected_product_reference:
                 raise ValueError(f"{clip_id} product_reference differs from the approved shot plan")
+            expected_scene_reference = None
+            if expected_product_reference is None and len(keyframe_ids) == 1:
+                frames = [frame for frame in approved.get("reference_frames", []) if isinstance(frame, dict)]
+                if frames and isinstance(frames[0].get("scene_master"), str):
+                    expected_scene_reference = frames[0]["scene_master"]
+            if scene_reference != expected_scene_reference:
+                raise ValueError(f"{clip_id} scene_reference differs from the approved shot plan")
 
         cues = clip.get("cues")
         if not isinstance(cues, list) or len(cues) != len(keyframe_ids):

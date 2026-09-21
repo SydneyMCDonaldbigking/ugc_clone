@@ -1,0 +1,32 @@
+subject_definitions:
+<Picture 1> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+<Picture 2> is a generated product-present composition keyframe for its assigned source shots.
+<Picture 3> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 3>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+
+scene_continuity:
+All generated Pictures share scene_id warm-desktop-noodle-demo. Hard-lock the same physical tabletop across every cut (surface: One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.). Treat the remaining scene description as a soft guide (setting: A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.; backdrop: A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.; lighting: Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.; palette: Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.; fixed props: One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots.). Close-ups keep the product sharp while crop, lens distance, parallax, visible props, slight local exposure and shallow-depth background bokeh may vary.
+
+detailed_description:
+Follow four exact hard-cut shots: pour peanuts from a yellow condiment sachet, show the front pouch, lift a broad noodle bundle, then lower and stir the noodles. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-1.333 seconds — start on <Picture 1>; scheduled microshot: peanut topping pour: tilt the yellow sachet and let a short uneven stream of peanuts fall into the bowl
+1.333-2.733 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: front pouch reveal: hard cut to two hands presenting the complete front pouch with one small natural sway
+2.733-4.3 seconds — hard cut to a new shot based on <Picture 3>; scheduled microshot: broad noodle lift: hard cut to chopsticks lifting a broad noodle fan from the broth toward the upper-right
+4.3-5.3 seconds — hard cut to a new shot based on <Picture 3>; scheduled microshot: lower and stir noodles: hard cut to a slightly higher view as the noodle bundle lowers and the chopsticks loosen it through the broth
+5.3-6 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+Hands use uneven natural timing and realistic finger pressure; chopsticks carry a tiny human tremor and the phone drifts slightly without losing the bowl. Copy the source's immediate food action and early product identification, with the main pouch visible only in its original window.
+
+product_timing:
+The retail package appears only in the scheduled product window(s): 1.333-2.733 seconds. All other windows contain only their assigned food, hands, cookware and scene.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. When the package is scheduled, keep the original target product identity stable. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.

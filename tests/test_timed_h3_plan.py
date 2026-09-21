@@ -116,7 +116,9 @@ class TimedH3PlanTests(unittest.TestCase):
 
     def test_h3_prompt_contains_internal_timing_and_cuts(self) -> None:
         plan, _ = materialize(self.shot_map, self.script, self.spec)
-        prompt = render_prompt(plan["segments"][0], ["1a"], 2)
+        prompt = render_prompt(
+            plan["segments"][0], ["1a"], 2, None, {"1a": "present"}
+        )
 
         self.assertIn("0-0.5 seconds — start on <Picture 1>", prompt)
         self.assertIn("0.5-1.5 seconds — hard cut to a new shot based on <Picture 1>", prompt)
@@ -157,7 +159,13 @@ class TimedH3PlanTests(unittest.TestCase):
             ],
         }
 
-        prompt = render_prompt(segment, ["a", "b", "c"], None)
+        prompt = render_prompt(
+            segment,
+            ["a", "b", "c"],
+            None,
+            None,
+            {"a": "present", "b": "present", "c": "present"},
+        )
 
         self.assertIn("<Picture 3>", prompt)
         self.assertIn("scene_id pale-tabletop-daylight", prompt)
@@ -165,6 +173,33 @@ class TimedH3PlanTests(unittest.TestCase):
         self.assertIn("background bokeh may vary", prompt)
         self.assertNotIn("<Picture 4>", prompt)
         self.assertNotIn("original product identity authority", prompt)
+
+    def test_product_appears_only_in_its_source_timed_window(self) -> None:
+        segment = {
+            "scene_id": "pale-tabletop-daylight",
+            "scene_lock": self.spec["scene_locks"]["pale-tabletop-daylight"],
+            "action": "Start on food, then reveal the pack.",
+            "performance": "Natural hands-only motion.",
+            "intention": "Match the source reveal timing.",
+            "source_edit_duration_seconds": 2,
+            "duration_seconds": 2,
+            "timed_shots": [
+                {"picture": 1, "start_seconds": 0, "end_seconds": 1.2, "action": "food macro"},
+                {"picture": 2, "start_seconds": 1.2, "end_seconds": 2, "action": "pack reveal"},
+            ],
+        }
+
+        prompt = render_prompt(
+            segment,
+            ["food", "pack"],
+            3,
+            None,
+            {"food": "absent", "pack": "present"},
+        )
+
+        self.assertIn("no retail package in its assigned source shots", prompt)
+        self.assertIn("1.2-2 seconds", prompt)
+        self.assertIn("All other windows contain only", prompt)
 
 
 if __name__ == "__main__":

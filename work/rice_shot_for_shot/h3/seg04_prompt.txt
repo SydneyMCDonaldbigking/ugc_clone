@@ -1,0 +1,27 @@
+subject_definitions:
+<Picture 1> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+<Picture 2> is the approved empty scene identity authority for the same physical table, light and prop family; it is not a scheduled shot.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 2>: scene_identity only. Preserve its table and atmosphere without turning the empty master into an extra shot.
+
+scene_continuity:
+All generated Pictures share scene_id warm-wood-greenery-rice-table. Hard-lock the same physical tabletop across every cut (surface: One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.). Treat the remaining scene description as a soft guide (setting: A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.; backdrop: Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.; lighting: Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.; palette: Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.; fixed props: A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them.). Close-ups keep the product sharp while crop, lens distance, parallax, visible props, slight local exposure and shallow-depth background bokeh may vary.
+
+detailed_description:
+Keep one continuous shot: grains fall into the tray, settle, then both hands scoop and lift them toward the lens. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-4.367 seconds — start on <Picture 1>; scheduled microshot: continuous grain fall and scoop: begin with a short fall of loose grains, let them settle, then have both hands scoop and lift one natural mound without a cut
+4.367-5 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+Hands enter at slightly different times, fingers dig naturally into the grains, and a few grains escape between relaxed fingers. Preserve the source's longest tactile shot without adding unsupported growing, polishing or taste claims.
+
+product_timing:
+The complete clip contains only the scheduled food, hands, cookware and scene; no retail package appears.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. When the package is scheduled, keep the original target product identity stable. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.

@@ -49,26 +49,21 @@
         "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
       },
       "scene_view": "overhead_90",
-      "role": "overhead raw rice and cooker sequence anchor",
+      "role": "overhead raw rice opening anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg1a_prompt.txt",
       "references": [
-        "codex_clone_refs/rice/rice.jpg"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/overhead_90.png"
       ],
       "reference_roles": {
-        "codex_clone_refs/rice/rice.jpg": "product_identity"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/overhead_90.png": "scene_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
-      "product_placement": {
-        "pose_source": "product_identity_reference",
-        "orientation": "unchanged_from_reference",
-        "occlusion": "hands_keep_product_identity_visible",
-        "fallback": "static_product_shot"
-      },
+      "product_presence": "absent",
+      "product_fidelity_mode": "not_applicable",
       "output": "seg1a.png",
       "checks": [
         "The pale rattan tray and uncooked rice dominate the overhead frame.",
-        "The target bag remains upright, front-facing and unobstructed at the far edge.",
-        "No face, source package, caption or watermark appears."
+        "The camera matches the source's direct overhead food close-up.",
+        "No retail package, face, source package, caption or watermark appears."
       ]
     },
     "1b": {
@@ -83,26 +78,50 @@
         "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
       },
       "scene_view": "oblique_45",
-      "role": "two-hand raw grain anchor",
+      "role": "rice cooker lid reveal and cooked-rice surface anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg1b_prompt.txt",
       "references": [
-        "codex_clone_refs/rice/rice.jpg"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
       ],
       "reference_roles": {
-        "codex_clone_refs/rice/rice.jpg": "product_identity"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png": "scene_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
-      "product_placement": {
-        "pose_source": "product_identity_reference",
-        "orientation": "unchanged_from_reference",
-        "occlusion": "hands_keep_product_identity_visible",
-        "fallback": "static_product_shot"
-      },
+      "product_presence": "absent",
+      "product_fidelity_mode": "not_applicable",
       "output": "seg1b.png",
+      "checks": [
+        "One natural hand lifts the warm-white cooker lid and reveals cooked rice.",
+        "The open inner pot and cooked-rice surface dominate the source-matched 45-degree view.",
+        "No retail package, face, source frame, caption or watermark appears."
+      ]
+    },
+    "1c": {
+      "script_segment": 1,
+      "scene_id": "warm-wood-greenery-rice-table",
+      "scene_lock": {
+        "setting": "A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.",
+        "surface": "One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.",
+        "backdrop": "Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.",
+        "lighting": "Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.",
+        "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
+        "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
+      },
+      "scene_view": "oblique_45",
+      "role": "two-hand raw grain anchor",
+      "prompt_file": "work/rice_shot_for_shot/keyframes/seg1c_prompt.txt",
+      "references": [
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
+      ],
+      "reference_roles": {
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png": "scene_identity"
+      },
+      "product_presence": "absent",
+      "product_fidelity_mode": "not_applicable",
+      "output": "seg1c.png",
       "checks": [
         "Exactly two plausible hands cup uncooked rice.",
         "The same rattan tray and wood surface remain visible.",
-        "The front-facing target bag is unobstructed and no face or source product appears."
+        "No retail package, face, source product, caption or watermark appears."
       ]
     },
     "2a": {
@@ -117,26 +136,21 @@
         "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
       },
       "scene_view": "eye_level",
-      "role": "cooked rice chopstick and bowl anchor",
+      "role": "cooked rice chopstick macro anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg2a_prompt.txt",
       "references": [
-        "codex_clone_refs/rice/rice.jpg"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png"
       ],
       "reference_roles": {
-        "codex_clone_refs/rice/rice.jpg": "product_identity"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png": "scene_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
-      "product_placement": {
-        "pose_source": "product_identity_reference",
-        "orientation": "unchanged_from_reference",
-        "occlusion": "hands_keep_product_identity_visible",
-        "fallback": "static_product_shot"
-      },
+      "product_presence": "absent",
+      "product_fidelity_mode": "not_applicable",
       "output": "seg2a.png",
       "checks": [
         "One plausible bite of cooked rice is held by one pair of dark chopsticks.",
         "The warm-ivory bowl belongs to the same prop family.",
-        "The target bag remains front-facing and no face or source product appears."
+        "No retail package, face, source product, caption or watermark appears."
       ]
     },
     "2b": {
@@ -150,28 +164,60 @@
         "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
         "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
       },
-      "scene_view": "eye_level",
-      "role": "first complete front-pack reveal anchor",
+      "scene_view": "oblique_45",
+      "role": "hand-held cooked-rice bowl anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg2b_prompt.txt",
       "references": [
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
+      ],
+      "reference_roles": {
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png": "scene_identity"
+      },
+      "product_presence": "absent",
+      "product_fidelity_mode": "not_applicable",
+      "output": "seg2b.png",
+      "checks": [
+        "One plausible hand supports one cooked-rice bowl while one pair of chopsticks hovers above it.",
+        "The bowl is clearly hand-held in the source-matched high-angle composition.",
+        "No retail package, face, source frame, caption or watermark appears."
+      ]
+    },
+    "2c": {
+      "script_segment": 2,
+      "scene_id": "warm-wood-greenery-rice-table",
+      "scene_lock": {
+        "setting": "A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.",
+        "surface": "One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.",
+        "backdrop": "Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.",
+        "lighting": "Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.",
+        "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
+        "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
+      },
+      "scene_view": "eye_level",
+      "role": "first complete front-pack reveal anchor",
+      "prompt_file": "work/rice_shot_for_shot/keyframes/seg2c_prompt.txt",
+      "references": [
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png",
         "codex_clone_refs/rice/rice.jpg"
       ],
       "reference_roles": {
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png": "scene_identity",
         "codex_clone_refs/rice/rice.jpg": "product_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
-      "product_placement": {
-        "pose_source": "product_identity_reference",
-        "orientation": "unchanged_from_reference",
-        "occlusion": "hands_keep_product_identity_visible",
-        "fallback": "static_product_shot"
-      },
-      "output": "seg2b.png",
+      "product_presence": "present",
+      "product_fidelity_mode": "reference_lock",
+      "output": "seg2c.png",
       "checks": [
         "The complete target bag is upright, square and unobstructed.",
         "The same warm wood tabletop is clearly identifiable.",
         "No source box, side view, caption, watermark or face appears."
-      ]
+      ],
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      }
     },
     "3a": {
       "script_segment": 3,
@@ -184,28 +230,31 @@
         "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
         "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
       },
-      "scene_view": "overhead_90",
-      "role": "overhead bag and visible grain anchor",
+      "scene_view": "oblique_45",
+      "role": "high-angle dense target-pack spread anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg3a_prompt.txt",
       "references": [
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png",
         "codex_clone_refs/rice/rice.jpg"
       ],
       "reference_roles": {
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png": "scene_identity",
         "codex_clone_refs/rice/rice.jpg": "product_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
+      "product_presence": "present",
+      "product_fidelity_mode": "reference_lock",
+      "output": "seg3a.png",
+      "checks": [
+        "Three matching full-size target bags form a dense overlapping high-angle spread like the source package-abundance shot.",
+        "The complete foreground bag keeps the supplied front orientation and the background bags remain recognisably the same product.",
+        "No invented mini-pack format, invented panel, source brand, face, caption or watermark appears."
+      ],
       "product_placement": {
-        "pose_source": "product_identity_reference",
+        "pose_source": "shot_plan",
         "orientation": "unchanged_from_reference",
         "occlusion": "hands_keep_product_identity_visible",
         "fallback": "static_product_shot"
-      },
-      "output": "seg3a.png",
-      "checks": [
-        "One complete target bag lies front-up and unobstructed.",
-        "Exactly two plausible hands stay outside the central label.",
-        "Loose grains and the same wood surface are visible; no extra packs or source brand appear."
-      ]
+      }
     },
     "3b": {
       "script_segment": 3,
@@ -219,27 +268,67 @@
         "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
       },
       "scene_view": "oblique_45",
-      "role": "upright front-label identity anchor",
+      "role": "transparent-bag rice-grain detail anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg3b_prompt.txt",
       "references": [
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png",
         "codex_clone_refs/rice/rice.jpg"
       ],
       "reference_roles": {
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png": "scene_identity",
         "codex_clone_refs/rice/rice.jpg": "product_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
+      "product_presence": "present",
+      "product_fidelity_mode": "reference_lock",
+      "output": "seg3b.png",
+      "checks": [
+        "Rice grains are clearly visible through the transparent target bag.",
+        "Exactly two plausible hands hold only the outer edges in a true extreme close-up.",
+        "No invented back or side panel, source product, caption, watermark or face appears."
+      ],
       "product_placement": {
-        "pose_source": "product_identity_reference",
+        "pose_source": "shot_plan",
         "orientation": "unchanged_from_reference",
         "occlusion": "hands_keep_product_identity_visible",
         "fallback": "static_product_shot"
+      }
+    },
+    "3c": {
+      "script_segment": 3,
+      "scene_id": "warm-wood-greenery-rice-table",
+      "scene_lock": {
+        "setting": "A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.",
+        "surface": "One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.",
+        "backdrop": "Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.",
+        "lighting": "Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.",
+        "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
+        "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
       },
-      "output": "seg3b.png",
+      "scene_view": "oblique_45",
+      "role": "upright front-label identity anchor",
+      "prompt_file": "work/rice_shot_for_shot/keyframes/seg3c_prompt.txt",
+      "references": [
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png",
+        "codex_clone_refs/rice/rice.jpg"
+      ],
+      "reference_roles": {
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png": "scene_identity",
+        "codex_clone_refs/rice/rice.jpg": "product_identity"
+      },
+      "product_presence": "present",
+      "product_fidelity_mode": "reference_lock",
+      "output": "seg3c.png",
       "checks": [
         "The target bag stays on the supplied front orientation.",
-        "Exactly two plausible hands do not cover the label.",
+        "One plausible hand steadies the lower-left edge without covering the label.",
         "No invented back or side panel, source product, caption, watermark or face appears."
-      ]
+      ],
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      }
     },
     "4a": {
       "script_segment": 4,
@@ -256,23 +345,18 @@
       "role": "long raw-rice tray action anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg4a_prompt.txt",
       "references": [
-        "codex_clone_refs/rice/rice.jpg"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
       ],
       "reference_roles": {
-        "codex_clone_refs/rice/rice.jpg": "product_identity"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png": "scene_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
-      "product_placement": {
-        "pose_source": "product_identity_reference",
-        "orientation": "unchanged_from_reference",
-        "occlusion": "hands_keep_product_identity_visible",
-        "fallback": "static_product_shot"
-      },
+      "product_presence": "absent",
+      "product_fidelity_mode": "not_applicable",
       "output": "seg4a.png",
       "checks": [
         "Exactly two anatomically plausible hands enter the rice tray.",
         "The same rattan tray and wood surface remain identifiable.",
-        "The target bag is upright and unobstructed; no face, source package, caption or watermark appears."
+        "No retail package, face, source package, caption or watermark appears."
       ]
     },
     "5a": {
@@ -290,23 +374,18 @@
       "role": "final cooked-rice macro anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg5a_prompt.txt",
       "references": [
-        "codex_clone_refs/rice/rice.jpg"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png"
       ],
       "reference_roles": {
-        "codex_clone_refs/rice/rice.jpg": "product_identity"
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png": "scene_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
-      "product_placement": {
-        "pose_source": "product_identity_reference",
-        "orientation": "unchanged_from_reference",
-        "occlusion": "hands_keep_product_identity_visible",
-        "fallback": "static_product_shot"
-      },
+      "product_presence": "absent",
+      "product_fidelity_mode": "not_applicable",
       "output": "seg5a.png",
       "checks": [
         "One coherent cooked-rice bite sits between one pair of chopsticks.",
         "Food and chopsticks stay crisp while the same background is strongly blurred.",
-        "The target bag remains front-facing; no face, source product, caption or watermark appears."
+        "No retail package, face, source product, caption or watermark appears."
       ]
     },
     "5b": {
@@ -324,24 +403,27 @@
       "role": "final complete pack endboard anchor",
       "prompt_file": "work/rice_shot_for_shot/keyframes/seg5b_prompt.txt",
       "references": [
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png",
         "codex_clone_refs/rice/rice.jpg"
       ],
       "reference_roles": {
+        "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png": "scene_identity",
         "codex_clone_refs/rice/rice.jpg": "product_identity"
       },
-      "product_fidelity_mode": "pixel_preserve",
-      "product_placement": {
-        "pose_source": "product_identity_reference",
-        "orientation": "unchanged_from_reference",
-        "occlusion": "hands_keep_product_identity_visible",
-        "fallback": "static_product_shot"
-      },
+      "product_presence": "present",
+      "product_fidelity_mode": "reference_lock",
       "output": "seg5b.png",
       "checks": [
         "The complete target bag is upright, centred and unobstructed.",
         "The same wood surface and green backdrop are recognisable.",
         "No source package, invented view, caption, watermark or face appears."
-      ]
+      ],
+      "product_placement": {
+        "pose_source": "shot_plan",
+        "orientation": "unchanged_from_reference",
+        "occlusion": "hands_keep_product_identity_visible",
+        "fallback": "static_product_shot"
+      }
     }
   }
 }

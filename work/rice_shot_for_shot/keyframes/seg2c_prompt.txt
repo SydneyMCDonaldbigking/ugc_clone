@@ -1,0 +1,13 @@
+Photorealistic vertical 9:16 smartphone photo, the first frame of a hands-only home product video.
+
+Image 1: the approved empty scene master: background, surface, props, palette and light.
+Image 2: the product.
+
+Camera: product medium close-up | near eye level with a slight downward tilt | almost locked smartphone | complete bag centred and filling about sixty-eight percent of frame
+Scene: Near-eye-level vertical product frame on the same warm wood table with the complete five-kilogram Royal Umbrella rice bag upright in the centre, front label square to camera and cleanly separated from the softly blurred green background.
+Background master: use Image 1 for this camera angle. Hard invariant: this is the same physical tabletop in every keyframe — surface: One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.. Soft continuity guide: setting: A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.; backdrop: Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.; lighting: Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.; palette: Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.; prop family: A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them.. For close-ups, keep the product and active hands crisp while natural changes in crop, parallax, visible props, slight local exposure and shallow-depth background bokeh are welcome.
+Human presence: One natural hand enters only at the lower edge to steady the table beside the pack without covering it. Only hands and forearms appear; the creator's face stays outside the crop.
+
+Product: Royal Umbrella Thai Jasmine Rice, copied exactly from Image 2 - large clear rectangular plastic rice bag with a white sealed top, red side seams, and one dominant red-and-gold front label, factory heat-sealed plastic top and bottom seams. Keep it identical to the reference photo; simplify the pose rather than change the product.
+
+Real skin texture, slight handheld imperfection and candid UGC energy. No added text or watermarks.

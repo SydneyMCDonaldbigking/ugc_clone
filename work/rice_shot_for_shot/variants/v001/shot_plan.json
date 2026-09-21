@@ -31,7 +31,8 @@
       "accents": [],
       "keyframe_ids": [
         "1a",
-        "1b"
+        "1b",
+        "1c"
       ],
       "reference_frames": [
         {
@@ -46,10 +47,12 @@
             "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
           },
           "scene_view": "overhead_90",
-          "role": "overhead raw rice and cooker sequence anchor",
-          "first_frame": "Direct overhead view of a shallow pale rattan tray filled edge to edge with uncooked white rice on the warm wood table; the Royal Umbrella bag stands small and upright at the far top edge with its front square to camera and clear space around it for the original packshot overlay.",
+          "role": "overhead raw rice opening anchor",
+          "first_frame": "Direct overhead view of a shallow pale rattan tray filled edge to edge with uncooked white rice on the warm wood table, matching the source's tight food-first opening without a retail package in frame.",
           "camera": "extreme food close-up | first-person directly overhead about 90 degrees | locked smartphone with subtle vibration | tray fills about eighty-five percent of frame",
-          "performance": "No hands touch the pack; the frame is poised for loose rice to fall into the tray and later hard-cut to a cooker reveal."
+          "performance": "The frame is poised for loose rice to fall into the tray during the opening shot.",
+          "product_presence": "absent",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/overhead_90.png"
         },
         {
           "keyframe_id": "1b",
@@ -63,10 +66,31 @@
             "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
           },
           "scene_view": "oblique_45",
+          "role": "rice cooker lid reveal and cooked-rice surface anchor",
+          "first_frame": "First-person 45-degree high-angle close-up of the same warm-white rice cooker on the same wood table, its lid lifted by one natural hand so freshly cooked white rice fills the open inner pot; the cooker and rice dominate the frame and no retail package appears.",
+          "camera": "cooker and food close-up | first-person high angle about 45 degrees | handheld micro-sway prepared for a short push-in | open cooker fills about eighty percent of frame",
+          "performance": "One hand grips the lid edge with believable pressure while the other remains out of frame; the cooked rice surface is clearly visible and ready for the next tighter cut.",
+          "product_presence": "absent",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
+        },
+        {
+          "keyframe_id": "1c",
+          "scene_id": "warm-wood-greenery-rice-table",
+          "scene_lock": {
+            "setting": "A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.",
+            "surface": "One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.",
+            "backdrop": "Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.",
+            "lighting": "Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.",
+            "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
+            "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
+          },
+          "scene_view": "oblique_45",
           "role": "two-hand raw grain anchor",
-          "first_frame": "First-person oblique close-up of exactly two natural cupped hands lifting a mound of uncooked white rice above the same pale rattan tray; the Royal Umbrella bag stands upright behind the hands with its complete front visible and a clean placement for original pixels.",
-          "camera": "hand and food close-up | first-person high angle about 45 degrees | slight handheld follow | hands and grains fill the centre while the pack stays smaller behind",
-          "performance": "Both hands are slightly asymmetrical with relaxed fingers and visible grip pressure, ready for a few grains to slip naturally."
+          "first_frame": "First-person oblique close-up of exactly two natural cupped hands lifting a mound of uncooked white rice above the same pale rattan tray, matching the source's tight hand-and-grain framing without a retail package.",
+          "camera": "hand and food close-up | first-person high angle about 45 degrees | slight handheld follow | hands and grains fill the centre",
+          "performance": "Both hands are slightly asymmetrical with relaxed fingers and visible grip pressure, ready for a few grains to slip naturally.",
+          "product_presence": "absent",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
         }
       ],
       "timed_shots": [
@@ -86,7 +110,7 @@
           "source_end_seconds": 2.533,
           "clip_start_seconds": 0.967,
           "clip_end_seconds": 2.533,
-          "picture_keyframe_id": "1a",
+          "picture_keyframe_id": "1b",
           "shot_type": "rice cooker lid reveal",
           "direction": "hard cut at 0.967 seconds to one hand lifting a warm-white cooker lid and revealing cooked rice"
         },
@@ -96,9 +120,9 @@
           "source_end_seconds": 3.567,
           "clip_start_seconds": 2.533,
           "clip_end_seconds": 3.567,
-          "picture_keyframe_id": "1a",
+          "picture_keyframe_id": "1b",
           "shot_type": "cooked rice cooker close-up",
-          "direction": "hard cut at 2.533 seconds to a tighter steady view of cooked rice filling the cooker"
+          "direction": "hard cut at 2.533 seconds to a tighter steady view of cooked rice filling the same open cooker"
         },
         {
           "source_shot_id": "SH004",
@@ -106,7 +130,7 @@
           "source_end_seconds": 5.567,
           "clip_start_seconds": 3.567,
           "clip_end_seconds": 5.567,
-          "picture_keyframe_id": "1b",
+          "picture_keyframe_id": "1c",
           "shot_type": "two-hand raw grain lift",
           "direction": "hard cut at 3.567 seconds to two cupped hands lifting uncooked grains above the tray with a few grains slipping"
         }
@@ -130,7 +154,8 @@
         "red Wuchang packaging"
       ],
       "label_policy": "original_pixels_or_fully_preserved",
-      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg01_prompt.txt"
+      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg01_prompt.txt",
+      "scene_pack_id": "warm-wood-greenery-rice-table"
     },
     {
       "id": "S02",
@@ -157,7 +182,8 @@
       "accents": [],
       "keyframe_ids": [
         "2a",
-        "2b"
+        "2b",
+        "2c"
       ],
       "reference_frames": [
         {
@@ -172,10 +198,12 @@
             "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
           },
           "scene_view": "eye_level",
-          "role": "cooked rice chopstick and bowl anchor",
-          "first_frame": "Near-eye-level macro of dark charcoal chopsticks holding one neat bite of cooked white rice above a warm-ivory bowl on the same wood table; the background greenery is strongly blurred and the Royal Umbrella bag is a small front-facing pack at frame right with a clear overlay area.",
+          "role": "cooked rice chopstick macro anchor",
+          "first_frame": "Near-eye-level macro of dark charcoal chopsticks holding one neat bite of cooked white rice above a warm-ivory bowl on the same wood table; the background greenery is strongly blurred and no retail package appears before the source's later reveal.",
           "camera": "extreme food close-up | near eye level | handheld prepared to follow a short chopstick lift | rice bite centred and crisp against deep green bokeh",
-          "performance": "One off-frame hand controls the chopsticks with a slight natural tremor while the bowl remains steady."
+          "performance": "One off-frame hand controls the chopsticks with a slight natural tremor while the bowl remains steady.",
+          "product_presence": "absent",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png"
         },
         {
           "keyframe_id": "2b",
@@ -188,11 +216,32 @@
             "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
             "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
           },
+          "scene_view": "oblique_45",
+          "role": "hand-held cooked-rice bowl anchor",
+          "first_frame": "First-person 45-degree high-angle close-up of one natural hand supporting a small clear scalloped glass bowl filled with cooked white rice above the same wood table, while the other hand holds dark chopsticks just above the bowl; no retail package appears.",
+          "camera": "hand-held bowl close-up | first-person high angle about 45 degrees | slight handheld adjustment | bowl and supporting hand fill the centre",
+          "performance": "The supporting fingers curve naturally under the bowl with uneven pressure while the chopsticks hover at a relaxed angle.",
+          "product_presence": "absent",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
+        },
+        {
+          "keyframe_id": "2c",
+          "scene_id": "warm-wood-greenery-rice-table",
+          "scene_lock": {
+            "setting": "A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.",
+            "surface": "One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.",
+            "backdrop": "Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.",
+            "lighting": "Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.",
+            "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
+            "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
+          },
           "scene_view": "eye_level",
           "role": "first complete front-pack reveal anchor",
-          "first_frame": "Near-eye-level vertical product frame on the same warm wood table with the complete five-kilogram Royal Umbrella rice bag upright in the centre, front label square to camera, cleanly separated from the softly blurred green background and free of hand occlusion for original-pixel compositing.",
+          "first_frame": "Near-eye-level vertical product frame on the same warm wood table with the complete five-kilogram Royal Umbrella rice bag upright in the centre, front label square to camera and cleanly separated from the softly blurred green background.",
           "camera": "product medium close-up | near eye level with a slight downward tilt | almost locked smartphone | complete bag centred and filling about sixty-eight percent of frame",
-          "performance": "One natural hand enters only at the lower edge to steady the table beside the pack without covering it."
+          "performance": "One natural hand enters only at the lower edge to steady the table beside the pack without covering it.",
+          "product_presence": "present",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png"
         }
       ],
       "timed_shots": [
@@ -212,9 +261,9 @@
           "source_end_seconds": 9.2,
           "clip_start_seconds": 1.633,
           "clip_end_seconds": 3.633,
-          "picture_keyframe_id": "2a",
+          "picture_keyframe_id": "2b",
           "shot_type": "hand-held rice bowl",
-          "direction": "hard cut at 1.633 seconds to one hand supporting the warm-ivory bowl while chopsticks hover above it"
+          "direction": "hard cut at 1.633 seconds to one hand supporting the clear scalloped glass bowl while chopsticks hover above it"
         },
         {
           "source_shot_id": "SH007",
@@ -222,7 +271,7 @@
           "source_end_seconds": 10.4,
           "clip_start_seconds": 3.633,
           "clip_end_seconds": 4.833,
-          "picture_keyframe_id": "2b",
+          "picture_keyframe_id": "2c",
           "shot_type": "complete pack reveal",
           "direction": "hard cut at 3.633 seconds to the complete upright Royal Umbrella bag and hold it steady"
         }
@@ -245,7 +294,8 @@
         "watermark"
       ],
       "label_policy": "original_pixels_or_fully_preserved",
-      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg02_prompt.txt"
+      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg02_prompt.txt",
+      "scene_pack_id": "warm-wood-greenery-rice-table"
     },
     {
       "id": "S03",
@@ -265,14 +315,15 @@
       "source_edit_duration_seconds": 4.2,
       "dialogue": "This is Royal Umbrella Thai Jasmine Rice in a clear five-kilo bag.",
       "shot_type": "package_identity_sequence",
-      "subject": "The Royal Umbrella bag and its visible rice grains receive three fast identity-proof views without exposing an invented back or side panel.",
-      "action": "Move from an overhead bag-and-grains arrangement to a closer transparent-bag view, then hard-cut to a complete front-label hold.",
+      "subject": "The Royal Umbrella bag receives three fast source-matched package views: a dense repeated-pack spread, a transparent grain detail and a complete front-label hold.",
+      "action": "Start on a high-angle dense spread of matching full-size target bags, hard-cut to a tighter clear-bag grain detail, then hard-cut to a closer front-label hold, matching the source's package-only camera progression.",
       "performance": "Hands frame the bag naturally from its outer edges and keep the central label unobstructed.",
-      "intention": "Replace the source's unsupported multi-pack and origin claims with honest front-pack and visible-grain evidence.",
+      "intention": "Preserve the source's abundance-to-detail rhythm while showing only repeated copies of the supplied target bag and visible rice grains.",
       "accents": [],
       "keyframe_ids": [
         "3a",
-        "3b"
+        "3b",
+        "3c"
       ],
       "reference_frames": [
         {
@@ -286,11 +337,13 @@
             "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
             "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
           },
-          "scene_view": "overhead_90",
-          "role": "overhead bag and visible grain anchor",
-          "first_frame": "Direct overhead tabletop arrangement with one complete Royal Umbrella rice bag lying flat and front-up on the same warm wood surface, surrounded by a restrained crescent of loose uncooked rice; exactly two hands rest outside the bag edges and leave a clean unobstructed original-pixel placement.",
-          "camera": "packaging close-up | first-person directly overhead about 90 degrees | locked smartphone with slight hand vibration | bag fills about seventy-five percent of frame",
-          "performance": "Exactly two hands hover at opposite outer edges in different relaxed poses, ready to slide the bag slightly without covering the front."
+          "scene_view": "oblique_45",
+          "role": "high-angle dense target-pack spread anchor",
+          "first_frame": "First-person high-angle close-up of three matching full-size Royal Umbrella rice bags arranged in a dense diagonal overlapping spread across the same warm wood table; the complete foreground bag lies front-up and unobstructed while two matching front-oriented bags remain partially visible behind it.",
+          "camera": "package abundance close-up | first-person high angle about 45 degrees | short handheld lateral drift | overlapping target bags fill the frame edge to edge",
+          "performance": "No hands are needed in the opening frame; the deliberately imperfect overlapping spacing feels like a quick phone-camera reveal rather than a catalogue layout.",
+          "product_presence": "present",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
         },
         {
           "keyframe_id": "3b",
@@ -304,10 +357,31 @@
             "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
           },
           "scene_view": "oblique_45",
+          "role": "transparent-bag rice-grain detail anchor",
+          "first_frame": "Extreme first-person oblique close-up of the lower clear plastic area of the same Royal Umbrella rice bag, with individual uncooked rice grains sharply visible through the transparent pouch and enough of the red-and-gold front label retained to identify the product.",
+          "camera": "packaging extreme close-up | first-person high angle about 45 degrees | short handheld push-in | transparent grain-filled plastic dominates the frame",
+          "performance": "Exactly two natural hands pinch only the far outer edges, creating small realistic plastic wrinkles while keeping the visible grains and label fragment clear.",
+          "product_presence": "present",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
+        },
+        {
+          "keyframe_id": "3c",
+          "scene_id": "warm-wood-greenery-rice-table",
+          "scene_lock": {
+            "setting": "A compact home dining table staged for a candid vertical rice review, with practical cookware and food close-ups rather than a polished studio set.",
+            "surface": "One continuous medium-warm brown natural-wood tabletop with a matte finish, fine straight grain running away from camera, and a softly rounded front edge.",
+            "backdrop": "Deep green broad houseplant leaves fill most of the distant background, with a small cluster of dark red berries and one amber glass vessel off to the right.",
+            "lighting": "Soft warm window light enters from the front-left, creating gentle highlights and short soft-edged shadows with a neutral-warm white balance.",
+            "palette": "Warm brown wood, deep botanical green, warm ivory ceramics, pale rice and restrained dark-red accents.",
+            "fixed_props": "A shallow pale rattan tray, one warm-ivory ceramic rice bowl, dark charcoal chopsticks and one warm-white rice cooker appear only in the shots that require them."
+          },
+          "scene_view": "oblique_45",
           "role": "upright front-label identity anchor",
-          "first_frame": "Oblique product close-up of one complete Royal Umbrella rice bag upright on the same table, front label square to camera; two natural hands lightly frame the lower outer corners while preserving a clean original-pixel product plane.",
+          "first_frame": "Oblique product close-up of one complete Royal Umbrella rice bag upright on the same table, front label square to camera; one natural hand steadies the lower-left outer edge without covering the label.",
           "camera": "product close-up | first-person high angle about 35 degrees | gentle handheld micro-sway | complete front occupies about seventy-five percent of frame",
-          "performance": "Two hands apply subtle uneven pressure at the lower outside edges and never cross the label."
+          "performance": "One hand applies subtle uneven pressure at the lower-left outside edge and never crosses the label.",
+          "product_presence": "present",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
         }
       ],
       "timed_shots": [
@@ -318,8 +392,8 @@
           "clip_start_seconds": 0.0,
           "clip_end_seconds": 1.233,
           "picture_keyframe_id": "3a",
-          "shot_type": "overhead pack and grains",
-          "direction": "show one front-up bag with a crescent of loose grains rather than inventing multiple small packs"
+          "shot_type": "dense target-pack spread",
+          "direction": "show three matching full-size target bags in a dense diagonal overlap, with one complete front-up bag anchoring the foreground"
         },
         {
           "source_shot_id": "SH009",
@@ -327,9 +401,9 @@
           "source_end_seconds": 12.867,
           "clip_start_seconds": 1.233,
           "clip_end_seconds": 2.467,
-          "picture_keyframe_id": "3a",
+          "picture_keyframe_id": "3b",
           "shot_type": "transparent bag grain detail",
-          "direction": "hard cut at 1.233 seconds to a tighter crop where rice grains remain visible through the clear plastic around the front label"
+          "direction": "hard cut at 1.233 seconds to a true extreme close-up where individual rice grains remain visible through the clear plastic around the front label"
         },
         {
           "source_shot_id": "SH010",
@@ -337,7 +411,7 @@
           "source_end_seconds": 14.6,
           "clip_start_seconds": 2.467,
           "clip_end_seconds": 4.2,
-          "picture_keyframe_id": "3b",
+          "picture_keyframe_id": "3c",
           "shot_type": "front-label hand presentation",
           "direction": "hard cut at 2.467 seconds to the complete upright front label framed by two hands"
         }
@@ -350,18 +424,19 @@
       "preserve": [
         "three source microshots",
         "two exact hard cuts",
-        "package evidence progression"
+        "dense pack-to-detail progression"
       ],
       "exclude": [
         "visible face",
         "source package",
-        "multiple small bags",
+        "invented mini-pack format",
         "invented back label",
         "caption",
         "watermark"
       ],
       "label_policy": "original_pixels_or_fully_preserved",
-      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg03_prompt.txt"
+      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg03_prompt.txt",
+      "scene_pack_id": "warm-wood-greenery-rice-table"
     },
     {
       "id": "S04",
@@ -381,7 +456,7 @@
       "source_edit_duration_seconds": 4.367,
       "dialogue": "The clear pack lets you see the grains before it reaches your pantry.",
       "shot_type": "raw_grain_texture_hold",
-      "subject": "A single long raw-rice tray shot moves from falling grains to a two-hand lift while the target bag remains a quiet background identity cue.",
+      "subject": "A single long raw-rice tray shot moves from falling grains to a two-hand lift, with the retail package kept outside the active food frame.",
       "action": "Keep one continuous shot: grains fall into the tray, settle, then both hands scoop and lift them toward the lens.",
       "performance": "Hands enter at slightly different times, fingers dig naturally into the grains, and a few grains escape between relaxed fingers.",
       "intention": "Preserve the source's longest tactile shot without adding unsupported growing, polishing or taste claims.",
@@ -403,9 +478,11 @@
           },
           "scene_view": "oblique_45",
           "role": "long raw-rice tray action anchor",
-          "first_frame": "First-person high-angle close-up of a shallow pale rattan tray filled with uncooked white rice on the same wood table; two natural hands are just entering from opposite lower corners, and the upright Royal Umbrella bag sits behind the tray with its complete front clear for original-pixel compositing.",
-          "camera": "food close-up | first-person high angle about 45 degrees | handheld micro-follow | tray and entering hands fill eighty percent with pack behind",
-          "performance": "Hands enter with believable asymmetry and open fingers, poised to scoop rather than already holding a perfect mound."
+          "first_frame": "First-person high-angle close-up of a shallow pale rattan tray filled with uncooked white rice on the same wood table; two natural hands are just entering from opposite lower corners and the frame remains dedicated to the tactile rice action.",
+          "camera": "food close-up | first-person high angle about 45 degrees | handheld micro-follow | tray and entering hands fill eighty percent of frame",
+          "performance": "Hands enter with believable asymmetry and open fingers, poised to scoop rather than already holding a perfect mound.",
+          "product_presence": "absent",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/oblique_45.png"
         }
       ],
       "timed_shots": [
@@ -438,7 +515,8 @@
         "perfectly symmetrical hands"
       ],
       "label_policy": "original_pixels_or_fully_preserved",
-      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg04_prompt.txt"
+      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg04_prompt.txt",
+      "scene_pack_id": "warm-wood-greenery-rice-table"
     },
     {
       "id": "S05",
@@ -481,9 +559,11 @@
           },
           "scene_view": "eye_level",
           "role": "final cooked-rice macro anchor",
-          "first_frame": "Near-eye-level macro of dark charcoal chopsticks holding one neat bite of cooked white rice above the same warm-ivory bowl; deep green plant bokeh fills the background and the Royal Umbrella pack occupies a small clear front-facing area at frame right.",
+          "first_frame": "Near-eye-level macro of dark charcoal chopsticks holding one neat bite of cooked white rice above the same warm-ivory bowl; deep green plant bokeh fills the background and the retail package remains outside the frame until the final hard cut.",
           "camera": "extreme food close-up | near eye level | handheld with tiny natural drift | cooked rice bite centred and sharply focused",
-          "performance": "One unseen hand holds the chopsticks with a slight tremor and pauses naturally before the cut."
+          "performance": "One unseen hand holds the chopsticks with a slight tremor and pauses naturally before the cut.",
+          "product_presence": "absent",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png"
         },
         {
           "keyframe_id": "5b",
@@ -498,9 +578,11 @@
           },
           "scene_view": "eye_level",
           "role": "final complete pack endboard anchor",
-          "first_frame": "Near-eye-level final product frame with one complete five-kilogram Royal Umbrella rice bag upright and centred on the same warm wood tabletop, front label square to camera, deep green leaves softly blurred behind, and a completely clean product plane for original-pixel compositing.",
+          "first_frame": "Near-eye-level final product frame with one complete five-kilogram Royal Umbrella rice bag upright and centred on the same warm wood tabletop, front label square to camera and deep green leaves softly blurred behind.",
           "camera": "product medium close-up | near eye level | steady smartphone prepared for a very slow push-in | complete bag fills about seventy percent of frame",
-          "performance": "No hand covers the product; one relaxed fingertip may briefly steady the table edge outside the bag silhouette."
+          "performance": "No hand covers the product; one relaxed fingertip may briefly steady the table edge outside the bag silhouette.",
+          "product_presence": "present",
+          "scene_master": "work/rice_shot_for_shot/scene_pack/warm-wood-greenery-rice-table/eye_level.png"
         }
       ],
       "timed_shots": [
@@ -543,7 +625,8 @@
         "watermark"
       ],
       "label_policy": "original_pixels_or_fully_preserved",
-      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg05_prompt.txt"
+      "h3_prompt_file": "work/rice_shot_for_shot/h3/seg05_prompt.txt",
+      "scene_pack_id": "warm-wood-greenery-rice-table"
     }
   ]
 }

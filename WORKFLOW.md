@@ -140,8 +140,8 @@ H3 生成保持静音,不得为了满足口播字段而编造台词或字幕。
 ### S6 分镜 + ImageGen 参考帧(本地,默认 Codex)
 
 - Codex 根据 `ANALYSIS.md` / `TIMELINE.md` 写英文稿、`shot_plan.json` 和 `REQUEST.json`,再用 `build_keyframe_prompts.py` 编译只含正面描述的提示词
-- Codex 只使用商品原图和已登记定妆照生成 9:16 参考帧;不得使用原片帧或上一张生成图
-- 密集小字用 `pixel_preserve` 贴回原商品像素,或交给 H3 `fully_preserved` / 静态慢推保底
+- Codex 使用相机角度匹配的场景母版生成 9:16 参考帧;有人物才加定妆照,只有原片对应时间窗出现商品才加商品原图;不得使用原片帧或上一张生成图
+- `product_presence` 逐帧跟原片走。参考帧禁止用代码贴商品;密集小字无法通过 ImageGen QC 时交给 H3 `fully_preserved` / 静态慢推保底
 - QC 全通过后写 `READY.json`;`shot_for_shot` 再运行 `build_timed_h3_prompts.py` 生成最终 `segments.json`,然后依次执行 `keyframe-status --actor codex` 和 `preflight --actor codex`;只有最新 `PREFLIGHT.json.status = pass` 才授权 Claude 进入 S7
 - `keyframe-status` 会先逐切点对照 `shot_map` / `shot_plan` / `h3_clip_plan`,再把稿子、分镜、H3 提交包、商品引用、QC、READY 与全部参考帧一起封存;任何秒数、Picture 顺序、prompt 或文件漂移都会使门禁失败
 - 普通真人口播可使用 `(S1) <d>[English] ...</d>`。`shot_for_shot` 的 H3 层一律静音,精确裁切后再叠加一条连续英文母带;`audio_mode: dialogue` 表示最终成片有英文声音,`render_plan.h3_audio_mode: silent` 表示 H3 本身不发声。历史 `[Chinese]` 提示词不得用于新任务

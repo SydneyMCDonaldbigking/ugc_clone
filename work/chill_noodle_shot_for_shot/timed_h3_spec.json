@@ -1,0 +1,267 @@
+{
+  "schema": "timed-h3-spec/v1",
+  "job": "chill_noodle_shot_for_shot",
+  "pipeline_job_id": "chill_noodle_sfs_en",
+  "shot_map": "work/chill_noodle_shot_for_shot/shot_map.json",
+  "output_dir": "work/chill_noodle_shot_for_shot/keyframes",
+  "prompt_template": "templates/keyframe_prompt.hands-only.en.txt",
+  "scene_locks": {
+    "warm-desktop-noodle-demo": {
+      "setting": "A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.",
+      "surface": "One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.",
+      "backdrop": "A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.",
+      "lighting": "Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.",
+      "palette": "Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.",
+      "fixed_props": "One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots."
+    }
+  },
+  "clips": [
+    {
+      "segment": 1,
+      "scene_id": "warm-desktop-noodle-demo",
+      "render_duration_seconds": 6,
+      "shot_type": "bowl_pack_and_noodle_hook",
+      "subject": "The finished red-oil rice-noodle bowl, the exact Man Xiao Bao pouch and two fast noodle actions open the video.",
+      "action": "Follow four exact hard-cut shots: pour peanuts from a yellow condiment sachet, show the front pouch, lift a broad noodle bundle, then lower and stir the noodles.",
+      "performance": "Hands use uneven natural timing and realistic finger pressure; chopsticks carry a tiny human tremor and the phone drifts slightly without losing the bowl.",
+      "intention": "Copy the source's immediate food action and early product identification, with the main pouch visible only in its original window.",
+      "preserve": ["four source microshots", "three exact hard cuts", "food-pack-food sequence", "hands-only smartphone energy"],
+      "exclude": ["visible face", "source frame", "caption", "watermark", "main pouch in food-only windows"],
+      "reference_frames": [
+        {
+          "keyframe_id": "1a",
+          "role": "finished bowl peanut-pour anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "absent",
+          "first_frame": "First-person high-angle close-up of a large warm-white handled bowl filled with deep red rice-noodle soup on the light warm-brown wood desk; one natural right hand tilts a small plain yellow condiment sachet above the bowl and loose peanuts are poised to fall into the centre.",
+          "camera": "food close-up | first-person high angle about 45 degrees | slight handheld drift | bowl fills about eighty percent of frame with its short handle pointing right",
+          "performance": "The thumb and forefinger pinch the yellow sachet asymmetrically while a few peanuts begin falling at different speeds.",
+          "checks": ["One handled warm-white bowl of red-broth rice noodles dominates the frame.", "One yellow condiment sachet and one plausible hand perform the topping action.", "No main retail pouch, face, readable invented sachet text, source frame, caption or watermark appears."]
+        },
+        {
+          "keyframe_id": "1b",
+          "role": "first complete front-pouch reveal anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "present",
+          "product_fidelity_mode": "reference_lock",
+          "first_frame": "First-person product close-up on the same desk: exactly two natural hands support one complete Man Xiao Bao Spicy Red Oil Rice Noodles pouch from its outer lower corners, with the cream-and-red front square to camera and unobstructed.",
+          "camera": "product close-up | slight high angle about 25 degrees | handheld micro-sway | complete pouch fills about seventy-eight percent of frame",
+          "performance": "The two hands apply slightly different grip pressure and keep all fingers outside the central title and bowl image.",
+          "checks": ["One complete target pouch is front-facing and unobstructed.", "Exactly two plausible hands hold only the outer edges.", "No extra pouch, invented back view, source frame, caption, watermark or face appears."]
+        },
+        {
+          "keyframe_id": "1c",
+          "role": "first broad noodle-lift anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "absent",
+          "first_frame": "Close high-angle food view of dark red-brown chopsticks lifting a dense fan of many thin round pale rice-vermicelli strands, each about two millimetres thick, from the same deep red broth bowl; tofu puffs and dark green vegetable strips remain visible around the noodles.",
+          "camera": "extreme food close-up | first-person high angle about 40 degrees | small handheld follow upward | the dense curtain of thin round strands occupies the centre and upper-right",
+          "performance": "One unseen hand lifts with a faint tremor, creating irregular spacing between the many fine strands and one or two loose strands.",
+          "checks": ["One pair of chopsticks holds one dense curtain of thin round rice vermicelli above the handled bowl.", "The fine noodle strands and red broth remain the visual focus.", "No main retail pouch, face, source frame, caption or watermark appears."]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH001", "picture_keyframe_id": "1a", "shot_type": "peanut topping pour", "direction": "tilt the yellow sachet and let a short uneven stream of peanuts fall into the bowl"},
+        {"source_shot_id": "SH002", "picture_keyframe_id": "1b", "shot_type": "front pouch reveal", "direction": "hard cut to two hands presenting the complete front pouch with one small natural sway"},
+        {"source_shot_id": "SH003", "picture_keyframe_id": "1c", "shot_type": "broad noodle lift", "direction": "hard cut to chopsticks lifting a broad noodle fan from the broth toward the upper-right"},
+        {"source_shot_id": "SH004", "picture_keyframe_id": "1c", "shot_type": "lower and stir noodles", "direction": "hard cut to a slightly higher view as the noodle bundle lowers and the chopsticks loosen it through the broth"}
+      ]
+    },
+    {
+      "segment": 2,
+      "scene_id": "warm-desktop-noodle-demo",
+      "render_duration_seconds": 6,
+      "shot_type": "noodle_pack_components_sequence",
+      "subject": "A noodle fan leads to a pouch-and-condiment display, tofu-puff close-up and green-sachet seaweed pour.",
+      "action": "Use four exact shots: lift noodles, display the front pouch with separate colour-coded sachets, lift one tofu puff with greens, then pour dark green strips from a green sachet.",
+      "performance": "Hands point, pinch and pour with believable grip changes; all actions remain first-person and no face appears.",
+      "intention": "Keep the source's dense component-proof rhythm and exact product appearance window.",
+      "preserve": ["four source microshots", "three exact hard cuts", "package-to-component proof"],
+      "exclude": ["visible face", "source frame", "extra condiment packet", "different condiment label", "caption", "watermark"],
+      "reference_frames": [
+        {
+          "keyframe_id": "2a",
+          "role": "tight noodle-fan anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "absent",
+          "first_frame": "Near-bowl-level macro of a dense curtain of many thin round rice-vermicelli strands, each about two millimetres thick, held high by dark red-brown chopsticks over the same handled white bowl of red broth, with a stainless spoon softly reflecting at frame-left.",
+          "camera": "extreme food close-up | near bowl-rim height with slight downward angle | handheld follow | fine vermicelli curtain fills the middle two-thirds",
+          "performance": "The chopsticks sit slightly off level and the many thin strands hang with natural uneven spacing.",
+          "checks": ["One coherent curtain of thin round rice vermicelli hangs from one pair of chopsticks.", "The same handled bowl and red broth remain visible.", "No main retail pouch, face, source frame, caption or watermark appears."]
+        },
+        {
+          "keyframe_id": "2b",
+          "role": "front pouch and condiment-sachet display anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "present",
+          "product_fidelity_mode": "reference_lock",
+          "first_frame": "High-angle package close-up on the same desk with one complete Man Xiao Bao front pouch in the centre; its front artwork contains exactly one printed red-soup noodle bowl image. Three confirmed condiment packets lie around the lower edge: one yellow tofu-puff packet with visible tofu puffs, one red chilli-oil packet and one green vegetable packet with visible dried greens; one natural index finger points to the red packet without covering the pouch.",
+          "camera": "package close-up | first-person high angle about 55 degrees | small handheld sway | pouch and sachets fill about eighty percent",
+          "performance": "The pointing finger bends naturally and hovers just above one sachet while the other hand steadies the pouch edge.",
+          "checks": ["One complete target front pouch is identifiable and central, with exactly one printed bowl image on its front artwork.", "Exactly three confirmed condiment packets appear: yellow tofu-puff, red chilli-oil and green vegetable.", "The selected printed packet labels remain readable and no source frame, extra pouch, caption, watermark or face appears."]
+        },
+        {
+          "keyframe_id": "2c",
+          "role": "tofu-puff and green-sachet action anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "absent",
+          "first_frame": "First-person high-angle food close-up of the same red-broth noodle bowl: dark chopsticks lift one orange-gold tofu puff with a few dark green strips and several thin round rice-vermicelli strands, while a small blank green condiment sachet waits near the upper edge for the next cut.",
+          "camera": "food close-up | high angle about 45 degrees | slight handheld follow | tofu puff sits near centre above the bowl",
+          "performance": "The chopsticks pinch the tofu puff imperfectly, with a few wet green strips hanging at different lengths.",
+          "checks": ["One tofu puff, thin round vermicelli and dark green strips are held by one pair of chopsticks.", "A small blank green sachet may appear only as an unbranded action prop.", "No main retail pouch, face, source frame, caption or watermark appears."]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH005", "picture_keyframe_id": "2a", "shot_type": "tight noodle fan", "direction": "lift one broad noodle curtain a few centimetres and let two loose strands slip"},
+        {"source_shot_id": "SH006", "picture_keyframe_id": "2b", "shot_type": "pouch and sachet display", "direction": "hard cut to the complete front pouch with colour-coded sachets and one finger pointing between them"},
+        {"source_shot_id": "SH007", "picture_keyframe_id": "2c", "shot_type": "tofu puff and greens lift", "direction": "hard cut to chopsticks lifting one tofu puff with green strips from the bowl"},
+        {"source_shot_id": "SH008", "picture_keyframe_id": "2c", "shot_type": "green sachet pour", "direction": "hard cut to one hand tipping the plain green sachet so dark green strips fall into the centre of the bowl"}
+      ]
+    },
+    {
+      "segment": 3,
+      "scene_id": "warm-desktop-noodle-demo",
+      "render_duration_seconds": 5,
+      "shot_type": "red_seasoning_pack_detail_and_noodles",
+      "subject": "A red seasoning pour hard-cuts to a tight front-pouch proof and then two rice-noodle lifts.",
+      "action": "Pour red seasoning, show the target front pouch close to camera, then perform one tightly wound lift and one broader lift.",
+      "performance": "The pouring hand squeezes the sachet naturally; product-holding fingers stay off the title; noodle lifts carry slight tremor.",
+      "intention": "Preserve the source's seasoning-pack-food sandwich without fabricating a back label.",
+      "preserve": ["four source microshots", "three exact hard cuts", "seasoning-pack-food order"],
+      "exclude": ["visible face", "invented back label", "source frame", "caption", "watermark"],
+      "reference_frames": [
+        {
+          "keyframe_id": "3a",
+          "role": "red-seasoning pour anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "absent",
+          "first_frame": "High-angle close-up of the same handled white bowl as one natural hand tips a small plain red condiment sachet above the centre, with dark red chilli seasoning beginning to fall onto the noodles and greens.",
+          "camera": "food close-up | first-person high angle about 50 degrees | handheld micro-drift | sachet and falling seasoning sit above bowl centre",
+          "performance": "The red sachet creases under uneven finger pressure and the seasoning falls in a slightly scattered stream.",
+          "checks": ["One red sachet pours seasoning into the handled noodle bowl.", "The action remains readable without any invented sachet wording.", "No main retail pouch, face, source frame, caption or watermark appears."]
+        },
+        {
+          "keyframe_id": "3b",
+          "role": "tight target front-pouch proof anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "present",
+          "product_fidelity_mode": "reference_lock",
+          "first_frame": "Extreme product close-up of the complete Man Xiao Bao pouch front held by exactly two natural hands at the outer lower corners, cream upper field and red lower field square to the lens, filling most of the vertical frame without crop through the title.",
+          "camera": "extreme package close-up | slight high angle about 30 degrees | almost locked handheld | front pouch fills about eighty-five percent",
+          "performance": "The two hands hold with subtle asymmetry and keep fingertips outside the central artwork.",
+          "checks": ["The supplied front orientation is complete and unobstructed.", "Exactly two plausible hands stay outside the central label.", "No invented back panel, source frame, caption, watermark or face appears."]
+        },
+        {
+          "keyframe_id": "3c",
+          "role": "tight wound-noodle lift anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "absent",
+          "first_frame": "Near-bowl-level macro of dark red-brown chopsticks holding a tightly gathered rectangular bundle made from many thin round pale rice-vermicelli strands, each about two millimetres thick, above the same deep red broth; a stainless spoon catches warm light at frame-right.",
+          "camera": "extreme food close-up | near bowl-rim height | slight handheld follow | compact bundle of fine strands fills the centre",
+          "performance": "The gathered bundle is not perfectly geometric; several fine strands sit loose and the chopsticks angle slightly upward.",
+          "checks": ["One coherent gathered bundle of thin round rice vermicelli is held by one pair of chopsticks.", "The same bowl, broth and spoon remain recognisable.", "No main retail pouch, face, source frame, caption or watermark appears."]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH009", "picture_keyframe_id": "3a", "shot_type": "red seasoning pour", "direction": "squeeze and tip the red sachet so a short stream of chilli seasoning falls into the bowl centre"},
+        {"source_shot_id": "SH010", "picture_keyframe_id": "3b", "shot_type": "tight front pouch proof", "direction": "hard cut to two hands holding the complete target front close to the lens with a tiny sway"},
+        {"source_shot_id": "SH011", "picture_keyframe_id": "3c", "shot_type": "compact noodle-bundle lift", "direction": "hard cut to chopsticks lifting one tightly wound noodle bundle above the red broth"},
+        {"source_shot_id": "SH012", "picture_keyframe_id": "3c", "shot_type": "broad noodle lift", "direction": "hard cut to a slightly wider angle as the chopsticks lift a broader looser bundle from the bowl"}
+      ]
+    },
+    {
+      "segment": 4,
+      "scene_id": "warm-desktop-noodle-demo",
+      "render_duration_seconds": 6,
+      "shot_type": "noodle_actions_to_single_pouch",
+      "subject": "Three distinct noodle actions and a repeated peanut pour lead into a single-pouch tray shot.",
+      "action": "Pull noodles sideways through broth, lift a neat noodle curtain, lift noodles with greens, pour peanuts, then hard-cut to one pouch being pushed onto a white perforated tray.",
+      "performance": "Chopstick movements are slightly imperfect and hands enter at unequal speeds; the final pouch push is casual rather than mechanically centred.",
+      "intention": "Match the source's rapid food-action run and exact late product return.",
+      "preserve": ["five source microshots", "four exact hard cuts", "late product return"],
+      "exclude": ["visible face", "main pouch before the last microshot", "source frame", "caption", "watermark"],
+      "reference_frames": [
+        {
+          "keyframe_id": "4a",
+          "role": "sideways noodle-pull and curtain anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "absent",
+          "first_frame": "High-angle close-up of the same handled white bowl as dark chopsticks pull a dense group of many thin round pale rice-vermicelli strands sideways across the surface of deep red broth, with orange tofu puffs around the perimeter.",
+          "camera": "food close-up | first-person high angle about 60 degrees | slight handheld follow | grouped fine vermicelli strands cross the centre horizontally",
+          "performance": "The chopsticks separate the many fine strands unevenly so red broth begins coating their lower portions.",
+          "checks": ["One pair of chopsticks pulls a dense group of thin round rice vermicelli through the bowl.", "The handled bowl and red broth occupy most of the frame.", "No main retail pouch, face, source frame, caption or watermark appears."]
+        },
+        {
+          "keyframe_id": "4b",
+          "role": "noodle-and-green lift plus peanut-pour anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "absent",
+          "first_frame": "First-person 45-degree food close-up of chopsticks lifting many thin round rice-vermicelli strands tangled with dark green vegetable strips from the same red-broth bowl; a small blank yellow condiment sachet rests just outside the bowl at the upper-right ready for the following topping cut.",
+          "camera": "food close-up | high angle about 45 degrees | handheld micro-follow | noodles and green strips fill the centre",
+          "performance": "The wet green strips hang at irregular lengths and the chopsticks pause with a faint tremor.",
+          "checks": ["One pair of chopsticks holds thin round vermicelli and dark green strips above the bowl.", "A blank yellow sachet may be a secondary action prop only.", "No main retail pouch, face, source frame, caption or watermark appears."]
+        },
+        {
+          "keyframe_id": "4c",
+          "role": "single pouch on perforated tray transition anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "present",
+          "product_fidelity_mode": "reference_lock",
+          "first_frame": "High-angle retail frame on the same wood desk with one complete Man Xiao Bao front pouch lying flat on a white perforated serving tray; one natural hand enters from frame-right and touches only the outer pouch edge as if pushing it into place.",
+          "camera": "product close-up | first-person high angle about 65 degrees | short handheld push | flat pouch and white perforated tray fill about eighty percent",
+          "performance": "The hand pushes from the edge with relaxed fingers and stops slightly off-perfect centre.",
+          "checks": ["Exactly one complete target front pouch lies flat on the white perforated tray.", "One plausible hand touches only the pouch edge.", "No extra pouch, source frame, caption, watermark or face appears."]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH013", "picture_keyframe_id": "4a", "shot_type": "sideways noodle pull", "direction": "pull a pale noodle sheet sideways so the lower strands pass through the red broth"},
+        {"source_shot_id": "SH014", "picture_keyframe_id": "4a", "shot_type": "neat noodle curtain lift", "direction": "hard cut to chopsticks raising a compact noodle curtain almost vertically"},
+        {"source_shot_id": "SH015", "picture_keyframe_id": "4b", "shot_type": "noodle and greens lift", "direction": "hard cut to chopsticks lifting noodles with dark green strips and holding briefly"},
+        {"source_shot_id": "SH016", "picture_keyframe_id": "4b", "shot_type": "repeat peanut pour", "direction": "hard cut to one hand tipping the plain yellow sachet so peanuts scatter into the bowl"},
+        {"source_shot_id": "SH017", "picture_keyframe_id": "4c", "shot_type": "single pouch tray transition", "direction": "hard cut to one complete pouch sliding a short distance onto the white perforated tray"}
+      ]
+    },
+    {
+      "segment": 5,
+      "scene_id": "warm-desktop-noodle-demo",
+      "render_duration_seconds": 4,
+      "shot_type": "three_to_five_pouch_endboard",
+      "subject": "The exact Man Xiao Bao front pouch multiplies from three to four and then five units on one white perforated tray.",
+      "action": "Hard-cut from three pouches to four pouches, then five pouches, and finish with one open hand sweeping in from the upper-right beside the five-pouch layout.",
+      "performance": "Layouts remain casually hand-arranged with small rotations and overlaps; the final hand gesture is relaxed and stops outside the labels.",
+      "intention": "Reproduce the original rapid quantity-build ending without adding a price or discount claim.",
+      "preserve": ["four source microshots", "three exact hard cuts", "three-four-five count progression", "final presenting hand"],
+      "exclude": ["visible face", "different products", "price graphic", "caption", "watermark"],
+      "reference_frames": [
+        {
+          "keyframe_id": "5a",
+          "role": "three-and-four pouch array anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "present",
+          "product_fidelity_mode": "reference_lock",
+          "first_frame": "High-angle retail close-up of exactly three complete Man Xiao Bao pouches lying front-up in a loose overlapping fan on the white perforated tray over the same wood desk; all three cream-and-red fronts remain recognisable.",
+          "camera": "multi-product close-up | first-person high angle about 70 degrees | almost locked smartphone | three pouches fill the frame",
+          "performance": "The three pouches have slight natural rotation differences and imperfect overlap like a quick hand arrangement.",
+          "checks": ["Exactly three target pouches appear front-up on one white perforated tray.", "All packages belong to the same supplied product and retain the cream-and-red identity.", "No hand covers a label and no source frame, price text, caption, watermark or face appears."]
+        },
+        {
+          "keyframe_id": "5b",
+          "role": "five pouch final array anchor",
+          "product_reference": "codex_clone_refs/chill_noodle/ref_pic.jpg",
+          "product_presence": "present",
+          "product_fidelity_mode": "reference_lock",
+          "first_frame": "High-angle final retail frame of exactly five complete Man Xiao Bao pouches lying front-up across the same white perforated tray in a loose fan; one natural open hand hovers at the upper-right outside every central label.",
+          "camera": "multi-product close-up | first-person high angle about 70 degrees | steady smartphone | five cream-and-red fronts fill nearly the entire frame",
+          "performance": "The open hand finishes a small presenting sweep with relaxed uneven fingers while the five pouches stay still.",
+          "checks": ["Exactly five target pouches appear front-up on the same tray.", "One plausible open hand remains outside the central package artwork.", "No sixth pouch, different product, price graphic, source frame, caption, watermark or face appears."]
+        }
+      ],
+      "timed_shots": [
+        {"source_shot_id": "SH018", "picture_keyframe_id": "5a", "shot_type": "three pouch array", "direction": "hold exactly three front-up pouches in a loose overlapping row"},
+        {"source_shot_id": "SH019", "picture_keyframe_id": "5a", "shot_type": "four pouch array", "direction": "hard cut to exactly four pouches in a slightly wider fan"},
+        {"source_shot_id": "SH020", "picture_keyframe_id": "5b", "shot_type": "five pouch array", "direction": "hard cut to exactly five front-up pouches filling the tray"},
+        {"source_shot_id": "SH021", "picture_keyframe_id": "5b", "shot_type": "five pouch presenting hand", "direction": "hard cut while keeping five pouches; one open hand sweeps in from upper-right and stops beside the array"}
+      ]
+    }
+  ]
+}

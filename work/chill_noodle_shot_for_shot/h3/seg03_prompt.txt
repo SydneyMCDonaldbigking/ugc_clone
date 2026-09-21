@@ -1,0 +1,32 @@
+subject_definitions:
+<Picture 1> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+<Picture 2> is a generated product-present composition keyframe for its assigned source shots.
+<Picture 3> is a generated food-and-hands composition keyframe with no retail package in its assigned source shots.
+
+retention_analysis:
+<Picture 1>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 2>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+<Picture 3>: composition_reference. Use its hands-only framing, scale, camera angle, setting and subject placement for the microshots assigned to it.
+
+scene_continuity:
+All generated Pictures share scene_id warm-desktop-noodle-demo. Hard-lock the same physical tabletop across every cut (surface: One continuous light warm-brown natural-wood desktop with fine straight grain running away from camera, a smooth satin-matte finish and no tablecloth.). Treat the remaining scene description as a soft guide (setting: A compact home desk used for a candid first-person instant-noodle demonstration, practical and lived-in rather than a styled studio.; backdrop: A dark open laptop spans the upper-left background, while a small green plant rises from a simple brushed-silver cylindrical pot at the upper-right.; lighting: Soft neutral-warm indoor daylight from the front-left, with mild screen-side contrast and realistic short soft shadows.; palette: Warm light brown wood, warm white ceramic, deep red broth, cream-and-red packaging, charcoal laptop and fresh green plant leaves.; fixed props: One large warm-white ceramic soup bowl with a short broad handle pointing toward frame-right, dark red-brown chopsticks and a stainless spoon; a white perforated serving tray appears only in the final package-array shots.). Close-ups keep the product sharp while crop, lens distance, parallax, visible props, slight local exposure and shallow-depth background bokeh may vary.
+
+detailed_description:
+Pour red seasoning, show the target front pouch close to camera, then perform one tightly wound lift and one broader lift. Preserve the exact listed order and timing. Hard cuts occur only at the listed times. Each cut is an intentional jump to a distinct camera setup, not a morph or continuous camera move.
+
+timed_shot_timeline:
+0-0.9 seconds — start on <Picture 1>; scheduled microshot: red seasoning pour: squeeze and tip the red sachet so a short stream of chilli seasoning falls into the bowl centre
+0.9-1.6 seconds — hard cut to a new shot based on <Picture 2>; scheduled microshot: tight front pouch proof: hard cut to two hands holding the complete target front close to the lens with a tiny sway
+1.6-2.966 seconds — hard cut to a new shot based on <Picture 3>; scheduled microshot: compact noodle-bundle lift: hard cut to chopsticks lifting one tightly wound noodle bundle above the red broth
+2.966-4.7 seconds — hard cut to a new shot based on <Picture 3>; scheduled microshot: broad noodle lift: hard cut to a slightly wider angle as the chopsticks lift a broader looser bundle from the bowl
+4.7-5 seconds — hold the final composition steady as disposable trim padding.
+
+performance_and_camera:
+The pouring hand squeezes the sachet naturally; product-holding fingers stay off the title; noodle lifts carry slight tremor. Preserve the source's seasoning-pack-food sandwich without fabricating a back label.
+
+product_timing:
+The retail package appears only in the scheduled product window(s): 0.9-1.6 seconds. All other windows contain only their assigned food, hands, cookware and scene.
+
+soundscape: no generated audio; the final English voice-over, handling sounds and music are added after exact trimming.
+
+Only hands and forearms appear. When the package is scheduled, keep the original target product identity stable. Do not add subtitles, captions, watermarks, price badges or extra brands. Packaging text comes only from the product reference.

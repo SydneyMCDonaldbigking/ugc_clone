@@ -1,0 +1,106 @@
+{
+  "schema": "keyframe-qc/v1",
+  "job": "chill_noodle_shot_for_shot",
+  "pipeline_job_id": "chill_noodle_sfs_en",
+  "variant_id": "v001",
+  "source_analysis": "references/chill_noodle_reference/ANALYSIS.md",
+  "result": "pass",
+  "pending_segments": [],
+  "product_timing_review": {
+    "result": "pass",
+    "policy": "The main retail pouch appears only in source-matched product windows; blank condiment sachets remain action props rather than retail-product substitutions.",
+    "absent_keyframes": ["1a", "1c", "2a", "2c", "3a", "3c", "4a", "4b"],
+    "present_keyframes": ["1b", "2b", "3b", "4c", "5a", "5b"],
+    "source_windows": ["1.333-2.733 seconds", "6.567-8.400 seconds", "11.467-12.167 seconds", "19.767-23.933 seconds"],
+    "method": "The user-selected seg2b pouch-and-condiment frame is used exactly as supplied; all other frames were generated from registered scene masters and the original product photo only when the source main pouch is visible. No source-video frame or previous keyframe was used as a generation reference."
+  },
+  "shot_method_review": {
+    "result": "pass",
+    "policy": "The 21 original cuts retain their order, camera height, food action, package timing and three-four-five quantity-build ending across five H3 clips."
+  },
+  "scene_consistency": {
+    "warm-desktop-noodle-demo": {
+      "result": "pass",
+      "keyframes": ["1a", "1b", "1c", "2a", "2b", "2c", "3a", "3b", "3c", "4a", "4b", "4c", "5a", "5b"],
+      "scene_views": ["eye_level", "oblique_45", "overhead_90"],
+      "variation_policy": "closeup_flexible",
+      "hard_match_fields": ["surface"],
+      "soft_guide_fields": ["setting", "backdrop", "lighting", "palette", "fixed_props"],
+      "note": "All fourteen frames share the same light warm-brown wood desktop. Laptop, silver plant pot, handled bowl, spoon and perforated tray vary naturally with crop and source shot role."
+    }
+  },
+  "segments": {
+    "1a": {
+      "file": "seg1a.png", "width": 941, "height": 1672,
+      "sha256": "eff9f58aa5e4c258d0b4abcd1c167f6a35ac28c456bb91fb94b8c51af7563c03",
+      "checks": ["One handled warm-white bowl of red-broth rice noodles dominates the frame.", "One yellow condiment sachet and one plausible hand perform the topping action.", "No main retail pouch, face, readable invented sachet text, source frame, caption or watermark appears."]
+    },
+    "1b": {
+      "file": "seg1b.png", "width": 941, "height": 1672,
+      "sha256": "a2254de06eaf11a33a65742f7b68cf225b5c29264811395267328814e6bbdc87",
+      "checks": ["One complete target pouch is front-facing and unobstructed.", "Exactly two plausible hands hold only the outer edges.", "No extra pouch, invented back view, source frame, caption, watermark or face appears."]
+    },
+    "1c": {
+      "file": "seg1c.png", "width": 941, "height": 1672,
+      "sha256": "bbf5a7ce246786cc51dd42ece20cd10dd8d6cdfa13d80781aaf9d13dc977c8d7",
+      "checks": ["One pair of chopsticks holds one dense curtain of thin round rice vermicelli above the handled bowl.", "The fine noodle strands and red broth remain the visual focus.", "No main retail pouch, face, source frame, caption or watermark appears."]
+    },
+    "2a": {
+      "file": "seg2a.png", "width": 941, "height": 1672,
+      "sha256": "0b999613fcb5f4ef93b3e54c3eac044608505135d9bee23b675bb2af5ae786f6",
+      "checks": ["One coherent curtain of thin round rice vermicelli hangs from one pair of chopsticks.", "The same handled bowl and red broth remain visible.", "No main retail pouch, face, source frame, caption or watermark appears."]
+    },
+    "2b": {
+      "file": "seg2b.png", "width": 941, "height": 1672,
+      "sha256": "35d2fb73bd1aa780aea6c3fd8b3956b9c837007d9265be22d6617a327e045cef",
+      "checks": ["One complete target front pouch is identifiable and central, with exactly one printed bowl image on its front artwork.", "Exactly three confirmed condiment packets appear: yellow tofu-puff, red chilli-oil and green vegetable.", "The selected printed packet labels remain readable and no source frame, extra pouch, caption, watermark or face appears."]
+    },
+    "2c": {
+      "file": "seg2c.png", "width": 941, "height": 1672,
+      "sha256": "0b2b0bbb0bb461a2d1204b111b4cde264b9f67859156d30ab6f3fb6b88cf72e8",
+      "checks": ["One tofu puff, thin round vermicelli and dark green strips are held by one pair of chopsticks.", "A small blank green sachet may appear only as an unbranded action prop.", "No main retail pouch, face, source frame, caption or watermark appears."]
+    },
+    "3a": {
+      "file": "seg3a.png", "width": 941, "height": 1672,
+      "sha256": "19728cb3bbffbabca4be8c23c55845f61099904625bae9e4f977497e961033c4",
+      "checks": ["One red sachet pours seasoning into the handled noodle bowl.", "The action remains readable without any invented sachet wording.", "No main retail pouch, face, source frame, caption or watermark appears."]
+    },
+    "3b": {
+      "file": "seg3b.png", "width": 941, "height": 1672,
+      "sha256": "5d88eb80742564d5f480f3b3b7cc5091398847be4e1da52e65b7a7694cbe8256",
+      "checks": ["The supplied front orientation is complete and unobstructed.", "Exactly two plausible hands stay outside the central label.", "No invented back panel, source frame, caption, watermark or face appears."]
+    },
+    "3c": {
+      "file": "seg3c.png", "width": 941, "height": 1672,
+      "sha256": "2822c6afd42f7f17032ceeed7f55bf68dd4a948b61e962d396eb331f87b69bc2",
+      "checks": ["One coherent gathered bundle of thin round rice vermicelli is held by one pair of chopsticks.", "The same bowl, broth and spoon remain recognisable.", "No main retail pouch, face, source frame, caption or watermark appears."]
+    },
+    "4a": {
+      "file": "seg4a.png", "width": 941, "height": 1672,
+      "sha256": "89401c0e229ea76958c903f6dc2bfd55b3b6da16f394e42ab100016258f70a91",
+      "checks": ["One pair of chopsticks pulls a dense group of thin round rice vermicelli through the bowl.", "The handled bowl and red broth occupy most of the frame.", "No main retail pouch, face, source frame, caption or watermark appears."]
+    },
+    "4b": {
+      "file": "seg4b.png", "width": 941, "height": 1672,
+      "sha256": "1248bea95d80840978b2f400697239e5504b217c771861e0743451009c1a5d3a",
+      "checks": ["One pair of chopsticks holds thin round vermicelli and dark green strips above the bowl.", "A blank yellow sachet may be a secondary action prop only.", "No main retail pouch, face, source frame, caption or watermark appears."]
+    },
+    "4c": {
+      "file": "seg4c.png", "width": 941, "height": 1672,
+      "sha256": "7ad5882bd8bc92ecd5036147378442bd6ae4df32951c58befb3c072707e97ebe",
+      "checks": ["Exactly one complete target front pouch lies flat on the white perforated tray.", "One plausible hand touches only the pouch edge.", "No extra pouch, source frame, caption, watermark or face appears."]
+    },
+    "5a": {
+      "file": "seg5a.png", "width": 941, "height": 1672,
+      "sha256": "4d47941d88eda4477528c5f9a07bd679cd8eaab9f25b2e6962dc9946fd54cec5",
+      "checks": ["Exactly three target pouches appear front-up on one white perforated tray.", "All packages belong to the same supplied product and retain the cream-and-red identity.", "No hand covers a label and no source frame, price text, caption, watermark or face appears."]
+    },
+    "5b": {
+      "file": "seg5b.png", "width": 941, "height": 1672,
+      "sha256": "0b1e54b900a53c923224137b4f155a94acc74d6e6a3199ef56425871685716f6",
+      "checks": ["Exactly five target pouches appear front-up on the same tray.", "One plausible open hand remains outside the central package artwork.", "No sixth pouch, different product, price graphic, source frame, caption, watermark or face appears."]
+    }
+  },
+  "reviewed_by": "codex",
+  "note": "All fourteen source-matched keyframes passed visual review. seg2b is the exact pouch-and-condiment image selected by the user; earlier rejected thick-noodle attempts remain excluded."
+}

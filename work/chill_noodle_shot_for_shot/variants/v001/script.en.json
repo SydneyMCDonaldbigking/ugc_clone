@@ -1,0 +1,60 @@
+{
+  "schema": "script/v1",
+  "language": "en-AU",
+  "mode": "structure",
+  "variant_id": "v001",
+  "adaptations": {
+    "B1": "Keep the immediate bowl action and early pouch reveal without copying the source challenge claim.",
+    "B2": "Name only components supported by the supplied product image and the user's same-product confirmation.",
+    "B3": "Use the visible front pouch identity instead of recreating unreadable back-panel text.",
+    "B4": "Describe the visible preparation sequence rather than promising taste or texture.",
+    "B5": "Finish on the exact pouch-count progression without inventing a price or discount."
+  },
+  "lines": [
+    {
+      "id": "L1",
+      "segment": 1,
+      "beats": ["B1"],
+      "text": "Start with the red-oil bowl, meet the Man Xiao Bao pouch, then lift those rice noodles.",
+      "claims": ["F1", "F4"],
+      "target_duration_seconds": 5.3,
+      "delivery": "Fast, curious and conversational; land Man Xiao Bao as the pouch enters."
+    },
+    {
+      "id": "L2",
+      "segment": 2,
+      "beats": ["B2"],
+      "text": "The bowl shows tofu puffs, dark greens and rice noodles in red broth.",
+      "claims": ["F3", "F4"],
+      "target_duration_seconds": 5.267,
+      "delivery": "Brisk and descriptive, with a small pause as the condiment pouches appear."
+    },
+    {
+      "id": "L3",
+      "segment": 3,
+      "beats": ["B3"],
+      "text": "Add the red seasoning, check the cream-and-red front, then bring the noodles back into view.",
+      "claims": ["F2", "F4"],
+      "target_duration_seconds": 4.7,
+      "delivery": "Clear and rhythmic, following the seasoning, pack and food cuts."
+    },
+    {
+      "id": "L4",
+      "segment": 4,
+      "beats": ["B4"],
+      "text": "Pull, lift and turn the noodles through the bowl before the pouch returns for the finish.",
+      "claims": ["F4"],
+      "target_duration_seconds": 5.133,
+      "delivery": "Active and visual, with three clean action verbs matching the first three cuts."
+    },
+    {
+      "id": "L5",
+      "segment": 5,
+      "beats": ["B5"],
+      "text": "Three, four, then five pouches—finish on the complete front.",
+      "claims": ["F1", "F2", "F4"],
+      "target_duration_seconds": 3.533,
+      "delivery": "Quick counted close, then a friendly pause on kitchen."
+    }
+  ]
+}
